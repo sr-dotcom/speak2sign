@@ -1,0 +1,203 @@
+{
+ "_note": "Reviewed overrides for automatic picks that hit the wrong sense (2026-09-03). Each says why. Applied by build_lexicon.py plan.",
+ "weather": {
+  "source": "signbank",
+  "gloss": "WEATHER",
+  "why": "CATS 'climate,tenor,air' is the mood sense"
+ },
+ "clear": {
+  "source": "signbank",
+  "gloss": "CLEAR",
+  "why": "CATS 'let,allow,clear' is permission"
+ },
+ "hot": {
+  "source": "signbank",
+  "gloss": "HOT",
+  "why": "CATS 'hot,live-electricity' is the electrical sense"
+ },
+ "warning": {
+  "source": "signbank",
+  "gloss": "WARN",
+  "why": "CATS 'conscious,alert' is awake"
+ },
+ "after": {
+  "source": "signbank",
+  "gloss": "AFTER",
+  "why": "CATS 'want,after' is 'going after'"
+ },
+ "fire": {
+  "source": "signbank",
+  "gloss": "FIREstr",
+  "why": "CATS hit was 'fired up'; FIREstr is flames"
+ },
+ "say": {
+  "source": "signbank",
+  "gloss": "SAYstr",
+  "why": "CATS hit was 'opinion/stance'"
+ },
+ "house": {
+  "source": "signbank",
+  "gloss": "HOUSE",
+  "why": "CATS 'home, james' is a driving phrase"
+ },
+ "home": {
+  "source": "signbank",
+  "gloss": "HOME",
+  "why": "same CATS mismatch"
+ },
+ "space": {
+  "source": "signbank",
+  "gloss": "SPACE",
+  "why": "CATS hit was 'waste time'"
+ },
+ "return": {
+  "source": "signbank",
+  "gloss": "GO-BACK",
+  "why": "CATS 'repay' is the financial sense"
+ },
+ "manage": {
+  "source": "signbank",
+  "gloss": "MANAGEx",
+  "why": "CATS 'flow,run,course' is a river"
+ },
+ "decline": {
+  "source": "signbank",
+  "gloss": "DECREASEb",
+  "why": "CATS 'drop,lay down' is physical"
+ },
+ "want": {
+  "source": "signbank",
+  "gloss": "WANT",
+  "why": "CATS 'want,after' is 'going after'"
+ },
+ "go": {
+  "source": "signbank",
+  "gloss": "GOix",
+  "why": "CATS 'consume,use up' is wrong sense"
+ },
+ "give": {
+  "source": "signbank",
+  "gloss": "GIVEo",
+  "why": "CATS 'cause,wrought' is wrong sense"
+ },
+ "take": {
+  "source": "signbank",
+  "gloss": "TAKE",
+  "why": "CATS 'subtract' is arithmetic"
+ },
+ "number": {
+  "source": "signbank",
+  "gloss": "NUMBER",
+  "why": "CATS 'numb,number,numbest' is anaesthesia"
+ },
+ "big": {
+  "source": "signbank",
+  "gloss": "BIGb",
+  "why": "CATS 'major,track-degree' is academic"
+ },
+ "important": {
+  "source": "signbank",
+  "gloss": "IMPORTANTarc",
+  "why": "same CATS mismatch"
+ },
+ "family": {
+  "source": "signbank",
+  "gloss": "FAMILYf",
+  "why": "CATS matched keyword 'son'"
+ },
+ "school": {
+  "source": "signbank",
+  "gloss": "SCHOOL",
+  "why": "CATS 'school,shoal-fish' is ambiguous"
+ },
+ "people": {
+  "source": "signbank",
+  "gloss": "PEOPLEdis",
+  "why": "automatic pick was an offensive gloss that lists 'people' as a keyword; never serve it"
+ },
+ "united-states": {
+  "source": "signbank",
+  "gloss": "AMERICA",
+  "why": "CATS 'us' is the pronoun"
+ },
+ "military": {
+  "source": "signbank",
+  "gloss": "ARMY",
+  "why": "CATS 'navy' is narrower"
+ },
+ "city": {
+  "source": "signbank",
+  "gloss": "CITYtwist",
+  "why": "CATS 'county' is narrower"
+ },
+ "leader": {
+  "source": "signbank",
+  "gloss": "LEADERb",
+  "why": "prefer the citation form"
+ },
+ "kill": {
+  "source": "signbank",
+  "gloss": "KILLix",
+  "why": "CATS 'deadly' is an adjective"
+ },
+ "world": {
+  "source": "signbank",
+  "gloss": "WORLD",
+  "why": "prefer the citation form"
+ },
+ "cool": {
+  "source": "signbank",
+  "gloss": "COOL-WEATHER",
+  "why": "CATS clip carries a 'cooler' text card"
+ },
+ "cold": {
+  "source": "signbank",
+  "gloss": "COLD",
+  "why": "CATS clip contains a cartoon illustration"
+ },
+ "dry": {
+  "source": "signbank",
+  "gloss": "DRY",
+  "why": "CATS clip contains a landscape photo"
+ },
+ "percent": {
+  "source": "signbank",
+  "gloss": "PERCENT",
+  "why": "CATS clip contains a formula graphic"
+ },
+ "china": {
+  "source": "signbank",
+  "gloss": "CHINA",
+  "why": "CATS clip contains a map"
+ },
+ "hurricane": {
+  "source": "signbank",
+  "gloss": "HURRICANE",
+  "why": "CATS clip is 16 s with illustration segments"
+ },
+ "establish": {
+  "source": "signbank",
+  "gloss": "ESTABLISH",
+  "why": "CATS clip is 11 s, likely explanatory"
+ },
+ "evacuate": {
+  "source": "signbank",
+  "gloss": "ESCAPE",
+  "why": "CATS clip is 13 s; ESCAPE is the nearest citation sign; badge note 'closest sign' to be shown"
+ },
+ "evening": {
+  "source": "signbank",
+  "gloss": "NIGHT",
+  "why": "CATS clip is 13 s; ASL evening is signed with NIGHT"
+ },
+ "coast": {
+  "source": "signbank",
+  "gloss": "BEACHb",
+  "why": "CATS clip is 13 s; shore/coast ≈ BEACH, note shown"
+ },
+ "money": {
+  "source": "signbank",
+  "gloss": "MONEYb",
+  "why": "FINANCE video returned 401; MONEYb is the citation form"
+ }
+}

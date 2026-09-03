@@ -1,0 +1,2246 @@
+[
+ {
+  "concept_id": "weather",
+  "file": "clips/weather.mp4",
+  "source": "signbank",
+  "source_id": "2268",
+  "gloss": "WEATHER",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/2268.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "forecast",
+  "file": "clips/forecast.mp4",
+  "source": "cats",
+  "source_id": "forecastASL",
+  "attribution_url": "https://archive.org/details/forecastASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "sunny",
+  "file": "clips/sunny.mp4",
+  "source": "cats",
+  "source_id": "sunASL",
+  "attribution_url": "https://archive.org/details/sunASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "clear",
+  "file": "clips/clear.mp4",
+  "source": "signbank",
+  "source_id": "1065",
+  "gloss": "CLEAR",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1065.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "cloudy",
+  "file": "clips/cloudy.mp4",
+  "source": "cats",
+  "source_id": "cloudASL",
+  "attribution_url": "https://archive.org/details/cloudASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "rain",
+  "file": "clips/rain.mp4",
+  "source": "cats",
+  "source_id": "rainASL",
+  "attribution_url": "https://archive.org/details/rainASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "thunderstorm",
+  "file": "clips/thunderstorm.mp4",
+  "source": "cats",
+  "source_id": "stormASL",
+  "attribution_url": "https://archive.org/details/stormASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "lightning",
+  "file": "clips/lightning.mp4",
+  "source": "cats",
+  "source_id": "lightningASL",
+  "attribution_url": "https://archive.org/details/lightningASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "snow",
+  "file": "clips/snow.mp4",
+  "source": "cats",
+  "source_id": "snowASL",
+  "attribution_url": "https://archive.org/details/snowASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "ice",
+  "file": "clips/ice.mp4",
+  "source": "cats",
+  "source_id": "iceASL",
+  "attribution_url": "https://archive.org/details/iceASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "fog",
+  "file": "clips/fog.mp4",
+  "source": "cats",
+  "source_id": "fogfoggyASL",
+  "attribution_url": "https://archive.org/details/fogfoggyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "wind",
+  "file": "clips/wind.mp4",
+  "source": "cats",
+  "source_id": "windwindyASL",
+  "attribution_url": "https://archive.org/details/windwindyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "calm",
+  "file": "clips/calm.mp4",
+  "source": "cats",
+  "source_id": "calmcoolsedatesereneunshakendocileplacidsomnolentequanimitycomposeunstressedeasyASL",
+  "attribution_url": "https://archive.org/details/calmcoolsedatesereneunshakendocileplacidsomnolentequanimitycomposeunstressedeasyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "hot",
+  "file": "clips/hot.mp4",
+  "source": "signbank",
+  "source_id": "485",
+  "gloss": "HOT",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/485.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "warm",
+  "file": "clips/warm.mp4",
+  "source": "cats",
+  "source_id": "warmASL",
+  "attribution_url": "https://archive.org/details/warmASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "cool",
+  "file": "clips/cool.mp4",
+  "source": "signbank",
+  "source_id": "1160",
+  "gloss": "COOL-WEATHER",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1160.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "cold",
+  "file": "clips/cold.mp4",
+  "source": "signbank",
+  "source_id": "432",
+  "gloss": "COLD",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/432.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "temperature",
+  "file": "clips/temperature.mp4",
+  "source": "cats",
+  "source_id": "temperatureASL",
+  "attribution_url": "https://archive.org/details/temperatureASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "high",
+  "file": "clips/high.mp4",
+  "source": "cats",
+  "source_id": "maximummaxASL",
+  "attribution_url": "https://archive.org/details/maximummaxASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "low",
+  "file": "clips/low.mp4",
+  "source": "cats",
+  "source_id": "minimumASL",
+  "attribution_url": "https://archive.org/details/minimumASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "humid",
+  "file": "clips/humid.mp4",
+  "source": "cats",
+  "source_id": "humidASL",
+  "attribution_url": "https://archive.org/details/humidASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "dry",
+  "file": "clips/dry.mp4",
+  "source": "signbank",
+  "source_id": "122",
+  "gloss": "DRY",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/122.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "wet",
+  "file": "clips/wet.mp4",
+  "source": "cats",
+  "source_id": "wetsoggyASL",
+  "attribution_url": "https://archive.org/details/wetsoggyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "chance",
+  "file": "clips/chance.mp4",
+  "source": "cats",
+  "source_id": "likelyASL",
+  "attribution_url": "https://archive.org/details/likelyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "percent",
+  "file": "clips/percent.mp4",
+  "source": "signbank",
+  "source_id": "3437",
+  "gloss": "PERCENT",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/3437.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "precipitation",
+  "file": "clips/precipitation.mp4",
+  "source": "cats",
+  "source_id": "precipitationASL",
+  "attribution_url": "https://archive.org/details/precipitationASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "storm",
+  "file": "clips/storm.mp4",
+  "source": "cats",
+  "source_id": "stormASL",
+  "attribution_url": "https://archive.org/details/stormASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "hurricane",
+  "file": "clips/hurricane.mp4",
+  "source": "signbank",
+  "source_id": "2928",
+  "gloss": "HURRICANE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/2928.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "tornado",
+  "file": "clips/tornado.mp4",
+  "source": "cats",
+  "source_id": "tornadoASL",
+  "attribution_url": "https://archive.org/details/tornadoASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "flood",
+  "file": "clips/flood.mp4",
+  "source": "cats",
+  "source_id": "floodfillflushASL2",
+  "attribution_url": "https://archive.org/details/floodfillflushASL2",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "warning",
+  "file": "clips/warning.mp4",
+  "source": "signbank",
+  "source_id": "1411",
+  "gloss": "WARN",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1411.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "danger",
+  "file": "clips/danger.mp4",
+  "source": "cats",
+  "source_id": "riskASL",
+  "attribution_url": "https://archive.org/details/riskASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "sky",
+  "file": "clips/sky.mp4",
+  "source": "cats",
+  "source_id": "skycelestialheavenASL",
+  "attribution_url": "https://archive.org/details/skycelestialheavenASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "morning",
+  "file": "clips/morning.mp4",
+  "source": "cats",
+  "source_id": "morninga.m.ASL",
+  "attribution_url": "https://archive.org/details/morninga.m.ASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "afternoon",
+  "file": "clips/afternoon.mp4",
+  "source": "cats",
+  "source_id": "afternoonASL",
+  "attribution_url": "https://archive.org/details/afternoonASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "tonight",
+  "file": "clips/tonight.mp4",
+  "source": "cats",
+  "source_id": "tonightASL",
+  "attribution_url": "https://archive.org/details/tonightASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "night",
+  "file": "clips/night.mp4",
+  "source": "cats",
+  "source_id": "nightASL",
+  "attribution_url": "https://archive.org/details/nightASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "today",
+  "file": "clips/today.mp4",
+  "source": "cats",
+  "source_id": "todayASL",
+  "attribution_url": "https://archive.org/details/todayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "tomorrow",
+  "file": "clips/tomorrow.mp4",
+  "source": "cats",
+  "source_id": "tomorrowASL",
+  "attribution_url": "https://archive.org/details/tomorrowASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "day",
+  "file": "clips/day.mp4",
+  "source": "cats",
+  "source_id": "dayASL",
+  "attribution_url": "https://archive.org/details/dayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "week",
+  "file": "clips/week.mp4",
+  "source": "cats",
+  "source_id": "weekASL",
+  "attribution_url": "https://archive.org/details/weekASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "weekend",
+  "file": "clips/weekend.mp4",
+  "source": "cats",
+  "source_id": "weekendASL",
+  "attribution_url": "https://archive.org/details/weekendASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "monday",
+  "file": "clips/monday.mp4",
+  "source": "cats",
+  "source_id": "mondayASL",
+  "attribution_url": "https://archive.org/details/mondayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "tuesday",
+  "file": "clips/tuesday.mp4",
+  "source": "signbank",
+  "source_id": "665",
+  "gloss": "TUESDAY",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/665.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "wednesday",
+  "file": "clips/wednesday.mp4",
+  "source": "cats",
+  "source_id": "wednesdayASL",
+  "attribution_url": "https://archive.org/details/wednesdayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "thursday",
+  "file": "clips/thursday.mp4",
+  "source": "cats",
+  "source_id": "thursdayASL",
+  "attribution_url": "https://archive.org/details/thursdayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "friday",
+  "file": "clips/friday.mp4",
+  "source": "cats",
+  "source_id": "fridayASL",
+  "attribution_url": "https://archive.org/details/fridayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "saturday",
+  "file": "clips/saturday.mp4",
+  "source": "cats",
+  "source_id": "saturdayASL",
+  "attribution_url": "https://archive.org/details/saturdayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "sunday",
+  "file": "clips/sunday.mp4",
+  "source": "cats",
+  "source_id": "SundayASL",
+  "attribution_url": "https://archive.org/details/SundayASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "north",
+  "file": "clips/north.mp4",
+  "source": "cats",
+  "source_id": "northASL",
+  "attribution_url": "https://archive.org/details/northASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "south",
+  "file": "clips/south.mp4",
+  "source": "cats",
+  "source_id": "southASL",
+  "attribution_url": "https://archive.org/details/southASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "east",
+  "file": "clips/east.mp4",
+  "source": "cats",
+  "source_id": "eastASL",
+  "attribution_url": "https://archive.org/details/eastASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "west",
+  "file": "clips/west.mp4",
+  "source": "cats",
+  "source_id": "westASL",
+  "attribution_url": "https://archive.org/details/westASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "before",
+  "file": "clips/before.mp4",
+  "source": "cats",
+  "source_id": "untilASL",
+  "attribution_url": "https://archive.org/details/untilASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "after",
+  "file": "clips/after.mp4",
+  "source": "signbank",
+  "source_id": "1971",
+  "gloss": "AFTER",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1971.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "between",
+  "file": "clips/between.mp4",
+  "source": "cats",
+  "source_id": "betweenASL",
+  "attribution_url": "https://archive.org/details/betweenASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "around",
+  "file": "clips/around.mp4",
+  "source": "signbank",
+  "source_id": "193",
+  "gloss": "NEAR",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/193.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "increase",
+  "file": "clips/increase.mp4",
+  "source": "cats",
+  "source_id": "risecompoundup-increaseASL",
+  "attribution_url": "https://archive.org/details/risecompoundup-increaseASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "decrease",
+  "file": "clips/decrease.mp4",
+  "source": "cats",
+  "source_id": "falltakedownASL2",
+  "attribution_url": "https://archive.org/details/falltakedownASL2",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "start",
+  "file": "clips/start.mp4",
+  "source": "cats",
+  "source_id": "startASL",
+  "attribution_url": "https://archive.org/details/startASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "end",
+  "file": "clips/end.mp4",
+  "source": "signbank",
+  "source_id": "544",
+  "gloss": "STOP",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/544.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "continue",
+  "file": "clips/continue.mp4",
+  "source": "cats",
+  "source_id": "continuecarryonkeepatkeeponrollonASL",
+  "attribution_url": "https://archive.org/details/continuecarryonkeepatkeeponrollonASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "change",
+  "file": "clips/change.mp4",
+  "source": "cats",
+  "source_id": "changedeltacrossovermovetoshiftinASL",
+  "attribution_url": "https://archive.org/details/changedeltacrossovermovetoshiftinASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "mostly",
+  "file": "clips/mostly.mp4",
+  "source": "cats",
+  "source_id": "mainlyASL",
+  "attribution_url": "https://archive.org/details/mainlyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "slight",
+  "file": "clips/slight.mp4",
+  "source": "cats",
+  "source_id": "smalllittlebantamASL",
+  "attribution_url": "https://archive.org/details/smalllittlebantamASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "heavy",
+  "file": "clips/heavy.mp4",
+  "source": "cats",
+  "source_id": "heavyroughASL2",
+  "attribution_url": "https://archive.org/details/heavyroughASL2",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "strong",
+  "file": "clips/strong.mp4",
+  "source": "cats",
+  "source_id": "strongASL",
+  "attribution_url": "https://archive.org/details/strongASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "say",
+  "file": "clips/say.mp4",
+  "source": "signbank",
+  "source_id": "536",
+  "gloss": "SAYstr",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/536.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "official",
+  "file": "clips/official.mp4",
+  "source": "cats",
+  "source_id": "authorityASL",
+  "attribution_url": "https://archive.org/details/authorityASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "government",
+  "file": "clips/government.mp4",
+  "source": "cats",
+  "source_id": "federalASL",
+  "attribution_url": "https://archive.org/details/federalASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "leader",
+  "file": "clips/leader.mp4",
+  "source": "signbank",
+  "source_id": "3735",
+  "gloss": "LEADERb",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/3735.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "president",
+  "file": "clips/president.mp4",
+  "source": "cats",
+  "source_id": "presidentprezASL",
+  "attribution_url": "https://archive.org/details/presidentprezASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "election",
+  "file": "clips/election.mp4",
+  "source": "cats",
+  "source_id": "electASL",
+  "attribution_url": "https://archive.org/details/electASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "party",
+  "file": "clips/party.mp4",
+  "source": "cats",
+  "source_id": "partyASL",
+  "attribution_url": "https://archive.org/details/partyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "country",
+  "file": "clips/country.mp4",
+  "source": "cats",
+  "source_id": "nationnationalASL",
+  "attribution_url": "https://archive.org/details/nationnationalASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "city",
+  "file": "clips/city.mp4",
+  "source": "signbank",
+  "source_id": "551",
+  "gloss": "CITYtwist",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/551.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "people",
+  "file": "clips/people.mp4",
+  "source": "signbank",
+  "source_id": "570",
+  "gloss": "PEOPLEdis",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/570.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "world",
+  "file": "clips/world.mp4",
+  "source": "signbank",
+  "source_id": "702",
+  "gloss": "WORLD",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/702.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "military",
+  "file": "clips/military.mp4",
+  "source": "signbank",
+  "source_id": "807",
+  "gloss": "ARMY",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/807.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "war",
+  "file": "clips/war.mp4",
+  "source": "cats",
+  "source_id": "warASL",
+  "attribution_url": "https://archive.org/details/warASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "police",
+  "file": "clips/police.mp4",
+  "source": "cats",
+  "source_id": "policeASL",
+  "attribution_url": "https://archive.org/details/policeASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "fire",
+  "file": "clips/fire.mp4",
+  "source": "signbank",
+  "source_id": "457",
+  "gloss": "FIREstr",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/457.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "firefighter",
+  "file": "clips/firefighter.mp4",
+  "source": "signbank",
+  "source_id": "133",
+  "gloss": "FIREFIGHTERb",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/133.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "emergency",
+  "file": "clips/emergency.mp4",
+  "source": "cats",
+  "source_id": "emergencyASL",
+  "attribution_url": "https://archive.org/details/emergencyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "rescue",
+  "file": "clips/rescue.mp4",
+  "source": "cats",
+  "source_id": "rescueASL",
+  "attribution_url": "https://archive.org/details/rescueASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "search",
+  "file": "clips/search.mp4",
+  "source": "cats",
+  "source_id": "searchseeklookASL",
+  "attribution_url": "https://archive.org/details/searchseeklookASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "safe",
+  "file": "clips/safe.mp4",
+  "source": "cats",
+  "source_id": "safesecuresoundASL",
+  "attribution_url": "https://archive.org/details/safesecuresoundASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "alive",
+  "file": "clips/alive.mp4",
+  "source": "cats",
+  "source_id": "aliveASL",
+  "attribution_url": "https://archive.org/details/aliveASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "kill",
+  "file": "clips/kill.mp4",
+  "source": "signbank",
+  "source_id": "616",
+  "gloss": "KILLix",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/616.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "destroy",
+  "file": "clips/destroy.mp4",
+  "source": "cats",
+  "source_id": "damageASL",
+  "attribution_url": "https://archive.org/details/damageASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "evacuate",
+  "file": "clips/evacuate.mp4",
+  "source": "signbank",
+  "source_id": "629",
+  "gloss": "ESCAPE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/629.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "landslide",
+  "file": "clips/landslide.mp4",
+  "source": "cats",
+  "source_id": "landslide-rocksASL",
+  "attribution_url": "https://archive.org/details/landslide-rocksASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "earthquake",
+  "file": "clips/earthquake.mp4",
+  "source": "cats",
+  "source_id": "earthquakequaketremorASL",
+  "attribution_url": "https://archive.org/details/earthquakequaketremorASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "bury",
+  "file": "clips/bury.mp4",
+  "source": "cats",
+  "source_id": "buryASL",
+  "attribution_url": "https://archive.org/details/buryASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "house",
+  "file": "clips/house.mp4",
+  "source": "signbank",
+  "source_id": "486",
+  "gloss": "HOUSE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/486.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "ship",
+  "file": "clips/ship.mp4",
+  "source": "cats",
+  "source_id": "boatbarqueASL",
+  "attribution_url": "https://archive.org/details/boatbarqueASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "sink",
+  "file": "clips/sink.mp4",
+  "source": "cats",
+  "source_id": "sinkgodown-lowASL",
+  "attribution_url": "https://archive.org/details/sinkgodown-lowASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "oil",
+  "file": "clips/oil.mp4",
+  "source": "cats",
+  "source_id": "oilpetroleum-nounASL",
+  "attribution_url": "https://archive.org/details/oilpetroleum-nounASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "spill",
+  "file": "clips/spill.mp4",
+  "source": "cats",
+  "source_id": "spillASL",
+  "attribution_url": "https://archive.org/details/spillASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "coast",
+  "file": "clips/coast.mp4",
+  "source": "signbank",
+  "source_id": "2097",
+  "gloss": "BEACHb",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/2097.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "island",
+  "file": "clips/island.mp4",
+  "source": "cats",
+  "source_id": "islandASL",
+  "attribution_url": "https://archive.org/details/islandASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "ocean",
+  "file": "clips/ocean.mp4",
+  "source": "cats",
+  "source_id": "seaASL",
+  "attribution_url": "https://archive.org/details/seaASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "environment",
+  "file": "clips/environment.mp4",
+  "source": "cats",
+  "source_id": "environmentASL",
+  "attribution_url": "https://archive.org/details/environmentASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "area",
+  "file": "clips/area.mp4",
+  "source": "cats",
+  "source_id": "provinceASL",
+  "attribution_url": "https://archive.org/details/provinceASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "space",
+  "file": "clips/space.mp4",
+  "source": "signbank",
+  "source_id": "269",
+  "gloss": "SPACE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/269.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "station",
+  "file": "clips/station.mp4",
+  "source": "cats",
+  "source_id": "stationASL",
+  "attribution_url": "https://archive.org/details/stationASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "astronaut",
+  "file": "clips/astronaut.mp4",
+  "source": "cats",
+  "source_id": "astronautASL",
+  "attribution_url": "https://archive.org/details/astronautASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "rocket",
+  "file": "clips/rocket.mp4",
+  "source": "cats",
+  "source_id": "rocketASL",
+  "attribution_url": "https://archive.org/details/rocketASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "earth",
+  "file": "clips/earth.mp4",
+  "source": "cats",
+  "source_id": "planetASL",
+  "attribution_url": "https://archive.org/details/planetASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "return",
+  "file": "clips/return.mp4",
+  "source": "signbank",
+  "source_id": "3378",
+  "gloss": "GO-BACK",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/3378.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "capsule",
+  "file": "clips/capsule.mp4",
+  "source": "cats",
+  "source_id": "capsuleASL2",
+  "attribution_url": "https://archive.org/details/capsuleASL2",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "broken",
+  "file": "clips/broken.mp4",
+  "source": "cats",
+  "source_id": "failASL",
+  "attribution_url": "https://archive.org/details/failASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "expect",
+  "file": "clips/expect.mp4",
+  "source": "cats",
+  "source_id": "expectfigureon-verbASL",
+  "attribution_url": "https://archive.org/details/expectfigureon-verbASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "since",
+  "file": "clips/since.mp4",
+  "source": "cats",
+  "source_id": "sinceASL",
+  "attribution_url": "https://archive.org/details/sinceASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "year",
+  "file": "clips/year.mp4",
+  "source": "cats",
+  "source_id": "yearASL",
+  "attribution_url": "https://archive.org/details/yearASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "month",
+  "file": "clips/month.mp4",
+  "source": "cats",
+  "source_id": "monthASL",
+  "attribution_url": "https://archive.org/details/monthASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "last",
+  "file": "clips/last.mp4",
+  "source": "cats",
+  "source_id": "bypastASL",
+  "attribution_url": "https://archive.org/details/bypastASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "next",
+  "file": "clips/next.mp4",
+  "source": "cats",
+  "source_id": "nextASL",
+  "attribution_url": "https://archive.org/details/nextASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "first",
+  "file": "clips/first.mp4",
+  "source": "cats",
+  "source_id": "firstprimaryalphaASL",
+  "attribution_url": "https://archive.org/details/firstprimaryalphaASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "again",
+  "file": "clips/again.mp4",
+  "source": "cats",
+  "source_id": "againASL",
+  "attribution_url": "https://archive.org/details/againASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "hundred",
+  "file": "clips/hundred.mp4",
+  "source": "cats",
+  "source_id": "hundredASL",
+  "attribution_url": "https://archive.org/details/hundredASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "thousand",
+  "file": "clips/thousand.mp4",
+  "source": "cats",
+  "source_id": "thousandASL",
+  "attribution_url": "https://archive.org/details/thousandASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "many",
+  "file": "clips/many.mp4",
+  "source": "cats",
+  "source_id": "someASL",
+  "attribution_url": "https://archive.org/details/someASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "health",
+  "file": "clips/health.mp4",
+  "source": "cats",
+  "source_id": "healthASL",
+  "attribution_url": "https://archive.org/details/healthASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "doctor",
+  "file": "clips/doctor.mp4",
+  "source": "cats",
+  "source_id": "doctorASL",
+  "attribution_url": "https://archive.org/details/doctorASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "hospital",
+  "file": "clips/hospital.mp4",
+  "source": "cats",
+  "source_id": "hospitalASL",
+  "attribution_url": "https://archive.org/details/hospitalASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "sick",
+  "file": "clips/sick.mp4",
+  "source": "cats",
+  "source_id": "infectionASL",
+  "attribution_url": "https://archive.org/details/infectionASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "medicine",
+  "file": "clips/medicine.mp4",
+  "source": "cats",
+  "source_id": "drugnarcoticASL",
+  "attribution_url": "https://archive.org/details/drugnarcoticASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "problem",
+  "file": "clips/problem.mp4",
+  "source": "cats",
+  "source_id": "crisisASL",
+  "attribution_url": "https://archive.org/details/crisisASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "old",
+  "file": "clips/old.mp4",
+  "source": "cats",
+  "source_id": "oldhoaryancientASL",
+  "attribution_url": "https://archive.org/details/oldhoaryancientASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "need",
+  "file": "clips/need.mp4",
+  "source": "cats",
+  "source_id": "needASL",
+  "attribution_url": "https://archive.org/details/needASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "few",
+  "file": "clips/few.mp4",
+  "source": "cats",
+  "source_id": "fewASL",
+  "attribution_url": "https://archive.org/details/fewASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "detail",
+  "file": "clips/detail.mp4",
+  "source": "cats",
+  "source_id": "informationASL",
+  "attribution_url": "https://archive.org/details/informationASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "common",
+  "file": "clips/common.mp4",
+  "source": "cats",
+  "source_id": "usualASL",
+  "attribution_url": "https://archive.org/details/usualASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "right",
+  "file": "clips/right.mp4",
+  "source": "cats",
+  "source_id": "properASL",
+  "attribution_url": "https://archive.org/details/properASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "pope",
+  "file": "clips/pope.mp4",
+  "source": "cats",
+  "source_id": "popeASL",
+  "attribution_url": "https://archive.org/details/popeASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "church",
+  "file": "clips/church.mp4",
+  "source": "cats",
+  "source_id": "religionASL",
+  "attribution_url": "https://archive.org/details/religionASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "bank",
+  "file": "clips/bank.mp4",
+  "source": "cats",
+  "source_id": "bankerASL",
+  "attribution_url": "https://archive.org/details/bankerASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "money",
+  "file": "clips/money.mp4",
+  "source": "signbank",
+  "source_id": "670",
+  "gloss": "MONEYb",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/670.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "price",
+  "file": "clips/price.mp4",
+  "source": "cats",
+  "source_id": "priceASL",
+  "attribution_url": "https://archive.org/details/priceASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "food",
+  "file": "clips/food.mp4",
+  "source": "signbank",
+  "source_id": "399",
+  "gloss": "EAT",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/399.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "trade",
+  "file": "clips/trade.mp4",
+  "source": "cats",
+  "source_id": "businessASL2",
+  "attribution_url": "https://archive.org/details/businessASL2",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "threat",
+  "file": "clips/threat.mp4",
+  "source": "cats",
+  "source_id": "threatenASL",
+  "attribution_url": "https://archive.org/details/threatenASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "replace",
+  "file": "clips/replace.mp4",
+  "source": "cats",
+  "source_id": "replaceASL",
+  "attribution_url": "https://archive.org/details/replaceASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "resign",
+  "file": "clips/resign.mp4",
+  "source": "cats",
+  "source_id": "quitstepdownresignwalkpulloutbowout-jobASL",
+  "attribution_url": "https://archive.org/details/quitstepdownresignwalkpulloutbowout-jobASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "become",
+  "file": "clips/become.mp4",
+  "source": "cats",
+  "source_id": "becomegetgrowASL",
+  "attribution_url": "https://archive.org/details/becomegetgrowASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "popular",
+  "file": "clips/popular.mp4",
+  "source": "cats",
+  "source_id": "popularpopASL",
+  "attribution_url": "https://archive.org/details/popularpopASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "decline",
+  "file": "clips/decline.mp4",
+  "source": "signbank",
+  "source_id": "1235",
+  "gloss": "DECREASEb",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1235.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "immigration",
+  "file": "clips/immigration.mp4",
+  "source": "cats",
+  "source_id": "immigrantASL",
+  "attribution_url": "https://archive.org/details/immigrantASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "citizen",
+  "file": "clips/citizen.mp4",
+  "source": "cats",
+  "source_id": "citizenASL",
+  "attribution_url": "https://archive.org/details/citizenASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "manage",
+  "file": "clips/manage.mp4",
+  "source": "signbank",
+  "source_id": "3531",
+  "gloss": "MANAGEx",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/3531.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "establish",
+  "file": "clips/establish.mp4",
+  "source": "signbank",
+  "source_id": "1319",
+  "gloss": "ESTABLISH",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1319.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "deal",
+  "file": "clips/deal.mp4",
+  "source": "cats",
+  "source_id": "negotiateASL",
+  "attribution_url": "https://archive.org/details/negotiateASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "law",
+  "file": "clips/law.mp4",
+  "source": "cats",
+  "source_id": "legalASL",
+  "attribution_url": "https://archive.org/details/legalASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "attack",
+  "file": "clips/attack.mp4",
+  "source": "cats",
+  "source_id": "strikeslugbash-hitASL",
+  "attribution_url": "https://archive.org/details/strikeslugbash-hitASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "prepare",
+  "file": "clips/prepare.mp4",
+  "source": "cats",
+  "source_id": "readyASL",
+  "attribution_url": "https://archive.org/details/readyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "issue",
+  "file": "clips/issue.mp4",
+  "source": "cats",
+  "source_id": "publishgetoutASL",
+  "attribution_url": "https://archive.org/details/publishgetoutASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "flag",
+  "file": "clips/flag.mp4",
+  "source": "cats",
+  "source_id": "flagstandardASL",
+  "attribution_url": "https://archive.org/details/flagstandardASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "service",
+  "file": "clips/service.mp4",
+  "source": "cats",
+  "source_id": "agencyASL",
+  "attribution_url": "https://archive.org/details/agencyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "signal",
+  "file": "clips/signal.mp4",
+  "source": "cats",
+  "source_id": "indicateASL",
+  "attribution_url": "https://archive.org/details/indicateASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "increase-risk",
+  "file": "clips/increase-risk.mp4",
+  "source": "cats",
+  "source_id": "biggerlargergreaterASL",
+  "attribution_url": "https://archive.org/details/biggerlargergreaterASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "due-to",
+  "file": "clips/due-to.mp4",
+  "source": "cats",
+  "source_id": "becauseASL",
+  "attribution_url": "https://archive.org/details/becauseASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "california",
+  "file": "clips/california.mp4",
+  "source": "cats",
+  "source_id": "californiaASL",
+  "attribution_url": "https://archive.org/details/californiaASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "canada",
+  "file": "clips/canada.mp4",
+  "source": "cats",
+  "source_id": "canadaASL",
+  "attribution_url": "https://archive.org/details/canadaASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "china",
+  "file": "clips/china.mp4",
+  "source": "signbank",
+  "source_id": "1062",
+  "gloss": "CHINA",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1062.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "united-states",
+  "file": "clips/united-states.mp4",
+  "source": "signbank",
+  "source_id": "2315",
+  "gloss": "AMERICA",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/2315.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "england",
+  "file": "clips/england.mp4",
+  "source": "cats",
+  "source_id": "britishASL",
+  "attribution_url": "https://archive.org/details/britishASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "florida",
+  "file": "clips/florida.mp4",
+  "source": "cats",
+  "source_id": "floridaASL",
+  "attribution_url": "https://archive.org/details/floridaASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "yes",
+  "file": "clips/yes.mp4",
+  "source": "cats",
+  "source_id": "yesayeaffirmativeASL",
+  "attribution_url": "https://archive.org/details/yesayeaffirmativeASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "no",
+  "file": "clips/no.mp4",
+  "source": "signbank",
+  "source_id": "512",
+  "gloss": "NO",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/512.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "help",
+  "file": "clips/help.mp4",
+  "source": "signbank",
+  "source_id": "2219",
+  "gloss": "HELPb",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/2219.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "want",
+  "file": "clips/want.mp4",
+  "source": "signbank",
+  "source_id": "1409",
+  "gloss": "WANT",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1409.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "know",
+  "file": "clips/know.mp4",
+  "source": "cats",
+  "source_id": "knowknowofhearofASL",
+  "attribution_url": "https://archive.org/details/knowknowofhearofASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "think",
+  "file": "clips/think.mp4",
+  "source": "cats",
+  "source_id": "thinkASL",
+  "attribution_url": "https://archive.org/details/thinkASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "see",
+  "file": "clips/see.mp4",
+  "source": "cats",
+  "source_id": "seeaboutseeASL2",
+  "attribution_url": "https://archive.org/details/seeaboutseeASL2",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "go",
+  "file": "clips/go.mp4",
+  "source": "signbank",
+  "source_id": "469",
+  "gloss": "GOix",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/469.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "come",
+  "file": "clips/come.mp4",
+  "source": "cats",
+  "source_id": "comeASL",
+  "attribution_url": "https://archive.org/details/comeASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "make",
+  "file": "clips/make.mp4",
+  "source": "signbank",
+  "source_id": "57",
+  "gloss": "BUILD",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/57.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "give",
+  "file": "clips/give.mp4",
+  "source": "signbank",
+  "source_id": "466",
+  "gloss": "GIVEo",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/466.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "take",
+  "file": "clips/take.mp4",
+  "source": "signbank",
+  "source_id": "1159",
+  "gloss": "TAKE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1159.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "get",
+  "file": "clips/get.mp4",
+  "source": "cats",
+  "source_id": "receiveASL",
+  "attribution_url": "https://archive.org/details/receiveASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "work",
+  "file": "clips/work.mp4",
+  "source": "cats",
+  "source_id": "jobemploymentoccupationASL",
+  "attribution_url": "https://archive.org/details/jobemploymentoccupationASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "live",
+  "file": "clips/live.mp4",
+  "source": "cats",
+  "source_id": "liveASL",
+  "attribution_url": "https://archive.org/details/liveASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "now",
+  "file": "clips/now.mp4",
+  "source": "cats",
+  "source_id": "nowASL",
+  "attribution_url": "https://archive.org/details/nowASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "here",
+  "file": "clips/here.mp4",
+  "source": "signbank",
+  "source_id": "484",
+  "gloss": "HERE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/484.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "there",
+  "file": "clips/there.mp4",
+  "source": "cats",
+  "source_id": "thereASL",
+  "attribution_url": "https://archive.org/details/thereASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "with",
+  "file": "clips/with.mp4",
+  "source": "signbank",
+  "source_id": "323",
+  "gloss": "WITH",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/323.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "without",
+  "file": "clips/without.mp4",
+  "source": "cats",
+  "source_id": "withoutASL",
+  "attribution_url": "https://archive.org/details/withoutASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "more",
+  "file": "clips/more.mp4",
+  "source": "cats",
+  "source_id": "moreASL",
+  "attribution_url": "https://archive.org/details/moreASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "less",
+  "file": "clips/less.mp4",
+  "source": "cats",
+  "source_id": "lessunderASL",
+  "attribution_url": "https://archive.org/details/lessunderASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "all",
+  "file": "clips/all.mp4",
+  "source": "cats",
+  "source_id": "everyASL",
+  "attribution_url": "https://archive.org/details/everyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "other",
+  "file": "clips/other.mp4",
+  "source": "signbank",
+  "source_id": "522",
+  "gloss": "OTHER",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/522.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "new",
+  "file": "clips/new.mp4",
+  "source": "cats",
+  "source_id": "newanewASL",
+  "attribution_url": "https://archive.org/details/newanewASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "big",
+  "file": "clips/big.mp4",
+  "source": "signbank",
+  "source_id": "410",
+  "gloss": "BIGb",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/410.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "small",
+  "file": "clips/small.mp4",
+  "source": "cats",
+  "source_id": "smalllittleshort-heightASL",
+  "attribution_url": "https://archive.org/details/smalllittleshort-heightASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "good",
+  "file": "clips/good.mp4",
+  "source": "signbank",
+  "source_id": "472",
+  "gloss": "GOOD",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/472.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "bad",
+  "file": "clips/bad.mp4",
+  "source": "signbank",
+  "source_id": "29",
+  "gloss": "BAD",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/29.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "time",
+  "file": "clips/time.mp4",
+  "source": "signbank",
+  "source_id": "1233",
+  "gloss": "TIME",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1233.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "family",
+  "file": "clips/family.mp4",
+  "source": "signbank",
+  "source_id": "1379",
+  "gloss": "FAMILYf",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1379.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "man",
+  "file": "clips/man.mp4",
+  "source": "cats",
+  "source_id": "manASL",
+  "attribution_url": "https://archive.org/details/manASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "woman",
+  "file": "clips/woman.mp4",
+  "source": "cats",
+  "source_id": "womanASL",
+  "attribution_url": "https://archive.org/details/womanASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "name",
+  "file": "clips/name.mp4",
+  "source": "cats",
+  "source_id": "namecallASL",
+  "attribution_url": "https://archive.org/details/namecallASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "number",
+  "file": "clips/number.mp4",
+  "source": "signbank",
+  "source_id": "782",
+  "gloss": "NUMBER",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/782.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "and",
+  "file": "clips/and.mp4",
+  "source": "cats",
+  "source_id": "plusASL",
+  "attribution_url": "https://archive.org/details/plusASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "but",
+  "file": "clips/but.mp4",
+  "source": "cats",
+  "source_id": "howeverASL",
+  "attribution_url": "https://archive.org/details/howeverASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "if",
+  "file": "clips/if.mp4",
+  "source": "cats",
+  "source_id": "supposeASL",
+  "attribution_url": "https://archive.org/details/supposeASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "how",
+  "file": "clips/how.mp4",
+  "source": "cats",
+  "source_id": "howASL",
+  "attribution_url": "https://archive.org/details/howASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "what",
+  "file": "clips/what.mp4",
+  "source": "cats",
+  "source_id": "whatASL",
+  "attribution_url": "https://archive.org/details/whatASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "where",
+  "file": "clips/where.mp4",
+  "source": "cats",
+  "source_id": "whereASL",
+  "attribution_url": "https://archive.org/details/whereASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "when",
+  "file": "clips/when.mp4",
+  "source": "cats",
+  "source_id": "whenASL",
+  "attribution_url": "https://archive.org/details/whenASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "who",
+  "file": "clips/who.mp4",
+  "source": "cats",
+  "source_id": "whowhomASL",
+  "attribution_url": "https://archive.org/details/whowhomASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "why",
+  "file": "clips/why.mp4",
+  "source": "cats",
+  "source_id": "whyASL",
+  "attribution_url": "https://archive.org/details/whyASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "water",
+  "file": "clips/water.mp4",
+  "source": "cats",
+  "source_id": "waterASL",
+  "attribution_url": "https://archive.org/details/waterASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "home",
+  "file": "clips/home.mp4",
+  "source": "signbank",
+  "source_id": "152",
+  "gloss": "HOME",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/152.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "school",
+  "file": "clips/school.mp4",
+  "source": "signbank",
+  "source_id": "247",
+  "gloss": "SCHOOL",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/247.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "car",
+  "file": "clips/car.mp4",
+  "source": "cats",
+  "source_id": "vehicleASL",
+  "attribution_url": "https://archive.org/details/vehicleASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "road",
+  "file": "clips/road.mp4",
+  "source": "cats",
+  "source_id": "streetASL",
+  "attribution_url": "https://archive.org/details/streetASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "plane",
+  "file": "clips/plane.mp4",
+  "source": "cats",
+  "source_id": "airplaneASL",
+  "attribution_url": "https://archive.org/details/airplaneASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "true",
+  "file": "clips/true.mp4",
+  "source": "cats",
+  "source_id": "realASL",
+  "attribution_url": "https://archive.org/details/realASL",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "important",
+  "file": "clips/important.mp4",
+  "source": "signbank",
+  "source_id": "1746",
+  "gloss": "IMPORTANTarc",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1746.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "finish",
+  "file": "clips/finish.mp4",
+  "source": "cats",
+  "source_id": "wrapupASL2",
+  "attribution_url": "https://archive.org/details/wrapupASL2",
+  "licence": "Public Domain"
+ },
+ {
+  "concept_id": "happen",
+  "file": "clips/happen.mp4",
+  "source": "signbank",
+  "source_id": "1325",
+  "gloss": "EVENT",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1325.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-a",
+  "file": "letters/letter-a.mp4",
+  "source": "signbank",
+  "source_id": "493",
+  "gloss": "LETTER-A",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/493.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-b",
+  "file": "letters/letter-b.mp4",
+  "source": "signbank",
+  "source_id": "1674",
+  "gloss": "LETTER-B",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1674.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-c",
+  "file": "letters/letter-c.mp4",
+  "source": "signbank",
+  "source_id": "1673",
+  "gloss": "LETTER-C",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1673.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-d",
+  "file": "letters/letter-d.mp4",
+  "source": "signbank",
+  "source_id": "494",
+  "gloss": "LETTER-D",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/494.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-e",
+  "file": "letters/letter-e.mp4",
+  "source": "signbank",
+  "source_id": "1672",
+  "gloss": "LETTER-E",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1672.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-f",
+  "file": "letters/letter-f.mp4",
+  "source": "signbank",
+  "source_id": "1671",
+  "gloss": "LETTER-F",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1671.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-g",
+  "file": "letters/letter-g.mp4",
+  "source": "signbank",
+  "source_id": "1670",
+  "gloss": "LETTER-G",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1670.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-h",
+  "file": "letters/letter-h.mp4",
+  "source": "signbank",
+  "source_id": "1669",
+  "gloss": "LETTER-H",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1669.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-i",
+  "file": "letters/letter-i.mp4",
+  "source": "signbank",
+  "source_id": "495",
+  "gloss": "LETTER-I",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/495.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-j",
+  "file": "letters/letter-j.mp4",
+  "source": "signbank",
+  "source_id": "1668",
+  "gloss": "LETTER-J",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1668.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-k",
+  "file": "letters/letter-k.mp4",
+  "source": "signbank",
+  "source_id": "1667",
+  "gloss": "LETTER-K",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1667.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-l",
+  "file": "letters/letter-l.mp4",
+  "source": "signbank",
+  "source_id": "1666",
+  "gloss": "LETTER-L",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1666.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-m",
+  "file": "letters/letter-m.mp4",
+  "source": "signbank",
+  "source_id": "1665",
+  "gloss": "LETTER-M",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1665.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-n",
+  "file": "letters/letter-n.mp4",
+  "source": "signbank",
+  "source_id": "1664",
+  "gloss": "LETTER-N",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1664.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-o",
+  "file": "letters/letter-o.mp4",
+  "source": "signbank",
+  "source_id": "1663",
+  "gloss": "LETTER-O",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1663.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-p",
+  "file": "letters/letter-p.mp4",
+  "source": "signbank",
+  "source_id": "1662",
+  "gloss": "LETTER-P",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1662.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-q",
+  "file": "letters/letter-q.mp4",
+  "source": "signbank",
+  "source_id": "1661",
+  "gloss": "LETTER-Q",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1661.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-r",
+  "file": "letters/letter-r.mp4",
+  "source": "signbank",
+  "source_id": "1660",
+  "gloss": "LETTER-R",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1660.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-s",
+  "file": "letters/letter-s.mp4",
+  "source": "signbank",
+  "source_id": "1659",
+  "gloss": "LETTER-S",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1659.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-t",
+  "file": "letters/letter-t.mp4",
+  "source": "signbank",
+  "source_id": "1658",
+  "gloss": "LETTER-T",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1658.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-u",
+  "file": "letters/letter-u.mp4",
+  "source": "signbank",
+  "source_id": "1657",
+  "gloss": "LETTER-U",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1657.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-v",
+  "file": "letters/letter-v.mp4",
+  "source": "signbank",
+  "source_id": "1656",
+  "gloss": "LETTER-V",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1656.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-w",
+  "file": "letters/letter-w.mp4",
+  "source": "signbank",
+  "source_id": "1655",
+  "gloss": "LETTER-W",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1655.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-x",
+  "file": "letters/letter-x.mp4",
+  "source": "signbank",
+  "source_id": "1654",
+  "gloss": "LETTER-X",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1654.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-y",
+  "file": "letters/letter-y.mp4",
+  "source": "signbank",
+  "source_id": "1653",
+  "gloss": "LETTER-Y",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1653.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "letter-z",
+  "file": "letters/letter-z.mp4",
+  "source": "signbank",
+  "source_id": "1652",
+  "gloss": "LETTER-Z",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1652.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-0",
+  "file": "letters/digit-0.mp4",
+  "source": "signbank",
+  "source_id": "1478",
+  "gloss": "ZERO",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1478.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-1",
+  "file": "letters/digit-1.mp4",
+  "source": "signbank",
+  "source_id": "519",
+  "gloss": "ONE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/519.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-2",
+  "file": "letters/digit-2.mp4",
+  "source": "signbank",
+  "source_id": "1336",
+  "gloss": "TWO",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1336.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-3",
+  "file": "letters/digit-3.mp4",
+  "source": "signbank",
+  "source_id": "1216",
+  "gloss": "THREE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1216.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-4",
+  "file": "letters/digit-4.mp4",
+  "source": "signbank",
+  "source_id": "461",
+  "gloss": "FOUR",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/461.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-5",
+  "file": "letters/digit-5.mp4",
+  "source": "signbank",
+  "source_id": "459",
+  "gloss": "FIVE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/459.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-6",
+  "file": "letters/digit-6.mp4",
+  "source": "signbank",
+  "source_id": "603",
+  "gloss": "SIX",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/603.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-7",
+  "file": "letters/digit-7.mp4",
+  "source": "signbank",
+  "source_id": "641",
+  "gloss": "SEVEN",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/641.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-8",
+  "file": "letters/digit-8.mp4",
+  "source": "signbank",
+  "source_id": "635",
+  "gloss": "EIGHT",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/635.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ },
+ {
+  "concept_id": "digit-9",
+  "file": "letters/digit-9.mp4",
+  "source": "signbank",
+  "source_id": "1570",
+  "gloss": "NINE",
+  "attribution_url": "https://aslsignbank.com/dictionary/gloss/1570.html",
+  "licence": "CC BY-NC-SA 4.0",
+  "citation": "Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank. https://aslsignbank.com"
+ }
+]

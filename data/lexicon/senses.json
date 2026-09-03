@@ -1,0 +1,288 @@
+{
+ "_note": "Hand-written disambiguation for English words in the target vocabulary that lead to different signs. Rules are checked in order; the first match wins; 'default' applies otherwise. Context checks look at the previous/next token after normalisation. Written 2026-09-03; every rule is a judgement call and is listed in the report as such.",
+ "fall": [
+  {
+   "if_prev_in": [
+    "temperatures",
+    "temperature",
+    "will",
+    "to",
+    "prices",
+    "humidity"
+   ],
+   "concept": "decrease"
+  },
+  {
+   "if_next_in": [
+    "to",
+    "below",
+    "into"
+   ],
+   "concept": "decrease"
+  },
+  {
+   "default": "fingerspell",
+   "why": "the season is not in the vocabulary"
+  }
+ ],
+ "light": [
+  {
+   "if_next_in": [
+    "wind",
+    "winds",
+    "rain",
+    "snow",
+    "showers",
+    "breeze"
+   ],
+   "concept": "slight"
+  },
+  {
+   "default": "fingerspell",
+   "why": "illumination sense is out of scope"
+  }
+ ],
+ "right": [
+  {
+   "if_next_in": [
+    "antibiotics",
+    "treatment",
+    "way",
+    "one",
+    "thing"
+   ],
+   "concept": "right"
+  },
+  {
+   "default": "right"
+  }
+ ],
+ "state": [
+  {
+   "if_next_in": [
+    "department",
+    "broadcaster",
+    "government",
+    "officials",
+    "of"
+   ],
+   "concept": "government"
+  },
+  {
+   "if_prev_in": [
+    "sichuan",
+    "sakoto",
+    "new",
+    "washington",
+    "florida"
+   ],
+   "concept": "government"
+  },
+  {
+   "default": "government"
+  }
+ ],
+ "party": [
+  {
+   "if_prev_in": [
+    "liberal",
+    "conservative",
+    "democratic",
+    "republican",
+    "political",
+    "governing"
+   ],
+   "concept": "party"
+  },
+  {
+   "default": "party"
+  }
+ ],
+ "run": [
+  {
+   "if_next_in": [
+    "the",
+    "a"
+   ],
+   "concept": "manage"
+  },
+  {
+   "default": "manage",
+   "why": "in news text 'run' is almost always 'run an organisation'"
+  }
+ ],
+ "watch": [
+  {
+   "if_prev_in": [
+    "flood",
+    "tornado",
+    "storm",
+    "wind",
+    "hurricane",
+    "fire"
+   ],
+   "concept": "warning"
+  },
+  {
+   "default": "see"
+  }
+ ],
+ "back": [
+  {
+   "if_prev_in": [
+    "ride",
+    "come",
+    "get",
+    "expected",
+    "returned",
+    "way"
+   ],
+   "concept": "return"
+  },
+  {
+   "default": "return"
+  }
+ ],
+ "head": [
+  {
+   "if_prev_in": [
+    "the",
+    "was",
+    "as",
+    "former"
+   ],
+   "concept": "leader"
+  },
+  {
+   "default": "leader"
+  }
+ ],
+ "cool": [
+  {
+   "default": "cool",
+   "why": "only the temperature sense is in scope"
+  }
+ ],
+ "fire": [
+  {
+   "if_next_in": [
+    "danger",
+    "warning",
+    "risk"
+   ],
+   "concept": "fire"
+  },
+  {
+   "default": "fire"
+  }
+ ],
+ "issue": [
+  {
+   "if_next_in": [
+    "a",
+    "an",
+    "the"
+   ],
+   "concept": "issue"
+  },
+  {
+   "if_prev_in": [
+    "has",
+    "have",
+    "had",
+    "service"
+   ],
+   "concept": "issue"
+  },
+  {
+   "default": "problem"
+  }
+ ],
+ "spill": [
+  {
+   "default": "spill"
+  }
+ ],
+ "chief": [
+  {
+   "default": "leader"
+  }
+ ],
+ "warm": [
+  {
+   "default": "warm"
+  }
+ ],
+ "deal": [
+  {
+   "if_next_in": [
+    "with"
+   ],
+   "concept": "manage"
+  },
+  {
+   "default": "deal"
+  }
+ ],
+ "service": [
+  {
+   "if_prev_in": [
+    "weather",
+    "park",
+    "national"
+   ],
+   "concept": "service"
+  },
+  {
+   "default": "service"
+  }
+ ],
+ "prime": [
+  {
+   "if_next_in": [
+    "minister"
+   ],
+   "concept": "leader",
+   "consume_next": true
+  },
+  {
+   "default": "fingerspell"
+  }
+ ],
+ "red": [
+  {
+   "if_next_in": [
+    "flag"
+   ],
+   "concept": "warning",
+   "consume_next": true
+  },
+  {
+   "default": "fingerspell"
+  }
+ ],
+ "heat": [
+  {
+   "if_next_in": [
+    "index"
+   ],
+   "concept": "hot",
+   "consume_next": true
+  },
+  {
+   "default": "hot"
+  }
+ ],
+ "space": [
+  {
+   "if_next_in": [
+    "station"
+   ],
+   "concept": "station",
+   "consume_next": true
+  },
+  {
+   "default": "space"
+  }
+ ]
+}

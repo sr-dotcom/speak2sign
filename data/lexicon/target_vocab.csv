@@ -1,0 +1,259 @@
+concept_id,gloss,keywords,source,asllex_z,signbank_hint,status
+weather,WEATHER,"weather, climate",weather,0.176,WEATHER,planned
+forecast,FORECAST,"forecast, predict",weather,,,planned
+sunny,SUNNY,"sunny, sun, sunshine",weather,,,planned
+clear,CLEAR,"clear, mostly clear",weather,0.108,CLEAR,planned
+cloudy,CLOUDY,"cloudy, cloud, clouds, overcast, partly cloudy",weather,,,planned
+rain,RAIN,"rain, rainy, showers, rainfall, drizzle",weather,0.917,RAIN,planned
+thunderstorm,THUNDERSTORM,"thunderstorm, thunderstorms, thunder, storms",weather,,,planned
+lightning,LIGHTNING,lightning,weather,-0.632,LIGHTNING,planned
+snow,SNOW,"snow, snowy, flurries",weather,0.67,SNOWstr,planned
+ice,ICE,"ice, icy, sleet, freezing rain",weather,0.242,,planned
+fog,FOG,"fog, foggy, mist",weather,,,planned
+wind,WIND,"wind, winds, windy, breeze, breezy, gusty, gusts",weather,0.342,WIND,planned
+calm,CALM,"calm, light winds",weather,0.493,QUIET,planned
+hot,HOT,"hot, heat, heat index",weather,1.105,HOT,planned
+warm,WARM,"warm, warmer",weather,-0.137,WARM,planned
+cool,COOL,"cool, cooler",weather,0.993,,planned
+cold,COLD,"cold, chilly, freeze, freezing, frost",weather,0.946,COLD,planned
+temperature,TEMPERATURE,"temperature, temperatures, degrees",weather,,,planned
+high,HIGH,"high, highs, maximum",weather,0.44,,planned
+low,LOW,"low, lows, minimum",weather,,,planned
+humid,HUMID,"humid, humidity, muggy",weather,,,planned
+dry,DRY,"dry, drier",weather,0.735,DRY,planned
+wet,WET,wet,weather,-0.06,WETch,planned
+chance,CHANCE,"chance, possible, possibly, likely, probability",weather,0.098,CHANCE,planned
+percent,PERCENT,"percent, %",weather,-0.503,,planned
+precipitation,PRECIPITATION,precipitation,weather,,,planned
+storm,STORM,storm,weather,,,planned
+hurricane,HURRICANE,"hurricane, tropical storm",weather,-0.415,~HURRICANE,planned
+tornado,TORNADO,"tornado, twister",weather,-1.101,TORNADO,planned
+flood,FLOOD,"flood, flooding",weather,,,planned
+warning,WARNING,"warning, warn, alert, advisory, watch",weather,,,planned
+danger,DANGER,"danger, dangerous, risk, hazard",weather,0.01,DANGEROUSasym,planned
+sky,SKY,"sky, skies",weather,,,planned
+morning,MORNING,morning,weather,1.085,MORNING,planned
+afternoon,AFTERNOON,afternoon,weather,0.942,AFTERNOON,planned
+tonight,TONIGHT,tonight,weather,,,planned
+night,NIGHT,"night, overnight, evening, late",weather,1.369,NIGHT,planned
+today,TODAY,today,weather,1.157,TODAY,planned
+tomorrow,TOMORROW,tomorrow,weather,1.114,TOMORROW,planned
+day,DAY,"day, daytime",weather,0.138,DAY,planned
+week,WEEK,"week, weeks",weather,0.863,WEEK,planned
+weekend,WEEKEND,weekend,weather,-0.957,WEEKENDw,planned
+monday,MONDAY,monday,weather,0.816,MONDAY,planned
+tuesday,TUESDAY,tuesday,weather,0.801,TUESDAY,planned
+wednesday,WEDNESDAY,wednesday,weather,0.571,WEDNESDAY,planned
+thursday,THURSDAY,thursday,weather,0.252,THURSDAYth,planned
+friday,FRIDAY,friday,weather,1.044,FRIDAY,planned
+saturday,SATURDAY,saturday,weather,0.973,SATURDAY,planned
+sunday,SUNDAY,sunday,weather,-1.776,SUNDAY8,planned
+north,NORTH,"north, northern, northwest, northeast",weather,0.215,NORTH,planned
+south,SOUTH,"south, southern, southwest, southeast",weather,-0.156,SOUTH,planned
+east,EAST,"east, eastern",weather,-0.017,EAST,planned
+west,WEST,"west, western",weather,-0.019,WEST,planned
+before,BEFORE,"before, until, prior, previously",weather,0.269,BEFORE,planned
+after,AFTER,"after, then, later, following",weather,-0.432,AFTER,planned
+between,BETWEEN,between,weather,0.153,BETWEEN,planned
+around,AROUND,"around, near, about, approximately",weather,,,planned
+increase,INCREASE,"increase, increasing, rise, rising, higher, rose, surge, surged",weather,,,planned
+decrease,DECREASE,"decrease, decreasing, fall, falling, lower",weather,,,planned
+start,START,"start, begin, beginning",weather,0.647,START,planned
+end,END,"end, ending, stop",weather,0.665,END-OF,planned
+continue,CONTINUE,"continue, continuing, remain, remains, stay",weather,0.264,CONTINUE,planned
+change,CHANGE,"change, changing, becoming",weather,1.145,CHANGEx,planned
+mostly,MOSTLY,"mostly, mainly",weather,,,planned
+slight,SLIGHT,slight,weather,,,planned
+heavy,HEAVY,heavy,weather,-0.034,HEAVY,planned
+strong,STRONG,"strong, severe",weather,0.376,STRONG,planned
+say,SAY,"say, said, says, told, tell, announce, announced",news,,,planned
+official,OFFICIAL,"official, officials, authority, authorities, ministry",news,,,planned
+government,GOVERNMENT,"government, governing, federal, state (government)",news,-0.068,GOVERNMENT,planned
+leader,LEADER,"leader, chief, head, prime minister, minister",news,,,planned
+president,PRESIDENT,"president, president-elect",news,0.204,PRESIDENT,planned
+election,ELECTION,"election, elections, elect, elected, vote, voting",news,,,planned
+party,PARTY (POLITICAL),party (political),news,0.611,PARTYp,planned
+country,COUNTRY,"country, nation, national",news,-0.231,COUNTRYy,planned
+city,CITY,"city, county, town",news,1.049,CITYtwist,planned
+people,PEOPLE,"people, others, residents",news,0.865,PEOPLE,planned
+world,WORLD,"world, international",news,0.418,WORLD,planned
+military,MILITARY,"military, navy, army, troops",news,,,planned
+war,WAR,"war, conflict",news,-0.597,,planned
+police,POLICE,"police, officer",news,,,planned
+fire,FIRE,"fire, fires, wildfire, wildfires, blaze, blazes, caught fire",news,-0.746,FIREstr,planned
+firefighter,FIREFIGHTER,"firefighter, firefighters",news,,,planned
+emergency,EMERGENCY,emergency,news,,,planned
+rescue,RESCUE,"rescue, rescuers, rescued, pulled out",news,0.289,,planned
+search,SEARCH,"search, searching, looking for, searched",news,,,planned
+safe,SAFE,"safe, safety, taken to safety",news,0.439,SAFE,planned
+alive,ALIVE,"alive, survive, survived",news,,,planned
+kill,KILL,"kill, killed, deadly, death, died, deaths",news,-0.394,KILL,planned
+destroy,DESTROY,"destroy, destroyed, damage",news,-0.133,DESTROY,planned
+evacuate,EVACUATE,"evacuate, evacuated",news,,,planned
+landslide,LANDSLIDE,"landslide, mudslide",news,,,planned
+earthquake,EARTHQUAKE,"earthquake, quake",news,-0.175,EARTHQUAKE,planned
+bury,BURY,"bury, buried",news,0.284,CEMETERY,planned
+house,HOUSE,"house, houses, homes, housing",news,0.672,HOUSE,planned
+ship,SHIP,"ship, boat, navy ship",news,,,planned
+sink,SINK,"sink, sank, sunk",news,-1.015,,planned
+oil,OIL,oil,news,0.625,GREASE,planned
+spill,SPILL,"spill, spilled, leak",news,-0.032,,planned
+coast,COAST,"coast, shore",news,,,planned
+island,ISLAND,island,news,-0.442,ISLAND,planned
+ocean,OCEAN,"ocean, sea, pacific",news,0.093,OCEAN,planned
+environment,ENVIRONMENT,"environment, environmental",news,0.441,ENVIRONMENTe,planned
+area,AREA,"area, region, province, zone",news,0.548,AREA,planned
+space,SPACE,"space, outer space",news,0.368,SPACE,planned
+station,STATION,"station, space station",news,,,planned
+astronaut,ASTRONAUT,"astronaut, astronauts",news,-1.016,ASTRONAUT,planned
+rocket,ROCKET,"rocket, launch, launched",news,-1.224,,planned
+earth,EARTH,"earth, planet",news,-0.402,PLANET,planned
+return,RETURN,"return, returned, back, come back, ride back",news,,,planned
+capsule,CAPSULE,"capsule, spacecraft",news,,,planned
+broken,BROKEN,"broken, malfunction, fail, failed",news,,,planned
+expect,EXPECT,"expect, expected, expects",news,0.598,,planned
+since,SINCE,since,news,0.571,SINCEstr,planned
+year,YEAR,"year, years, year-old",news,0.496,YEARs,planned
+month,MONTH,"month, months",news,1.08,MONTH,planned
+last,LAST,"last, previous, former, past",news,0.931,LAST-WEEK,planned
+next,NEXT,"next, upcoming",news,0.733,NEXT-YEAR,planned
+first,FIRST,first,news,0.767,FIRSTtwist,planned
+again,AGAIN,again,news,1.156,AGAIN,planned
+hundred,HUNDRED,"hundred, hundreds",news,-1.497,HUNDREDc,planned
+thousand,THOUSAND,"thousand, thousands",news,,,planned
+many,MANY,"many, some, several, dozens",news,0.706,MANY,planned
+health,HEALTH,"health, medical",news,0.05,HEALTH,planned
+doctor,DOCTOR,"doctor, expert, experts",news,0.488,DOCTORd,planned
+hospital,HOSPITAL,hospital,news,-0.053,HOSPITAL,planned
+sick,SICK,"sick, infection, illness, suffering, suffer",news,0.4,SICKstr,planned
+medicine,MEDICINE,"medicine, drug, drugs, antibiotics, treatment, treat, treatable",news,0.338,MEDICINE,planned
+problem,PROBLEM,"problem, problems, crisis, crises",news,0.555,PROBLEMstr,planned
+old,OLD,"old, older, elderly",news,0.474,OLD,planned
+need,NEED,"need, require, must",news,0.653,NEED,planned
+few,FEW,"few, little",news,0.139,FEW,planned
+detail,DETAIL,"detail, details, information",news,,,planned
+common,COMMON,"common, uncommon, usual, unusual, rare",news,,,planned
+right,RIGHT,"right, correct, proper",news,0.898,RIGHT,planned
+pope,POPE,"pope, vatican",news,-1.202,POPE,planned
+church,CHURCH,"church, religion",news,-0.662,CHURCH,planned
+bank,BANK,"bank, banker, central bank",news,0.286,,planned
+money,MONEY,"money, finance, financial",news,1.379,MONEYrub,planned
+price,PRICE,"price, prices, cost, costs",news,-0.13,,planned
+food,FOOD,food,news,,,planned
+trade,TRADE,"trade, tariffs, business",news,,,planned
+threat,THREAT,"threat, threaten",news,,,planned
+replace,REPLACE,"replace, replaces, successor, replaced",news,0.026,REPLACE,planned
+resign,RESIGN,"resign, resignation, quit, resigned",news,-0.093,RESIGN,planned
+become,BECOME,"become, became, will become, becomes",news,0.145,BECOME,planned
+popular,POPULAR,"popular, popularity",news,0.604,POPULAR,planned
+decline,DECLINE,"decline, declined, drop, fell",news,-0.463,,planned
+immigration,IMMIGRATION,"immigration, immigrant, migrant",news,,,planned
+citizen,CITIZEN,"citizen, noncitizen",news,,,planned
+manage,MANAGE,"manage, run (organisation), lead, navigated, management, managed",news,-0.306,MANAGE,planned
+establish,ESTABLISH,"establish, found, founded",news,,,planned
+deal,DEAL,"deal, agreement, negotiate",news,-1.17,DEAL-CARDS,planned
+law,LAW,"law, legal, court, judge",news,0.456,LAW,planned
+attack,ATTACK,"attack, strike, strikes",news,,,planned
+prepare,PREPARE,"prepare, bracing, brace, ready",news,,,planned
+issue,ISSUE,"issue, issued, publish, release",news,,,planned
+flag,FLAG,flag,news,0.144,FLAG,planned
+service,SERVICE,"service, agency, department",news,,,planned
+signal,SIGNAL,"signal, signaling, indicate",news,,,planned
+increase-risk,HEIGHTENED,"heightened, increased, greater",news,,,planned
+due-to,DUE TO,"due to, because, caused by, due",news,,,planned
+california,CALIFORNIA,"california, californians",news,0.596,CALIFORNIA,planned
+canada,CANADA,"canada, canadian",news,-0.448,CANADA,planned
+china,CHINA,"china, chinese",news,-0.642,CHINA,planned
+united-states,U.S.,"u.s., us, united states, america, american",news,,,planned
+england,ENGLAND,"england, britain, british, uk",news,,,planned
+florida,FLORIDA,florida,news,,,planned
+yes,YES,yes,core,1.508,YES,planned
+no,NO,"no, not",core,1.319,NO,planned
+help,HELP,help,core,1.126,HELPpa,planned
+want,WANT,want,core,1.374,,planned
+know,KNOW,know,core,0.748,KNOWb,planned
+think,THINK,"think, believe",core,1.131,PONDER,planned
+see,SEE,"see, look, watch",core,1.189,SEE,planned
+go,GO,"go, went",core,1.107,GO-AHEAD,planned
+come,COME,"come, arrive",core,0.31,,planned
+make,MAKE,"make, build",core,0.686,MAKE-BELIEVE,planned
+give,GIVE,"give, provide, gave",core,0.735,GIVEo,planned
+take,TAKE,"take, taken",core,0.633,,planned
+get,GET,"get, receive",core,0.688,GET,planned
+work,WORK,"work, job",core,1.301,WORK,planned
+live,LIVE,"live, living",core,0.497,LIVE,planned
+now,NOW,"now, currently",core,0.884,NOW,planned
+here,HERE,here,core,0.877,HERE,planned
+there,THERE,there,core,1.001,,planned
+with,WITH,"with, including",core,0.443,WITH,planned
+without,WITHOUT,without,core,0.337,WITHOUT,planned
+more,MORE,"more, most",core,1.089,MORE,planned
+less,LESS,"less, fewer",core,0.083,~LESS	,planned
+all,ALL,"all, every",core,0.794,ALL-DAY,planned
+other,OTHER,"other, another",core,0.522,OTHER,planned
+new,NEW,new,core,0.548,NEW,planned
+big,BIG,"big, large, major",core,-0.523,BIGix,planned
+small,SMALL,"small, minor",core,0.471,SMALL,planned
+good,GOOD,good,core,1.091,GOOD,planned
+bad,BAD,bad,core,0.563,BAD,planned
+time,TIME,time,core,1.063,TIME,planned
+family,FAMILY,"family, son, daughter, child, children",core,0.873,FAMILY,planned
+man,MAN,"man, male",core,0.699,MAN5,planned
+woman,WOMAN,"woman, female",core,1.159,WOMAN5,planned
+name,NAME,"name, called, named",core,0.975,NAME,planned
+number,NUMBER,"number, count",core,,,planned
+and,AND,"and, also, plus",core,0.347,ANDasym,planned
+but,BUT,"but, however",core,0.883,BUT,planned
+if,IF,"if, suppose",core,0.892,SUPPOSE,planned
+how,HOW,how,core,0.882,,planned
+what,WHAT,what,core,1.289,WHAT,planned
+where,WHERE,where,core,0.972,WHERE,planned
+when,WHEN,when,core,0.788,WHEN,planned
+who,WHO,who,core,1.035,WHObent,planned
+why,WHY,why,core,1.178,WHY,planned
+water,WATER,water,core,1.717,WATER,planned
+home,HOME,home,core,1.138,HOME,planned
+school,SCHOOL,school,core,1.268,SCHOOL,planned
+car,CAR,"car, vehicle",core,1.361,CAR,planned
+road,ROAD,"road, street",core,0.4,STREET,planned
+plane,PLANE,"plane, airplane, flight",core,,,planned
+true,TRUE,"true, truth, real",core,0.74,REAL,planned
+important,IMPORTANT,important,core,0.735,IMPORTANT,planned
+finish,FINISH,"finish, done, complete, wrap up",core,0.679,FINISH,planned
+happen,HAPPEN,"happen, occur, event",core,0.34,HAPPEN,planned
+letter-a,A,A,letter,,,planned
+letter-b,B,B,letter,,,planned
+letter-c,C,C,letter,,,planned
+letter-d,D,D,letter,,,planned
+letter-e,E,E,letter,,,planned
+letter-f,F,F,letter,,,planned
+letter-g,G,G,letter,,,planned
+letter-h,H,H,letter,,,planned
+letter-i,I,I,letter,,,planned
+letter-j,J,J,letter,,,planned
+letter-k,K,K,letter,,,planned
+letter-l,L,L,letter,,,planned
+letter-m,M,M,letter,,,planned
+letter-n,N,N,letter,,,planned
+letter-o,O,O,letter,,,planned
+letter-p,P,P,letter,,,planned
+letter-q,Q,Q,letter,,,planned
+letter-r,R,R,letter,,,planned
+letter-s,S,S,letter,,,planned
+letter-t,T,T,letter,,,planned
+letter-u,U,U,letter,,,planned
+letter-v,V,V,letter,,,planned
+letter-w,W,W,letter,,,planned
+letter-x,X,X,letter,,,planned
+letter-y,Y,Y,letter,,,planned
+letter-z,Z,Z,letter,,,planned
+digit-0,0,"0, zero",digit,,,planned
+digit-1,1,"1, one",digit,,,planned
+digit-2,2,"2, two",digit,,,planned
+digit-3,3,"3, three",digit,,,planned
+digit-4,4,"4, four",digit,,,planned
+digit-5,5,"5, five",digit,,,planned
+digit-6,6,"6, six",digit,,,planned
+digit-7,7,"7, seven",digit,,,planned
+digit-8,8,"8, eight",digit,,,planned
+digit-9,9,"9, nine",digit,,,planned

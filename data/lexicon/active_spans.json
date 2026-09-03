@@ -1,0 +1,1292 @@
+{
+"weather": {
+"clip_s": 3.37,
+"in_s": 0.5,
+"out_s": 3.0
+},
+"forecast": {
+"clip_s": 2.4,
+"in_s": 0.4,
+"out_s": 2.23
+},
+"sunny": {
+"clip_s": 3.2,
+"in_s": 0.63,
+"out_s": 2.9
+},
+"clear": {
+"clip_s": 2.54,
+"in_s": 0.25,
+"out_s": 1.96
+},
+"cloudy": {
+"clip_s": 4.1,
+"in_s": 1.67,
+"out_s": 4.04
+},
+"rain": {
+"clip_s": 2.6,
+"in_s": 0.7,
+"out_s": 2.57
+},
+"thunderstorm": {
+"clip_s": 2.9,
+"in_s": 0.7,
+"out_s": 2.87
+},
+"lightning": {
+"clip_s": 2.9,
+"in_s": 0.97,
+"out_s": 2.87
+},
+"snow": {
+"clip_s": 2.9,
+"in_s": 0.63,
+"out_s": 2.7
+},
+"ice": {
+"clip_s": 3.9,
+"in_s": 0.97,
+"out_s": 3.74
+},
+"fog": {
+"clip_s": 6.9,
+"in_s": 0.87,
+"out_s": 6.77
+},
+"wind": {
+"clip_s": 2.17,
+"in_s": 0.17,
+"out_s": 2.14
+},
+"calm": {
+"clip_s": 2.4,
+"in_s": 0.37,
+"out_s": 2.37
+},
+"hot": {
+"clip_s": 2.5,
+"in_s": 0.21,
+"out_s": 2.29
+},
+"warm": {
+"clip_s": 3.2,
+"in_s": 0.7,
+"out_s": 3.17
+},
+"cool": {
+"clip_s": 2.42,
+"in_s": 0.21,
+"out_s": 2.13
+},
+"cold": {
+"clip_s": 1.92,
+"in_s": 0.17,
+"out_s": 1.79
+},
+"temperature": {
+"clip_s": 2.0,
+"in_s": 0.03,
+"out_s": 1.97
+},
+"high": {
+"clip_s": 3.2,
+"in_s": 0.4,
+"out_s": 3.0
+},
+"low": {
+"clip_s": 5.0,
+"in_s": 0.57,
+"out_s": 4.97
+},
+"humid": {
+"clip_s": 2.44,
+"in_s": 0.13,
+"out_s": 2.27
+},
+"dry": {
+"clip_s": 1.88,
+"in_s": 0.13,
+"out_s": 1.84
+},
+"wet": {
+"clip_s": 2.0,
+"in_s": 0.3,
+"out_s": 1.93
+},
+"chance": {
+"clip_s": 4.8,
+"in_s": 0.3,
+"out_s": 4.77
+},
+"percent": {
+"clip_s": 2.15,
+"in_s": 0.23,
+"out_s": 2.03
+},
+"precipitation": {
+"clip_s": 8.61,
+"in_s": 0.8,
+"out_s": 8.34
+},
+"storm": {
+"clip_s": 2.9,
+"in_s": 0.7,
+"out_s": 2.87
+},
+"hurricane": {
+"clip_s": 2.03,
+"in_s": 0.2,
+"out_s": 1.78
+},
+"tornado": {
+"clip_s": 2.9,
+"in_s": 0.7,
+"out_s": 2.8
+},
+"flood": {
+"clip_s": 2.9,
+"in_s": 0.2,
+"out_s": 2.87
+},
+"warning": {
+"clip_s": 1.88,
+"in_s": 0.17,
+"out_s": 1.58
+},
+"danger": {
+"clip_s": 2.9,
+"in_s": 0.7,
+"out_s": 2.8
+},
+"sky": {
+"clip_s": 3.5,
+"in_s": 0.77,
+"out_s": 3.47
+},
+"morning": {
+"clip_s": 2.4,
+"in_s": 0.67,
+"out_s": 2.37
+},
+"afternoon": {
+"clip_s": 3.5,
+"in_s": 1.0,
+"out_s": 3.47
+},
+"tonight": {
+"clip_s": 4.4,
+"in_s": 0.83,
+"out_s": 4.2
+},
+"night": {
+"clip_s": 2.9,
+"in_s": 0.97,
+"out_s": 2.87
+},
+"today": {
+"clip_s": 4.2,
+"in_s": 0.83,
+"out_s": 4.17
+},
+"tomorrow": {
+"clip_s": 2.9,
+"in_s": 0.83,
+"out_s": 2.87
+},
+"day": {
+"clip_s": 2.9,
+"in_s": 0.37,
+"out_s": 2.87
+},
+"week": {
+"clip_s": 2.6,
+"in_s": 0.57,
+"out_s": 2.54
+},
+"weekend": {
+"clip_s": 2.4,
+"in_s": 0.7,
+"out_s": 2.37
+},
+"monday": {
+"clip_s": 3.0,
+"in_s": 0.63,
+"out_s": 2.97
+},
+"tuesday": {
+"clip_s": 2.21,
+"in_s": 0.13,
+"out_s": 1.92
+},
+"wednesday": {
+"clip_s": 2.3,
+"in_s": 0.6,
+"out_s": 2.27
+},
+"thursday": {
+"clip_s": 2.7,
+"in_s": 0.03,
+"out_s": 2.67
+},
+"friday": {
+"clip_s": 2.9,
+"in_s": 0.67,
+"out_s": 2.87
+},
+"saturday": {
+"clip_s": 3.0,
+"in_s": 0.7,
+"out_s": 2.97
+},
+"sunday": {
+"clip_s": 4.8,
+"in_s": 0.07,
+"out_s": 4.77
+},
+"north": {
+"clip_s": 2.6,
+"in_s": 0.8,
+"out_s": 2.57
+},
+"south": {
+"clip_s": 2.6,
+"in_s": 0.7,
+"out_s": 2.57
+},
+"east": {
+"clip_s": 2.3,
+"in_s": 0.03,
+"out_s": 2.27
+},
+"west": {
+"clip_s": 2.7,
+"in_s": 0.97,
+"out_s": 2.67
+},
+"before": {
+"clip_s": 3.5,
+"in_s": 0.27,
+"out_s": 3.47
+},
+"after": {
+"clip_s": 3.04,
+"in_s": 0.21,
+"out_s": 2.59
+},
+"between": {
+"clip_s": 3.2,
+"in_s": 0.03,
+"out_s": 3.17
+},
+"around": {
+"clip_s": 2.84,
+"in_s": 0.37,
+"out_s": 2.2
+},
+"increase": {
+"clip_s": 2.1,
+"in_s": 0.37,
+"out_s": 2.07
+},
+"decrease": {
+"clip_s": 2.44,
+"in_s": 0.2,
+"out_s": 2.4
+},
+"start": {
+"clip_s": 2.3,
+"in_s": 0.13,
+"out_s": 2.27
+},
+"end": {
+"clip_s": 2.54,
+"in_s": 0.42,
+"out_s": 2.0
+},
+"continue": {
+"clip_s": 3.6,
+"in_s": 1.27,
+"out_s": 3.54
+},
+"change": {
+"clip_s": 3.2,
+"in_s": 0.87,
+"out_s": 3.17
+},
+"mostly": {
+"clip_s": 1.94,
+"in_s": 0.13,
+"out_s": 1.87
+},
+"slight": {
+"clip_s": 4.84,
+"in_s": 0.13,
+"out_s": 2.47
+},
+"heavy": {
+"clip_s": 3.84,
+"in_s": 0.3,
+"out_s": 3.77
+},
+"strong": {
+"clip_s": 2.7,
+"in_s": 1.07,
+"out_s": 2.67
+},
+"say": {
+"clip_s": 1.96,
+"in_s": 0.17,
+"out_s": 1.75
+},
+"official": {
+"clip_s": 3.2,
+"in_s": 0.73,
+"out_s": 3.17
+},
+"government": {
+"clip_s": 3.0,
+"in_s": 0.77,
+"out_s": 2.97
+},
+"leader": {
+"clip_s": 4.37,
+"in_s": 0.73,
+"out_s": 4.0
+},
+"president": {
+"clip_s": 2.7,
+"in_s": 0.87,
+"out_s": 2.67
+},
+"election": {
+"clip_s": 2.9,
+"in_s": 0.73,
+"out_s": 2.3
+},
+"party": {
+"clip_s": 2.9,
+"in_s": 0.73,
+"out_s": 2.87
+},
+"country": {
+"clip_s": 3.5,
+"in_s": 1.0,
+"out_s": 3.44
+},
+"city": {
+"clip_s": 2.5,
+"in_s": 0.17,
+"out_s": 2.17
+},
+"people": {
+"clip_s": 2.0,
+"in_s": 0.13,
+"out_s": 1.97
+},
+"world": {
+"clip_s": 3.75,
+"in_s": 0.5,
+"out_s": 3.5
+},
+"military": {
+"clip_s": 3.04,
+"in_s": 0.04,
+"out_s": 2.84
+},
+"war": {
+"clip_s": 4.2,
+"in_s": 0.73,
+"out_s": 3.84
+},
+"police": {
+"clip_s": 8.14,
+"in_s": 0.07,
+"out_s": 4.1
+},
+"fire": {
+"clip_s": 2.54,
+"in_s": 0.67,
+"out_s": 2.2
+},
+"firefighter": {
+"clip_s": 1.84,
+"in_s": 0.08,
+"out_s": 1.67
+},
+"emergency": {
+"clip_s": 2.3,
+"in_s": 0.4,
+"out_s": 2.27
+},
+"rescue": {
+"clip_s": 3.5,
+"in_s": 1.27,
+"out_s": 3.47
+},
+"search": {
+"clip_s": 4.2,
+"in_s": 0.97,
+"out_s": 4.0
+},
+"safe": {
+"clip_s": 2.6,
+"in_s": 0.53,
+"out_s": 2.54
+},
+"alive": {
+"clip_s": 5.7,
+"in_s": 0.83,
+"out_s": 5.64
+},
+"kill": {
+"clip_s": 2.54,
+"in_s": 0.13,
+"out_s": 2.13
+},
+"destroy": {
+"clip_s": 4.7,
+"in_s": 0.03,
+"out_s": 4.67
+},
+"evacuate": {
+"clip_s": 2.46,
+"in_s": 0.25,
+"out_s": 2.25
+},
+"landslide": {
+"clip_s": 4.27,
+"in_s": 0.03,
+"out_s": 4.17
+},
+"earthquake": {
+"clip_s": 5.0,
+"in_s": 1.97,
+"out_s": 4.1
+},
+"bury": {
+"clip_s": 2.4,
+"in_s": 0.03,
+"out_s": 2.1
+},
+"house": {
+"clip_s": 2.5,
+"in_s": 0.33,
+"out_s": 2.09
+},
+"ship": {
+"clip_s": 2.3,
+"in_s": 0.23,
+"out_s": 2.27
+},
+"sink": {
+"clip_s": 3.3,
+"in_s": 1.02,
+"out_s": 2.69
+},
+"oil": {
+"clip_s": 3.3,
+"in_s": 1.07,
+"out_s": 3.27
+},
+"spill": {
+"clip_s": 2.9,
+"in_s": 0.93,
+"out_s": 2.87
+},
+"coast": {
+"clip_s": 2.34,
+"in_s": 0.04,
+"out_s": 1.92
+},
+"island": {
+"clip_s": 2.9,
+"in_s": 0.83,
+"out_s": 2.74
+},
+"ocean": {
+"clip_s": 8.01,
+"in_s": 5.0,
+"out_s": 5.0
+},
+"environment": {
+"clip_s": 10.41,
+"in_s": 0.7,
+"out_s": 10.27
+},
+"area": {
+"clip_s": 6.9,
+"in_s": 0.7,
+"out_s": 6.34
+},
+"space": {
+"clip_s": 2.88,
+"in_s": 0.13,
+"out_s": 2.17
+},
+"station": {
+"clip_s": 1.83,
+"in_s": 0.03,
+"out_s": 1.8
+},
+"astronaut": {
+"clip_s": 3.5,
+"in_s": 0.4,
+"out_s": 3.4
+},
+"rocket": {
+"clip_s": 2.9,
+"in_s": 0.83,
+"out_s": 2.87
+},
+"earth": {
+"clip_s": 6.2,
+"in_s": 0.8,
+"out_s": 6.0
+},
+"return": {
+"clip_s": 2.7,
+"in_s": 0.3,
+"out_s": 2.35
+},
+"capsule": {
+"clip_s": 6.71,
+"in_s": 0.96,
+"out_s": 6.17
+},
+"broken": {
+"clip_s": 2.6,
+"in_s": 1.07,
+"out_s": 2.57
+},
+"expect": {
+"clip_s": 2.9,
+"in_s": 0.23,
+"out_s": 2.87
+},
+"since": {
+"clip_s": 5.3,
+"in_s": 1.1,
+"out_s": 5.1
+},
+"year": {
+"clip_s": 2.6,
+"in_s": 0.83,
+"out_s": 2.57
+},
+"month": {
+"clip_s": 1.7,
+"in_s": 0.13,
+"out_s": 1.63
+},
+"last": {
+"clip_s": 3.6,
+"in_s": 0.03,
+"out_s": 3.57
+},
+"next": {
+"clip_s": 4.7,
+"in_s": 2.23,
+"out_s": 4.0
+},
+"first": {
+"clip_s": 2.6,
+"in_s": 0.73,
+"out_s": 2.54
+},
+"again": {
+"clip_s": 3.5,
+"in_s": 0.07,
+"out_s": 3.47
+},
+"hundred": {
+"clip_s": 2.0,
+"in_s": 0.07,
+"out_s": 1.97
+},
+"thousand": {
+"clip_s": 2.6,
+"in_s": 0.77,
+"out_s": 2.57
+},
+"many": {
+"clip_s": 3.2,
+"in_s": 1.17,
+"out_s": 2.97
+},
+"health": {
+"clip_s": 3.2,
+"in_s": 0.8,
+"out_s": 3.17
+},
+"doctor": {
+"clip_s": 5.51,
+"in_s": 0.26,
+"out_s": 3.9
+},
+"hospital": {
+"clip_s": 2.9,
+"in_s": 0.5,
+"out_s": 2.87
+},
+"sick": {
+"clip_s": 6.2,
+"in_s": 0.17,
+"out_s": 6.14
+},
+"medicine": {
+"clip_s": 3.0,
+"in_s": 0.53,
+"out_s": 2.97
+},
+"problem": {
+"clip_s": 8.11,
+"in_s": 0.3,
+"out_s": 7.51
+},
+"old": {
+"clip_s": 2.6,
+"in_s": 0.3,
+"out_s": 2.57
+},
+"need": {
+"clip_s": 2.7,
+"in_s": 0.23,
+"out_s": 2.67
+},
+"few": {
+"clip_s": 5.0,
+"in_s": 1.93,
+"out_s": 4.97
+},
+"detail": {
+"clip_s": 3.2,
+"in_s": 0.7,
+"out_s": 3.17
+},
+"common": {
+"clip_s": 5.9,
+"in_s": 0.67,
+"out_s": 5.87
+},
+"right": {
+"clip_s": 3.8,
+"in_s": 0.9,
+"out_s": 3.77
+},
+"pope": {
+"clip_s": 3.2,
+"in_s": 0.57,
+"out_s": 3.17
+},
+"church": {
+"clip_s": 4.4,
+"in_s": 0.57,
+"out_s": 4.37
+},
+"bank": {
+"clip_s": 2.6,
+"in_s": 0.03,
+"out_s": 2.47
+},
+"money": {
+"clip_s": 2.38,
+"in_s": 0.13,
+"out_s": 2.25
+},
+"price": {
+"clip_s": 4.4,
+"in_s": 0.93,
+"out_s": 4.37
+},
+"food": {
+"clip_s": 2.54,
+"in_s": 0.21,
+"out_s": 2.29
+},
+"trade": {
+"clip_s": 7.0,
+"in_s": 0.71,
+"out_s": 6.92
+},
+"threat": {
+"clip_s": 2.4,
+"in_s": 1.0,
+"out_s": 2.37
+},
+"replace": {
+"clip_s": 4.4,
+"in_s": 1.0,
+"out_s": 4.37
+},
+"resign": {
+"clip_s": 2.1,
+"in_s": 0.7,
+"out_s": 1.8
+},
+"become": {
+"clip_s": 3.2,
+"in_s": 0.8,
+"out_s": 3.14
+},
+"popular": {
+"clip_s": 2.6,
+"in_s": 0.7,
+"out_s": 2.57
+},
+"decline": {
+"clip_s": 2.71,
+"in_s": 0.46,
+"out_s": 2.59
+},
+"immigration": {
+"clip_s": 6.8,
+"in_s": 1.1,
+"out_s": 6.77
+},
+"citizen": {
+"clip_s": 2.9,
+"in_s": 0.63,
+"out_s": 2.74
+},
+"manage": {
+"clip_s": 1.94,
+"in_s": 0.03,
+"out_s": 1.8
+},
+"establish": {
+"clip_s": 2.71,
+"in_s": 0.5,
+"out_s": 2.21
+},
+"deal": {
+"clip_s": 1.87,
+"in_s": 0.13,
+"out_s": 1.74
+},
+"law": {
+"clip_s": 3.2,
+"in_s": 0.7,
+"out_s": 3.17
+},
+"attack": {
+"clip_s": 9.51,
+"in_s": 1.37,
+"out_s": 8.41
+},
+"prepare": {
+"clip_s": 2.3,
+"in_s": 0.7,
+"out_s": 2.27
+},
+"issue": {
+"clip_s": 1.57,
+"in_s": 0.03,
+"out_s": 1.53
+},
+"flag": {
+"clip_s": 5.9,
+"in_s": 0.07,
+"out_s": 5.84
+},
+"service": {
+"clip_s": 8.71,
+"in_s": 1.57,
+"out_s": 8.67
+},
+"signal": {
+"clip_s": 4.7,
+"in_s": 0.9,
+"out_s": 4.67
+},
+"increase-risk": {
+"clip_s": 2.04,
+"in_s": 0.1,
+"out_s": 1.8
+},
+"due-to": {
+"clip_s": 3.0,
+"in_s": 0.4,
+"out_s": 2.97
+},
+"california": {
+"clip_s": 2.7,
+"in_s": 0.4,
+"out_s": 2.67
+},
+"canada": {
+"clip_s": 4.4,
+"in_s": 0.17,
+"out_s": 4.37
+},
+"china": {
+"clip_s": 3.29,
+"in_s": 0.83,
+"out_s": 3.0
+},
+"united-states": {
+"clip_s": 1.96,
+"in_s": 0.17,
+"out_s": 1.67
+},
+"england": {
+"clip_s": 5.6,
+"in_s": 0.67,
+"out_s": 5.54
+},
+"florida": {
+"clip_s": 2.6,
+"in_s": 0.4,
+"out_s": 2.57
+},
+"yes": {
+"clip_s": 3.5,
+"in_s": 0.03,
+"out_s": 3.47
+},
+"no": {
+"clip_s": 2.27,
+"in_s": 0.3,
+"out_s": 1.6
+},
+"help": {
+"clip_s": 2.27,
+"in_s": 0.13,
+"out_s": 1.94
+},
+"want": {
+"clip_s": 1.42,
+"in_s": 0.13,
+"out_s": 1.38
+},
+"know": {
+"clip_s": 2.6,
+"in_s": 0.07,
+"out_s": 2.57
+},
+"think": {
+"clip_s": 3.8,
+"in_s": 0.93,
+"out_s": 3.47
+},
+"see": {
+"clip_s": 1.67,
+"in_s": 0.17,
+"out_s": 1.63
+},
+"go": {
+"clip_s": 1.71,
+"in_s": 0.08,
+"out_s": 1.67
+},
+"come": {
+"clip_s": 2.9,
+"in_s": 0.8,
+"out_s": 2.77
+},
+"make": {
+"clip_s": 2.63,
+"in_s": 0.38,
+"out_s": 2.29
+},
+"give": {
+"clip_s": 1.63,
+"in_s": 0.04,
+"out_s": 1.54
+},
+"take": {
+"clip_s": 1.84,
+"in_s": 0.33,
+"out_s": 1.67
+},
+"get": {
+"clip_s": 3.9,
+"in_s": 0.67,
+"out_s": 3.87
+},
+"work": {
+"clip_s": 2.7,
+"in_s": 0.17,
+"out_s": 2.67
+},
+"live": {
+"clip_s": 1.7,
+"in_s": 0.03,
+"out_s": 1.67
+},
+"now": {
+"clip_s": 2.3,
+"in_s": 0.53,
+"out_s": 2.23
+},
+"here": {
+"clip_s": 2.46,
+"in_s": 0.21,
+"out_s": 2.0
+},
+"there": {
+"clip_s": 2.3,
+"in_s": 0.03,
+"out_s": 2.27
+},
+"with": {
+"clip_s": 2.21,
+"in_s": 0.13,
+"out_s": 2.17
+},
+"without": {
+"clip_s": 2.6,
+"in_s": 0.73,
+"out_s": 2.5
+},
+"more": {
+"clip_s": 2.3,
+"in_s": 0.63,
+"out_s": 2.27
+},
+"less": {
+"clip_s": 4.1,
+"in_s": 1.1,
+"out_s": 4.0
+},
+"all": {
+"clip_s": 3.5,
+"in_s": 0.37,
+"out_s": 3.3
+},
+"other": {
+"clip_s": 2.0,
+"in_s": 0.23,
+"out_s": 1.8
+},
+"new": {
+"clip_s": 2.9,
+"in_s": 0.97,
+"out_s": 2.87
+},
+"big": {
+"clip_s": 2.38,
+"in_s": 0.04,
+"out_s": 2.04
+},
+"small": {
+"clip_s": 2.9,
+"in_s": 0.03,
+"out_s": 2.87
+},
+"good": {
+"clip_s": 1.71,
+"in_s": 0.04,
+"out_s": 1.54
+},
+"bad": {
+"clip_s": 2.29,
+"in_s": 0.08,
+"out_s": 1.96
+},
+"time": {
+"clip_s": 3.17,
+"in_s": 0.67,
+"out_s": 2.46
+},
+"family": {
+"clip_s": 2.84,
+"in_s": 0.54,
+"out_s": 2.29
+},
+"man": {
+"clip_s": 5.94,
+"in_s": 1.31,
+"out_s": 4.09
+},
+"woman": {
+"clip_s": 4.4,
+"in_s": 0.83,
+"out_s": 4.37
+},
+"name": {
+"clip_s": 1.7,
+"in_s": 0.17,
+"out_s": 1.67
+},
+"number": {
+"clip_s": 2.74,
+"in_s": 0.43,
+"out_s": 2.14
+},
+"and": {
+"clip_s": 2.4,
+"in_s": 0.33,
+"out_s": 2.37
+},
+"but": {
+"clip_s": 4.7,
+"in_s": 0.9,
+"out_s": 4.67
+},
+"if": {
+"clip_s": 2.9,
+"in_s": 0.03,
+"out_s": 2.87
+},
+"how": {
+"clip_s": 2.9,
+"in_s": 0.13,
+"out_s": 2.8
+},
+"what": {
+"clip_s": 5.0,
+"in_s": 0.4,
+"out_s": 4.9
+},
+"where": {
+"clip_s": 2.4,
+"in_s": 0.53,
+"out_s": 2.37
+},
+"when": {
+"clip_s": 4.1,
+"in_s": 0.57,
+"out_s": 4.0
+},
+"who": {
+"clip_s": 2.6,
+"in_s": 0.87,
+"out_s": 2.57
+},
+"why": {
+"clip_s": 2.6,
+"in_s": 0.3,
+"out_s": 2.57
+},
+"water": {
+"clip_s": 5.44,
+"in_s": 3.8,
+"out_s": 3.85
+},
+"home": {
+"clip_s": 2.5,
+"in_s": 0.04,
+"out_s": 2.34
+},
+"school": {
+"clip_s": 1.96,
+"in_s": 0.33,
+"out_s": 1.71
+},
+"car": {
+"clip_s": 8.61,
+"in_s": 0.53,
+"out_s": 8.34
+},
+"road": {
+"clip_s": 2.3,
+"in_s": 0.57,
+"out_s": 2.27
+},
+"plane": {
+"clip_s": 3.3,
+"in_s": 0.07,
+"out_s": 3.27
+},
+"true": {
+"clip_s": 1.6,
+"in_s": 0.03,
+"out_s": 1.53
+},
+"important": {
+"clip_s": 2.21,
+"in_s": 0.29,
+"out_s": 1.79
+},
+"finish": {
+"clip_s": 1.7,
+"in_s": 0.13,
+"out_s": 1.67
+},
+"happen": {
+"clip_s": 2.96,
+"in_s": 0.96,
+"out_s": 2.54
+},
+"letter-a": {
+"clip_s": 2.59,
+"in_s": 0.04,
+"out_s": 2.21
+},
+"letter-b": {
+"clip_s": 2.0,
+"in_s": 0.25,
+"out_s": 1.84
+},
+"letter-c": {
+"clip_s": 1.92,
+"in_s": 0.04,
+"out_s": 1.75
+},
+"letter-d": {
+"clip_s": 2.34,
+"in_s": 0.04,
+"out_s": 2.25
+},
+"letter-e": {
+"clip_s": 2.04,
+"in_s": 0.08,
+"out_s": 1.88
+},
+"letter-f": {
+"clip_s": 1.88,
+"in_s": 0.04,
+"out_s": 1.75
+},
+"letter-g": {
+"clip_s": 1.96,
+"in_s": 0.25,
+"out_s": 1.79
+},
+"letter-h": {
+"clip_s": 1.71,
+"in_s": 0.21,
+"out_s": 1.63
+},
+"letter-i": {
+"clip_s": 2.71,
+"in_s": 0.29,
+"out_s": 2.67
+},
+"letter-j": {
+"clip_s": 1.92,
+"in_s": 0.13,
+"out_s": 1.84
+},
+"letter-k": {
+"clip_s": 2.04,
+"in_s": 0.13,
+"out_s": 1.84
+},
+"letter-l": {
+"clip_s": 1.84,
+"in_s": 0.08,
+"out_s": 1.79
+},
+"letter-m": {
+"clip_s": 2.17,
+"in_s": 0.08,
+"out_s": 2.0
+},
+"letter-n": {
+"clip_s": 2.21,
+"in_s": 0.13,
+"out_s": 2.0
+},
+"letter-o": {
+"clip_s": 2.0,
+"in_s": 0.46,
+"out_s": 1.75
+},
+"letter-p": {
+"clip_s": 1.88,
+"in_s": 0.21,
+"out_s": 1.67
+},
+"letter-q": {
+"clip_s": 1.84,
+"in_s": 0.04,
+"out_s": 1.75
+},
+"letter-r": {
+"clip_s": 2.0,
+"in_s": 0.04,
+"out_s": 1.88
+},
+"letter-s": {
+"clip_s": 1.96,
+"in_s": 0.08,
+"out_s": 1.84
+},
+"letter-t": {
+"clip_s": 1.84,
+"in_s": 0.08,
+"out_s": 1.75
+},
+"letter-u": {
+"clip_s": 1.79,
+"in_s": 0.04,
+"out_s": 1.71
+},
+"letter-v": {
+"clip_s": 1.88,
+"in_s": 0.08,
+"out_s": 1.58
+},
+"letter-w": {
+"clip_s": 1.88,
+"in_s": 0.04,
+"out_s": 1.58
+},
+"letter-x": {
+"clip_s": 1.88,
+"in_s": 0.04,
+"out_s": 1.75
+},
+"letter-y": {
+"clip_s": 2.17,
+"in_s": 0.04,
+"out_s": 2.09
+},
+"letter-z": {
+"clip_s": 2.0,
+"in_s": 0.13,
+"out_s": 1.71
+},
+"digit-0": {
+"clip_s": 2.38,
+"in_s": 0.08,
+"out_s": 2.29
+},
+"digit-1": {
+"clip_s": 2.34,
+"in_s": 0.29,
+"out_s": 1.88
+},
+"digit-2": {
+"clip_s": 2.39,
+"in_s": 0.5,
+"out_s": 2.07
+},
+"digit-3": {
+"clip_s": 3.19,
+"in_s": 0.5,
+"out_s": 3.0
+},
+"digit-4": {
+"clip_s": 2.17,
+"in_s": 0.21,
+"out_s": 1.71
+},
+"digit-5": {
+"clip_s": 2.29,
+"in_s": 0.42,
+"out_s": 1.79
+},
+"digit-6": {
+"clip_s": 2.46,
+"in_s": 0.5,
+"out_s": 2.29
+},
+"digit-7": {
+"clip_s": 2.54,
+"in_s": 0.58,
+"out_s": 2.21
+},
+"digit-8": {
+"clip_s": 2.5,
+"in_s": 0.08,
+"out_s": 2.46
+},
+"digit-9": {
+"clip_s": 2.63,
+"in_s": 0.04,
+"out_s": 2.5
+}
+}
