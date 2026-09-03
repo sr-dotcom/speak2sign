@@ -1,0 +1,264 @@
+{
+  "schema_version": 1,
+  "diagram_type": "sequence",
+  "meta": {
+    "title": "Speak2Sign v2 Play a News Item",
+    "viewBox": [
+      1085,
+      650
+    ],
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "build-timeline",
+        "label": "Build the timeline",
+        "focus": [
+          "viewer",
+          "app",
+          "timeline",
+          "gloss",
+          "lexicon"
+        ],
+        "note": "Server side: transcript with word timings becomes a timeline of clip ids at word onsets."
+      },
+      {
+        "id": "playback",
+        "label": "Synchronised playback",
+        "focus": [
+          "app",
+          "panel",
+          "clips",
+          "viewer"
+        ],
+        "note": "Browser side: the news audio clock drives which sign clip plays and when."
+      }
+    ],
+    "column_fit": "spread"
+  },
+  "participants": [
+    {
+      "id": "viewer",
+      "type": "external",
+      "label": "Viewer",
+      "sublabel": "browser"
+    },
+    {
+      "id": "panel",
+      "type": "frontend",
+      "label": "Panel JS",
+      "sublabel": "components v2"
+    },
+    {
+      "id": "app",
+      "type": "backend",
+      "label": "Streamlit",
+      "sublabel": "app.py"
+    },
+    {
+      "id": "timeline",
+      "type": "backend",
+      "label": "Timeline",
+      "sublabel": "timeline.py"
+    },
+    {
+      "id": "gloss",
+      "type": "backend",
+      "label": "Gloss",
+      "sublabel": "rules / T5"
+    },
+    {
+      "id": "lexicon",
+      "type": "database",
+      "label": "Lexicon",
+      "sublabel": "concepts.json"
+    },
+    {
+      "id": "clips",
+      "type": "database",
+      "label": "Clips",
+      "sublabel": "static/clips"
+    }
+  ],
+  "segments": [
+    {
+      "from": 150,
+      "to": 390,
+      "label": "Build timeline (server)"
+    },
+    {
+      "from": 400,
+      "to": 585,
+      "label": "Playback (browser)"
+    }
+  ],
+  "messages": [
+    {
+      "id": "select-item",
+      "from": "viewer",
+      "to": "app",
+      "y": 185,
+      "label": "select item, press Play",
+      "variant": "emphasis"
+    },
+    {
+      "id": "build",
+      "from": "app",
+      "to": "timeline",
+      "y": 216,
+      "label": "build(transcript, word timings)",
+      "variant": "default"
+    },
+    {
+      "id": "gloss-call",
+      "from": "timeline",
+      "to": "gloss",
+      "y": 247,
+      "label": "gloss(sentence)",
+      "variant": "default"
+    },
+    {
+      "id": "gloss-return",
+      "from": "gloss",
+      "to": "timeline",
+      "y": 278,
+      "label": "gloss sequence",
+      "variant": "return"
+    },
+    {
+      "id": "resolve",
+      "from": "timeline",
+      "to": "lexicon",
+      "y": 309,
+      "label": "resolve(gloss)",
+      "variant": "default"
+    },
+    {
+      "id": "resolve-return",
+      "from": "lexicon",
+      "to": "timeline",
+      "y": 340,
+      "label": "clip id + badge, or fingerspell",
+      "variant": "return"
+    },
+    {
+      "id": "timeline-return",
+      "from": "timeline",
+      "to": "app",
+      "y": 371,
+      "label": "timeline.json",
+      "variant": "return"
+    },
+    {
+      "id": "render",
+      "from": "app",
+      "to": "panel",
+      "y": 412,
+      "label": "render panel(html, timeline)",
+      "variant": "emphasis"
+    },
+    {
+      "id": "preload",
+      "from": "panel",
+      "to": "clips",
+      "y": 443,
+      "label": "preload first clips",
+      "variant": "dashed"
+    },
+    {
+      "id": "play-audio",
+      "from": "panel",
+      "to": "viewer",
+      "y": 474,
+      "label": "play news audio + captions",
+      "variant": "default"
+    },
+    {
+      "id": "next-clip",
+      "from": "panel",
+      "to": "clips",
+      "y": 505,
+      "label": "fetch next clip on timeupdate",
+      "variant": "dashed"
+    },
+    {
+      "id": "sign",
+      "from": "panel",
+      "to": "viewer",
+      "y": 536,
+      "label": "sign clip at word onset, badge shown",
+      "variant": "emphasis"
+    },
+    {
+      "id": "overrun",
+      "from": "panel",
+      "to": "viewer",
+      "y": 566,
+      "label": "catching-up indicator if behind",
+      "variant": "dashed"
+    }
+  ],
+  "activations": [
+    {
+      "participant": "app",
+      "from": 180,
+      "to": 420,
+      "type": "backend"
+    },
+    {
+      "participant": "timeline",
+      "from": 211,
+      "to": 378,
+      "type": "backend"
+    },
+    {
+      "participant": "gloss",
+      "from": 242,
+      "to": 284,
+      "type": "backend"
+    },
+    {
+      "participant": "lexicon",
+      "from": 304,
+      "to": 346,
+      "type": "database"
+    },
+    {
+      "participant": "panel",
+      "from": 407,
+      "to": 574,
+      "type": "frontend"
+    },
+    {
+      "participant": "clips",
+      "from": 438,
+      "to": 512,
+      "type": "database"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Server builds, browser plays",
+      "items": [
+        "The server produces one JSON timeline per item and then steps aside",
+        "No server round-trip happens during playback"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Timing contract",
+      "items": [
+        "Clips are scheduled at word onset from the transcript timings",
+        "The news audio's currentTime is the only clock"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Provenance per sign",
+      "items": [
+        "The lexicon returns a badge with every clip",
+        "Out-of-vocabulary words return a fingerspell plan or not-available"
+      ]
+    }
+  ]
+}

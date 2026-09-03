@@ -1,0 +1,331 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Speak2Sign v2 System Architecture",
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "runtime-path",
+        "label": "Runtime request path",
+        "focus": [
+          "viewer",
+          "panel",
+          "app",
+          "gloss",
+          "lexicon"
+        ],
+        "note": "A viewer plays a news item; the app builds a timeline and the panel signs it from local clips."
+      },
+      {
+        "id": "inputs",
+        "label": "News inputs",
+        "focus": [
+          "app",
+          "asr",
+          "nws",
+          "guardian"
+        ],
+        "note": "Live forecast text, optional uploaded audio, and Phase 4 headlines all enter through the app."
+      },
+      {
+        "id": "build-time",
+        "label": "Build time, offline",
+        "focus": [
+          "cats",
+          "github",
+          "kaggle",
+          "app"
+        ],
+        "note": "Clips and the T5 export are produced offline and committed; the deployed app imports neither MediaPipe nor PyTorch."
+      }
+    ]
+  },
+  "components": [
+    {
+      "id": "viewer",
+      "type": "external",
+      "label": "Viewer",
+      "sublabel": "any browser, HTTPS",
+      "pos": [
+        40,
+        230
+      ],
+      "size": [
+        130,
+        60
+      ]
+    },
+    {
+      "id": "panel",
+      "type": "frontend",
+      "label": "Interpreter panel",
+      "sublabel": "components v2, HTML5 video",
+      "pos": [
+        250,
+        230
+      ],
+      "size": [
+        150,
+        64
+      ],
+      "tag": "media clock"
+    },
+    {
+      "id": "app",
+      "type": "backend",
+      "label": "Streamlit app",
+      "sublabel": "app.py, 1.62.0",
+      "pos": [
+        490,
+        230
+      ],
+      "size": [
+        150,
+        64
+      ],
+      "tag": "≤ 1.8 GB RSS"
+    },
+    {
+      "id": "gloss",
+      "type": "backend",
+      "label": "Gloss engine",
+      "sublabel": "rules default, T5 int8 toggle",
+      "pos": [
+        730,
+        230
+      ],
+      "size": [
+        160,
+        64
+      ]
+    },
+    {
+      "id": "lexicon",
+      "type": "database",
+      "label": "Concept lexicon",
+      "sublabel": "concepts.json + static/clips",
+      "pos": [
+        980,
+        230
+      ],
+      "size": [
+        160,
+        64
+      ],
+      "tag": "public domain + CC BY-NC-SA"
+    },
+    {
+      "id": "asr",
+      "type": "backend",
+      "label": "faster-whisper",
+      "sublabel": "base.en int8, lazy",
+      "pos": [
+        490,
+        110
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "tag": "Phase 4"
+    },
+    {
+      "id": "nws",
+      "type": "external",
+      "label": "NWS API",
+      "sublabel": "api.weather.gov, no key",
+      "pos": [
+        250,
+        360
+      ],
+      "size": [
+        150,
+        60
+      ]
+    },
+    {
+      "id": "guardian",
+      "type": "external",
+      "label": "Guardian API",
+      "sublabel": "free developer key",
+      "pos": [
+        730,
+        360
+      ],
+      "size": [
+        150,
+        60
+      ],
+      "tag": "Phase 4"
+    },
+    {
+      "id": "cats",
+      "type": "external",
+      "label": "archive.org sources",
+      "sublabel": "CATS clips, VOA newscasts",
+      "pos": [
+        250,
+        490
+      ],
+      "size": [
+        160,
+        60
+      ]
+    },
+    {
+      "id": "github",
+      "type": "cloud",
+      "label": "GitHub repo + Actions",
+      "sublabel": "ruff, pytest, RSS budget",
+      "pos": [
+        485,
+        490
+      ],
+      "size": [
+        160,
+        60
+      ]
+    },
+    {
+      "id": "kaggle",
+      "type": "cloud",
+      "label": "Kaggle notebook",
+      "sublabel": "T5-small fine-tune, ct2 export",
+      "pos": [
+        730,
+        490
+      ],
+      "size": [
+        170,
+        60
+      ]
+    }
+  ],
+  "boundaries": [
+    {
+      "kind": "region",
+      "label": "Viewer's browser",
+      "wraps": [
+        "viewer",
+        "panel"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Streamlit Community Cloud, $0/month",
+      "wraps": [
+        "app",
+        "gloss",
+        "lexicon",
+        "asr"
+      ]
+    },
+    {
+      "kind": "region",
+      "label": "Build time, offline",
+      "wraps": [
+        "cats",
+        "github",
+        "kaggle"
+      ]
+    }
+  ],
+  "connections": [
+    {
+      "id": "viewer-panel",
+      "from": "viewer",
+      "to": "panel",
+      "label": "play item",
+      "variant": "emphasis"
+    },
+    {
+      "id": "panel-app",
+      "from": "panel",
+      "to": "app",
+      "label": "WebSocket"
+    },
+    {
+      "id": "app-gloss",
+      "from": "app",
+      "to": "gloss",
+      "label": "text",
+      "variant": "emphasis"
+    },
+    {
+      "id": "gloss-lexicon",
+      "from": "gloss",
+      "to": "lexicon",
+      "label": "gloss → clip",
+      "variant": "emphasis"
+    },
+    {
+      "id": "app-asr",
+      "from": "app",
+      "to": "asr",
+      "label": "upload ≤ 60 s",
+      "variant": "dashed"
+    },
+    {
+      "id": "app-nws",
+      "from": "app",
+      "to": "nws",
+      "label": "forecast JSON",
+      "labelSegment": 1
+    },
+    {
+      "id": "app-guardian",
+      "from": "app",
+      "to": "guardian",
+      "label": "bodyText",
+      "variant": "dashed",
+      "labelSegment": 1
+    },
+    {
+      "id": "cats-github",
+      "from": "cats",
+      "to": "github",
+      "label": "clips committed",
+      "labelDy": -24
+    },
+    {
+      "id": "kaggle-github",
+      "from": "kaggle",
+      "to": "github",
+      "label": "model release"
+    },
+    {
+      "id": "github-app",
+      "from": "github",
+      "to": "app",
+      "label": "push-to-deploy",
+      "variant": "emphasis"
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "Runtime",
+      "items": [
+        "Streamlit serves the page; the browser panel owns playback timing",
+        "Clips are local files served by Streamlit static serving"
+      ]
+    },
+    {
+      "dot": "amber",
+      "title": "Honesty layer",
+      "items": [
+        "Every sign carries a badge: validated, fingerspelled, not available",
+        "Overrun is shown, never absorbed by dropping signs"
+      ]
+    },
+    {
+      "dot": "slate",
+      "title": "Offline only",
+      "items": [
+        "MediaPipe and PyTorch never ship in the runtime",
+        "CI fails the build if peak RSS exceeds budget"
+      ]
+    }
+  ]
+}

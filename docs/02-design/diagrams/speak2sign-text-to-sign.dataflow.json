@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Speak2Sign v2 Text to Sign Data Flow",
+    "viewBox": [
+      1080,
+      520
+    ],
+    "quality_profile": "showcase",
+    "views": [
+      {
+        "id": "inputs",
+        "label": "Three inputs, one transcript",
+        "focus": [
+          "demo",
+          "nws",
+          "upload",
+          "asr",
+          "timed"
+        ],
+        "note": "Curated items, the live forecast, and uploads all become a timed transcript."
+      },
+      {
+        "id": "gloss-paths",
+        "label": "Rules and T5",
+        "focus": [
+          "timed",
+          "rules",
+          "t5",
+          "lexicon"
+        ],
+        "note": "Rules are the default; T5 is a toggle that feeds the same lexicon."
+      },
+      {
+        "id": "honesty",
+        "label": "Badges into the timeline",
+        "focus": [
+          "lexicon",
+          "badges",
+          "timeline",
+          "panel"
+        ],
+        "note": "Every entry in the timeline carries its provenance badge."
+      }
+    ]
+  },
+  "stages": [
+    {
+      "label": "Sources"
+    },
+    {
+      "label": "Transcript"
+    },
+    {
+      "label": "Gloss"
+    },
+    {
+      "label": "Resolve"
+    },
+    {
+      "label": "Render"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "demo",
+      "type": "external",
+      "label": "Curated item",
+      "sublabel": "VOA MP3 + transcript",
+      "stage": 0,
+      "row": 0,
+      "tag": "public domain",
+      "width": 124
+    },
+    {
+      "id": "nws",
+      "type": "external",
+      "label": "NWS forecast",
+      "sublabel": "live JSON text",
+      "stage": 0,
+      "row": 1,
+      "tag": "no key"
+    },
+    {
+      "id": "upload",
+      "type": "external",
+      "label": "Uploaded clip",
+      "sublabel": "≤ 60 s audio",
+      "stage": 0,
+      "row": 2,
+      "tag": "Phase 4"
+    },
+    {
+      "id": "timed",
+      "type": "backend",
+      "label": "Timed transcript",
+      "sublabel": "words + onsets",
+      "stage": 1,
+      "row": 1
+    },
+    {
+      "id": "asr",
+      "type": "backend",
+      "label": "faster-whisper",
+      "sublabel": "base.en int8",
+      "stage": 1,
+      "row": 2,
+      "tag": "lazy load"
+    },
+    {
+      "id": "rules",
+      "type": "backend",
+      "label": "Rule pass",
+      "sublabel": "normalise + reorder",
+      "stage": 2,
+      "row": 0,
+      "tag": "default"
+    },
+    {
+      "id": "t5",
+      "type": "backend",
+      "label": "T5-small",
+      "sublabel": "CTranslate2 int8",
+      "stage": 2,
+      "row": 2,
+      "tag": "toggle"
+    },
+    {
+      "id": "lexicon",
+      "type": "database",
+      "label": "Concept lexicon",
+      "sublabel": "keyword → clip",
+      "stage": 3,
+      "row": 1
+    },
+    {
+      "id": "badges",
+      "type": "security",
+      "label": "Provenance",
+      "sublabel": "validated / spelled / n/a",
+      "stage": 3,
+      "row": 2,
+      "tag": "honesty layer",
+      "width": 124
+    },
+    {
+      "id": "timeline",
+      "type": "database",
+      "label": "timeline.json",
+      "sublabel": "contract schema",
+      "stage": 4,
+      "row": 1
+    },
+    {
+      "id": "panel",
+      "type": "frontend",
+      "label": "Interpreter panel",
+      "sublabel": "video, media clock",
+      "stage": 4,
+      "row": 2
+    }
+  ],
+  "flows": [
+    {
+      "id": "demo-timed",
+      "from": "demo",
+      "to": "timed",
+      "label": "corrected timings",
+      "classification": "offline, human-checked",
+      "variant": "emphasis"
+    },
+    {
+      "id": "nws-timed",
+      "from": "nws",
+      "to": "timed",
+      "label": "forecast text",
+      "classification": "live",
+      "route": "straight",
+      "labelAt": [
+        212,
+        292
+      ]
+    },
+    {
+      "id": "upload-asr",
+      "from": "upload",
+      "to": "asr",
+      "label": "audio",
+      "classification": "user content"
+    },
+    {
+      "id": "asr-timed",
+      "from": "asr",
+      "to": "timed",
+      "label": "word timestamps",
+      "classification": "server ASR",
+      "labelAt": [
+        315,
+        326
+      ]
+    },
+    {
+      "id": "timed-rules",
+      "from": "timed",
+      "to": "rules",
+      "label": "sentence",
+      "classification": "default path",
+      "variant": "emphasis"
+    },
+    {
+      "id": "timed-t5",
+      "from": "timed",
+      "to": "t5",
+      "label": "sentence when toggled",
+      "classification": "DL path",
+      "variant": "dashed"
+    },
+    {
+      "id": "rules-lexicon",
+      "from": "rules",
+      "to": "lexicon",
+      "label": "gloss sequence",
+      "classification": "default path",
+      "variant": "emphasis"
+    },
+    {
+      "id": "t5-lexicon",
+      "from": "t5",
+      "to": "lexicon",
+      "label": "gloss sequence",
+      "classification": "DL path",
+      "variant": "dashed"
+    },
+    {
+      "id": "lexicon-badges",
+      "from": "lexicon",
+      "to": "badges",
+      "label": "concept + source",
+      "classification": "licence per clip",
+      "variant": "security",
+      "labelAt": [
+        745,
+        328
+      ]
+    },
+    {
+      "id": "lexicon-timeline",
+      "from": "lexicon",
+      "to": "timeline",
+      "label": "clip ids at onsets",
+      "classification": "contract",
+      "variant": "emphasis",
+      "route": "straight",
+      "labelAt": [
+        852,
+        226
+      ]
+    },
+    {
+      "id": "badges-timeline",
+      "from": "badges",
+      "to": "timeline",
+      "label": "badge per sign",
+      "classification": "contract",
+      "variant": "security"
+    },
+    {
+      "id": "timeline-panel",
+      "from": "timeline",
+      "to": "panel",
+      "label": "timeline.json",
+      "classification": "one file per item",
+      "variant": "emphasis",
+      "labelAt": [
+        960,
+        328
+      ]
+    }
+  ],
+  "cards": [
+    {
+      "dot": "emerald",
+      "title": "One transcript shape",
+      "items": [
+        "Every input becomes words with onset seconds",
+        "Demo items are corrected by hand so the demo never depends on live ASR"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "Two gloss paths, one lexicon",
+      "items": [
+        "Rules are inspectable and ship as default",
+        "T5 is the assessed deep-learning component behind a toggle"
+      ]
+    },
+    {
+      "dot": "rose",
+      "title": "Provenance travels with the data",
+      "items": [
+        "The lexicon records source and licence for every clip",
+        "Badges are computed once and stored in the timeline"
+      ]
+    }
+  ]
+}

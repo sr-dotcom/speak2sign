@@ -1,0 +1,367 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://speak2sign.local/contracts/timeline.schema.json",
+  "title": "Speak2Sign timeline",
+  "description": "The single interface between the Python pipeline and the browser interpreter panel. One document per news item or request. Times are seconds on the news media's own clock.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "item",
+    "media",
+    "entries",
+    "stats",
+    "provenance"
+  ],
+  "properties": {
+    "version": {
+      "const": 1
+    },
+    "item": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "title",
+        "source",
+        "lane"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9-]*$"
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source": {
+          "type": "string",
+          "description": "Where the news text came from, shown on screen, e.g. 'VOA newscast 2024-11-19 (public domain)'"
+        },
+        "broadcast_date": {
+          "type": "string",
+          "format": "date"
+        },
+        "lane": {
+          "enum": [
+            "curated",
+            "weather",
+            "headline",
+            "upload",
+            "typed"
+          ]
+        }
+      }
+    },
+    "media": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "audio",
+            "video",
+            "tts",
+            "none"
+          ],
+          "description": "tts = the browser's speechSynthesis narrates the text; none = captions only"
+        },
+        "url": {
+          "type": "string",
+          "description": "Path under /app/static/ for audio or video"
+        },
+        "duration_s": {
+          "type": "number",
+          "minimum": 0
+        }
+      }
+    },
+    "captions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "t",
+          "text"
+        ],
+        "properties": {
+          "t": {
+            "type": "number",
+            "minimum": 0
+          },
+          "text": {
+            "type": "string"
+          },
+          "dropped": {
+            "type": "boolean",
+            "description": "A function word the rule pass dropped; shown struck through so the loss is visible"
+          }
+        }
+      }
+    },
+    "entries": {
+      "type": "array",
+      "description": "Ordered signing plan. Each entry is scheduled at onset_s on the media clock.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "onset_s",
+          "word",
+          "gloss",
+          "badge"
+        ],
+        "properties": {
+          "onset_s": {
+            "type": "number",
+            "minimum": 0
+          },
+          "word": {
+            "type": "string",
+            "description": "The English token(s) this entry covers, for the caption highlight"
+          },
+          "gloss": {
+            "type": "string",
+            "description": "ID-gloss or concept label, uppercase"
+          },
+          "badge": {
+            "enum": [
+              "validated",
+              "fingerspelled",
+              "name",
+              "not_available"
+            ],
+            "description": "name = a proper noun already fingerspelled once in this item, now shown as text"
+          },
+          "clips": {
+            "type": "array",
+            "description": "Zero clips for not_available and name; one for validated; one per letter or digit for fingerspelled and numbers",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "url",
+                "duration_s",
+                "source"
+              ],
+              "properties": {
+                "url": {
+                  "type": "string"
+                },
+                "duration_s": {
+                  "type": "number",
+                  "exclusiveMinimum": 0
+                },
+                "source": {
+                  "enum": [
+                    "cats",
+                    "signbank",
+                    "wikimedia"
+                  ]
+                },
+                "attribution_url": {
+                  "type": "string"
+                },
+                "in_s": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "start of the active motion span to play"
+                },
+                "out_s": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "end of the active motion span to play"
+                },
+                "rate": {
+                  "type": "number",
+                  "minimum": 0.5,
+                  "maximum": 3,
+                  "description": "playbackRate for this clip"
+                }
+              }
+            }
+          },
+          "note": {
+            "type": "string",
+            "description": "Shown on hover or focus: why this badge, e.g. 'no established sign in this system'"
+          },
+          "sentence": {
+            "type": "integer",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "stats": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "tokens",
+        "validated",
+        "fingerspelled",
+        "not_available",
+        "coverage",
+        "fingerspelling_rate",
+        "signing_s",
+        "speech_s"
+      ],
+      "properties": {
+        "tokens": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "validated": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fingerspelled": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "not_available": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "coverage": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1,
+          "description": "validated / content tokens"
+        },
+        "fingerspelling_rate": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "signing_s": {
+          "type": "number",
+          "minimum": 0,
+          "description": "Projected signing time: active spans at the recorded rates"
+        },
+        "speech_s": {
+          "type": "number",
+          "minimum": 0
+        },
+        "gloss_engine": {
+          "enum": [
+            "rules",
+            "t5"
+          ]
+        },
+        "names": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "disclaimer",
+        "attributions"
+      ],
+      "properties": {
+        "disclaimer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "attributions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "source",
+              "licence",
+              "text"
+            ],
+            "properties": {
+              "source": {
+                "enum": [
+                  "cats",
+                  "signbank",
+                  "wikimedia",
+                  "voa",
+                  "nws",
+                  "guardian",
+                  "aslg_pc12",
+                  "t5"
+                ]
+              },
+              "licence": {
+                "type": "string"
+              },
+              "text": {
+                "type": "string"
+              },
+              "url": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "playback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "sign_rate",
+        "letter_rate"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "interpreter-paced",
+            "free-running"
+          ],
+          "description": "interpreter-paced: the media pauses at each sentence end until the panel has finished that sentence (ADR 0008)"
+        },
+        "sign_rate": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2
+        },
+        "letter_rate": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 3
+        }
+      }
+    },
+    "sentences": {
+      "type": "array",
+      "description": "Sentence spans on the media clock; the panel pauses the media at t_end until every entry of that sentence has played",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "index",
+          "t_start",
+          "t_end"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "t_start": {
+            "type": "number",
+            "minimum": 0
+          },
+          "t_end": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    }
+  }
+}

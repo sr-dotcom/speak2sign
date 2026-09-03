@@ -1,0 +1,1432 @@
+{
+ "version": 1,
+ "item": {
+  "id": "california-fire-warning",
+  "title": "california-fire-warning",
+  "source": "VOA newscast",
+  "lane": "curated",
+  "broadcast_date": "2025-01-20"
+ },
+ "media": {
+  "kind": "audio",
+  "duration_s": 26.154
+ },
+ "playback": {
+  "mode": "interpreter-paced",
+  "sign_rate": 1.25,
+  "letter_rate": 2.0
+ },
+ "sentences": [
+  {
+   "index": 0,
+   "t_start": 0.0,
+   "t_end": 13.846
+  },
+  {
+   "index": 1,
+   "t_start": 13.846,
+   "t_end": 14.615
+  },
+  {
+   "index": 2,
+   "t_start": 14.615,
+   "t_end": 26.154
+  }
+ ],
+ "captions": [
+  {
+   "t": 0.0,
+   "text": "weeks"
+  },
+  {
+   "t": 0.0,
+   "text": "southern"
+  },
+  {
+   "t": 0.385,
+   "text": "californians"
+  },
+  {
+   "t": 0.769,
+   "text": "are",
+   "dropped": true
+  },
+  {
+   "t": 1.154,
+   "text": "again"
+  },
+  {
+   "t": 1.538,
+   "text": "bracing"
+  },
+  {
+   "t": 1.923,
+   "text": "for",
+   "dropped": true
+  },
+  {
+   "t": 2.308,
+   "text": "gusty"
+  },
+  {
+   "t": 2.692,
+   "text": "winds"
+  },
+  {
+   "t": 3.077,
+   "text": "and"
+  },
+  {
+   "t": 3.462,
+   "text": "a",
+   "dropped": true
+  },
+  {
+   "t": 3.846,
+   "text": "heightened"
+  },
+  {
+   "t": 4.231,
+   "text": "risk"
+  },
+  {
+   "t": 4.615,
+   "text": "of",
+   "dropped": true
+  },
+  {
+   "t": 5.0,
+   "text": "wildfires"
+  },
+  {
+   "t": 5.385,
+   "text": "less"
+  },
+  {
+   "t": 5.769,
+   "text": "than",
+   "dropped": true
+  },
+  {
+   "t": 6.154,
+   "text": "two"
+  },
+  {
+   "t": 6.923,
+   "text": "after"
+  },
+  {
+   "t": 7.308,
+   "text": "the",
+   "dropped": true
+  },
+  {
+   "t": 7.692,
+   "text": "start"
+  },
+  {
+   "t": 8.077,
+   "text": "of",
+   "dropped": true
+  },
+  {
+   "t": 8.462,
+   "text": "deadly"
+  },
+  {
+   "t": 8.846,
+   "text": "blazes"
+  },
+  {
+   "t": 9.231,
+   "text": "that",
+   "dropped": true
+  },
+  {
+   "t": 9.615,
+   "text": "have",
+   "dropped": true
+  },
+  {
+   "t": 10.0,
+   "text": "killed"
+  },
+  {
+   "t": 10.385,
+   "text": "at",
+   "dropped": true
+  },
+  {
+   "t": 10.769,
+   "text": "least"
+  },
+  {
+   "t": 11.154,
+   "text": "27"
+  },
+  {
+   "t": 11.538,
+   "text": "people"
+  },
+  {
+   "t": 11.923,
+   "text": "and"
+  },
+  {
+   "t": 12.308,
+   "text": "destroyed"
+  },
+  {
+   "t": 12.692,
+   "text": "thousands"
+  },
+  {
+   "t": 13.077,
+   "text": "of",
+   "dropped": true
+  },
+  {
+   "t": 13.462,
+   "text": "homes"
+  },
+  {
+   "t": 13.846,
+   "text": "the",
+   "dropped": true
+  },
+  {
+   "t": 14.231,
+   "text": "u.s."
+  },
+  {
+   "t": 14.615,
+   "text": "monday"
+  },
+  {
+   "t": 14.615,
+   "text": "tuesday"
+  },
+  {
+   "t": 14.615,
+   "text": "national"
+  },
+  {
+   "t": 15.0,
+   "text": "weather"
+  },
+  {
+   "t": 15.385,
+   "text": "service"
+  },
+  {
+   "t": 15.769,
+   "text": "has",
+   "dropped": true
+  },
+  {
+   "t": 16.154,
+   "text": "issued"
+  },
+  {
+   "t": 16.538,
+   "text": "a",
+   "dropped": true
+  },
+  {
+   "t": 16.923,
+   "text": "red flag"
+  },
+  {
+   "t": 17.692,
+   "text": "warning"
+  },
+  {
+   "t": 18.077,
+   "text": "signaling"
+  },
+  {
+   "t": 18.462,
+   "text": "increased"
+  },
+  {
+   "t": 18.846,
+   "text": "fire"
+  },
+  {
+   "t": 19.231,
+   "text": "danger"
+  },
+  {
+   "t": 19.615,
+   "text": "for",
+   "dropped": true
+  },
+  {
+   "t": 20.0,
+   "text": "los"
+  },
+  {
+   "t": 20.385,
+   "text": "angeles"
+  },
+  {
+   "t": 20.769,
+   "text": "on",
+   "dropped": true
+  },
+  {
+   "t": 21.538,
+   "text": "and"
+  },
+  {
+   "t": 22.308,
+   "text": "due to"
+  },
+  {
+   "t": 23.077,
+   "text": "low"
+  },
+  {
+   "t": 23.462,
+   "text": "humidity"
+  },
+  {
+   "t": 23.846,
+   "text": "and"
+  },
+  {
+   "t": 24.231,
+   "text": "warm"
+  },
+  {
+   "t": 24.615,
+   "text": "dry"
+  },
+  {
+   "t": 25.0,
+   "text": "santa"
+  },
+  {
+   "t": 25.385,
+   "text": "ana"
+  },
+  {
+   "t": 25.769,
+   "text": "winds"
+  }
+ ],
+ "entries": [
+  {
+   "onset_s": 0.0,
+   "sentence": 0,
+   "word": "weeks",
+   "gloss": "WEEK",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/week.mp4",
+     "duration_s": 2.602,
+     "in_s": 0.467,
+     "out_s": 2.602,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/weekASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 0.0,
+   "sentence": 0,
+   "word": "southern",
+   "gloss": "SOUTH",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/south.mp4",
+     "duration_s": 2.602,
+     "in_s": 0.6,
+     "out_s": 2.602,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/southASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 0.385,
+   "sentence": 0,
+   "word": "californians",
+   "gloss": "CALIFORNIA",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/california.mp4",
+     "duration_s": 2.702,
+     "in_s": 0.3,
+     "out_s": 2.702,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/californiaASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 1.154,
+   "sentence": 0,
+   "word": "again",
+   "gloss": "AGAIN",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/again.mp4",
+     "duration_s": 3.502,
+     "in_s": 0.0,
+     "out_s": 3.502,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/againASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 1.538,
+   "sentence": 0,
+   "word": "bracing",
+   "gloss": "PREPARE",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/prepare.mp4",
+     "duration_s": 2.302,
+     "in_s": 0.6,
+     "out_s": 2.302,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/readyASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 2.308,
+   "sentence": 0,
+   "word": "gusty",
+   "gloss": "WIND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/wind.mp4",
+     "duration_s": 2.169,
+     "in_s": 0.067,
+     "out_s": 2.169,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/windwindyASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 2.692,
+   "sentence": 0,
+   "word": "winds",
+   "gloss": "WIND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/wind.mp4",
+     "duration_s": 2.169,
+     "in_s": 0.067,
+     "out_s": 2.169,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/windwindyASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 3.077,
+   "sentence": 0,
+   "word": "and",
+   "gloss": "AND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/and.mp4",
+     "duration_s": 2.402,
+     "in_s": 0.234,
+     "out_s": 2.402,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/plusASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 3.846,
+   "sentence": 0,
+   "word": "heightened",
+   "gloss": "INCREASE RISK",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/increase-risk.mp4",
+     "duration_s": 2.035,
+     "in_s": 0.0,
+     "out_s": 1.902,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/biggerlargergreaterASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 4.231,
+   "sentence": 0,
+   "word": "risk",
+   "gloss": "DANGER",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/danger.mp4",
+     "duration_s": 2.902,
+     "in_s": 0.6,
+     "out_s": 2.902,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/riskASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 5.0,
+   "sentence": 0,
+   "word": "wildfires",
+   "gloss": "FIREstr",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/fire.mp4",
+     "duration_s": 2.536,
+     "in_s": 0.567,
+     "out_s": 2.302,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/457.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 5.385,
+   "sentence": 0,
+   "word": "less",
+   "gloss": "LESS",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/less.mp4",
+     "duration_s": 4.103,
+     "in_s": 1.001,
+     "out_s": 4.103,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/lessunderASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 6.154,
+   "sentence": 0,
+   "word": "two",
+   "gloss": "TWO",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/letters/digit-2.mp4",
+     "duration_s": 2.386,
+     "in_s": 0.401,
+     "out_s": 2.169,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1336.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 6.923,
+   "sentence": 0,
+   "word": "after",
+   "gloss": "AFTER",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/after.mp4",
+     "duration_s": 3.045,
+     "in_s": 0.109,
+     "out_s": 2.686,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1971.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 7.692,
+   "sentence": 0,
+   "word": "start",
+   "gloss": "START",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/start.mp4",
+     "duration_s": 2.302,
+     "in_s": 0.033,
+     "out_s": 2.302,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/startASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 8.462,
+   "sentence": 0,
+   "word": "deadly",
+   "gloss": "KILLix",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/kill.mp4",
+     "duration_s": 2.544,
+     "in_s": 0.025,
+     "out_s": 2.227,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/616.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 8.846,
+   "sentence": 0,
+   "word": "blazes",
+   "gloss": "FIREstr",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/fire.mp4",
+     "duration_s": 2.536,
+     "in_s": 0.567,
+     "out_s": 2.302,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/457.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 10.0,
+   "sentence": 0,
+   "word": "killed",
+   "gloss": "KILLix",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/kill.mp4",
+     "duration_s": 2.544,
+     "in_s": 0.025,
+     "out_s": 2.227,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/616.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 10.769,
+   "sentence": 0,
+   "word": "least",
+   "gloss": "LEAST",
+   "badge": "fingerspelled",
+   "clips": [
+    {
+     "url": "app/static/letters/letter-l.mp4",
+     "duration_s": 1.835,
+     "in_s": 0.0,
+     "out_s": 1.835,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1666.html"
+    },
+    {
+     "url": "app/static/letters/letter-e.mp4",
+     "duration_s": 2.044,
+     "in_s": 0.0,
+     "out_s": 1.977,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1672.html"
+    },
+    {
+     "url": "app/static/letters/letter-a.mp4",
+     "duration_s": 2.586,
+     "in_s": 0.0,
+     "out_s": 2.311,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/493.html"
+    },
+    {
+     "url": "app/static/letters/letter-s.mp4",
+     "duration_s": 1.96,
+     "in_s": 0.0,
+     "out_s": 1.935,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1659.html"
+    },
+    {
+     "url": "app/static/letters/letter-t.mp4",
+     "duration_s": 1.835,
+     "in_s": 0.0,
+     "out_s": 1.835,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1658.html"
+    }
+   ],
+   "note": "no established sign in this system"
+  },
+  {
+   "onset_s": 11.154,
+   "sentence": 0,
+   "word": "27",
+   "gloss": "27",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/letters/digit-2.mp4",
+     "duration_s": 2.386,
+     "in_s": 0.401,
+     "out_s": 2.169,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1336.html"
+    },
+    {
+     "url": "app/static/letters/digit-7.mp4",
+     "duration_s": 2.544,
+     "in_s": 0.484,
+     "out_s": 2.311,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/641.html"
+    }
+   ],
+   "note": "number, signed digit by digit"
+  },
+  {
+   "onset_s": 11.538,
+   "sentence": 0,
+   "word": "people",
+   "gloss": "PEOPLEdis",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/people.mp4",
+     "duration_s": 2.002,
+     "in_s": 0.033,
+     "out_s": 2.002,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/570.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 11.923,
+   "sentence": 0,
+   "word": "and",
+   "gloss": "AND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/and.mp4",
+     "duration_s": 2.402,
+     "in_s": 0.234,
+     "out_s": 2.402,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/plusASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 12.308,
+   "sentence": 0,
+   "word": "destroyed",
+   "gloss": "DESTROY",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/destroy.mp4",
+     "duration_s": 4.703,
+     "in_s": 0.0,
+     "out_s": 4.703,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/damageASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 12.692,
+   "sentence": 0,
+   "word": "thousands",
+   "gloss": "THOUSAND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/thousand.mp4",
+     "duration_s": 2.602,
+     "in_s": 0.667,
+     "out_s": 2.602,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/thousandASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 13.462,
+   "sentence": 0,
+   "word": "homes",
+   "gloss": "HOUSE",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/house.mp4",
+     "duration_s": 2.502,
+     "in_s": 0.234,
+     "out_s": 2.185,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/486.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 14.231,
+   "sentence": 1,
+   "word": "u.s.",
+   "gloss": "AMERICA",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/united-states.mp4",
+     "duration_s": 1.96,
+     "in_s": 0.067,
+     "out_s": 1.768,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/2315.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 14.615,
+   "sentence": 2,
+   "word": "monday",
+   "gloss": "MONDAY",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/monday.mp4",
+     "duration_s": 3.002,
+     "in_s": 0.534,
+     "out_s": 3.002,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/mondayASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 14.615,
+   "sentence": 2,
+   "word": "tuesday",
+   "gloss": "TUESDAY",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/tuesday.mp4",
+     "duration_s": 2.211,
+     "in_s": 0.025,
+     "out_s": 2.019,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/665.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 14.615,
+   "sentence": 2,
+   "word": "national",
+   "gloss": "COUNTRY",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/country.mp4",
+     "duration_s": 3.502,
+     "in_s": 0.901,
+     "out_s": 3.502,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/nationnationalASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 15.0,
+   "sentence": 2,
+   "word": "weather",
+   "gloss": "WEATHER",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/weather.mp4",
+     "duration_s": 3.37,
+     "in_s": 0.401,
+     "out_s": 3.103,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/2268.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 15.385,
+   "sentence": 2,
+   "word": "service",
+   "gloss": "SERVICE",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/service.mp4",
+     "duration_s": 8.706,
+     "in_s": 1.468,
+     "out_s": 8.706,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/agencyASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 16.154,
+   "sentence": 2,
+   "word": "issued",
+   "gloss": "ISSUE",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/issue.mp4",
+     "duration_s": 1.568,
+     "in_s": 0.0,
+     "out_s": 1.568,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/publishgetoutASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 16.923,
+   "sentence": 2,
+   "word": "red flag",
+   "gloss": "WARN",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/warning.mp4",
+     "duration_s": 1.877,
+     "in_s": 0.067,
+     "out_s": 1.685,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1411.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 17.692,
+   "sentence": 2,
+   "word": "warning",
+   "gloss": "WARN",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/warning.mp4",
+     "duration_s": 1.877,
+     "in_s": 0.067,
+     "out_s": 1.685,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1411.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 18.077,
+   "sentence": 2,
+   "word": "signaling",
+   "gloss": "SIGNAL",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/signal.mp4",
+     "duration_s": 4.703,
+     "in_s": 0.801,
+     "out_s": 4.703,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/indicateASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 18.462,
+   "sentence": 2,
+   "word": "increased",
+   "gloss": "INCREASE RISK",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/increase-risk.mp4",
+     "duration_s": 2.035,
+     "in_s": 0.0,
+     "out_s": 1.902,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/biggerlargergreaterASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 18.846,
+   "sentence": 2,
+   "word": "fire",
+   "gloss": "FIREstr",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/fire.mp4",
+     "duration_s": 2.536,
+     "in_s": 0.567,
+     "out_s": 2.302,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/457.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 19.231,
+   "sentence": 2,
+   "word": "danger",
+   "gloss": "DANGER",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/danger.mp4",
+     "duration_s": 2.902,
+     "in_s": 0.6,
+     "out_s": 2.902,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/riskASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 20.0,
+   "sentence": 2,
+   "word": "los",
+   "gloss": "LOS",
+   "badge": "fingerspelled",
+   "clips": [
+    {
+     "url": "app/static/letters/letter-l.mp4",
+     "duration_s": 1.835,
+     "in_s": 0.0,
+     "out_s": 1.835,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1666.html"
+    },
+    {
+     "url": "app/static/letters/letter-o.mp4",
+     "duration_s": 2.002,
+     "in_s": 0.359,
+     "out_s": 1.852,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1663.html"
+    },
+    {
+     "url": "app/static/letters/letter-s.mp4",
+     "duration_s": 1.96,
+     "in_s": 0.0,
+     "out_s": 1.935,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1659.html"
+    }
+   ],
+   "note": "name, fingerspelled on first mention"
+  },
+  {
+   "onset_s": 20.385,
+   "sentence": 2,
+   "word": "angeles",
+   "gloss": "ANGELES",
+   "badge": "fingerspelled",
+   "clips": [
+    {
+     "url": "app/static/letters/letter-a.mp4",
+     "duration_s": 2.586,
+     "in_s": 0.0,
+     "out_s": 2.311,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/493.html"
+    },
+    {
+     "url": "app/static/letters/letter-n.mp4",
+     "duration_s": 2.211,
+     "in_s": 0.025,
+     "out_s": 2.102,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1664.html"
+    },
+    {
+     "url": "app/static/letters/letter-g.mp4",
+     "duration_s": 1.96,
+     "in_s": 0.15,
+     "out_s": 1.893,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1670.html"
+    },
+    {
+     "url": "app/static/letters/letter-e.mp4",
+     "duration_s": 2.044,
+     "in_s": 0.0,
+     "out_s": 1.977,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1672.html"
+    },
+    {
+     "url": "app/static/letters/letter-l.mp4",
+     "duration_s": 1.835,
+     "in_s": 0.0,
+     "out_s": 1.835,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1666.html"
+    },
+    {
+     "url": "app/static/letters/letter-e.mp4",
+     "duration_s": 2.044,
+     "in_s": 0.0,
+     "out_s": 1.977,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1672.html"
+    },
+    {
+     "url": "app/static/letters/letter-s.mp4",
+     "duration_s": 1.96,
+     "in_s": 0.0,
+     "out_s": 1.935,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1659.html"
+    }
+   ],
+   "note": "name, fingerspelled on first mention"
+  },
+  {
+   "onset_s": 21.538,
+   "sentence": 2,
+   "word": "and",
+   "gloss": "AND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/and.mp4",
+     "duration_s": 2.402,
+     "in_s": 0.234,
+     "out_s": 2.402,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/plusASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 22.308,
+   "sentence": 2,
+   "word": "due to",
+   "gloss": "DUE TO",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/due-to.mp4",
+     "duration_s": 3.002,
+     "in_s": 0.3,
+     "out_s": 3.002,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/becauseASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 23.077,
+   "sentence": 2,
+   "word": "low",
+   "gloss": "LOW",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/low.mp4",
+     "duration_s": 5.003,
+     "in_s": 0.467,
+     "out_s": 5.003,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/minimumASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 23.462,
+   "sentence": 2,
+   "word": "humidity",
+   "gloss": "HUMID",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/humid.mp4",
+     "duration_s": 2.436,
+     "in_s": 0.033,
+     "out_s": 2.369,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/humidASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 23.846,
+   "sentence": 2,
+   "word": "and",
+   "gloss": "AND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/and.mp4",
+     "duration_s": 2.402,
+     "in_s": 0.234,
+     "out_s": 2.402,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/plusASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 24.231,
+   "sentence": 2,
+   "word": "warm",
+   "gloss": "WARM",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/warm.mp4",
+     "duration_s": 3.202,
+     "in_s": 0.6,
+     "out_s": 3.202,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/warmASL"
+    }
+   ]
+  },
+  {
+   "onset_s": 24.615,
+   "sentence": 2,
+   "word": "dry",
+   "gloss": "DRY",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/dry.mp4",
+     "duration_s": 1.877,
+     "in_s": 0.025,
+     "out_s": 1.877,
+     "rate": 1.25,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/122.html"
+    }
+   ]
+  },
+  {
+   "onset_s": 25.0,
+   "sentence": 2,
+   "word": "santa",
+   "gloss": "SANTA",
+   "badge": "fingerspelled",
+   "clips": [
+    {
+     "url": "app/static/letters/letter-s.mp4",
+     "duration_s": 1.96,
+     "in_s": 0.0,
+     "out_s": 1.935,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1659.html"
+    },
+    {
+     "url": "app/static/letters/letter-a.mp4",
+     "duration_s": 2.586,
+     "in_s": 0.0,
+     "out_s": 2.311,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/493.html"
+    },
+    {
+     "url": "app/static/letters/letter-n.mp4",
+     "duration_s": 2.211,
+     "in_s": 0.025,
+     "out_s": 2.102,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1664.html"
+    },
+    {
+     "url": "app/static/letters/letter-t.mp4",
+     "duration_s": 1.835,
+     "in_s": 0.0,
+     "out_s": 1.835,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1658.html"
+    },
+    {
+     "url": "app/static/letters/letter-a.mp4",
+     "duration_s": 2.586,
+     "in_s": 0.0,
+     "out_s": 2.311,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/493.html"
+    }
+   ],
+   "note": "name, fingerspelled on first mention"
+  },
+  {
+   "onset_s": 25.385,
+   "sentence": 2,
+   "word": "ana",
+   "gloss": "ANA",
+   "badge": "fingerspelled",
+   "clips": [
+    {
+     "url": "app/static/letters/letter-a.mp4",
+     "duration_s": 2.586,
+     "in_s": 0.0,
+     "out_s": 2.311,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/493.html"
+    },
+    {
+     "url": "app/static/letters/letter-n.mp4",
+     "duration_s": 2.211,
+     "in_s": 0.025,
+     "out_s": 2.102,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/1664.html"
+    },
+    {
+     "url": "app/static/letters/letter-a.mp4",
+     "duration_s": 2.586,
+     "in_s": 0.0,
+     "out_s": 2.311,
+     "rate": 2.0,
+     "source": "signbank",
+     "attribution_url": "https://aslsignbank.com/dictionary/gloss/493.html"
+    }
+   ],
+   "note": "name, fingerspelled on first mention"
+  },
+  {
+   "onset_s": 25.769,
+   "sentence": 2,
+   "word": "winds",
+   "gloss": "WIND",
+   "badge": "validated",
+   "clips": [
+    {
+     "url": "app/static/clips/wind.mp4",
+     "duration_s": 2.169,
+     "in_s": 0.067,
+     "out_s": 2.169,
+     "rate": 1.25,
+     "source": "cats",
+     "attribution_url": "https://archive.org/details/windwindyASL"
+    }
+   ]
+  }
+ ],
+ "stats": {
+  "tokens": 50,
+  "validated": 45,
+  "fingerspelled": 5,
+  "names": 0,
+  "not_available": 0,
+  "coverage": 0.9,
+  "fingerspelling_rate": 0.1,
+  "signing_s": 110.047,
+  "speech_s": 26.154,
+  "gloss_engine": "rules"
+ },
+ "provenance": {
+  "disclaimer": "Research demonstration. This panel retrieves recorded ASL clips for words it has validated signs for, fingerspells the rest, and says so on every sign. It does not represent ASL grammar (directional verbs, classifiers, facial grammar) and is not a substitute for a human interpreter.",
+  "attributions": [
+   {
+    "source": "cats",
+    "licence": "Public Domain",
+    "text": "Sign clips: The ASL Dictionary, Center for Accessible Technology in Sign (Georgia Tech / Atlanta Area School for the Deaf), via archive.org",
+    "url": "https://archive.org/search?query=creator%3A%28%22Center+for+Accessible+Technology+in+Sign%22%29"
+   },
+   {
+    "source": "signbank",
+    "licence": "CC BY-NC-SA 4.0",
+    "text": "Sign clips: Hochgesang, J. A., Crasborn, O., & Lillo-Martin, D. (2017-2026). ASL Signbank.",
+    "url": "https://aslsignbank.com"
+   },
+   {
+    "source": "voa",
+    "licence": "Public Domain",
+    "text": "News audio and transcript: Voice of America newscasts via the Internet Archive VOANewscasts collection",
+    "url": "https://archive.org/details/VOANewscasts"
+   }
+  ]
+ }
+}
