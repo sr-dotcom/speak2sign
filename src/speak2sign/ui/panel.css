@@ -1,0 +1,29 @@
+.s2s{font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;color:inherit}
+.s2s [hidden]{display:none !important}
+.s2s-controls{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.s2s button{font:600 14px/1 system-ui,sans-serif;padding:8px 14px;border-radius:4px;border:1px solid rgba(127,127,127,.4);background:#1E5EB8;color:#fff;cursor:pointer}
+.s2s button.s2s-restart{background:transparent;color:inherit}
+.s2s button:focus-visible{outline:2px solid #7FB0F5;outline-offset:2px}
+.s2s-status{opacity:.8;font-size:14px}
+.s2s-stage{display:grid;grid-template-columns:3fr 2fr;gap:16px;align-items:start}
+@media (max-width:800px){.s2s-stage{grid-template-columns:1fr}}
+.s2s-label{font:600 12px/1 system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;opacity:.7;margin-bottom:8px}
+.s2s-news{position:relative;border:1px solid rgba(127,127,127,.3);border-radius:6px;padding:12px;min-height:200px;background:rgba(127,127,127,.06)}
+.s2s-captions{font-size:20px;line-height:1.6}
+.s2s-captions span{padding:0 2px;border-radius:3px}
+.s2s-captions span.now{background:#E0A400;color:#111}
+.s2s-captions span.said{opacity:.55}
+.s2s-captions span.dropped{text-decoration:line-through;opacity:.4}
+.s2s-wait{position:absolute;left:12px;right:12px;bottom:12px;padding:8px 12px;border-radius:4px;background:#C8471B;color:#fff;font-weight:600}
+.s2s-panel{border:1px solid rgba(127,127,127,.3);border-radius:6px;padding:12px;background:#0f1620;color:#e6ebf2}
+.s2s-videos{position:relative;aspect-ratio:16/9;background:#000;border-radius:4px;overflow:hidden}
+.s2s-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.s2s-textsign{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font:700 40px/1.1 system-ui,sans-serif;color:#fff;text-align:center;padding:16px;background:#1b2c45}
+.s2s-sign{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin-top:10px;min-height:28px}
+.s2s-gloss{font:700 22px/1.2 ui-monospace,Consolas,monospace}
+.s2s-badge{font:600 11px/1 system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;padding:4px 8px;border-radius:3px}
+.s2s-badge.validated{background:#173225;color:#6cc493}
+.s2s-badge.fingerspelled{background:#3a2e12;color:#e3b24f}
+.s2s-badge.name{background:#1b2c45;color:#7fb0f5}
+.s2s-badge.not_available{background:#40201d;color:#ef7c73}
+.s2s-note{font-size:13px;opacity:.75}
