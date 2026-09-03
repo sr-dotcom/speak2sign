@@ -1,0 +1,286 @@
+{
+ "id": "sichuan-landslide",
+ "title": "Sichuan landslide",
+ "broadcast_date": "2025-02-09",
+ "topic": "Rescue",
+ "source": "VOA newscast 2025-02-09 via Internet Archive (public domain)",
+ "archive_item": "https://archive.org/details/voa-newscasts-2025-02-09",
+ "media": "news/sichuan-landslide.wav",
+ "duration_s": 21.19,
+ "text": "Chinese rescuers are searching for some 30 people after a landslide in southwestern Sichuan province buried 10 houses. The Ministry of Emergency Management deployed hundreds of rescuers, including firefighters, following the landslide Saturday in the Junlian county. State broadcaster CCTV said two people were pulled out alive and about 200 others evacuated.",
+ "words": [
+  {
+   "text": "Chinese",
+   "onset_s": 0.25,
+   "end_s": 0.49
+  },
+  {
+   "text": "rescuers",
+   "onset_s": 0.49,
+   "end_s": 1.03
+  },
+  {
+   "text": "are",
+   "onset_s": 1.03,
+   "end_s": 1.27
+  },
+  {
+   "text": "searching",
+   "onset_s": 1.27,
+   "end_s": 1.53
+  },
+  {
+   "text": "for",
+   "onset_s": 1.53,
+   "end_s": 1.95
+  },
+  {
+   "text": "some",
+   "onset_s": 1.95,
+   "end_s": 2.17
+  },
+  {
+   "text": "30",
+   "onset_s": 2.17,
+   "end_s": 2.41
+  },
+  {
+   "text": "people",
+   "onset_s": 2.41,
+   "end_s": 2.91
+  },
+  {
+   "text": "after",
+   "onset_s": 2.91,
+   "end_s": 3.25
+  },
+  {
+   "text": "a",
+   "onset_s": 3.25,
+   "end_s": 3.39
+  },
+  {
+   "text": "landslide",
+   "onset_s": 3.39,
+   "end_s": 3.81
+  },
+  {
+   "text": "in",
+   "onset_s": 3.81,
+   "end_s": 4.45
+  },
+  {
+   "text": "southwestern",
+   "onset_s": 4.45,
+   "end_s": 4.95
+  },
+  {
+   "text": "Sichuan",
+   "onset_s": 5.07,
+   "end_s": null
+  },
+  {
+   "text": "province",
+   "onset_s": 5.69,
+   "end_s": 5.87
+  },
+  {
+   "text": "buried",
+   "onset_s": 5.87,
+   "end_s": 6.37
+  },
+  {
+   "text": "10",
+   "onset_s": 6.37,
+   "end_s": 6.69
+  },
+  {
+   "text": "houses.",
+   "onset_s": 6.69,
+   "end_s": 7.03
+  },
+  {
+   "text": "The",
+   "onset_s": 7.55,
+   "end_s": 7.57
+  },
+  {
+   "text": "Ministry",
+   "onset_s": 7.57,
+   "end_s": 7.83
+  },
+  {
+   "text": "of",
+   "onset_s": 7.83,
+   "end_s": 8.15
+  },
+  {
+   "text": "Emergency",
+   "onset_s": 8.15,
+   "end_s": 8.27
+  },
+  {
+   "text": "Management",
+   "onset_s": 8.27,
+   "end_s": 9.03
+  },
+  {
+   "text": "deployed",
+   "onset_s": 9.03,
+   "end_s": 9.49
+  },
+  {
+   "text": "hundreds",
+   "onset_s": 9.49,
+   "end_s": 10.03
+  },
+  {
+   "text": "of",
+   "onset_s": 10.03,
+   "end_s": 10.23
+  },
+  {
+   "text": "rescuers,",
+   "onset_s": 10.23,
+   "end_s": 10.71
+  },
+  {
+   "text": "including",
+   "onset_s": 10.93,
+   "end_s": 11.15
+  },
+  {
+   "text": "firefighters,",
+   "onset_s": 11.15,
+   "end_s": 11.61
+  },
+  {
+   "text": "following",
+   "onset_s": 12.27,
+   "end_s": 12.53
+  },
+  {
+   "text": "the",
+   "onset_s": 12.53,
+   "end_s": 12.75
+  },
+  {
+   "text": "landslide",
+   "onset_s": 12.75,
+   "end_s": 12.95
+  },
+  {
+   "text": "Saturday",
+   "onset_s": 12.95,
+   "end_s": 13.63
+  },
+  {
+   "text": "in",
+   "onset_s": 13.63,
+   "end_s": 14.15
+  },
+  {
+   "text": "the",
+   "onset_s": 14.15,
+   "end_s": 14.23
+  },
+  {
+   "text": "Junlian",
+   "onset_s": 14.43,
+   "end_s": null
+  },
+  {
+   "text": "county.",
+   "onset_s": 14.71,
+   "end_s": 14.97
+  },
+  {
+   "text": "State",
+   "onset_s": 15.71,
+   "end_s": 15.71
+  },
+  {
+   "text": "broadcaster",
+   "onset_s": 15.71,
+   "end_s": 16.15
+  },
+  {
+   "text": "CCTV",
+   "onset_s": 16.15,
+   "end_s": 16.83
+  },
+  {
+   "text": "said",
+   "onset_s": 16.83,
+   "end_s": 17.51
+  },
+  {
+   "text": "two",
+   "onset_s": 17.51,
+   "end_s": 17.71
+  },
+  {
+   "text": "people",
+   "onset_s": 17.71,
+   "end_s": 18.09
+  },
+  {
+   "text": "were",
+   "onset_s": 18.09,
+   "end_s": 18.25
+  },
+  {
+   "text": "pulled",
+   "onset_s": 18.25,
+   "end_s": 18.43
+  },
+  {
+   "text": "out",
+   "onset_s": 18.43,
+   "end_s": 18.61
+  },
+  {
+   "text": "alive",
+   "onset_s": 18.61,
+   "end_s": 18.95
+  },
+  {
+   "text": "and",
+   "onset_s": 18.95,
+   "end_s": 19.39
+  },
+  {
+   "text": "about",
+   "onset_s": 19.39,
+   "end_s": 19.55
+  },
+  {
+   "text": "200",
+   "onset_s": 19.55,
+   "end_s": 19.83
+  },
+  {
+   "text": "others",
+   "onset_s": 19.83,
+   "end_s": 20.33
+  },
+  {
+   "text": "evacuated.",
+   "onset_s": 20.33,
+   "end_s": 20.59
+  }
+ ],
+ "alignment": {
+  "whisper_model": "base.en int8",
+  "matched_words": 50,
+  "total_words": 52,
+  "locate_scores": [
+   1.0,
+   1.0
+  ],
+  "newscast_span_s": [
+   265.87,
+   287.06
+  ]
+ }
+}

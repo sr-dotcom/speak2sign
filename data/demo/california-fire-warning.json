@@ -1,0 +1,366 @@
+{
+ "id": "california-fire-warning",
+ "title": "California fire warning",
+ "broadcast_date": "2025-01-20",
+ "topic": "Weather / wildfire",
+ "source": "VOA newscast 2025-01-20 via Internet Archive (public domain)",
+ "archive_item": "https://archive.org/details/voa-newscasts-2025-01-20",
+ "media": "news/california-fire-warning.wav",
+ "duration_s": 27.17,
+ "text": "Southern Californians are again bracing for gusty winds and a heightened risk of wildfires less than two weeks after the start of deadly blazes that have killed at least 27 people and destroyed thousands of homes. The U.S. National Weather Service has issued a red flag warning signaling increased fire danger for Los Angeles on Monday and Tuesday due to low humidity and warm, dry Santa Ana winds.",
+ "words": [
+  {
+   "text": "Southern",
+   "onset_s": 0.25,
+   "end_s": 0.57
+  },
+  {
+   "text": "Californians",
+   "onset_s": 0.57,
+   "end_s": 1.59
+  },
+  {
+   "text": "are",
+   "onset_s": 1.59,
+   "end_s": 1.71
+  },
+  {
+   "text": "again",
+   "onset_s": 1.71,
+   "end_s": 1.97
+  },
+  {
+   "text": "bracing",
+   "onset_s": 1.97,
+   "end_s": 2.61
+  },
+  {
+   "text": "for",
+   "onset_s": 2.61,
+   "end_s": 2.85
+  },
+  {
+   "text": "gusty",
+   "onset_s": 2.85,
+   "end_s": 3.45
+  },
+  {
+   "text": "winds",
+   "onset_s": 3.45,
+   "end_s": 3.73
+  },
+  {
+   "text": "and",
+   "onset_s": 3.73,
+   "end_s": 4.11
+  },
+  {
+   "text": "a",
+   "onset_s": 4.11,
+   "end_s": 4.31
+  },
+  {
+   "text": "heightened",
+   "onset_s": 4.31,
+   "end_s": 4.71
+  },
+  {
+   "text": "risk",
+   "onset_s": 4.71,
+   "end_s": 5.15
+  },
+  {
+   "text": "of",
+   "onset_s": 5.15,
+   "end_s": 5.41
+  },
+  {
+   "text": "wildfires",
+   "onset_s": 5.41,
+   "end_s": 5.75
+  },
+  {
+   "text": "less",
+   "onset_s": 6.23,
+   "end_s": 6.55
+  },
+  {
+   "text": "than",
+   "onset_s": 6.55,
+   "end_s": 6.85
+  },
+  {
+   "text": "two",
+   "onset_s": 6.85,
+   "end_s": 7.09
+  },
+  {
+   "text": "weeks",
+   "onset_s": 7.09,
+   "end_s": 7.37
+  },
+  {
+   "text": "after",
+   "onset_s": 7.37,
+   "end_s": 7.65
+  },
+  {
+   "text": "the",
+   "onset_s": 7.65,
+   "end_s": 7.95
+  },
+  {
+   "text": "start",
+   "onset_s": 7.95,
+   "end_s": 8.19
+  },
+  {
+   "text": "of",
+   "onset_s": 8.19,
+   "end_s": 8.33
+  },
+  {
+   "text": "deadly",
+   "onset_s": 8.33,
+   "end_s": 8.61
+  },
+  {
+   "text": "blazes",
+   "onset_s": 8.61,
+   "end_s": 9.33
+  },
+  {
+   "text": "that",
+   "onset_s": 9.33,
+   "end_s": 9.65
+  },
+  {
+   "text": "have",
+   "onset_s": 9.65,
+   "end_s": 9.77
+  },
+  {
+   "text": "killed",
+   "onset_s": 9.77,
+   "end_s": 9.95
+  },
+  {
+   "text": "at",
+   "onset_s": 9.95,
+   "end_s": 10.17
+  },
+  {
+   "text": "least",
+   "onset_s": 10.17,
+   "end_s": 10.31
+  },
+  {
+   "text": "27",
+   "onset_s": 10.31,
+   "end_s": 11.01
+  },
+  {
+   "text": "people",
+   "onset_s": 11.01,
+   "end_s": 11.47
+  },
+  {
+   "text": "and",
+   "onset_s": 11.47,
+   "end_s": 11.69
+  },
+  {
+   "text": "destroyed",
+   "onset_s": 11.69,
+   "end_s": 12.01
+  },
+  {
+   "text": "thousands",
+   "onset_s": 12.01,
+   "end_s": 12.59
+  },
+  {
+   "text": "of",
+   "onset_s": 12.59,
+   "end_s": 13.09
+  },
+  {
+   "text": "homes.",
+   "onset_s": 13.09,
+   "end_s": 13.35
+  },
+  {
+   "text": "The",
+   "onset_s": 14.03,
+   "end_s": 14.03
+  },
+  {
+   "text": "U.S.",
+   "onset_s": 14.54,
+   "end_s": null
+  },
+  {
+   "text": "National",
+   "onset_s": 15.05,
+   "end_s": 15.05
+  },
+  {
+   "text": "Weather",
+   "onset_s": 15.05,
+   "end_s": 15.25
+  },
+  {
+   "text": "Service",
+   "onset_s": 15.25,
+   "end_s": 15.73
+  },
+  {
+   "text": "has",
+   "onset_s": 15.73,
+   "end_s": 15.97
+  },
+  {
+   "text": "issued",
+   "onset_s": 15.97,
+   "end_s": 16.31
+  },
+  {
+   "text": "a",
+   "onset_s": 16.31,
+   "end_s": 16.45
+  },
+  {
+   "text": "red",
+   "onset_s": 16.45,
+   "end_s": 16.69
+  },
+  {
+   "text": "flag",
+   "onset_s": 16.69,
+   "end_s": 16.99
+  },
+  {
+   "text": "warning",
+   "onset_s": 16.99,
+   "end_s": 17.59
+  },
+  {
+   "text": "signaling",
+   "onset_s": 17.59,
+   "end_s": 18.13
+  },
+  {
+   "text": "increased",
+   "onset_s": 18.13,
+   "end_s": 18.87
+  },
+  {
+   "text": "fire",
+   "onset_s": 18.87,
+   "end_s": 19.35
+  },
+  {
+   "text": "danger",
+   "onset_s": 19.35,
+   "end_s": 19.89
+  },
+  {
+   "text": "for",
+   "onset_s": 19.89,
+   "end_s": 20.33
+  },
+  {
+   "text": "Los",
+   "onset_s": 20.33,
+   "end_s": 20.65
+  },
+  {
+   "text": "Angeles",
+   "onset_s": 20.65,
+   "end_s": 20.97
+  },
+  {
+   "text": "on",
+   "onset_s": 20.97,
+   "end_s": 21.47
+  },
+  {
+   "text": "Monday",
+   "onset_s": 21.47,
+   "end_s": 21.83
+  },
+  {
+   "text": "and",
+   "onset_s": 21.83,
+   "end_s": 22.13
+  },
+  {
+   "text": "Tuesday",
+   "onset_s": 22.13,
+   "end_s": 22.43
+  },
+  {
+   "text": "due",
+   "onset_s": 22.43,
+   "end_s": 23.07
+  },
+  {
+   "text": "to",
+   "onset_s": 23.07,
+   "end_s": 23.19
+  },
+  {
+   "text": "low",
+   "onset_s": 23.19,
+   "end_s": 23.51
+  },
+  {
+   "text": "humidity",
+   "onset_s": 23.51,
+   "end_s": 23.95
+  },
+  {
+   "text": "and",
+   "onset_s": 23.95,
+   "end_s": 24.41
+  },
+  {
+   "text": "warm,",
+   "onset_s": 24.41,
+   "end_s": 24.71
+  },
+  {
+   "text": "dry",
+   "onset_s": 24.97,
+   "end_s": 25.31
+  },
+  {
+   "text": "Santa",
+   "onset_s": 25.31,
+   "end_s": 25.79
+  },
+  {
+   "text": "Ana",
+   "onset_s": 25.79,
+   "end_s": 26.23
+  },
+  {
+   "text": "winds.",
+   "onset_s": 26.23,
+   "end_s": 26.57
+  }
+ ],
+ "alignment": {
+  "whisper_model": "base.en int8",
+  "matched_words": 67,
+  "total_words": 68,
+  "locate_scores": [
+   1.0,
+   1.0
+  ],
+  "newscast_span_s": [
+   255.89,
+   283.06
+  ]
+ }
+}

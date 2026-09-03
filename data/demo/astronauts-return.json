@@ -1,0 +1,411 @@
+{
+ "id": "astronauts-return",
+ "title": "Astronauts return",
+ "broadcast_date": "2025-03-15",
+ "topic": "Science / space",
+ "source": "VOA newscast 2025-03-15 via Internet Archive (public domain)",
+ "archive_item": "https://archive.org/details/voa-newscasts-2025-03-15",
+ "media": "news/astronauts-return.wav",
+ "duration_s": 24.25,
+ "text": "Two astronauts who have been living on the International Space Station since June of last year are about to get their ride back to Earth. SpaceX launched four astronauts from Kennedy Space Center in Florida on Friday night to the space station. Butch Wilmore and Suni Williams have been on the space station since their Boeing Starliner capsule suffered a malfunction and returned to Earth without them. Wilmore and Williams are expected back on Earth next week.",
+ "words": [
+  {
+   "text": "Two",
+   "onset_s": 0.25,
+   "end_s": 0.35
+  },
+  {
+   "text": "astronauts",
+   "onset_s": 0.35,
+   "end_s": 0.65
+  },
+  {
+   "text": "who",
+   "onset_s": 0.65,
+   "end_s": 1.07
+  },
+  {
+   "text": "have",
+   "onset_s": 1.07,
+   "end_s": 1.19
+  },
+  {
+   "text": "been",
+   "onset_s": 1.19,
+   "end_s": 1.31
+  },
+  {
+   "text": "living",
+   "onset_s": 1.31,
+   "end_s": 1.51
+  },
+  {
+   "text": "on",
+   "onset_s": 1.51,
+   "end_s": 1.71
+  },
+  {
+   "text": "the",
+   "onset_s": 1.71,
+   "end_s": 1.81
+  },
+  {
+   "text": "International",
+   "onset_s": 1.81,
+   "end_s": 2.13
+  },
+  {
+   "text": "Space",
+   "onset_s": 2.13,
+   "end_s": 2.65
+  },
+  {
+   "text": "Station",
+   "onset_s": 2.65,
+   "end_s": 2.97
+  },
+  {
+   "text": "since",
+   "onset_s": 2.97,
+   "end_s": 3.37
+  },
+  {
+   "text": "June",
+   "onset_s": 3.37,
+   "end_s": 3.65
+  },
+  {
+   "text": "of",
+   "onset_s": 3.65,
+   "end_s": 3.85
+  },
+  {
+   "text": "last",
+   "onset_s": 3.85,
+   "end_s": 4.01
+  },
+  {
+   "text": "year",
+   "onset_s": 4.01,
+   "end_s": 4.35
+  },
+  {
+   "text": "are",
+   "onset_s": 4.35,
+   "end_s": 4.81
+  },
+  {
+   "text": "about",
+   "onset_s": 4.81,
+   "end_s": 5.01
+  },
+  {
+   "text": "to",
+   "onset_s": 5.01,
+   "end_s": 5.17
+  },
+  {
+   "text": "get",
+   "onset_s": 5.17,
+   "end_s": 5.33
+  },
+  {
+   "text": "their",
+   "onset_s": 5.33,
+   "end_s": 5.51
+  },
+  {
+   "text": "ride",
+   "onset_s": 5.51,
+   "end_s": 5.79
+  },
+  {
+   "text": "back",
+   "onset_s": 5.79,
+   "end_s": 6.07
+  },
+  {
+   "text": "to",
+   "onset_s": 6.07,
+   "end_s": 6.25
+  },
+  {
+   "text": "Earth.",
+   "onset_s": 6.25,
+   "end_s": 6.49
+  },
+  {
+   "text": "SpaceX",
+   "onset_s": 7.13,
+   "end_s": 7.21
+  },
+  {
+   "text": "launched",
+   "onset_s": 7.21,
+   "end_s": 7.73
+  },
+  {
+   "text": "four",
+   "onset_s": 7.73,
+   "end_s": 8.11
+  },
+  {
+   "text": "astronauts",
+   "onset_s": 8.11,
+   "end_s": 8.49
+  },
+  {
+   "text": "from",
+   "onset_s": 8.49,
+   "end_s": 8.97
+  },
+  {
+   "text": "Kennedy",
+   "onset_s": 8.97,
+   "end_s": 9.25
+  },
+  {
+   "text": "Space",
+   "onset_s": 9.25,
+   "end_s": 9.63
+  },
+  {
+   "text": "Center",
+   "onset_s": 9.63,
+   "end_s": 9.99
+  },
+  {
+   "text": "in",
+   "onset_s": 9.99,
+   "end_s": 10.31
+  },
+  {
+   "text": "Florida",
+   "onset_s": 10.31,
+   "end_s": 10.65
+  },
+  {
+   "text": "on",
+   "onset_s": 10.65,
+   "end_s": 10.99
+  },
+  {
+   "text": "Friday",
+   "onset_s": 10.99,
+   "end_s": 11.23
+  },
+  {
+   "text": "night",
+   "onset_s": 11.23,
+   "end_s": 11.53
+  },
+  {
+   "text": "to",
+   "onset_s": 11.53,
+   "end_s": 11.77
+  },
+  {
+   "text": "the",
+   "onset_s": 11.77,
+   "end_s": 12.07
+  },
+  {
+   "text": "space",
+   "onset_s": 12.07,
+   "end_s": 12.21
+  },
+  {
+   "text": "station.",
+   "onset_s": 12.21,
+   "end_s": 12.55
+  },
+  {
+   "text": "Butch",
+   "onset_s": 12.81,
+   "end_s": 13.21
+  },
+  {
+   "text": "Wilmore",
+   "onset_s": 13.21,
+   "end_s": 13.49
+  },
+  {
+   "text": "and",
+   "onset_s": 13.49,
+   "end_s": 13.67
+  },
+  {
+   "text": "Suni",
+   "onset_s": 13.72,
+   "end_s": null
+  },
+  {
+   "text": "Williams",
+   "onset_s": 13.95,
+   "end_s": 14.15
+  },
+  {
+   "text": "have",
+   "onset_s": 14.15,
+   "end_s": 14.55
+  },
+  {
+   "text": "been",
+   "onset_s": 14.55,
+   "end_s": 14.71
+  },
+  {
+   "text": "on",
+   "onset_s": 14.71,
+   "end_s": 14.79
+  },
+  {
+   "text": "the",
+   "onset_s": 14.79,
+   "end_s": 14.91
+  },
+  {
+   "text": "space",
+   "onset_s": 14.91,
+   "end_s": 15.07
+  },
+  {
+   "text": "station",
+   "onset_s": 15.07,
+   "end_s": 15.39
+  },
+  {
+   "text": "since",
+   "onset_s": 15.39,
+   "end_s": 15.75
+  },
+  {
+   "text": "their",
+   "onset_s": 15.75,
+   "end_s": 16.01
+  },
+  {
+   "text": "Boeing",
+   "onset_s": 16.01,
+   "end_s": 16.23
+  },
+  {
+   "text": "Starliner",
+   "onset_s": 16.23,
+   "end_s": 16.83
+  },
+  {
+   "text": "capsule",
+   "onset_s": 16.83,
+   "end_s": 17.19
+  },
+  {
+   "text": "suffered",
+   "onset_s": 17.19,
+   "end_s": 17.65
+  },
+  {
+   "text": "a",
+   "onset_s": 17.65,
+   "end_s": 17.79
+  },
+  {
+   "text": "malfunction",
+   "onset_s": 17.79,
+   "end_s": 18.09
+  },
+  {
+   "text": "and",
+   "onset_s": 18.09,
+   "end_s": 18.95
+  },
+  {
+   "text": "returned",
+   "onset_s": 18.95,
+   "end_s": 19.15
+  },
+  {
+   "text": "to",
+   "onset_s": 19.15,
+   "end_s": 19.45
+  },
+  {
+   "text": "Earth",
+   "onset_s": 19.45,
+   "end_s": 19.67
+  },
+  {
+   "text": "without",
+   "onset_s": 19.67,
+   "end_s": 19.97
+  },
+  {
+   "text": "them.",
+   "onset_s": 19.97,
+   "end_s": 20.29
+  },
+  {
+   "text": "Wilmore",
+   "onset_s": 20.67,
+   "end_s": 20.95
+  },
+  {
+   "text": "and",
+   "onset_s": 20.95,
+   "end_s": 21.13
+  },
+  {
+   "text": "Williams",
+   "onset_s": 21.13,
+   "end_s": 21.35
+  },
+  {
+   "text": "are",
+   "onset_s": 21.35,
+   "end_s": 21.77
+  },
+  {
+   "text": "expected",
+   "onset_s": 21.77,
+   "end_s": 22.11
+  },
+  {
+   "text": "back",
+   "onset_s": 22.11,
+   "end_s": 22.47
+  },
+  {
+   "text": "on",
+   "onset_s": 22.47,
+   "end_s": 22.65
+  },
+  {
+   "text": "Earth",
+   "onset_s": 22.65,
+   "end_s": 22.93
+  },
+  {
+   "text": "next",
+   "onset_s": 22.93,
+   "end_s": 23.31
+  },
+  {
+   "text": "week.",
+   "onset_s": 23.31,
+   "end_s": 23.65
+  }
+ ],
+ "alignment": {
+  "whisper_model": "base.en int8",
+  "matched_words": 76,
+  "total_words": 77,
+  "locate_scores": [
+   1.0,
+   1.0
+  ],
+  "newscast_span_s": [
+   262.87,
+   287.12
+  ]
+ }
+}

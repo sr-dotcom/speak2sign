@@ -1,0 +1,571 @@
+{
+ "id": "canada-new-pm",
+ "title": "Canada new pm",
+ "broadcast_date": "2025-03-10",
+ "topic": "Politics",
+ "source": "VOA newscast 2025-03-10 via Internet Archive (public domain)",
+ "archive_item": "https://archive.org/details/voa-newscasts-2025-03-10",
+ "media": "news/canada-new-pm.wav",
+ "duration_s": 41.88,
+ "text": "Former central banker Mark Carney will become Canada's next prime minister after the governing Liberal Party elected him its leader on Sunday as the country deals with President Trump's trade war and annexation threat and a federal election looms. The 59-year-old Carey replaces Prime Minister Justin Trudeau, who announced his resignation in January but remains prime minister until his successor is sworn in. Carney navigated crises when he was the head of the Bank of Canada, and in 2013 he became the first noncitizen to run the Bank of England since it was founded in 1694. Trudeau's popularity had declined as food and housing prices rose and immigration surged.",
+ "words": [
+  {
+   "text": "Former",
+   "onset_s": 0.25,
+   "end_s": 0.62
+  },
+  {
+   "text": "central",
+   "onset_s": 0.62,
+   "end_s": 0.92
+  },
+  {
+   "text": "banker",
+   "onset_s": 0.92,
+   "end_s": 1.44
+  },
+  {
+   "text": "Mark",
+   "onset_s": 1.44,
+   "end_s": 1.98
+  },
+  {
+   "text": "Carney",
+   "onset_s": 1.98,
+   "end_s": 2.26
+  },
+  {
+   "text": "will",
+   "onset_s": 2.26,
+   "end_s": 2.66
+  },
+  {
+   "text": "become",
+   "onset_s": 2.66,
+   "end_s": 3.0
+  },
+  {
+   "text": "Canada's",
+   "onset_s": 3.0,
+   "end_s": 3.74
+  },
+  {
+   "text": "next",
+   "onset_s": 3.74,
+   "end_s": 3.92
+  },
+  {
+   "text": "prime",
+   "onset_s": 3.92,
+   "end_s": 4.32
+  },
+  {
+   "text": "minister",
+   "onset_s": 4.32,
+   "end_s": 4.72
+  },
+  {
+   "text": "after",
+   "onset_s": 4.72,
+   "end_s": 5.14
+  },
+  {
+   "text": "the",
+   "onset_s": 5.14,
+   "end_s": 5.48
+  },
+  {
+   "text": "governing",
+   "onset_s": 5.48,
+   "end_s": 5.92
+  },
+  {
+   "text": "Liberal",
+   "onset_s": 5.92,
+   "end_s": 6.18
+  },
+  {
+   "text": "Party",
+   "onset_s": 6.18,
+   "end_s": 6.7
+  },
+  {
+   "text": "elected",
+   "onset_s": 6.7,
+   "end_s": 7.1
+  },
+  {
+   "text": "him",
+   "onset_s": 7.1,
+   "end_s": 7.44
+  },
+  {
+   "text": "its",
+   "onset_s": 7.44,
+   "end_s": 7.66
+  },
+  {
+   "text": "leader",
+   "onset_s": 7.66,
+   "end_s": 7.9
+  },
+  {
+   "text": "on",
+   "onset_s": 7.9,
+   "end_s": 8.2
+  },
+  {
+   "text": "Sunday",
+   "onset_s": 8.2,
+   "end_s": 8.54
+  },
+  {
+   "text": "as",
+   "onset_s": 8.54,
+   "end_s": 8.98
+  },
+  {
+   "text": "the",
+   "onset_s": 8.98,
+   "end_s": 9.14
+  },
+  {
+   "text": "country",
+   "onset_s": 9.14,
+   "end_s": 9.32
+  },
+  {
+   "text": "deals",
+   "onset_s": 9.32,
+   "end_s": 9.88
+  },
+  {
+   "text": "with",
+   "onset_s": 9.88,
+   "end_s": 10.12
+  },
+  {
+   "text": "President",
+   "onset_s": 10.12,
+   "end_s": 10.48
+  },
+  {
+   "text": "Trump's",
+   "onset_s": 10.48,
+   "end_s": 11.08
+  },
+  {
+   "text": "trade",
+   "onset_s": 11.08,
+   "end_s": 11.28
+  },
+  {
+   "text": "war",
+   "onset_s": 11.28,
+   "end_s": 11.62
+  },
+  {
+   "text": "and",
+   "onset_s": 11.62,
+   "end_s": 11.88
+  },
+  {
+   "text": "annexation",
+   "onset_s": 11.88,
+   "end_s": 12.32
+  },
+  {
+   "text": "threat",
+   "onset_s": 12.32,
+   "end_s": 12.98
+  },
+  {
+   "text": "and",
+   "onset_s": 12.98,
+   "end_s": 13.32
+  },
+  {
+   "text": "a",
+   "onset_s": 13.32,
+   "end_s": 13.4
+  },
+  {
+   "text": "federal",
+   "onset_s": 13.4,
+   "end_s": 13.68
+  },
+  {
+   "text": "election",
+   "onset_s": 13.68,
+   "end_s": 14.1
+  },
+  {
+   "text": "looms.",
+   "onset_s": 14.1,
+   "end_s": 14.56
+  },
+  {
+   "text": "The",
+   "onset_s": 15.46,
+   "end_s": 15.48
+  },
+  {
+   "text": "59-year-old",
+   "onset_s": 15.813,
+   "end_s": null
+  },
+  {
+   "text": "Carey",
+   "onset_s": 16.167,
+   "end_s": null
+  },
+  {
+   "text": "replaces",
+   "onset_s": 16.52,
+   "end_s": 17.14
+  },
+  {
+   "text": "Prime",
+   "onset_s": 17.14,
+   "end_s": 17.5
+  },
+  {
+   "text": "Minister",
+   "onset_s": 17.5,
+   "end_s": 17.98
+  },
+  {
+   "text": "Justin",
+   "onset_s": 17.98,
+   "end_s": 18.32
+  },
+  {
+   "text": "Trudeau,",
+   "onset_s": 18.32,
+   "end_s": 18.74
+  },
+  {
+   "text": "who",
+   "onset_s": 19.14,
+   "end_s": 19.2
+  },
+  {
+   "text": "announced",
+   "onset_s": 19.2,
+   "end_s": 19.4
+  },
+  {
+   "text": "his",
+   "onset_s": 19.4,
+   "end_s": 19.78
+  },
+  {
+   "text": "resignation",
+   "onset_s": 19.78,
+   "end_s": 20.26
+  },
+  {
+   "text": "in",
+   "onset_s": 20.26,
+   "end_s": 20.72
+  },
+  {
+   "text": "January",
+   "onset_s": 20.72,
+   "end_s": 20.98
+  },
+  {
+   "text": "but",
+   "onset_s": 20.98,
+   "end_s": 21.62
+  },
+  {
+   "text": "remains",
+   "onset_s": 21.62,
+   "end_s": 21.9
+  },
+  {
+   "text": "prime",
+   "onset_s": 21.9,
+   "end_s": 22.26
+  },
+  {
+   "text": "minister",
+   "onset_s": 22.26,
+   "end_s": 22.68
+  },
+  {
+   "text": "until",
+   "onset_s": 22.68,
+   "end_s": 23.1
+  },
+  {
+   "text": "his",
+   "onset_s": 23.1,
+   "end_s": 23.52
+  },
+  {
+   "text": "successor",
+   "onset_s": 23.52,
+   "end_s": 23.96
+  },
+  {
+   "text": "is",
+   "onset_s": 23.96,
+   "end_s": 24.34
+  },
+  {
+   "text": "sworn",
+   "onset_s": 24.34,
+   "end_s": 24.58
+  },
+  {
+   "text": "in.",
+   "onset_s": 24.58,
+   "end_s": 24.96
+  },
+  {
+   "text": "Carney",
+   "onset_s": 25.52,
+   "end_s": 25.82
+  },
+  {
+   "text": "navigated",
+   "onset_s": 25.82,
+   "end_s": 26.54
+  },
+  {
+   "text": "crises",
+   "onset_s": 26.54,
+   "end_s": 26.78
+  },
+  {
+   "text": "when",
+   "onset_s": 26.78,
+   "end_s": 27.36
+  },
+  {
+   "text": "he",
+   "onset_s": 27.36,
+   "end_s": 27.5
+  },
+  {
+   "text": "was",
+   "onset_s": 27.5,
+   "end_s": 27.64
+  },
+  {
+   "text": "the",
+   "onset_s": 27.64,
+   "end_s": 27.84
+  },
+  {
+   "text": "head",
+   "onset_s": 27.84,
+   "end_s": 28.06
+  },
+  {
+   "text": "of",
+   "onset_s": 28.06,
+   "end_s": 28.18
+  },
+  {
+   "text": "the",
+   "onset_s": 28.18,
+   "end_s": 28.26
+  },
+  {
+   "text": "Bank",
+   "onset_s": 28.26,
+   "end_s": 28.46
+  },
+  {
+   "text": "of",
+   "onset_s": 28.46,
+   "end_s": 28.66
+  },
+  {
+   "text": "Canada,",
+   "onset_s": 28.66,
+   "end_s": 28.98
+  },
+  {
+   "text": "and",
+   "onset_s": 28.98,
+   "end_s": 29.58
+  },
+  {
+   "text": "in",
+   "onset_s": 29.58,
+   "end_s": 29.66
+  },
+  {
+   "text": "2013",
+   "onset_s": 29.66,
+   "end_s": 30.14
+  },
+  {
+   "text": "he",
+   "onset_s": 30.14,
+   "end_s": 30.58
+  },
+  {
+   "text": "became",
+   "onset_s": 30.58,
+   "end_s": 30.86
+  },
+  {
+   "text": "the",
+   "onset_s": 30.86,
+   "end_s": 31.06
+  },
+  {
+   "text": "first",
+   "onset_s": 31.06,
+   "end_s": 31.32
+  },
+  {
+   "text": "noncitizen",
+   "onset_s": 31.63,
+   "end_s": null
+  },
+  {
+   "text": "to",
+   "onset_s": 32.2,
+   "end_s": 32.56
+  },
+  {
+   "text": "run",
+   "onset_s": 32.56,
+   "end_s": 32.74
+  },
+  {
+   "text": "the",
+   "onset_s": 32.74,
+   "end_s": 32.9
+  },
+  {
+   "text": "Bank",
+   "onset_s": 32.9,
+   "end_s": 33.08
+  },
+  {
+   "text": "of",
+   "onset_s": 33.08,
+   "end_s": 33.28
+  },
+  {
+   "text": "England",
+   "onset_s": 33.28,
+   "end_s": 33.5
+  },
+  {
+   "text": "since",
+   "onset_s": 33.5,
+   "end_s": 33.92
+  },
+  {
+   "text": "it",
+   "onset_s": 33.92,
+   "end_s": 34.1
+  },
+  {
+   "text": "was",
+   "onset_s": 34.1,
+   "end_s": 34.24
+  },
+  {
+   "text": "founded",
+   "onset_s": 34.24,
+   "end_s": 34.52
+  },
+  {
+   "text": "in",
+   "onset_s": 34.52,
+   "end_s": 34.8
+  },
+  {
+   "text": "1694.",
+   "onset_s": 34.8,
+   "end_s": 35.96
+  },
+  {
+   "text": "Trudeau's",
+   "onset_s": 36.4,
+   "end_s": 36.88
+  },
+  {
+   "text": "popularity",
+   "onset_s": 36.88,
+   "end_s": 37.24
+  },
+  {
+   "text": "had",
+   "onset_s": 37.24,
+   "end_s": 37.74
+  },
+  {
+   "text": "declined",
+   "onset_s": 37.74,
+   "end_s": 38.08
+  },
+  {
+   "text": "as",
+   "onset_s": 38.08,
+   "end_s": 38.42
+  },
+  {
+   "text": "food",
+   "onset_s": 38.42,
+   "end_s": 38.64
+  },
+  {
+   "text": "and",
+   "onset_s": 38.64,
+   "end_s": 38.84
+  },
+  {
+   "text": "housing",
+   "onset_s": 38.84,
+   "end_s": 39.06
+  },
+  {
+   "text": "prices",
+   "onset_s": 39.06,
+   "end_s": 39.48
+  },
+  {
+   "text": "rose",
+   "onset_s": 39.48,
+   "end_s": 39.94
+  },
+  {
+   "text": "and",
+   "onset_s": 39.94,
+   "end_s": 40.26
+  },
+  {
+   "text": "immigration",
+   "onset_s": 40.26,
+   "end_s": 40.6
+  },
+  {
+   "text": "surged.",
+   "onset_s": 40.6,
+   "end_s": 41.28
+  }
+ ],
+ "alignment": {
+  "whisper_model": "base.en int8",
+  "matched_words": 106,
+  "total_words": 109,
+  "locate_scores": [
+   1.0,
+   1.0
+  ],
+  "newscast_span_s": [
+   237.48,
+   279.36
+  ]
+ }
+}
