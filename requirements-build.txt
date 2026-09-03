@@ -1,0 +1,5 @@
+# Build-time tools only (clip review, timings, demo-set audio). Never installed in the deployed app.
+-r requirements-dev.txt
+opencv-python-headless
+faster-whisper==1.2.1
+psutil

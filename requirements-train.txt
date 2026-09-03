@@ -1,0 +1,8 @@
+# Kaggle / Colab only. Never installed in the deployed app.
+torch
+transformers
+datasets
+evaluate
+sacrebleu
+sentencepiece
+ctranslate2

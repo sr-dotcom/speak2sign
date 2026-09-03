@@ -1,0 +1,6 @@
+-r requirements.txt
+ruff==0.14.2
+pytest==8.4.2
+pytest-cov==7.0.0
+jsonschema==4.25.1
+psutil==7.1.0

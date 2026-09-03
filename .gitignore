@@ -1,0 +1,14 @@
+*.pyc
+*.tmp
+.coverage
+.pytest_cache/
+.ruff_cache/
+.streamlit/secrets.toml
+.venv/
+__pycache__/
+models/t5_gloss_ct2/
+spike_out/
+models/faster-whisper-base.en/
+.claude/
+docs/02-design/diagrams/*.visual-check.json
+docs/02-design/diagrams/*.visual-check.html
