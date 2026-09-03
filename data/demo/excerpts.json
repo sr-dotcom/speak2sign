@@ -1,0 +1,65 @@
+{
+ "note": "Curated news items for review. Source: VOA newscasts captured by gandalf.ddo.jp and archived in the Internet Archive VOANewscasts collection (Public Domain Mark). Only anchor-read VOA text is used; Reuters/AP/AFP correspondent segments are excluded because VOA's terms exclude agency material. Audio excerpt timings are added in Phase 1 from the item's MP3.",
+ "items": [
+  {
+   "id": "samoa-oil-spill",
+   "broadcast_date": "2024-10-07",
+   "topic": "Environment / disaster",
+   "words": 71,
+   "archive_item": "https://archive.org/details/voa-newscasts-2024-10-07",
+   "mp3": "https://archive.org/download/voa-newscasts-2024-10-07/241007.mp3",
+   "text": "Samoa's acting prime minister said late Sunday an oil spill from a grounded New Zealand navy ship that sank and caught fire off the coast of Samoa is, quote, \"highly probable.\" Officials in the Pacific island nation are conducting an environmental impact assessment in the area where the ship sank on Sunday morning. New Zealand's chief of Navy said all 75 people on board were taken to safety on life rafts.",
+   "status": "proposed"
+  },
+  {
+   "id": "sichuan-landslide",
+   "broadcast_date": "2025-02-09",
+   "topic": "Rescue",
+   "words": 52,
+   "archive_item": "https://archive.org/details/voa-newscasts-2025-02-09",
+   "mp3": "https://archive.org/download/voa-newscasts-2025-02-09/250209.mp3",
+   "text": "Chinese rescuers are searching for some 30 people after a landslide in southwestern Sichuan province buried 10 houses. The Ministry of Emergency Management deployed hundreds of rescuers, including firefighters, following the landslide Saturday in the Junlian county. State broadcaster CCTV said two people were pulled out alive and about 200 others evacuated.",
+   "status": "proposed"
+  },
+  {
+   "id": "astronauts-return",
+   "broadcast_date": "2025-03-15",
+   "topic": "Science / space",
+   "words": 77,
+   "archive_item": "https://archive.org/details/voa-newscasts-2025-03-15",
+   "mp3": "https://archive.org/download/voa-newscasts-2025-03-15/250315.mp3",
+   "text": "Two astronauts who have been living on the International Space Station since June of last year are about to get their ride back to Earth. SpaceX launched four astronauts from Kennedy Space Center in Florida on Friday night to the space station. Butch Wilmore and Suni Williams have been on the space station since their Boeing Starliner capsule suffered a malfunction and returned to Earth without them. Wilmore and Williams are expected back on Earth next week.",
+   "status": "proposed"
+  },
+  {
+   "id": "california-fire-warning",
+   "broadcast_date": "2025-01-20",
+   "topic": "Weather / wildfire",
+   "words": 68,
+   "archive_item": "https://archive.org/details/voa-newscasts-2025-01-20",
+   "mp3": "https://archive.org/download/voa-newscasts-2025-01-20/250120.mp3",
+   "text": "Southern Californians are again bracing for gusty winds and a heightened risk of wildfires less than two weeks after the start of deadly blazes that have killed at least 27 people and destroyed thousands of homes. The U.S. National Weather Service has issued a red flag warning signaling increased fire danger for Los Angeles on Monday and Tuesday due to low humidity and warm, dry Santa Ana winds.",
+   "status": "proposed"
+  },
+  {
+   "id": "pope-infection",
+   "broadcast_date": "2025-02-18",
+   "topic": "Health",
+   "words": 59,
+   "archive_item": "https://archive.org/details/voa-newscasts-2025-02-18",
+   "mp3": "https://archive.org/download/voa-newscasts-2025-02-18/250218.mp3",
+   "text": "Vatican authorities said Monday that Pope Francis has a complex infection in his respiratory system and will require more targeted drug treatment. Officials said the 88-year-old pope is suffering from a polymicrobial respiratory tract infection but gave few details. Experts say that's not uncommon in older people with prior medical problems and should be treatable with the right antibiotics.",
+   "status": "proposed"
+  },
+  {
+   "id": "canada-new-pm",
+   "broadcast_date": "2025-03-10",
+   "topic": "Politics",
+   "words": 109,
+   "archive_item": "https://archive.org/details/voa-newscasts-2025-03-10",
+   "mp3": "https://archive.org/download/voa-newscasts-2025-03-10/250310.mp3",
+   "text": "Former central banker Mark Carney will become Canada's next prime minister after the governing Liberal Party elected him its leader on Sunday as the country deals with President Trump's trade war and annexation threat and a federal election looms. The 59-year-old Carey replaces Prime Minister Justin Trudeau, who announced his resignation in January but remains prime minister until his successor is sworn in. Carney navigated crises when he was the head of the Bank of Canada, and in 2013 he became the first noncitizen to run the Bank of England since it was founded in 1694. Trudeau's popularity had declined as food and housing prices rose and immigration surged.",
+   "status": "proposed"
+  }
+ ]
+}

@@ -1,0 +1,14 @@
+# Rule-pass coverage
+
+Lexicon: 258 attested concepts. Content tokens exclude dropped function words.
+
+| Item | Content tokens | Validated | Fingerspelled | Not available | Coverage | Fingerspelling rate | Fingerspelled words |
+|---|---|---|---|---|---|---|---|
+| samoa-oil-spill | 47 | 32 | 15 | 0 | 68% | 32% | samoa acting grounded zealand off samoa quote probable conducting impact assessment zealand board life rafts |
+| sichuan-landslide | 40 | 34 | 6 | 0 | 85% | 15% | southwestern sichuan deployed junlian broadcaster cctv |
+| astronauts-return | 49 | 37 | 12 | 0 | 76% | 24% | june spacex kennedy center butch wilmore suni williams boeing starliner wilmore williams |
+| california-fire-warning | 50 | 45 | 5 | 0 | 90% | 10% | least los angeles santa ana |
+| pope-infection | 43 | 35 | 7 | 1 | 81% | 16% | francis complex respiratory system targeted respiratory tract |
+| canada-new-pm | 75 | 61 | 14 | 0 | 81% | 19% | central mark carney liberal trump annexation looms carey justin trudeau january sworn carney trudeau |
+| nws-forecast (sample 2026-09-03) | 39 | 35 | 4 | 0 | 90% | 10% | values mph pm pm |
+| **All** | 343 | 279 | 63 | 1 | **81%** | **18%** | |
