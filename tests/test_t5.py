@@ -17,8 +17,8 @@ def test_t5_glosses_resolve_through_the_lexicon_never_inventing_signs():
     kinds = [(e.word, e.kind, e.concept) for e in entries]
     assert ("tonight", "sign", "tonight") in kinds
     assert ("rain", "sign", "rain") in kinds
-    assert ("desc-likely", "sign", "chance") in kinds            # DESC- prefix stripped before lookup
-    assert any(w == "x-in" and k == "dropped" for w, k, _ in kinds)   # pronoun/preposition marker dropped
+    assert ("likely", "sign", "chance") in kinds            # DESC- prefix stripped before lookup and display
+    assert any(w == "in" and k == "dropped" for w, k, _ in kinds)   # X- marker stripped, preposition dropped
     samoa = [e for e in entries if e.word == "samoa"][0]
     assert samoa.kind == "fingerspell" and samoa.letters[0] == "letter-s"
     s = stats(entries)

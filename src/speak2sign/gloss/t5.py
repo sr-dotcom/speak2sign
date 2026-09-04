@@ -59,12 +59,15 @@ def translate(text):
     return sp.decode(out).split()
 
 
-def _lookup(gloss, lexicon):
-    g = gloss
+def _strip(gloss):
     for p in GLOSS_PREFIXES:
-        if g.startswith(p):
-            g = g[len(p):]
-    g = g.lower().replace("-", " ")
+        if gloss.startswith(p):
+            return gloss[len(p):]
+    return gloss
+
+
+def _lookup(gloss, lexicon):
+    g = _strip(gloss).lower().replace("-", " ")
     return lexicon.words.get(g) or lexicon.words.get(g.replace(" ", "-")) or lexicon.words.get(g.split()[0] if g else g)
 
 
@@ -77,11 +80,11 @@ def gloss_sentence(tokens, lexicon, offset=0, translate_fn=translate):
     n_src = max(1, len(tokens))
     for i, g in enumerate(glosses):
         ti = offset + min(n_src - 1, round(i * n_src / max(1, len(glosses))))
-        word = g.lower()
+        word = _strip(g).lower()
         cid = _lookup(g, lexicon)
         if cid:
             entries.append(Entry(word, ti, 1, "sign", cid, why="t5"))
-        elif word.lstrip("x-").lstrip("desc-") in FUNCTION_WORDS:
+        elif word in FUNCTION_WORDS:
             entries.append(Entry(word, ti, 1, "dropped", why="function word (t5)"))
         elif re.fullmatch(r"\d+(\.\d+)?", word):
             e = _fingerspell(word, lexicon, ti, why="number, signed digit by digit")
