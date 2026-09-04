@@ -52,7 +52,7 @@ Needs a Kaggle session (torch for conversion). Steps are in the execution plan �
 | Component caching gotcha | `st.cache_resource` on the component means CSS/JS edits need a server restart, not a page reload |
 | Interpreter pacing | Observed: sentence 1 narrated, then "Waiting for the interpreter…" until the panel finished, then sentence 2 |
 
-**Not yet run:** the same check at the Community Cloud URL (needs the first deploy) and in Safari/Firefox.
+**Remote part DONE 2026-09-04** at https://speak2sign.streamlit.app (Chromium): clips and news audio served with 206 from `/~/+/app/static/…` (relative URLs resolved through `document.baseURI` worked unchanged), curated item played with caption highlight and the waiting state, weather lane fetched live. The app is embedded in a same-origin iframe on the Community Cloud page, which matters only for automation. **Still not run:** Safari and Firefox.
 
 Local part can run once the panel skeleton exists; the Community Cloud part needs the first deploy. Record: autoplay behaviour after one click in Chrome, Edge, Firefox, Safari; that `/app/static/clips/x.mp4` serves with `video/mp4`.
 

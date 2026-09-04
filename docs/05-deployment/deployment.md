@@ -6,7 +6,7 @@
 | First push | 2026-09-03, nine commits `c7081c4..701a6bd` |
 | CI | GitHub Actions `ci.yml`: ruff, pytest, `scripts/measure_rss.py` (1800 MB budget) on every push and PR |
 | Host | Streamlit Community Cloud (ADR 0002) |
-| Live URL | **not yet deployed** — see steps below |
+| Live URL | **https://speak2sign.streamlit.app** (deployed by the owner 2026-09-04) |
 | Entry point | `app.py`, Python 3.12 (`runtime.txt`), runtime deps `requirements.txt` only |
 
 ## Deploy steps (Community Cloud, once)
@@ -37,4 +37,5 @@
 
 | Date | Commit | Result |
 |---|---|---|
-| 2026-09-03 | 701a6bd | Pushed to GitHub; CI run pending; Community Cloud deploy pending (needs the owner's sign-in) |
+| 2026-09-03 | 701a6bd | Pushed to GitHub; CI green (peak RSS 316 MB on the Linux runner) |
+| 2026-09-04 | f2bcfd9 | Community Cloud deploy live at https://speak2sign.streamlit.app. Remote check in Chromium: static clips and news audio served with 206 from `/~/+/app/static/`, curated item plays with caption highlight and the waiting state, live weather lane fetched a forecast issued 2026-09-04 18:36 and rendered 153 chips. The app runs inside a same-origin iframe on the Community Cloud page. Cloud-side 403/404 on `/api/v2/user/details` are the host's own calls, not ours. |
