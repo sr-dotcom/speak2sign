@@ -33,11 +33,9 @@ Results of the four de-risking spikes from `docs/00-execution-plan.md` §1.3. Ea
 
 **Changes:** Signbank is a workable secondary source at ~20–60 entries with a polite, rate-limited fetch (1 request/s, `User-Agent` naming the project), each recorded with its entry weblink and the citation string. Do not bulk-scrape.
 
-## Spike 3 — T5-small → CTranslate2 int8 on CPU without torch — NOT RUN (whisper half measured)
+## Spike 3 — T5-small → CTranslate2 int8 on CPU without torch — DONE 2026-09-04
 
-Measured 2026-09-03 while building the demo set: faster-whisper `base.en` int8 loads in 6.2 s at 191 MB RSS and peaks at **507 MB RSS** while transcribing a 300 s newscast (about 6 s per newscast on the developer's laptop). CTranslate2 4.8.2 ran without torch installed. `scripts/measure_rss.py` (lexicon + whisper + one 27 s transcription) peaks at **334 MB** on Windows; CI enforces 1800 MB. The T5 half still needs Kaggle.
-
-Needs a Kaggle session (torch for conversion). Steps are in the execution plan §1.3 item 7. Record here: converted folder size, RSS with only `ctranslate2` + `sentencepiece` installed, and latency for one sentence.
+Measured 2026-09-03 while building the demo set: faster-whisper `base.en` int8 loads in 6.2 s at 191 MB RSS and peaks at **507 MB RSS** while transcribing a 300 s newscast (about 6 s per newscast on the developer's laptop). CTranslate2 4.8.2 ran without torch installed. `scripts/measure_rss.py` (lexicon + whisper + one 27 s transcription) peaks at **334 MB** on Windows; CI enforces 1800 MB. T5 half: trained on the developer's RTX 4080 (17 min, 3 epochs), exported with CTranslate2 int8 → **62.3 MB folder** (model.bin 61 MB, spiece.model, shared vocabulary); in the runtime venv with only `ctranslate2` + `sentencepiece` it loads in **0.15 s**, adds **86 MB RSS** (25 → 111 MB), and translates a sentence in **32–71 ms**. Published as GitHub Release `v0.5.0-t5`; the app fetches it when `T5_RELEASE_URL` is set. Evaluation: `docs/04-testing/evaluation.md`.
 
 ## Spike 4 — components v2 with two `<video>` elements, and static serving — LOCAL PART DONE 2026-09-03
 

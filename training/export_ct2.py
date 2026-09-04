@@ -9,8 +9,9 @@ the spike-3 numbers (folder size, resident memory, latency).
 """
 import argparse
 import shutil
-import subprocess
 from pathlib import Path
+
+from ctranslate2.converters import TransformersConverter
 
 
 def main():
@@ -19,7 +20,7 @@ def main():
     ap.add_argument("--out", default="t5_gloss_ct2")
     args = ap.parse_args()
     out = Path(args.out)
-    subprocess.run(["ct2-transformers-converter", "--model", args.best, "--output_dir", str(out), "--quantization", "int8", "--force"], check=True)
+    TransformersConverter(args.best).convert(str(out), quantization="int8", force=True)
     spiece = Path(args.best) / "spiece.model"
     if not spiece.exists():  # tokenizer saved as tokenizer.json only: regenerate spiece.model from the base model
         from transformers import AutoTokenizer

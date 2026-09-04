@@ -13,3 +13,4 @@ models/faster-whisper-base.en/
 docs/02-design/diagrams/*.visual-check.json
 docs/02-design/diagrams/*.visual-check.html
 .venv-train/
+models/t5_gloss_ct2.zip

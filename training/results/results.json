@@ -1,0 +1,71 @@
+{
+ "model": "google-t5/t5-small",
+ "epochs": 3.0,
+ "lr": 0.0003,
+ "batch": 32,
+ "train_rows": 78940,
+ "train_seconds": 1020,
+ "device": "NVIDIA GeForce RTX 4080 Laptop GPU",
+ "test": {
+  "bleu": 93.69603395220362,
+  "chrf": 97.1062910409223
+ },
+ "samples": [
+  {
+   "text": "our support for ratification this week should make clear three points .",
+   "gloss": "X-WE SUPPORT FOR RATIFICATION THIS WEEK SHOULD MAKE DESC-CLEAR THREE POINT .",
+   "pred": "X-WE SUPPORT FOR RATIFICATION THIS WEEK SHOULD MAKE DESC-CLEAR THREE POINT."
+  },
+  {
+   "text": "i agree that we need greater trust and understanding between the eu and russia .",
+   "gloss": "X-I AGREE THAT X-WE NEED DESC-GREATER TRUST AND UNDERSTANDING BETWEEN EU AND RUSSIUM .",
+   "pred": "X-I AGREE THAT X-WE NEED DESC-GREATER TRUST AND UNDERSTANDING BETWEEN EU AND RUSSIUM."
+  },
+  {
+   "text": "it does not belong here and , as such , does not belong in these guidelines .",
+   "gloss": "X-IT DO DESC-NOT BELONG DESC-HERE AND , AS DESC-SUCH , DO DESC-NOT BELONG IN SE GUIDELINE .",
+   "pred": "X-IT DO DESC-NOT BELONG DESC-HERE AND, AS DESC-SUCH, DO DESC-NOT BELONG IN SE GUIDELINE."
+  },
+  {
+   "text": "membership of committees and delegations see minutes",
+   "gloss": "MEMBERSHIP COMMITTEE AND DELEGATION SEE MINUTE",
+   "pred": "MEMBERSHIP COMMITTEE AND DELEGATION SEE MINUTE"
+  },
+  {
+   "text": "now for two points .",
+   "gloss": "DESC-NOW FOR TWO POINT .",
+   "pred": "DESC-NOW FOR TWO POINT."
+  },
+  {
+   "text": "this is a very real risk I can envisage .",
+   "gloss": "THIS BE DESC-VERY DESC-REAL RISK X-I CAN ENVISAGE .",
+   "pred": "THIS BE DESC-VERY DESC-REAL RISK X-I CAN ENVISAGE."
+  },
+  {
+   "text": "resumption of the session",
+   "gloss": "RESUMPTION SESSION",
+   "pred": "RESUMPTION SESSION"
+  },
+  {
+   "text": "in any case , madam president , the presidency's position on negotiations with turkey is absolutely clear .",
+   "gloss": "IN ANY CASE , MADAM PRESIDENT , PRESIDENCY X-POSS POSITION ON NEGOTIATION WITH TURKEY BE DESC-ABSOLUTELY DESC-CLEAR .",
+   "pred": "IN ANY CASE, MADAM PRESIDENT, PRESIDENCY X-POSS POSITION ON NEGOTIATION WITH TURKEY BE DESC-ABSOLUTELY DESC-CLEAR."
+  },
+  {
+   "text": "i am addressing the commission in order to ask it what it intends to do to end this injustice .",
+   "gloss": "X-I BE ADDRESS COMMISSION IN ORDER TO ASK X-IT WHAT X-IT INTEND TO DO TO END THIS INJUSTICE .",
+   "pred": "X-I BE ADDRESS COMMISSION IN ORDER TO ASK X-IT WHAT X-IT INTEND TO DO TO END THIS INJUSTICE."
+  },
+  {
+   "text": "it was a joint effort , and the success is also shared .",
+   "gloss": "X-IT BE DESC-JOINT EFFORT , AND SUCCESS BE DESC-ALSO SHARE .",
+   "pred": "X-IT BE DESC-JOINT EFFORT, AND SUCCESS BE DESC-ALSO SHARE."
+  }
+ ],
+ "split_seed": 20260903,
+ "split_sizes": {
+  "test": 4385,
+  "val": 4385,
+  "train": 78940
+ }
+}

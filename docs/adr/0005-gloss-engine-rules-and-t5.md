@@ -1,6 +1,6 @@
 # ADR 0005 — Gloss engine: rule pass by default, T5-small via CTranslate2 behind a toggle
 
-**Date:** 2026-09-03 · **Status:** Accepted
+**Date:** 2026-09-03 · **Status:** Accepted · **Evaluated 2026-09-04:** rules stay the default (68% vs 81% coverage on the news items; see `docs/04-testing/evaluation.md`)
 **Retires:** the Keras 16-class intent classifier and TensorFlow (previous iteration, decision B)
 
 ## Context
