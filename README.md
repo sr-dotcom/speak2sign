@@ -4,7 +4,7 @@ A news bulletin plays on the left. On the right, an interpreter panel signs it i
 American Sign Language from recorded clips of Deaf signers, in time with the narration.
 Every sign carries a badge: validated, fingerspelled, or not available.
 
-**Live URL:** not deployed yet (Phase 0). **Cost:** $0/month.
+**Repository:** https://github.com/sr-dotcom/speak2sign-v2 · **Live URL:** Community Cloud deploy pending (see `docs/05-deployment/deployment.md`) · **Cost:** $0/month.
 
 University capstone; both the app and the documented process are assessed. It is a
 research demonstration of retrieval-based signing and is not a substitute for a human
