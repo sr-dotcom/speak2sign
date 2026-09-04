@@ -7,3 +7,4 @@ sacrebleu==2.5.1
 sentencepiece==0.2.2
 ctranslate2==4.8.2
 accelerate==1.11.0
+truststore==0.10.4

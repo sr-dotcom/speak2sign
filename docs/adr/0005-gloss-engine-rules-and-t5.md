@@ -10,7 +10,7 @@ The module marks a deep-learning component (⚑A2). The previous iteration's 16-
 ## Decision
 
 - **Default: a rule pass** (`src/speak2sign/gloss/rules.py`, stdlib only): phrases first, sense table, function-word drops recorded for the caption, numbers as digit sequences, time expressions fronted. Every decision is a visible Entry.
-- **Deep-learning path: t5-small fine-tuned on ASLG-PC12** (87,710 English→gloss pairs, CC BY-NC 4.0) on Kaggle (`training/train_t5_gloss.py`), exported to **CTranslate2 int8** (`training/export_ct2.py`) and served at runtime with `ctranslate2` + `sentencepiece` only (`src/speak2sign/gloss/t5.py`). Behind a user toggle; hidden when the export is absent.
+- **Deep-learning path: t5-small fine-tuned on ASLG-PC12** (87,710 English→gloss pairs, CC BY-NC 4.0) on a free GPU, Kaggle or the developer's own (`training/train_t5_gloss.py`, device recorded in the results), exported to **CTranslate2 int8** (`training/export_ct2.py`) and served at runtime with `ctranslate2` + `sentencepiece` only (`src/speak2sign/gloss/t5.py`). Behind a user toggle; hidden when the export is absent.
 - **Both paths resolve through the same lexicon**: a T5 gloss with no validated clip is fingerspelled or refused. T5 can never invent a sign form.
 - **Evaluation** (`docs/04-testing/evaluation.md`, Phase 5): BLEU/chrF on the held-out ASLG-PC12 split, and coverage, fingerspelling rate and a manual 30-sentence gloss review on the curated news items, rules vs T5. The default changes only if T5 wins on the news items.
 

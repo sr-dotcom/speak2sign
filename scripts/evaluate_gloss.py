@@ -1,0 +1,90 @@
+"""Rules vs T5: the evaluation report (ADR 0005). Writes docs/04-testing/evaluation.md.
+
+Part A: ASLG-PC12 held-out test split, from training/results/results.json (BLEU, chrF, samples).
+Part B: the curated news items and a forecast, both engines through the same lexicon and timeline:
+        coverage, fingerspelling rate, names, not-available, projected signing time, and the gloss
+        sequences side by side for the manual review.
+
+Usage: python scripts/evaluate_gloss.py   (needs models/t5_gloss_ct2 for Part B's T5 column)
+"""
+import json
+import sys
+import time
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / "src"))
+
+from speak2sign import timeline  # noqa: E402
+from speak2sign.gloss import lexicon as lex  # noqa: E402
+from speak2sign.gloss import t5  # noqa: E402
+from speak2sign.ingest import demo_set  # noqa: E402
+from speak2sign.transcript import from_text  # noqa: E402
+
+RESULTS = ROOT / "training" / "results" / "results.json"
+OUT = ROOT / "docs" / "04-testing" / "evaluation.md"
+FORECAST = ("This Afternoon. Sunny, with a high near 97. Heat index values as high as 105. Tonight. Mostly clear, with a low around 75. "
+            "Saturday. A slight chance of showers and thunderstorms between 2pm and 4pm. Partly cloudy, with a low around 72. "
+            "Chance of precipitation is 30%.")
+
+
+def glosses(tl):
+    return " ".join(e["gloss"] if e["badge"] == "validated" else f"[{e['word']}:{e['badge'][:2]}]" for e in tl["entries"])
+
+
+def main():
+    L = lex.load()
+    lines = ["# Evaluation: rule pass vs T5-small (ADR 0005)", ""]
+    if RESULTS.exists():
+        r = json.loads(RESULTS.read_text(encoding="utf-8"))
+        lines += ["## A. ASLG-PC12 held-out test split", "",
+                  f"Model `{r['model']}`, {r['epochs']} epochs, lr {r['lr']}, batch {r['batch']}, {r['train_rows']} training rows, "
+                  f"{r['train_seconds']} s on {r['device']}. Split seed {r['split_seed']}, sizes {r['split_sizes']}.", "",
+                  "| Metric | Score |", "|---|---|", f"| BLEU | {r['test']['bleu']:.1f} |", f"| chrF | {r['test']['chrf']:.1f} |", "",
+                  "Caveat, stated up front: ASLG-PC12 glosses were rule-generated from parliamentary text, so this split measures how well "
+                  "T5 learned those rules, not how well it glosses news.", "", "Samples (text → reference gloss → T5):", ""]
+        for s in r["samples"][:6]:
+            lines += [f"- {s['text'].strip()}", f"  - ref: `{s['gloss'].strip()}`", f"  - t5: `{s['pred'].strip()}`"]
+        lines.append("")
+    else:
+        lines += ["## A. ASLG-PC12 held-out test split", "", "_training/results/results.json not present: run training/train_t5_gloss.py first._", ""]
+
+    items = [(it["id"], demo_set.transcript(it)) for it in demo_set.items()] + [("nws-forecast-sample", from_text(FORECAST, item_id="nws", lane="weather", media_kind="tts"))]
+    engines = ["rules"] + (["t5"] if t5.available() else [])
+    lines += ["## B. Curated news items and a forecast, both engines through the same lexicon", "",
+              "| Item | Engine | Content tokens | Coverage | Fingerspelled | Names as text | Not available | Signing s | Build ms |", "|---|---|---|---|---|---|---|---|---|"]
+    review = []
+    totals = {e: {"tokens": 0, "validated": 0, "fingerspelled": 0, "names": 0, "not_available": 0, "signing_s": 0.0} for e in engines}
+    for iid, tr in items:
+        row = {}
+        for e in engines:
+            t0 = time.time()
+            tl = timeline.build(tr, L, gloss_engine=e)
+            ms = (time.time() - t0) * 1000
+            s = tl["stats"]
+            for k in totals[e]:
+                totals[e][k] += s[k]
+            lines.append(f"| {iid} | {e} | {s['tokens']} | {s['coverage']:.0%} | {s['fingerspelling_rate']:.0%} | {s['names']} | {s['not_available']} | {s['signing_s']:.0f} | {ms:.0f} |")
+            row[e] = glosses(tl)
+        review.append((iid, tr.text, row))
+    for e in engines:
+        t = totals[e]
+        n = t["tokens"] or 1
+        lines.append(f"| **All** | **{e}** | {t['tokens']} | **{t['validated'] / n:.0%}** | **{t['fingerspelled'] / n:.0%}** | {t['names']} | {t['not_available']} | {t['signing_s']:.0f} | |")
+    lines += ["", "Legend for the gloss lines below: `[word:fi]` fingerspelled, `[word:na]` name shown as text, `[word:no]` not available.", "",
+              "## C. Side-by-side glosses for the manual review", ""]
+    for iid, text, row in review:
+        lines += [f"### {iid}", "", f"> {text}", ""]
+        for e in engines:
+            lines += [f"- **{e}**: `{row[e]}`"]
+        lines.append("")
+    lines += ["## D. Decision", "",
+              "The default engine stays **rules** unless T5 wins on Part B (higher coverage with no loss of correctness in the manual review). "
+              "Fill in after the review: _pending_.", ""]
+    OUT.write_text("\n".join(lines), encoding="utf-8")
+    print("\n".join(lines[:40]))
+    print(f"... wrote {OUT.relative_to(ROOT)} ({len(lines)} lines); engines: {engines}")
+
+
+if __name__ == "__main__":
+    main()

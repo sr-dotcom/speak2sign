@@ -16,6 +16,12 @@ import random
 import time
 from pathlib import Path
 
+try:  # behind a TLS-inspecting proxy the OS trust store is the one that works; harmless elsewhere
+    import truststore
+    truststore.inject_into_ssl()
+except ImportError:
+    pass
+
 import evaluate
 import numpy as np
 import torch

@@ -1,4 +1,19 @@
-# Training (Kaggle only)
+# Training (Kaggle, or a local CUDA GPU)
+
+Either works; both are free. The deployed app never sees any of this. Results record the device used.
+
+## Local GPU (developer's RTX 4080, used for the first run)
+
+```bash
+python -m venv .venv-train
+.venv-train/Scripts/pip install torch --index-url https://download.pytorch.org/whl/cu128
+.venv-train/Scripts/pip install -r requirements-train.txt
+.venv-train/Scripts/python training/train_t5_gloss.py --limit 2000 --epochs 0.2 --out spike_out/t5_smoke   # 2 min smoke test
+.venv-train/Scripts/python training/train_t5_gloss.py --epochs 3 --out spike_out/t5_gloss              # ~10-20 min
+.venv-train/Scripts/python training/export_ct2.py --best spike_out/t5_gloss/best --out models/t5_gloss_ct2
+```
+
+## Kaggle
 
 1. New Kaggle notebook, GPU on (P100 or T4). Upload `train_t5_gloss.py`, `export_ct2.py`, `requirements-train.txt`.
 2. `!pip install -q -r requirements-train.txt`
