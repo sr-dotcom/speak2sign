@@ -26,6 +26,8 @@ def ribbon_html(timeline):
         text = html.escape((gloss.group(0) if gloss else e["gloss"]) if e["badge"] == "validated" else e["word"])
         if e["badge"] == "fingerspelled":
             text = "-".join(html.escape(e["word"]).upper())
+        # Streamlit strips role/aria-* from both st.markdown and st.html, so the chip's accessible text is its visible text:
+        # gloss + badge label. The note is a title (hover) here and a live region in the panel.
         chips.append(f'<span class="s2s-chip" style="color:{fg};background:{bg}" title="{title}">{text}<small>{label}</small></span>')
     return CSS + f'<div class="s2s-ribbon">{"".join(chips)}</div>'
 
