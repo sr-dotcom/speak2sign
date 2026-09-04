@@ -38,13 +38,21 @@ def _is_name(original, sentence_initial, known_names, token):
     return _capitalised(original) and (not sentence_initial or token in known_names)
 
 
-def gloss_transcript(transcript, lexicon):
-    """Run the rule pass sentence by sentence. Returns (entries with onset and sentence index, sentence spans)."""
+def _engine(name):
+    if name == "t5":
+        from speak2sign.gloss import t5   # lazy: ctranslate2/sentencepiece load only when chosen
+        return t5.gloss_sentence
+    return gloss_sentence
+
+
+def gloss_transcript(transcript, lexicon, gloss_engine="rules"):
+    """Run the chosen gloss engine sentence by sentence. Returns (entries with onset and sentence index, sentence spans)."""
     tokens, onsets, originals, starts = _tokens_with_onsets(transcript)
     known_names = {tokens[i] for i in range(len(tokens)) if i not in starts and _capitalised(originals[i])}
     entries, spans, seen_names = [], [], set()
+    engine = _engine(gloss_engine)
     for si, (a, b) in enumerate(zip(starts, starts[1:])):
-        chunk = gloss_sentence(tokens[a:b], lexicon, offset=a)
+        chunk = engine(tokens[a:b], lexicon, offset=a)
         for e in chunk:
             fronted = e.kind == "sign" and e.concept in TIME_CONCEPTS and e.token_index != a
             onset = onsets[a] if fronted else onsets[e.token_index]
@@ -71,7 +79,7 @@ def _clips(entry, lexicon):
 
 
 def build(transcript, lexicon, gloss_engine="rules"):
-    triples, spans, onsets = gloss_transcript(transcript, lexicon)
+    triples, spans, onsets = gloss_transcript(transcript, lexicon, gloss_engine)
     entries, captions, sources, signing_s = [], [], set(), 0.0
     for e, onset, si in triples:
         spoken_t = onsets[e.token_index]   # captions keep spoken order even when the sign was fronted

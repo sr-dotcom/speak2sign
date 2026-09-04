@@ -8,6 +8,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent / "src"))
 
 from speak2sign import __version__, asr, provenance, timeline  # noqa: E402
 from speak2sign.gloss import lexicon as lex  # noqa: E402
+from speak2sign.gloss import t5  # noqa: E402
 from speak2sign.ingest import demo_set, nws  # noqa: E402
 from speak2sign.transcript import from_text  # noqa: E402
 from speak2sign.ui import panel, ribbon  # noqa: E402
@@ -37,6 +38,20 @@ def show(tl, key):
 st.title("Speak2Sign — news with an ASL interpreter panel")
 st.info(provenance.DISCLAIMER, icon="ℹ️")
 
+with st.sidebar:
+    st.markdown("**Gloss engine**")
+    if t5.available():
+        ENGINE = st.radio("Engine", ["rules", "t5"], label_visibility="collapsed", horizontal=True,
+                          help="rules: inspectable stdlib pass (default). t5: T5-small fine-tuned on ASLG-PC12, served by CTranslate2; timing is approximate.")
+    else:
+        ENGINE = "rules"
+        st.caption("rules (T5 export not present on this host)")
+    st.caption("Either engine resolves through the same validated lexicon; neither can invent a sign.")
+
+
+def build(transcript):
+    return timeline.build(transcript, lexicon(), gloss_engine=ENGINE)
+
 news, typed, weather, upload = st.tabs(["News items", "Type text", "Live weather (Charlotte)", "Upload a clip"])
 
 with news:
@@ -48,18 +63,18 @@ with news:
         choice = st.selectbox("Pick a news item", list(labels), label_visibility="collapsed")
         item = labels[choice]
         st.caption(f"{item['source']} · {item['duration_s']:.0f} s of anchor-read audio · [archive item]({item['archive_item']})")
-        show(timeline.build(demo_set.transcript(item), lexicon()), key=item["id"])
+        show(build(demo_set.transcript(item)), key=item["id"])
 
 with typed:
     text = st.text_area("English text", "Rain is likely tonight, with a low around 62. The prime minister resigned on Sunday.", height=100)
     if st.button("Gloss it", type="primary") and text.strip():
-        show(timeline.build(from_text(text, media_kind="tts"), lexicon()), key="typed")
+        show(build(from_text(text, media_kind="tts")), key="typed")
 
 with weather:
     st.caption("Forecast text from the US National Weather Service, public domain, no key. Cached five minutes.")
     if st.button("Fetch the forecast and gloss it", type="primary"):
         try:
-            tl = timeline.build(nws.transcript(forecast()), lexicon())
+            tl = build(nws.transcript(forecast()))
         except Exception as e:  # network or API shape; the demo must never show a traceback
             st.error(f"Forecast unavailable right now ({e.__class__.__name__}). The curated items do not depend on it.")
         else:
@@ -89,6 +104,6 @@ with upload:
             text = st.text_area("Transcript (edit before signing)", st.session_state["upload_text"], height=120, key="upload_text")
             if st.button("Sign this clip", type="primary") and text.strip():
                 t = asr.upload_transcript(text, st.session_state["upload_words"], st.session_state["upload_audio"])
-                show(timeline.build(t, lexicon()), key="upload")
+                show(build(t), key="upload")
 
 st.caption(f"Speak2Sign v{__version__} · lexicon {len(lexicon())} concepts · Python {sys.version.split()[0]} · streamlit {st.__version__}")

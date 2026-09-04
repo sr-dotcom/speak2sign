@@ -1,8 +1,9 @@
-# Kaggle / Colab only. Never installed in the deployed app.
+# Kaggle / Colab only (training/). Never installed in the deployed app.
 torch
-transformers
-datasets
-evaluate
-sacrebleu
-sentencepiece
-ctranslate2
+transformers==4.57.1
+datasets==4.2.0
+evaluate==0.4.6
+sacrebleu==2.5.1
+sentencepiece==0.2.2
+ctranslate2==4.8.2
+accelerate==1.11.0
