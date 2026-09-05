@@ -2,7 +2,7 @@
 
 | Item | Value |
 |---|---|
-| Repository | https://github.com/sr-dotcom/speak2sign-v2 (public, `main`) |
+| Repository | https://github.com/sr-dotcom/speak2sign (public, `main`) |
 | First push | 2026-09-03, nine commits `c7081c4..701a6bd` |
 | CI | GitHub Actions `ci.yml`: ruff, pytest, `scripts/measure_rss.py` (1800 MB budget) on every push and PR |
 | Host | Streamlit Community Cloud (ADR 0002) |
@@ -12,8 +12,8 @@
 ## Deploy steps (Community Cloud, once)
 
 1. Sign in at https://share.streamlit.io with the GitHub account that owns the repo.
-2. New app → repository `sr-dotcom/speak2sign-v2`, branch `main`, main file `app.py`, custom subdomain `speak2sign` (6–63 chars).
-3. Advanced settings: Python 3.12. Secrets (Manage app → Settings → Secrets, TOML): `T5_RELEASE_URL = "https://github.com/sr-dotcom/speak2sign-v2/releases/download/v0.5.0-t5/t5_gloss_ct2.zip"` enables the T5 toggle (53 MB download on first use). The Guardian key for the optional headline lane would be `GUARDIAN_API_KEY`.
+2. New app → repository `sr-dotcom/speak2sign`, branch `main`, main file `app.py`, custom subdomain `speak2sign` (6–63 chars).
+3. Advanced settings: Python 3.12. Secrets (Manage app → Settings → Secrets, TOML): `T5_RELEASE_URL = "https://github.com/sr-dotcom/speak2sign/releases/download/v0.5.0-t5/t5_gloss_ct2.zip"` enables the T5 toggle (53 MB download on first use). The Guardian key for the optional headline lane would be `GUARDIAN_API_KEY`.
 4. Deploy. First boot installs `streamlit` and `faster-whisper`; the whisper model (145 MB) is fetched on the first upload, not at boot.
 5. Record the URL and commit hash in the table above and in `README.md`; run the spike 4 remote check (`docs/research/spikes.md`) at the URL: static clips served, panel plays, Play/Pause/Restart, one curated item end to end in Chrome, Edge, Firefox, Safari.
 
