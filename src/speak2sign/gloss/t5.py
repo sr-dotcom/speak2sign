@@ -35,7 +35,7 @@ def _ensure():
         if not RELEASE_URL:
             raise FileNotFoundError("T5 model not present and T5_RELEASE_URL not set")
         MODEL_DIR.mkdir(parents=True, exist_ok=True)
-        with urllib.request.urlopen(urllib.request.Request(RELEASE_URL, headers={"User-Agent": "speak2sign-v2"}), timeout=600) as r:
+        with urllib.request.urlopen(urllib.request.Request(RELEASE_URL, headers={"User-Agent": "speak2sign"}), timeout=600) as r:
             zipfile.ZipFile(io.BytesIO(r.read())).extractall(MODEL_DIR)
     return MODEL_DIR
 
