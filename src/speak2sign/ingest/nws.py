@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 
 from speak2sign.transcript import from_text
 
-UA = {"User-Agent": "speak2sign-v2 (university project; https://github.com/sr-dotcom/speak2sign)", "Accept": "application/geo+json"}
+UA = {"User-Agent": "speak2sign (university project; https://github.com/sr-dotcom/speak2sign)", "Accept": "application/geo+json"}
 CHARLOTTE = (35.2271, -80.8431)
 FORECAST_URL = "https://api.weather.gov/gridpoints/GSP/119,65/forecast"
 PERIODS = 4

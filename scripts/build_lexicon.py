@@ -30,7 +30,7 @@ CONCEPTS = ROOT / "data" / "lexicon" / "concepts.json"
 ATTRIBUTION = ROOT / "data" / "lexicon" / "attribution.json"
 STATIC = ROOT / "static"
 
-UA = {"User-Agent": "speak2sign-v2 lexicon builder (university project; https://github.com/sr-dotcom/speak2sign)"}
+UA = {"User-Agent": "speak2sign lexicon builder (university project; https://github.com/sr-dotcom/speak2sign)"}
 CATS_CREATOR = 'creator:("Center for Accessible Technology in Sign")'
 SIGNBANK_ECV = "https://aslsignbank.com/static/ecv/asl.ecv"
 SIGNBANK_ENTRY = "https://aslsignbank.com/dictionary/gloss/{id}.html"
