@@ -209,7 +209,7 @@ Existing ADRs: **0001** superseded (already), **0002 kept** (hosting) with its R
 ## 5. Project folder structure (Step 5)
 
 ```
-speak2sign-v2/
+speak2sign/
 ├── README.md                     # what it is, live URL, how to run, attribution summary
 ├── CLAUDE.md                     # working rules: non-negotiables, stack, hard rules
 ├── LICENSE                       # code licence (MIT)
