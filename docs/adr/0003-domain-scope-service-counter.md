@@ -1,7 +1,7 @@
 # ADR 0003 — Scope the domain to the service counter
 
 **Date:** 2026-08-30 · **Status:** ~~Proposed~~ **SUPERSEDED by [ADR 0004](0004-scope-news-interpreter-panel.md)** on 2026-09-02. Retained for the record; the coverage arithmetic and the resolution ladder still apply.
-**Reads with:** [resolution-cases.md](../02-design/resolution-cases.md) · [asl-linguistics-findings.md](../research/asl-linguistics-findings.md)
+**Reads with:** [asl-linguistics-findings.md](../research/asl-linguistics-findings.md). (The resolution-cases document this ADR originally cited belonged to the previous iteration and was not carried over.)
 
 ## Context
 

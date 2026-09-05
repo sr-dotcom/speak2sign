@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-02 · **Status:** Proposed, awaiting developer approval
 **Authors:** SME planning team (accessibility & Deaf studies, ML, full-stack, DevOps/cost, SDLC PM)
-**Builds on:** `../../speak2sign/CLAUDE.md`, `docs/00-project-reflection.md`, ADR 0001–0003 and `docs/research/*` in the previous iteration. Every decision there is **kept** or **superseded** below, with a reason.
+**Builds on:** the previous iteration (2026-08-30; not in this repository) via its ADR 0001–0003 and research notes copied under `docs/adr/` and `docs/research/`. Every decision there is **kept** or **superseded** below, with a reason.
 
 **What is being built.** A web page that does what the interpreter in the corner of a TV news bulletin does: a news item plays on the left, and a panel on the right shows the same content in American Sign Language (ASL), from recorded clips of Deaf signers, in time with the narration. Every sign carries a visible badge: validated, fingerspelled, or not available.
 
@@ -208,86 +208,68 @@ Existing ADRs: **0001** superseded (already), **0002 kept** (hosting) with its R
 
 ## 5. Project folder structure (Step 5)
 
+Rewritten 2026-09-04 to match the repository exactly (the original proposal listed files that were never built and missed files that were). Files marked (generated) are produced by a named script and must not be edited by hand.
+
 ```
 speak2sign/
-├── README.md                     # what it is, live URL, how to run, attribution summary
-├── CLAUDE.md                     # working rules: non-negotiables, stack, hard rules
-├── LICENSE                       # code licence (MIT)
-├── NOTICE.md                     # attributions: CATS/archive.org, ASL Signbank (CC BY-NC-SA), VOA, ASLG-PC12, T5
+├── README.md                     # what it is, live URL, how to run, where things are
+├── CLAUDE.md                     # working rules, hard rules, work policy
+├── LICENSE, NOTICE.md            # MIT for the code; sources and licences of all media and data
 ├── app.py                        # Streamlit entry point (thin: layout + calls into src/)
 ├── requirements.txt              # RUNTIME ONLY: streamlit, faster-whisper, ctranslate2, sentencepiece
-├── requirements-dev.txt          # ruff, pytest, pytest-cov
-├── requirements-train.txt        # torch, transformers, datasets, evaluate  (Kaggle only, never deployed)
-├── runtime.txt                   # python-3.12
-├── Dockerfile                    # reproducible local run; mirrors Community Cloud
+├── requirements-dev.txt          # + ruff, pytest, pytest-cov, jsonschema, psutil
+├── requirements-build.txt        # + opencv, faster-whisper, psutil: build steps only
+├── requirements-train.txt        # torch, transformers, datasets: training/ only, never deployed
+├── runtime.txt, Dockerfile       # python-3.12; reproducible local run
 ├── .streamlit/config.toml        # server.enableStaticServing = true
-├── .github/
-│   ├── workflows/ci.yml          # ruff + pytest + RSS budget on every push and PR
-│   └── pull_request_template.md  # definition-of-done checklist
-├── src/speak2sign/
-│   ├── __init__.py
-│   ├── ingest/
-│   │   ├── nws.py                #   live forecast text (api.weather.gov; stdlib urllib + json)
-│   │   ├── headlines.py          #   Guardian Open Platform (key from st.secrets), GDELT fallback
-│   │   └── demo_set.py           #   curated items: id, media path, transcript, timings
-│   ├── asr.py                    # faster-whisper wrapper: lazy-loaded, ≤ 60 s guard, word timestamps
-│   ├── gloss/
-│   │   ├── rules.py              #   normalise, drop copulas/articles, fingerspell out-of-vocabulary
-│   │   ├── t5.py                 #   CTranslate2 generation behind a flag
-│   │   └── lexicon.py            #   concept index: keyword → concept → clip, source, licence, badge
-│   ├── timeline.py               # word onsets + gloss sequence → timeline JSON (the contract)
-│   ├── provenance.py             # badge rules: validated / fingerspelled / not available
-│   └── ui/
-│       ├── panel.html            #   news media + captions + ASL panel, plain HTML5 video
-│       └── panel.js              #   scheduler driven by media.currentTime; overrun indicator
-├── static/                       # served by Streamlit at /app/static/...
-│   ├── clips/<concept_id>.mp4    #   ~150–200 sign clips, trimmed and normalised (≤ 2 MB each)
-│   ├── letters/<A..Z, 0..9>.mp4  #   fingerspelling set
-│   └── news/<item_id>.mp3        #   5–8 VOA newscast excerpts (public domain)
+├── .github/workflows/ci.yml      # ruff + pytest + memory budget on every push and PR
+├── .github/pull_request_template.md
+├── src/speak2sign/               # the runtime package; the only code the deployed app imports
+│   ├── transcript.py             #   TimedTranscript / Word: the one input shape every lane produces
+│   ├── ingest/nws.py             #   live NWS forecast -> transcript
+│   ├── ingest/demo_set.py        #   curated items from data/demo + static/news
+│   ├── asr.py                    #   faster-whisper upload lane (in memory, 60 s cap) + reference alignment
+│   ├── gloss/rules.py            #   rule pass (default engine)
+│   ├── gloss/t5.py               #   T5 path via CTranslate2 (toggle)
+│   ├── gloss/lexicon.py          #   concept lexicon loader and keyword index
+│   ├── provenance.py             #   badges, notes, disclaimer, attributions
+│   ├── timeline.py               #   transcript + gloss -> timeline JSON (the contract)
+│   └── ui/panel.{html,css,js,py} #   interpreter panel (components v2); ui/ribbon.py: gloss ribbon + stats line
+├── static/                       # served at /app/static/...; every file licence-recorded in NOTICE.md
+│   ├── clips/<concept>.mp4       #   222 sign clips (CATS public domain, Signbank CC BY-NC-SA)
+│   ├── letters/<x>.mp4           #   26 letters + 10 digits (Signbank)
+│   └── news/<item>.wav           #   6 VOA newscast excerpts, 16 kHz mono (public domain)
 ├── data/
-│   ├── lexicon/
-│   │   ├── concepts.json         #   concept id, keywords, sense notes, clip file, badge
-│   │   ├── target_vocab.csv      #   ~150–200 signs, ASL-LEX frequency rank, status
-│   │   ├── senses.json           #   hand-written disambiguation for ambiguous English words
-│   │   └── attribution.json      #   per-clip source, item id or entry URL, licence
-│   ├── demo/<item_id>.json       #   transcript + word timings for each curated item
-│   └── phrases.json              #   fixed phrase → validated gloss sequence
-├── models/t5_gloss_ct2/          # CTranslate2 int8 export (~60 MB), downloaded from a GitHub Release at build
-├── scripts/
-│   ├── build_lexicon.py          # CATS search + Signbank ECV → concepts.json
-│   ├── fetch_clips.py            # target vocab → download (rate-limited, resumable) → trim → static/clips
-│   ├── build_demo_set.py         # VOA MP3 → whisper → manual correction → data/demo
-│   └── measure_rss.py            # peak RSS with models loaded; fails CI over budget
-├── training/
-│   ├── train_t5_gloss.ipynb      # Kaggle notebook (also exported as .py)
-│   ├── export_ct2.py
-│   └── results/                  # metrics JSON, sample outputs, run log
-├── tests/
-│   ├── test_rules.py
-│   ├── test_lexicon.py
-│   ├── test_timeline_contract.py
-│   ├── test_provenance.py
-│   └── test_smoke_app.py         # streamlit AppTest
-├── contracts/timeline.schema.json # the one interface between Python and the panel JS
-└── docs/
-    ├── 00-execution-plan.md      # this file
+│   ├── lexicon/target_vocab.csv  #   hand-maintained vocabulary (seeded by scripts/vocab_seed.py)
+│   ├── lexicon/senses.json       #   hand-written disambiguation rules
+│   ├── lexicon/overrides.json    #   reviewed corrections to automatic clip picks
+│   ├── lexicon/concepts.json     #   THE lexicon the app reads (generated by build_lexicon.py fetch, then reviewed)
+│   ├── lexicon/attribution.json  #   per-clip source and licence (generated)
+│   ├── lexicon/candidates.json   #   search results consumed by build_lexicon.py fetch (generated)
+│   ├── lexicon/active_spans.json #   motion-span measurement cited in docs/research/timing-findings.md (generated)
+│   └── demo/*.json               #   excerpts.json (the reviewed list) + one timing file per item (generated by build_demo_set.py)
+├── contracts/timeline.schema.json # the one interface between Python and the panel; example.timeline.json is a generated sample
+├── scripts/                      # build steps, dev tools, report generators; see scripts/README.md; never imported by the app
+├── training/                     # T5 fine-tune (train_t5_gloss.py), export (export_ct2.py), README, results/ (generated)
+├── tests/                        # pytest suite + fixtures/ (offline NWS forecast)
+└── docs/                         # the SDLC record; see docs/README.md
+    ├── 00-execution-plan.md      #   this file
     ├── 01-requirements/prd.md
-    ├── 02-design/{system-design.md, data-model.md, resolution-cases.md, cost-model.md}
-    ├── 03-implementation/{dev-log.md, coding-standards.md}
-    ├── 04-testing/{test-strategy.md, evaluation.md}
-    ├── 05-deployment/{deployment.md, runbook.md, demo-script.md}
-    ├── 06-reflection.md
-    ├── adr/0001..0008-*.md       # 0001–0003 copied verbatim from the old repo, status fields updated
-    └── research/                 # prior findings copied; spikes.md and this session's verification added
+    ├── 02-design/system-design.md + diagrams/ (archify sources, delivered HTML, PNG captures)
+    ├── 03-implementation/dev-log.md
+    ├── 04-testing/{test-strategy,accessibility}.md + {evaluation,coverage-rules}.md (generated)
+    ├── 05-deployment/deployment.md (record, steps, runbook, log)
+    ├── adr/0001..0008 (index with status in docs/README.md)
+    └── research/                 #   dated evidence: 2026-08-30 findings (previous iteration), 2026-09-02 verification, spikes, timing
 ```
 
-**Not in the repository:** T5 weights before export (Kaggle output); the `legacy/` prototype (stays in the old folder, cited by path); the Guardian API key (Community Cloud secrets manager, Phase 4 only; the MVP needs no secret). The repo stays under ~0.5 GB; every committed media file stays under 100 MB.
+**Not in the repository:** virtual environments (`.venv`, `.venv-train`); downloaded models (`models/`: whisper base.en and the T5 export, fetched on first use or from the v0.5.0-t5 release); build working directories (`spike_out/`); the diagram containment reports beside the PNG captures; the local launch config (`.claude/`); the Guardian API key (secrets manager, optional headline lane). The repo is about 87 MB tracked; every media file is under 1.5 MB.
 
 ---
 
 ## 6. SDLC process (Step 6)
 
-**Model:** iterative-incremental with stage gates. Each phase writes its documents first, then code, then ships a deployed increment. The spec-kit workflow already installed in the old repo (`.specify/`) is copied over and provides the templates: constitution → specify → plan → tasks → implement.
+**Model:** iterative-incremental with stage gates. Each phase writes its documents first, then code, then ships a deployed increment. A spec-kit scaffold (`.specify/`) was installed at the start and never used: the PRD, TRD and ADRs were written directly in `docs/`, which served the same purpose with less ceremony for a sole developer. The scaffold was removed on 2026-09-04.
 
 | Practice | How | Evidence for the assessor |
 |---|---|---|

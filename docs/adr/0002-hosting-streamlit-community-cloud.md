@@ -87,7 +87,7 @@ So: **the deployed app still never imports MediaPipe.** Keypoints ship as commit
 - **Sleeps after 12 hours without traffic**, showing a wake interstitial. Mitigation:
   open the app the morning of the viva; record a screen-capture backup.
 - **Git LFS on Community Cloud is documented as unreliable** (LFS pointer files served
-  instead of content). Clips must live on **Cloudflare R2**, not in the repo.
+  instead of content). Clips must live on **Cloudflare R2**, not in the repo. *(Amended 2026-09-03 by [ADR 0007](0007-clip-sources-and-storage.md): R2 needs a payment method, so clips are committed under `static/` and served by Streamlit static serving; the hosting decision stands.)*
 - **Pin the Python version defensively** — `runtime.txt` is reported to be ignored
   intermittently, with 3.13 forced.
 - **The DevOps story is thinner** than self-hosting. Compensate deliberately: a GitHub

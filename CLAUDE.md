@@ -70,4 +70,4 @@ Ponytail review: <findings applied / findings rejected and why / none>
 - Conventional Commits; short-lived `feat/<id>-<slug>` branches; PR template checklist is the definition of done.
 - One dev-log entry per working day in `docs/03-implementation/dev-log.md`.
 - Cite files as `path:line` in docs.
-- The previous iteration lives in `../speak2sign/` (read-only reference; its `legacy/` prototype is never imported).
+- The previous iteration (2026-08-30) is not in this repository; its ADR 0001–0003 and research notes are copied under `docs/adr/` and `docs/research/`. Its `legacy/` prototype is never imported.

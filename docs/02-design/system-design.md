@@ -78,13 +78,13 @@ flowchart LR
 | Component | Module | Responsibility | Must not |
 |---|---|---|---|
 | **Streamlit app** | `app.py` | Layout, item selection, lane routing, disclaimer and attribution block, calls into `src/` | Contain pipeline logic |
-| **Ingest** | `src/speak2sign/ingest/{demo_set,nws,headlines}.py` | Produce a `TimedTranscript` from a curated item, the live forecast, a headline, or typed text | Make network calls during playback |
+| **Ingest** | `src/speak2sign/ingest/{demo_set,nws}.py` (+ `transcript.py`, the shared `TimedTranscript`) | Produce a `TimedTranscript` from a curated item, the live forecast, a headline, or typed text | Make network calls during playback |
 | **ASR** | `src/speak2sign/asr.py` | Transcribe an uploaded clip with word timestamps; lazy-load; enforce the 60 s cap; release the model when idle | Load on the demo path |
 | **Gloss engine** | `src/speak2sign/gloss/{rules,t5}.py` | English sentence → gloss sequence. Rules by default; T5 via CTranslate2 when the toggle is on | Invent a sign form |
 | **Lexicon** | `src/speak2sign/gloss/lexicon.py` + `data/lexicon/*.json` | Gloss → concept → clip file, source, licence, badge; fingerspelling plan for out-of-vocabulary tokens | Key on an English string alone |
 | **Provenance** | `src/speak2sign/provenance.py` | Decide the badge for each entry and compute stats | Be bypassed by any lane |
 | **Timeline** | `src/speak2sign/timeline.py` | Merge word onsets with the gloss sequence into `timeline.json` (§5) | Drop entries to fit the speech duration |
-| **Interpreter panel** | `src/speak2sign/ui/panel.{html,js}` | Play news media, captions, and sign clips from the timeline on the media clock; show badges and the overrun indicator | Decide badges or call the server during playback |
+| **Interpreter panel** | `src/speak2sign/ui/panel.{html,css,js}` mounted by `ui/panel.py`; `ui/ribbon.py` renders the gloss ribbon and stats line | Play news media, captions, and sign clips from the timeline on the media clock; show badges and the overrun indicator | Decide badges or call the server during playback |
 | **Static assets** | `static/{clips,letters,news}/` | Clip and media files served at `/app/static/...` | Exceed 100 MB per file or ~0.5 GB total |
 | **CI** | `.github/workflows/ci.yml` | ruff, pytest, schema contract test, RSS budget | Deploy a red build |
 
