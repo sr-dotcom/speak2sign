@@ -2,12 +2,15 @@
 
 The demo path (curated items) never calls this. Uploaded audio is decoded in memory, transcribed,
 and handed back as a TimedTranscript plus a WAV data URL for the panel; nothing is written to disk
-and nothing leaves the server (ADR 0002 memory rules; TRD §12 privacy).
+and the audio goes back only to the uploader's own browser, never to a third party (ADR 0002 memory
+rules; TRD §12 privacy).
 """
 import base64
 import difflib
 import io
+import os
 import re
+import threading
 import urllib.request
 import wave
 from pathlib import Path
@@ -25,24 +28,29 @@ SR = 16000
 MAX_S = 60.0
 FALLBACK_GAP_S = 0.38
 _model = None
+_lock = threading.Lock()   # Streamlit serves sessions on threads: one download, one model, however many first uploads coincide
 
 
 def ensure_model():
-    """Fetch the CTranslate2 files once with urllib (works behind TLS-inspecting proxies where the HF client does not)."""
+    """Fetch the CTranslate2 files once with urllib (works behind TLS-inspecting proxies where the HF client does not).
+    Each file is written to a .part name and renamed when complete, so an interrupted download is retried, not trusted."""
     MODEL_DIR.mkdir(parents=True, exist_ok=True)
     for name in MODEL_FILES:
         dest = MODEL_DIR / name
         if not dest.exists():
+            part = dest.with_name(name + ".part")
             with urllib.request.urlopen(urllib.request.Request(MODEL_REPO + name, headers=UA), timeout=300) as r:
-                dest.write_bytes(r.read())
+                part.write_bytes(r.read())
+            os.replace(part, dest)
     return MODEL_DIR
 
 
 def model():
     global _model
-    if _model is None:
-        from faster_whisper import WhisperModel  # imported here so the demo path never pays for it
-        _model = WhisperModel(str(ensure_model()), device="cpu", compute_type="int8")
+    with _lock:
+        if _model is None:
+            from faster_whisper import WhisperModel  # imported here so the demo path never pays for it
+            _model = WhisperModel(str(ensure_model()), device="cpu", compute_type="int8")
     return _model
 
 

@@ -1,7 +1,7 @@
 [server]
 enableStaticServing = true
 headless = true
-maxUploadSize = 25
+maxUploadSize = 12   # MB; 60 s of 16-bit stereo 44.1 kHz WAV is 10.6 MB, so this bounds what decode() must chew before the 60 s check
 
 [browser]
 gatherUsageStats = false

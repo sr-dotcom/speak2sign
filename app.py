@@ -1,4 +1,5 @@
 """Speak2Sign v2 — Streamlit entry point. Thin: layout and calls into src/speak2sign."""
+import hashlib
 import sys
 from pathlib import Path
 
@@ -17,7 +18,7 @@ st.set_page_config(page_title="Speak2Sign", page_icon="📺", layout="wide")
 
 
 @st.cache_resource
-def lexicon():
+def get_lexicon():
     return lex.load()
 
 
@@ -26,7 +27,14 @@ def forecast():
     return nws.fetch_forecast()
 
 
-def show(tl, key):
+def show_timeline(transcript, key):
+    """Build and mount one item. A failure (a model that will not load, bad data) becomes a message, never a traceback."""
+    try:
+        tl = timeline.build(transcript, get_lexicon(), gloss_engine=ENGINE)
+    except Exception as e:
+        hint = " Switch the engine to rules in the sidebar." if ENGINE != "rules" else ""
+        st.error(f"Could not build the signing plan with the {ENGINE} engine ({e.__class__.__name__}).{hint}")
+        return
     panel.mount(tl, key=f"panel-{key}")
     st.markdown(ribbon.ribbon_html(tl), unsafe_allow_html=True)
     st.caption(ribbon.stats_line(tl))
@@ -41,16 +49,12 @@ st.info(provenance.DISCLAIMER, icon="ℹ️")
 with st.sidebar:
     st.markdown("**Gloss engine**")
     if t5.available():
-        ENGINE = st.radio("Engine", ["rules", "t5"], label_visibility="collapsed", horizontal=True,
+        ENGINE = st.radio("Engine", ["rules", "t5"], label_visibility="collapsed", horizontal=True, key="engine",
                           help="rules: inspectable stdlib pass (default). t5: T5-small fine-tuned on ASLG-PC12, served by CTranslate2; timing is approximate.")
     else:
         ENGINE = "rules"
         st.caption("rules (T5 export not present on this host)")
     st.caption("Either engine resolves through the same validated lexicon; neither can invent a sign.")
-
-
-def build(transcript):
-    return timeline.build(transcript, lexicon(), gloss_engine=ENGINE)
 
 news, typed, weather, upload = st.tabs(["News items", "Type text", "Live weather (Charlotte)", "Upload a clip"])
 
@@ -60,50 +64,56 @@ with news:
         st.caption("No curated items built yet (scripts/build_demo_set.py).")
     else:
         labels = {f"{i['broadcast_date']} · {i['title']} ({i['topic']})": i for i in items}
-        choice = st.selectbox("Pick a news item", list(labels), label_visibility="collapsed")
+        choice = st.selectbox("Pick a news item", list(labels), label_visibility="collapsed", key="news_item")
         item = labels[choice]
         st.caption(f"{item['source']} · {item['duration_s']:.0f} s of anchor-read audio · [archive item]({item['archive_item']})")
-        show(build(demo_set.transcript(item)), key=item["id"])
+        show_timeline(demo_set.transcript(item), item["id"])
 
+# The typed, weather and upload results live in session state so they survive reruns (a tab switch, an engine change).
 with typed:
-    text = st.text_area("English text", "Rain is likely tonight, with a low around 62. The prime minister resigned on Sunday.", height=100)
-    if st.button("Gloss it", type="primary") and text.strip():
-        show(build(from_text(text, media_kind="tts")), key="typed")
+    text = st.text_area("English text", "Rain is likely tonight, with a low around 62. The prime minister resigned on Sunday.", height=100, key="typed_text")
+    if st.button("Gloss it", type="primary", key="typed_go") and text.strip():
+        st.session_state["typed_transcript"] = from_text(text, media_kind="tts")
+    if "typed_transcript" in st.session_state:
+        show_timeline(st.session_state["typed_transcript"], "typed")
 
 with weather:
     st.caption("Forecast text from the US National Weather Service, public domain, no key. Cached five minutes.")
-    if st.button("Fetch the forecast and gloss it", type="primary"):
+    if st.button("Fetch the forecast and gloss it", type="primary", key="weather_go"):
         try:
-            tl = build(nws.transcript(forecast()))
+            st.session_state["weather_transcript"] = nws.transcript(forecast())
         except Exception as e:  # network or API shape; the demo must never show a traceback
             st.error(f"Forecast unavailable right now ({e.__class__.__name__}). The curated items do not depend on it.")
-        else:
-            st.markdown(f"**{tl['item']['title']}** — {tl['item']['source']}")
-            show(tl, key="weather")
+    if "weather_transcript" in st.session_state:
+        t = st.session_state["weather_transcript"]
+        st.markdown(f"**{t.title}** — {t.source}")
+        show_timeline(t, "weather")
 
 with upload:
-    st.caption("Audio or video up to 60 seconds. Transcribed on this server with faster-whisper; the clip is kept in memory for "
-               "this session only, never stored, never sent anywhere else. Check the transcript before signing it.")
-    up = st.file_uploader("Clip", type=["wav", "mp3", "m4a", "mp4", "ogg", "webm"], label_visibility="collapsed")
+    st.caption("Audio or video up to 60 seconds. Transcribed on this server with faster-whisper. The audio stays in memory for this "
+               "session, is sent back only to your own browser for playback, and never goes to a third party or to disk. "
+               "Check the transcript before signing it.")
+    up = st.file_uploader("Clip", type=["wav", "mp3", "m4a", "mp4", "ogg", "webm"], label_visibility="collapsed", key="upload_file")
     if up is not None:
-        key = f"{up.name}:{up.size}"
+        data = up.getvalue()
+        key = hashlib.sha256(data).hexdigest()   # the bytes, not the name: a different file with the same name and size is a different clip
         if st.session_state.get("upload_key") != key:
+            audio, words = None, None
             try:
                 with st.spinner("Transcribing…"):
-                    audio = asr.decode(up.getvalue())
+                    audio = asr.decode(data)
                     words = asr.transcribe(audio)
             except ValueError as e:
                 st.error(str(e))
-                audio, words = None, None
             except Exception as e:  # decoder or model failure; never a traceback
                 st.error(f"Could not transcribe this file ({e.__class__.__name__}). Try a WAV or MP3 under 60 seconds.")
-                audio, words = None, None
-            st.session_state.update(upload_key=key, upload_audio=audio, upload_words=words,
+            st.session_state.update(upload_key=key, upload_audio=audio, upload_words=words, upload_signed=None,
                                     upload_text=" ".join(w["text"] for w in words) if words else "")
         if st.session_state.get("upload_words"):
-            text = st.text_area("Transcript (edit before signing)", st.session_state["upload_text"], height=120, key="upload_text")
-            if st.button("Sign this clip", type="primary") and text.strip():
-                t = asr.upload_transcript(text, st.session_state["upload_words"], st.session_state["upload_audio"])
-                show(build(t), key="upload")
+            text = st.text_area("Transcript (edit before signing)", height=120, key="upload_text")
+            if st.button("Sign this clip", type="primary", key="upload_go") and text.strip():
+                st.session_state["upload_signed"] = text
+            if st.session_state.get("upload_signed"):
+                show_timeline(asr.upload_transcript(st.session_state["upload_signed"], st.session_state["upload_words"], st.session_state["upload_audio"]), "upload")
 
-st.caption(f"Speak2Sign v{__version__} · lexicon {len(lexicon())} concepts · Python {sys.version.split()[0]} · streamlit {st.__version__}")
+st.caption(f"Speak2Sign v{__version__} · lexicon {len(get_lexicon())} concepts · Python {sys.version.split()[0]} · streamlit {st.__version__}")
