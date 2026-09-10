@@ -2,7 +2,7 @@
 
 A news bulletin plays on the left. On the right, an interpreter panel signs it in
 American Sign Language from recorded clips of Deaf signers, in time with the narration.
-Every sign carries a badge: validated, fingerspelled, or not available.
+Every sign carries a badge: validated, fingerspelled, name (already spelled once, shown as text), or not available.
 
 **Repository:** https://github.com/sr-dotcom/speak2sign · **Live URL:** https://speak2sign.streamlit.app · **Cost:** $0/month.
 
@@ -12,11 +12,23 @@ interpreter.
 
 ## Run locally
 
-```bash
-python -m venv .venv && .venv/Scripts/pip install -r requirements-dev.txt
-PYTHONPATH=src streamlit run app.py
-pytest -q
+Windows (PowerShell):
+
+```powershell
+python -m venv .venv; .venv\Scripts\pip install -r requirements-dev.txt
+.venv\Scripts\python -m streamlit run app.py
+.venv\Scripts\python -m pytest -q
 ```
+
+macOS / Linux:
+
+```bash
+python3 -m venv .venv && .venv/bin/pip install -r requirements-dev.txt
+.venv/bin/python -m streamlit run app.py
+.venv/bin/python -m pytest -q
+```
+
+`app.py` puts `src/` on the path itself, so no `PYTHONPATH` is needed.
 
 ## Where things are
 

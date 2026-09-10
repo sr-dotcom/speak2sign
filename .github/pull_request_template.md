@@ -6,7 +6,7 @@
 
 ## Ponytail review (findings applied, or rejected with reason)
 
-## Codex review (`codex exec review`; findings applied, or rejected with reason)
+## Codex review (`scripts/codex_review.sh`; findings applied, or rejected with reason)
 
 ## Definition of done
 - [ ] Why and trade-off sections filled in

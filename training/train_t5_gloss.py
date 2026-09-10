@@ -1,6 +1,6 @@
-"""Fine-tune t5-small on ASLG-PC12 (English -> ASL gloss). Kaggle / Colab only (ADR 0005).
+"""Fine-tune t5-small on ASLG-PC12 (English -> ASL gloss). Training only, on a local CUDA GPU or Kaggle (ADR 0005).
 
-Run on a Kaggle GPU notebook (P100 or T4):
+Local run: see training/README.md. On a Kaggle GPU notebook (P100 or T4):
     !pip install -q -r requirements-train.txt        # or paste the pins below
     !python train_t5_gloss.py --epochs 3 --out /kaggle/working/t5_gloss
 Then export with export_ct2.py. Nothing here is imported by the deployed app.

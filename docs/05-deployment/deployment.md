@@ -7,7 +7,7 @@
 | CI | GitHub Actions `ci.yml`: ruff, pytest, `scripts/measure_rss.py` (1800 MB budget) on every push and PR |
 | Host | Streamlit Community Cloud (ADR 0002) |
 | Live URL | **https://speak2sign.streamlit.app** (deployed by the owner 2026-09-04) |
-| Entry point | `app.py`, Python 3.12 (`runtime.txt`), runtime deps `requirements.txt` only |
+| Entry point | `app.py`, runtime deps `requirements.txt` only. Python: `runtime.txt` asks for 3.12 and CI runs 3.12, but the host reported **3.14.7** on 2026-09-04 (log below); the version is set in the app's Advanced settings and has not been confirmed since. Until it is, the deployed runtime is UNVERIFIED as 3.12 |
 
 ## Deploy steps (Community Cloud, once)
 
@@ -31,7 +31,7 @@
 | "Forecast unavailable" | NWS API down or rate-limited; curated items and typed text still work |
 | Upload transcription fails | Check the app log for the model download (first use); a WAV under 60 s is the safe format |
 | Clip missing in the panel | `pytest tests/test_lexicon.py` locally: every concept's clip must exist; rebuild with `scripts/build_lexicon.py fetch` |
-| Over memory | `scripts/measure_rss.py` locally; the only large resident is whisper (measured 334 MB) |
+| Over memory | `scripts/measure_rss.py` locally: peak with lexicon + whisper + one transcription (334 MB on Windows, 316 MB in CI) plus T5 when its export is present (+86 MB measured 2026-09-04) |
 
 ## Deploy log
 

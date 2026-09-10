@@ -1,5 +1,6 @@
-# Kaggle / Colab only (training/). Never installed in the deployed app.
-torch
+# Training only (training/): a local CUDA GPU or Kaggle. Never installed in the deployed app.
+# torch is pinned to the version used for the recorded run; install the CUDA wheel first (training/README.md).
+torch==2.11.0
 transformers==4.57.1
 datasets==4.2.0
 evaluate==0.4.6

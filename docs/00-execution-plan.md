@@ -193,7 +193,7 @@ Existing ADRs: **0001** superseded (already), **0002 kept** (hosting) with its R
 | **Gloss → sign identity** | Concept-keyed lexicon: CATS title + Signbank ECV keywords → concept id → clip; sense table for ambiguous words | Hand-typed dictionary; keying on English strings | Uses two validated indexes; badges per concept | The prototype's 26-word table is the documented defect; English-string keys collapse distinct signs | — |
 | **Sign source** | **CATS ASL Dictionary (public domain, 24,682 clips)** primary; Signbank (CC BY-NC-SA) for letters, digits, gaps (ADR 0007) | WLASL; ASL Citizen; Lifeprint; Signing Savvy | No licence obligations; bulk; breadth covers news vocabulary; Signbank fills quality gaps with linguist-curated forms | Computational-use-only; no-distribution; explicit app bans | Spike 1 finds CATS signer quality unacceptable → Signbank primary with a ~200-entry polite fetch |
 | **Sign rendering** | Recorded clip playback in HTML5 `<video>`, sequenced by a timeline JSON (ADR 0006) | MediaPipe skeleton view; CWASA/HamNoSys avatar; AI video generation | Real ASL from real signers; zero runtime dependencies; removes a whole build environment (MediaPipe) | Skeleton view added an environment and RAM for no evaluative gain; no ASL HamNoSys lexicon exists; no evidence generative video produces correct ASL (Apple CHI 2025, prior) | An examiner requests an avatar and a licence-clean pose set exists |
-| **Synchronisation** | Clips scheduled at word onset from whisper timestamps; if signing runs longer than speech the panel **shows the overrun** ("catching up" indicator), never drops signs, playback ≤ 1.25× (ADR 0008) | Drop signs to absorb overrun; semantic compression | Honesty: a dropped sign is a silent loss | Compression is what a human interpreter does and requires a signer, not code | Deaf-reviewed compression rules become available |
+| **Synchronisation** | Superseded 2026-09-03 by ADR 0008: the bulletin is paced to the interpreter (the media pauses at each sentence end until the panel has signed it), clips play their active spans at 1.25×/2.0×, nothing is dropped, names are fingerspelled once. Original proposal, kept for the record: clips scheduled at word onset with an overrun indicator, playback ≤ 1.25× (ADR 0008) | Drop signs to absorb overrun; semantic compression | Honesty: a dropped sign is a silent loss | Compression is what a human interpreter does and requires a signer, not code | Deaf-reviewed compression rules become available |
 | **UI framework** | Streamlit 1.62.0 + `st.components.v2` panel (ADR 0002 kept) | Static site on GitHub Pages with in-browser ONNX; FastAPI + React | One language; existing deploy path; the Python pipeline is the assessed artefact | Static-only turns the Python pipeline into a build step, harder to evidence and demo; two-tier stack doubles the surface for one developer | Community Cloud RAM or sleep proves unreliable in Phase 2 → static site is the runner-up |
 | **Hosting** | Streamlit Community Cloud (ADR 0002 kept) | Render free; HF Spaces; Railway; Fly.io; the developer's Oracle box | Free, x86, 2.7 GB, auto-HTTPS, push-to-deploy; the only free host verified today that gives Python > 1 GB with no card | 512 MB and 15-min sleep; $9/mo gate; $16–30/mo; no free tier; excluded by developer direction | Published limits change (they say they can) → HF ZeroGPU Gradio Space is the free runner-up |
 | **Asset storage** | **Clips and demo media committed in the app repo** under `static/`, served by Streamlit static file serving (`server.enableStaticServing`) (ADR 0007) | Cloudflare R2; Git LFS; HF Dataset repo | ~0.4 GB fits the 1 GB guidance; zero moving parts; Community Cloud reads local files | R2 needs a payment method and a zoned domain; LFS is unreliable on Community Cloud (prior) and not served by Pages; HF storage policy has shifted | Repo passes ~800 MB → second public repo served by GitHub Pages, referenced by URL |
@@ -208,17 +208,19 @@ Existing ADRs: **0001** superseded (already), **0002 kept** (hosting) with its R
 
 ## 5. Project folder structure (Step 5)
 
-Rewritten 2026-09-04 to match the repository exactly (the original proposal listed files that were never built and missed files that were). Files marked (generated) are produced by a named script and must not be edited by hand.
+Maintained overview of the tree, last checked 2026-09-10 against `git ls-files` (the original 2026-09-02 proposal listed files that were never built and missed files that were). Every folder and every file the app or the process depends on is listed; media files and the individual ADRs, research notes and diagram captures are summarised on one line each. Files marked (generated) are produced by a named script and must not be edited by hand.
 
 ```
 speak2sign/
 ├── README.md                     # what it is, live URL, how to run, where things are
 ├── CLAUDE.md                     # working rules, hard rules, work policy
+├── AGENTS.md                     # the brief for the Codex reviewer (work policy rule 5)
+├── .gitignore, .dockerignore     # environments, models, caches, secrets stay out of git and out of the image
 ├── LICENSE, NOTICE.md            # MIT for the code; sources and licences of all media and data
 ├── app.py                        # Streamlit entry point (thin: layout + calls into src/)
 ├── requirements.txt              # RUNTIME ONLY: streamlit, faster-whisper, ctranslate2, sentencepiece
 ├── requirements-dev.txt          # + ruff, pytest, pytest-cov, jsonschema, psutil
-├── requirements-build.txt        # + opencv, faster-whisper, psutil: build steps only
+├── requirements-build.txt        # + opencv: contact sheets and clip spans only
 ├── requirements-train.txt        # torch, transformers, datasets: training/ only, never deployed
 ├── runtime.txt, Dockerfile       # python-3.12; reproducible local run
 ├── .streamlit/config.toml        # server.enableStaticServing = true
@@ -240,7 +242,7 @@ speak2sign/
 │   ├── letters/<x>.mp4           #   26 letters + 10 digits (Signbank)
 │   └── news/<item>.wav           #   6 VOA newscast excerpts, 16 kHz mono (public domain)
 ├── data/
-│   ├── lexicon/target_vocab.csv  #   hand-maintained vocabulary (seeded by scripts/vocab_seed.py)
+│   ├── lexicon/target_vocab.csv  #   hand-maintained vocabulary (seeded by scripts/seed_vocab.py)
 │   ├── lexicon/senses.json       #   hand-written disambiguation rules
 │   ├── lexicon/overrides.json    #   reviewed corrections to automatic clip picks
 │   ├── lexicon/concepts.json     #   THE lexicon the app reads (generated by build_lexicon.py fetch, then reviewed)
@@ -248,8 +250,9 @@ speak2sign/
 │   ├── lexicon/candidates.json   #   search results consumed by build_lexicon.py fetch (generated)
 │   ├── lexicon/active_spans.json #   motion-span measurement cited in docs/research/timing-findings.md (generated)
 │   └── demo/*.json               #   excerpts.json (the reviewed list) + one timing file per item (generated by build_demo_set.py)
-├── contracts/timeline.schema.json # the one interface between Python and the panel; example.timeline.json is a generated sample
-├── scripts/                      # build steps, dev tools, report generators; see scripts/README.md; never imported by the app
+├── contracts/timeline.schema.json # the one interface between Python and the panel; example.timeline.json (generated by scripts/example_timeline.py)
+├── scripts/                      # build steps, dev tools, report generators (seed_vocab, build_lexicon, make_contact_sheets, measure_clip_spans,
+│                                 #   build_demo_set, example_timeline, measure_rss, coverage_report, evaluate_gloss, codex_review.sh); see scripts/README.md
 ├── training/                     # T5 fine-tune (train_t5_gloss.py), export (export_ct2.py), README, results/ (generated)
 ├── tests/                        # pytest suite + fixtures/ (offline NWS forecast)
 └── docs/                         # the SDLC record; see docs/README.md
@@ -275,14 +278,14 @@ speak2sign/
 |---|---|---|
 | Requirements | PRD in Phase 0 from §2; each requirement has an id (FR-nn), priority, acceptance criterion; changes via PR to `docs/01-requirements/` | PRD git history |
 | Architecture decisions | One ADR per decision; status Proposed → Accepted → Superseded; never edited after acceptance | `docs/adr/` |
-| Design | TRD, data model, and timeline contract before Phase 2 code; diagrams as Mermaid in Markdown | `docs/02-design/` |
+| Design | TRD, data model, and timeline contract before Phase 2 code; diagrams as archify HTML viewers with JSON sources under `docs/02-design/diagrams/` | `docs/02-design/` |
 | Branching | Trunk-based: `main` always deployable; short-lived `feat/<id>-<slug>`; PR to `main` even as a sole developer, with the self-review checklist | PR list |
 | Commits | Conventional Commits (`feat:`, `fix:`, `docs:`, `test:`, `chore:`) referencing the task id | git log |
 | Definition of done | Code + test + docs + CI green + RSS budget met + verified at the live URL | PR template |
-| Quality gate | Actions on every push: `ruff check`, `pytest`, `scripts/measure_rss.py`; red cannot merge | Actions history |
+| Quality gate | Actions on every push: `ruff check`, `pytest`, `scripts/measure_rss.py`; a red run is visible on the PR and in the Actions history (no branch protection is configured: sole developer, trunk-based) | Actions history |
 | Testing | Unit tests per module; schema contract test; AppTest smoke; model evaluation script | `docs/04-testing/` + CI |
 | Deployment | Merge to `main` → Community Cloud redeploys; tag `vX.Y.Z` at each phase exit; deployment doc records URL, date, commit | Tags + `docs/05-deployment/` |
-| Operations | UptimeRobot public status page; runbook for "app asleep", "model failed to load", "clip missing" | `runbook.md` |
+| Operations | UptimeRobot public status page; runbook for "app asleep", "model failed to load", "clip missing" | runbook section of `docs/05-deployment/deployment.md` |
 | Dev log | One dated entry per working day: done, blocked, decided | `docs/03-implementation/dev-log.md` |
 | Honesty rules | UNVERIFIED marked; skipped work stated; nothing described that is not deployed | Throughout |
 
@@ -318,7 +321,7 @@ It is 2026-10-30 and the demo failed at the viva. The five most likely causes:
 | 1 | **Clips never arrived**: CATS quality was poor and Signbank per-entry fetching ate the schedule | Spike 1 has no written result by day 5 | CATS sampled on day 3; Signbank is secondary and capped at ~50 entries; fetch script is rate-limited and resumable |
 | 2 | **The panel looked like a spelling bee**: fingerspelling above 20% | Coverage under 85% on the demo scripts at end of Phase 1 | Bounded lexicon; items chosen for coverage; live lane is weather; CATS has 24k entries so extending vocabulary is cheap; rate displayed, not hidden |
 | 3 | **Out of memory on Community Cloud** with whisper and T5 loaded together | `measure_rss.py` over 1.8 GB in CI | Lazy load; `base.en` int8 only; T5 int8; demo path pre-transcribed so whisper is never loaded for the demo |
-| 4 | **Sync drift**: signs fell behind and the panel looked broken | Overrun indicator on for most of an item in Phase 3 | Schedule from media `currentTime`; preload; overrun shown as design; playback ≤ 1.25× |
+| 4 | **Sync drift**: signs fell behind and the panel looked broken | Overrun indicator on for most of an item in Phase 3 | Superseded by ADR 0008 (interpreter-paced): the media waits for the panel, so drift cannot accumulate; preload; active spans at 1.25×/2.0× |
 | 5 | **Docs written after the code**, process mark suffered | A PR with a code diff and no docs diff | Definition of done requires docs; PR template; weekly retro entry |
 
 ---

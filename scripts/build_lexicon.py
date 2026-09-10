@@ -10,7 +10,10 @@ Sources and rules (ADR 0007):
 - ASL Signbank: CC BY-NC-SA 4.0; secondary (letters, digits, gaps). Matched by ECV keyword.
   Each Signbank clip records its entry weblink, as the conditions page asks.
 - Requests are rate-limited to one per second with a User-Agent naming the project.
-- Nothing is downloaded in `plan`. `fetch` skips files that already exist, so it is resumable.
+- Nothing is downloaded in `plan`. `fetch` keeps a file that already exists for the same source clip, so it is
+  resumable; a file whose chosen source changed (a new override) is fetched again. Files are written whole
+  (.part then rename). A concept whose fetch fails keeps its previously published record, and fetch exits 1.
+- Only these two commands run anything; anything else prints usage and exits 2.
 """
 import csv
 import json
@@ -101,7 +104,7 @@ def cats_pick(docs, keywords):
     scored = [s for s in scored if s[0] > 0]
     if not scored:
         return None
-    scored.sort(key=lambda s: (-s[0], len(s[1].get("title", ""))))
+    scored.sort(key=lambda s: (-s[0], len(s[1].get("title", "")), s[1]["identifier"]))   # identifier last: the same plan every run
     score, d = scored[0]
     return {"source": "cats", "score": score, "identifier": d["identifier"], "title": d.get("title", ""),
             "attribution_url": f"https://archive.org/details/{d['identifier']}", "licence": "Public Domain"}
@@ -139,7 +142,7 @@ def signbank_pick(index, concept, keywords):
     def base(g):
         m = re.match(r"^[A-Z][A-Z-]*", g)
         return (m.group(0) if m else g).rstrip("-").lower().replace("-", " ")
-    hits.sort(key=lambda r: (0 if base(r["gloss"]) in keywords else 1, len(r["gloss"])))
+    hits.sort(key=lambda r: (0 if base(r["gloss"]) in keywords else 1, len(r["gloss"]), r["id"]))   # id last: the same plan every run
     return signbank_record(hits[0], score=2)
 
 
@@ -249,6 +252,10 @@ def fetch():
         sub = "letters" if rec["source_block"] in ("letter", "digit") else "clips"
         dest = STATIC / sub / f"{cid}.mp4"
         dest.parent.mkdir(parents=True, exist_ok=True)
+        prev = previous.get(cid, {})
+        chosen_id = rec["cats"]["identifier"] if src == "cats" else rec["signbank"]["id"]
+        if dest.exists() and prev.get("clip", {}).get("source_id") not in (None, chosen_id):
+            dest.unlink()   # the reviewed override points at another clip now: the cached file is stale, not reusable
         try:
             if src == "cats":
                 c = rec["cats"]
@@ -267,26 +274,28 @@ def fetch():
                             print(f"  {cid}: {name} failed ({e.__class__.__name__}), trying next")
                     if data is None:
                         raise RuntimeError("all mp4 derivatives failed")
-                    dest.write_bytes(data)
+                    write_complete(dest, data)
                 clip = {"file": f"{sub}/{cid}.mp4", "source": "cats", "source_id": c["identifier"], "attribution_url": c["attribution_url"], "licence": c["licence"]}
             else:
                 s = rec["signbank"]
                 if not dest.exists():
-                    dest.write_bytes(get(signbank_video_url(s), binary=True))
+                    write_complete(dest, get(signbank_video_url(s), binary=True))
                 clip = {"file": f"{sub}/{cid}.mp4", "source": "signbank", "source_id": s["id"], "gloss": s["gloss"],
                         "attribution_url": s["attribution_url"], "licence": s["licence"], "citation": s["citation"]}
         except Exception as e:
             failures[cid] = f"{e.__class__.__name__}: {e}"[:160]
             print(f"  {cid}: FAILED {failures[cid]}")
+            if prev:   # keep what was published rather than silently dropping the concept
+                concepts.append(prev)
+                attributions.append({"concept_id": cid, **prev["clip"]})
             continue
-        prev = previous.get(cid, {})
         measured = ("duration_s", "in_s", "out_s")
         same_clip = {k: v for k, v in prev.get("clip", {}).items() if k not in measured} == clip
         if same_clip:
             clip.update({k: prev["clip"][k] for k in measured if k in prev["clip"]})
+        # status 'review' until a human has looked at the clip (make_contact_sheets.py); the app loads only 'attested'
         record = {"concept_id": cid, "gloss": (rec["signbank"] or {}).get("gloss") if src == "signbank" else cid.upper().replace("-", " "),
-                  "keywords": rec["keywords"], "clip": clip, "badge": "validated",
-                  "status": prev.get("status", "review") if same_clip else "review"}
+                  "keywords": rec["keywords"], "clip": clip, "status": prev.get("status", "review") if same_clip else "review"}
         if prev.get("note"):
             record["note"] = prev["note"]
         concepts.append(record)
@@ -297,11 +306,22 @@ def fetch():
     (ROOT / "data" / "lexicon" / "fetch_failures.json").write_text(json.dumps(failures, indent=1), encoding="utf-8")
     total = sum(p.stat().st_size for p in STATIC.rglob("*.mp4"))
     print(f"\nwrote {len(concepts)} concepts; {len(failures)} failures (fetch_failures.json); static/ holds {total/1e6:.1f} MB of clips")
+    return 1 if failures else 0
+
+
+def write_complete(dest, data):
+    """Write to a .part name and rename, so an interrupted run never leaves a half file that looks fetched."""
+    part = dest.with_name(dest.name + ".part")
+    part.write_bytes(data)
+    part.replace(dest)
 
 
 if __name__ == "__main__":
-    mode = sys.argv[1] if len(sys.argv) > 1 else "plan"
-    if mode == "plan":
-        plan(only=set(sys.argv[2].split(",")) if len(sys.argv) > 2 else None)
+    args = sys.argv[1:]
+    if args[:1] == ["plan"] and len(args) <= 2:
+        plan(only=set(args[1].split(",")) if len(args) == 2 else None)
+    elif args == ["fetch"]:
+        sys.exit(fetch())
     else:
-        fetch()
+        print("usage: build_lexicon.py plan [concept_id,...] | build_lexicon.py fetch", file=sys.stderr)
+        sys.exit(2)

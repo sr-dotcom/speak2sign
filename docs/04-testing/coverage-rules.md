@@ -9,7 +9,7 @@ Lexicon: 258 attested concepts. Content tokens exclude dropped function words.
 | sichuan-landslide | 40 | 34 | 6 | 0 | 85% | 15% | southwestern sichuan deployed junlian broadcaster cctv |
 | astronauts-return | 49 | 37 | 12 | 0 | 76% | 24% | june spacex kennedy center butch wilmore suni williams boeing starliner wilmore williams |
 | california-fire-warning | 50 | 45 | 5 | 0 | 90% | 10% | least los angeles santa ana |
-| pope-infection | 43 | 35 | 7 | 1 | 81% | 16% | francis complex respiratory system targeted respiratory tract |
-| canada-new-pm | 75 | 61 | 14 | 0 | 81% | 19% | central mark carney liberal trump annexation looms carey justin trudeau january sworn carney trudeau |
-| nws-forecast (sample 2026-09-03) | 39 | 35 | 4 | 0 | 90% | 10% | values mph pm pm |
-| **All** | 343 | 279 | 63 | 1 | **81%** | **18%** | |
+| pope-infection | 43 | 34 | 8 | 1 | 79% | 19% | francis complex respiratory system targeted respiratory tract uncommon |
+| canada-new-pm | 75 | 60 | 15 | 0 | 80% | 20% | central mark carney liberal trump annexation looms carey justin trudeau january sworn carney noncitizen trudeau |
+| nws-forecast (recorded sample, tests/fixtures) | 59 | 51 | 8 | 0 | 86% | 14% | values mph values mph values mph values mph |
+| **All** | 363 | 293 | 69 | 1 | **81%** | **19%** | |

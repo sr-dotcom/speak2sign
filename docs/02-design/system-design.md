@@ -150,7 +150,7 @@ The one interface between Python and the panel. Fully specified in the schema fi
 |---|---|
 | `item` | id, title, on-screen `source` string, broadcast date, lane |
 | `media` | kind (`audio`, `video`, `tts`, `none`), URL under `/app/static/`, duration |
-| `captions` | `(t, text)` pairs |
+| `captions` | one per source word, verbatim: `t`, `text`, `sentence` (owner), and `dropped` (nothing signs it) or `partly` + `missing` (part of it is unsigned, e.g. don't → do) |
 | `entries` | ordered signing plan: `onset_s`, `word`, `gloss`, `badge`, `clips[]` (0 for not-available, 1 for validated, n for fingerspelled), `note` |
 | `stats` | token counts per badge, `coverage`, `fingerspelling_rate`, `signing_s` vs `speech_s`, `gloss_engine` |
 | `provenance` | disclaimer text and the attribution list |
@@ -232,7 +232,7 @@ Rejected: free-running media with a "catching up" indicator (the previous policy
 | `fingerspelled` | No concept for the token; token is alphabetic and ≤ 12 characters | Amber badge with the word; letter clips play in sequence; note "no established sign in this system" |
 | `not_available` | No concept and not fingerspellable (numbers with units, symbols, tokens > 12 characters, or a sense the sense table marks as not representable) | Grey badge; the panel holds the previous frame; a first-class outcome, not an error |
 
-Function words (articles, copulas, auxiliaries) are dropped by the rule pass and listed in the caption as struck-through text so the loss is visible. Digits use the 0–9 clips.
+Function words (articles, copulas, auxiliaries) are dropped by the rule pass and listed in the caption as struck-through text so the loss is visible. Digits use the 0–9 clips. Captions are the source words verbatim (2026-09-10): a word is struck through when nothing signs it, and a word only partly signed ("don't" → NOT with "do" dropped; "30%" glossed by T5 as 30 alone) shows the unsigned part struck through after it. Under T5, whose output carries no alignment, coverage is decided by concept through the rule pass (a synonym or stem counts, a same-word-other-sense gloss does not), and a number the source never said is refused rather than signed. Numbers: whole numbers are signed digit by digit; anything with a sign, decimal point, slash, colon, dash or exponent (-5, 12.5, 1/2, 10:30, 20-30, 1e-3) is one token refused whole, never a digit fragment; digits mixed with letters (2pm, 1st) are spelled. Any letter without a clip (é) refuses the whole word instead of shortening it.
 
 Disclosure: the disclaimer and attribution block render above the panel before the first Play. Per-sign provenance is visible on the badge and on hover or focus. This is the design response to the EU AI Act Article 50 and EUD Principle 5 findings carried from the previous iteration.
 

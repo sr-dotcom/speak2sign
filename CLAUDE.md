@@ -14,8 +14,8 @@ Sole developer, ~8 weeks, $0 budget. Target ASL.
 1. Ends publicly deployed on Streamlit Community Cloud at a URL that works during the viva.
 2. Documentation precedes code for every SDLC stage (`docs/01..05`, `docs/adr/`).
 3. Never present a sign the system did not retrieve from a validated clip. Every entry
-   carries a badge: validated, fingerspelled, not available. Overrun is shown, never
-   absorbed by dropping signs.
+   carries a badge: validated, fingerspelled, name (a proper noun already spelled once,
+   shown as text), not available. Overrun is shown, never absorbed by dropping signs.
 4. Never claim a step is done that was not performed. Mark unverified claims `UNVERIFIED`.
 5. Do not commit unless the developer asks.
 
@@ -33,7 +33,7 @@ Sole developer, ~8 weeks, $0 budget. Target ASL.
 ## Hard rules
 
 - Runtime dependencies are exactly `requirements.txt`. No torch, TensorFlow, MediaPipe, spaCy at runtime.
-- `requirements-train.txt` is for Kaggle only.
+- `requirements-train.txt` is for training only (local GPU or Kaggle), never the app.
 - Peak RSS with all models loaded ≤ 1.8 GB; `scripts/measure_rss.py` enforces it in CI.
 - Every committed media file < 100 MB; repo total under ~0.5 GB.
 - The timeline JSON (`contracts/timeline.schema.json`) is the only interface between Python and the panel. Change the schema and the contract test together.

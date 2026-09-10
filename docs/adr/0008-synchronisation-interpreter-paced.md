@@ -11,7 +11,7 @@ With the real lexicon (258 clips) and the rule pass, signing time is 5.5–9.3×
 ## Decision
 
 1. **Interpreter-paced playback.** The news media plays one sentence, then pauses with a visible "waiting for the interpreter" state until the panel has finished every entry of that sentence, then resumes. Nothing is dropped, nothing is sped past legibility. The lag is a displayed, measured property of retrieval-based signing.
-2. **Active spans and modest rates.** Each clip records `in_s`/`out_s` (motion span measured by frame differencing, `scripts/clip_durations.py`). The panel plays only that span, at **1.25×** for signs and **2.0×** for letters and digits. These rates are recorded in the timeline (`playback`) so the numbers on screen match what is played.
+2. **Active spans and modest rates.** Each clip records `in_s`/`out_s` (motion span measured by frame differencing, `scripts/measure_clip_spans.py`). The panel plays only that span, at **1.25×** for signs and **2.0×** for letters and digits. These rates are recorded in the timeline (`playback`) so the numbers on screen match what is played.
 3. **Names once.** A capitalised word with no sign is fingerspelled the first time it appears in an item; later occurrences carry the badge **name** and are shown as text, not spelled. This mirrors interpreter practice (spell once, then refer) and cuts letter time by roughly a third.
 4. **Estimates shown honestly.** `stats.signing_s` is the projected signing time at the recorded rates; the UI shows signing time next to speech time.
 

@@ -32,15 +32,23 @@ OUT_JSON = ROOT / "data" / "demo"
 PAD_BEFORE, PAD_AFTER = 0.25, 0.6
 
 
+MIN_LOCATE_SCORE = 0.5
+EDGE = 8   # tokens matched at each end of the excerpt
+
+
 def download(url, dest):
+    """Written to a .part name and renamed when complete, so an interrupted download is retried, not trusted."""
     if not dest.exists():
+        part = dest.with_name(dest.name + ".part")
         with urllib.request.urlopen(urllib.request.Request(url, headers=asr.UA), timeout=120) as r:
-            dest.write_bytes(r.read())
+            part.write_bytes(r.read())
+        part.replace(dest)
     return dest
 
 
 def locate(ref_tokens, hyp_words):
-    """Hyp word index range covering the reference text: best match for its first and last 8 tokens."""
+    """Hyp word index range covering the reference text: best match for its first and last EDGE tokens.
+    Both ends must match well, and the range must be plausible, or the item is not built."""
     hyp = [asr._norm(w["text"]) for w in hyp_words]
     ref = [asr._norm(t) for t in ref_tokens]
 
@@ -52,11 +60,17 @@ def locate(ref_tokens, hyp_words):
                 best, best_i = r, i
         return best_i, best
 
-    head, hs = find(ref[:8], 0, len(hyp))
-    tail, ts = find(ref[-8:], head, min(len(hyp), head + int(len(ref) * 1.6) + 20))
-    if head is None or tail is None or hs < 0.5:
-        raise RuntimeError(f"could not locate excerpt (head score {hs:.2f})")
-    return head, tail + 8, hs, ts
+    head_chunk, tail_chunk = ref[:EDGE], ref[-EDGE:]
+    head, hs = find(head_chunk, 0, len(hyp))
+    if head is None or hs < MIN_LOCATE_SCORE:
+        raise RuntimeError(f"could not locate the start of the excerpt (score {hs:.2f})")
+    tail, ts = find(tail_chunk, head, min(len(hyp), head + int(len(ref) * 1.6) + 20))
+    if tail is None or ts < MIN_LOCATE_SCORE:
+        raise RuntimeError(f"could not locate the end of the excerpt (score {ts:.2f})")
+    end = min(len(hyp), tail + len(tail_chunk))
+    if end <= head:
+        raise RuntimeError(f"excerpt end ({end}) is not after its start ({head})")
+    return head, end, hs, ts
 
 
 def main():

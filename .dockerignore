@@ -1,0 +1,16 @@
+# Only what the deployed app needs reaches the image: no secrets, environments, models, caches or research downloads.
+.git
+.venv*
+.streamlit/secrets.toml
+.claude
+.pytest_cache
+.ruff_cache
+__pycache__
+*.pyc
+models
+spike_out
+docs
+training
+tests
+scripts
+data/lexicon/candidates.json

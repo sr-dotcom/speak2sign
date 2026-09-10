@@ -5,7 +5,7 @@ digits. ASL-LEX subjective-frequency Z scores are attached where an entry matche
 ranking and for the report. Re-run after editing the blocks; the CSV is the artefact
 the developer reviews.
 
-Usage: python scripts/vocab_seed.py [path/to/asllex_signdata.csv]
+Usage: python scripts/seed_vocab.py [path/to/asllex_signdata.csv]
 """
 import csv
 import sys

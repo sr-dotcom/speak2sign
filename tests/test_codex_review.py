@@ -10,7 +10,7 @@ import pytest
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "codex_review.sh"
 BASH = shutil.which("bash")
-needs_bash = pytest.mark.skipif(BASH is None, reason="bash not available")
+needs_bash = pytest.mark.skipif(BASH is None or shutil.which("git") is None, reason="bash and git are both required")
 
 
 def make_repo(tmp_path, codex_behaviour):
@@ -59,6 +59,25 @@ def test_untracked_file_with_a_space_is_included(tmp_path):
     assert r.returncode == 0
     assert "new panel.js" in r.stdout and "console.log(1)" in r.stdout
     assert "=== CLAUDE.md ===" in r.stdout and "rules" in r.stdout
+
+
+@needs_bash
+def test_commit_argument_must_name_exactly_one_commit(tmp_path):
+    repo, stub = make_repo(tmp_path, ECHO_PAYLOAD)
+    for bad in ("HEAD~3", "--stat", "HEAD..HEAD~1"):
+        r = run(repo, stub, bad)
+        assert r.returncode == 3 and "does not name a commit" in r.stderr, bad
+    r = run(repo, stub, "HEAD")
+    assert r.returncode == 0 and "=== diff ===" in r.stdout and "AGENTS.md" in r.stdout
+
+
+@needs_bash
+def test_answer_is_taken_between_the_marker_and_the_token_count(tmp_path):
+    stub = "#!/usr/bin/env bash\ncat > /dev/null\necho 'mcp: startup noise'\necho codex\necho 'P2 | x | y | z'\necho 'tokens used'\necho '12,345'\necho 'P2 | x | y | z'\n"
+    repo, stub_dir = make_repo(tmp_path, stub)
+    (repo / "x.txt").write_text("x\n")
+    r = run(repo, stub_dir)
+    assert r.returncode == 0 and r.stdout.strip() == "P2 | x | y | z"
 
 
 @needs_bash

@@ -10,7 +10,7 @@ Model `google-t5/t5-small`, 3.0 epochs, lr 0.0003, batch 32, 78940 training rows
 | BLEU | 93.7 |
 | chrF | 97.1 |
 
-Caveat, stated up front: ASLG-PC12 glosses were rule-generated from parliamentary text, so this split measures how well T5 learned those rules, not how well it glosses news.
+Caveats, stated up front: ASLG-PC12 glosses were rule-generated from parliamentary text, so this split measures how well T5 learned those rules, not how well it glosses news; references were truncated to 64 tokens like the inputs, so the scores are against truncated references; dataset, base model and metric modules were fetched unpinned at training time.
 
 Samples (text → reference gloss → T5):
 
@@ -33,28 +33,28 @@ Samples (text → reference gloss → T5):
   - ref: `THIS BE DESC-VERY DESC-REAL RISK X-I CAN ENVISAGE .`
   - t5: `THIS BE DESC-VERY DESC-REAL RISK X-I CAN ENVISAGE.`
 
-## B. Curated news items and a forecast, both engines through the same lexicon
+## B. Curated news items and a recorded forecast, both engines through the same lexicon
 
 | Item | Engine | Content tokens | Coverage | Fingerspelled | Names as text | Not available | Signing s | Build ms |
 |---|---|---|---|---|---|---|---|---|
-| samoa-oil-spill | rules | 47 | 68% | 28% | 2 | 0 | 150 | 1 |
-| samoa-oil-spill | t5 | 48 | 60% | 40% | 0 | 0 | 168 | 327 |
+| samoa-oil-spill | rules | 47 | 68% | 28% | 2 | 0 | 152 | 1 |
+| samoa-oil-spill | t5 | 48 | 60% | 40% | 0 | 0 | 168 | 317 |
 | california-fire-warning | rules | 50 | 90% | 10% | 0 | 0 | 110 | 1 |
-| california-fire-warning | t5 | 39 | 77% | 23% | 0 | 0 | 112 | 142 |
+| california-fire-warning | t5 | 37 | 76% | 24% | 0 | 0 | 107 | 135 |
 | sichuan-landslide | rules | 40 | 85% | 15% | 0 | 0 | 118 | 1 |
-| sichuan-landslide | t5 | 40 | 60% | 40% | 0 | 0 | 156 | 150 |
-| pope-infection | rules | 43 | 81% | 16% | 0 | 1 | 139 | 1 |
-| pope-infection | t5 | 46 | 67% | 30% | 0 | 1 | 164 | 176 |
-| canada-new-pm | rules | 75 | 81% | 16% | 2 | 0 | 217 | 1 |
-| canada-new-pm | t5 | 61 | 67% | 33% | 0 | 0 | 224 | 230 |
-| astronauts-return | rules | 49 | 76% | 20% | 2 | 0 | 145 | 0 |
-| astronauts-return | t5 | 56 | 68% | 27% | 2 | 1 | 172 | 202 |
-| nws-forecast-sample | rules | 34 | 91% | 9% | 0 | 0 | 80 | 0 |
-| nws-forecast-sample | t5 | 40 | 80% | 18% | 0 | 1 | 100 | 145 |
-| **All** | **rules** | 338 | **81%** | **17%** | 6 | 1 | 959 | |
-| **All** | **t5** | 330 | **68%** | **30%** | 2 | 3 | 1096 | |
+| sichuan-landslide | t5 | 40 | 57% | 40% | 0 | 1 | 155 | 136 |
+| pope-infection | rules | 43 | 79% | 19% | 0 | 1 | 143 | 1 |
+| pope-infection | t5 | 46 | 65% | 33% | 0 | 1 | 168 | 170 |
+| canada-new-pm | rules | 75 | 80% | 17% | 2 | 0 | 227 | 1 |
+| canada-new-pm | t5 | 61 | 67% | 33% | 0 | 0 | 224 | 241 |
+| astronauts-return | rules | 49 | 76% | 20% | 2 | 0 | 146 | 0 |
+| astronauts-return | t5 | 56 | 68% | 27% | 2 | 1 | 174 | 195 |
+| nws-forecast (recorded sample, tests/fixtures) | rules | 59 | 86% | 14% | 0 | 0 | 133 | 1 |
+| nws-forecast (recorded sample, tests/fixtures) | t5 | 69 | 83% | 17% | 0 | 0 | 184 | 254 |
+| **All** | **rules** | 363 | **81%** | **17%** | 6 | 1 | 1030 | |
+| **All** | **t5** | 357 | **69%** | **30%** | 2 | 3 | 1179 | |
 
-Legend for the gloss lines below: `[word:fi]` fingerspelled, `[word:na]` name shown as text, `[word:no]` not available.
+Build ms is one wall-clock measurement per row; the first T5 row includes loading the model. Legend for the gloss lines below: `[word:fi]` fingerspelled, `[word:na]` name shown as text, `[word:no]` not available.
 
 ## C. Side-by-side glosses for the manual review
 
@@ -69,28 +69,28 @@ Legend for the gloss lines below: `[word:fi]` fingerspelled, `[word:na]` name sh
 
 > Southern Californians are again bracing for gusty winds and a heightened risk of wildfires less than two weeks after the start of deadly blazes that have killed at least 27 people and destroyed thousands of homes. The U.S. National Weather Service has issued a red flag warning signaling increased fire danger for Los Angeles on Monday and Tuesday due to low humidity and warm, dry Santa Ana winds.
 
-- **rules**: `WEEK SOUTH CALIFORNIA AGAIN PREPARE WIND WIND AND INCREASE RISK DANGER FIREstr LESS TWO AFTER START KILLix FIREstr KILLix [least:fi] 27 PEOPLEdis AND DESTROY THOUSAND HOUSE AMERICA MONDAY TUESDAY COUNTRY WEATHER SERVICE ISSUE WARN WARN SIGNAL INCREASE RISK FIREstr DANGER [los:fi] [angeles:fi] AND DUE TO LOW HUMID AND WARM DRY [santa:fi] [ana:fi] WIND`
-- **t5**: `[sourn:fi] WEEK [calestinian:fi] AGAIN [brac:fi] [gurgy:fi] WIND AND [greaten:fi] DANGER FIREstr LESS TWO AFTER START DANGER AMERICA COUNTRY WEST MONDAY TUESDAY SERVICE ISSUE [red:fi] FLAG WARN SIGNAL INCREASE FIREstr DANGER [la:fi] [angel:fi] AND DUE TO LOW [feilure:fi] AND WARM LETTER-D`
+- **rules**: `WEEK SOUTH CALIFORNIA AGAIN PREPARE WIND WIND AND INCREASE RISK DANGER FIREstr LESS TWO AFTER START KILLix FIREstr KILLix [least:fi] 27 PEOPLEdis AND DESTROY THOUSAND HOUSE MONDAY TUESDAY AMERICA COUNTRY WEATHER SERVICE ISSUE WARN WARN SIGNAL INCREASE RISK FIREstr DANGER [los:fi] [angeles:fi] AND DUE TO LOW HUMID AND WARM DRY [santa:fi] [ana:fi] WIND`
+- **t5**: `[sourn:fi] WEEK [calestinian:fi] AGAIN [brac:fi] [gurgy:fi] WIND AND [greaten:fi] DANGER FIREstr LESS TWO AFTER START DANGER AMERICA MONDAY TUESDAY COUNTRY WEST SERVICE ISSUE [red:fi] FLAG WARN SIGNAL INCREASE FIREstr DANGER [la:fi] [angel:fi] AND DUE TO LOW [future:fi] AND`
 
 ### sichuan-landslide
 
 > Chinese rescuers are searching for some 30 people after a landslide in southwestern Sichuan province buried 10 houses. The Ministry of Emergency Management deployed hundreds of rescuers, including firefighters, following the landslide Saturday in the Junlian county. State broadcaster CCTV said two people were pulled out alive and about 200 others evacuated.
 
 - **rules**: `CHINA RESCUE SEARCH MANY 30 PEOPLEdis AFTER LANDSLIDE [southwestern:fi] [sichuan:fi] AREA BURY 10 HOUSE SATURDAY OFFICIAL EMERGENCY MANAGEx [deployed:fi] HUNDRED RESCUE WITH FIREFIGHTERb AFTER LANDSLIDE [junlian:fi] CITYtwist GOVERNMENT [broadcaster:fi] [cctv:fi] SAYstr TWO PEOPLEdis RESCUE ALIVE AND NEAR 200 PEOPLEdis ESCAPE`
-- **t5**: `CHINA [rescuer:fi] SEARCH MANY 30 PEOPLEdis AFTER LANDSLIDE [westernwenn:fi] AREA [green:fi] 10 HOUSE OFFICIAL EMERGENCY MANAGEx [deploy:fi] HUNDRED [rescuer:fi] [include:fi] [femaler:fi] [follow:fi] LANDSLIDE [sateday:fi] [junelian:fi] COUNTRY GOVERNMENT [distributor:fi] [ctctv:fi] SAYstr TWO PEOPLEdis [pull:fi] [out:fi] ALIVE AND NEAR 200 [or:fi] [available:fi]`
+- **t5**: `CHINA [rescuer:fi] SEARCH MANY 30 PEOPLEdis AFTER LANDSLIDE [westernwenn:fi] AREA [green:fi] 10 HOUSE OFFICIAL EMERGENCY MANAGEx [deploy:fi] [hundred:no] [rescuer:fi] [include:fi] [femaler:fi] [follow:fi] LANDSLIDE [sateday:fi] [junelian:fi] COUNTRY GOVERNMENT [distributor:fi] [ctctv:fi] SAYstr TWO PEOPLEdis [pull:fi] [out:fi] ALIVE AND NEAR 200 [or:fi] [available:fi]`
 
 ### pope-infection
 
 > Vatican authorities said Monday that Pope Francis has a complex infection in his respiratory system and will require more targeted drug treatment. Officials said the 88-year-old pope is suffering from a polymicrobial respiratory tract infection but gave few details. Experts say that's not uncommon in older people with prior medical problems and should be treatable with the right antibiotics.
 
-- **rules**: `MONDAY POPE OFFICIAL SAYstr POPE [francis:fi] [complex:fi] SICK [respiratory:fi] [system:fi] AND NEED MORE [targeted:fi] MEDICINE MEDICINE YEAR OFFICIAL SAYstr 88 POPE SICK [polymicrobial:no] [respiratory:fi] [tract:fi] SICK BUT GIVEo FEW DETAIL DOCTOR SAYstr NO COMMON OLD PEOPLEdis BEFORE HEALTH PROBLEM AND MEDICINE RIGHT MEDICINE`
-- **t5**: `[vitacan:fi] MONDAY OFFICIAL SAYstr [ppe:fi] [france:fi] [complex:fi] [instance:fi] [radical:fi] [system:fi] AND NEED MORE [target:fi] MEDICINE MEDICINE OFFICIAL YEAR SAYstr 88 OLD [pop:fi] SICK [polymicrobial:no] [radical:fi] [train:fi] [instance:fi] BUT GIVEo FEW DETAIL DOCTOR SAYstr NO COMMON OLD PEOPLEdis WITH BEFORE HEALTH PROBLEM AND [traditable:fi] WITH RIGHT [anticipant:fi]`
+- **rules**: `MONDAY POPE OFFICIAL SAYstr POPE [francis:fi] [complex:fi] SICK [respiratory:fi] [system:fi] AND NEED MORE [targeted:fi] MEDICINE MEDICINE YEAR OFFICIAL SAYstr 88 POPE SICK [polymicrobial:no] [respiratory:fi] [tract:fi] SICK BUT GIVEo FEW DETAIL DOCTOR SAYstr NO [uncommon:fi] OLD PEOPLEdis BEFORE HEALTH PROBLEM AND MEDICINE RIGHT MEDICINE`
+- **t5**: `[vitacan:fi] MONDAY OFFICIAL SAYstr [ppe:fi] [france:fi] [complex:fi] [instance:fi] [radical:fi] [system:fi] AND NEED MORE [target:fi] MEDICINE MEDICINE OFFICIAL YEAR SAYstr 88 OLD [pop:fi] SICK [polymicrobial:no] [radical:fi] [train:fi] [instance:fi] BUT GIVEo FEW DETAIL DOCTOR SAYstr NO [unusual:fi] OLD PEOPLEdis WITH BEFORE HEALTH PROBLEM AND [traditable:fi] WITH RIGHT [anticipant:fi]`
 
 ### canada-new-pm
 
 > Former central banker Mark Carney will become Canada's next prime minister after the governing Liberal Party elected him its leader on Sunday as the country deals with President Trump's trade war and annexation threat and a federal election looms. The 59-year-old Carey replaces Prime Minister Justin Trudeau, who announced his resignation in January but remains prime minister until his successor is sworn in. Carney navigated crises when he was the head of the Bank of Canada, and in 2013 he became the first noncitizen to run the Bank of England since it was founded in 1694. Trudeau's popularity had declined as food and housing prices rose and immigration surged.
 
-- **rules**: `LAST NEXT SUNDAY [central:fi] BANK [mark:fi] [carney:fi] BECOME CANADA LEADERb AFTER GOVERNMENT [liberal:fi] PARTY ELECTION LEADERb COUNTRY DEAL PRESIDENT [trump:fi] TRADE WAR AND [annexation:fi] THREAT AND GOVERNMENT ELECTION [looms:fi] YEAR 59 [carey:fi] REPLACE LEADERb [justin:fi] [trudeau:fi] WHO SAYstr RESIGN [january:fi] BUT CONTINUE LEADERb BEFORE REPLACE [sworn:fi] [carney:na] MANAGEx PROBLEM WHEN LEADERb BANK CANADA AND 2013 BECOME FIRST CITIZEN MANAGEx BANK ENGLAND SINCE ESTABLISH 1694 [trudeau:na] POPULAR DECREASEb EAT AND HOUSE PRICE INCREASE AND IMMIGRATION INCREASE`
+- **rules**: `LAST NEXT SUNDAY [central:fi] BANK [mark:fi] [carney:fi] BECOME CANADA LEADERb AFTER GOVERNMENT [liberal:fi] PARTY ELECTION LEADERb COUNTRY DEAL PRESIDENT [trump:fi] TRADE WAR AND [annexation:fi] THREAT AND GOVERNMENT ELECTION [looms:fi] YEAR 59 [carey:fi] REPLACE LEADERb [justin:fi] [trudeau:fi] WHO SAYstr RESIGN [january:fi] BUT CONTINUE LEADERb BEFORE REPLACE [sworn:fi] [carney:na] MANAGEx PROBLEM WHEN LEADERb BANK CANADA AND 2013 BECOME FIRST [noncitizen:fi] MANAGEx BANK ENGLAND SINCE ESTABLISH 1694 [trudeau:na] POPULAR DECREASEb EAT AND HOUSE PRICE INCREASE AND IMMIGRATION INCREASE`
 - **t5**: `LAST NEXT [central:fi] BANK [mark:fi] [quarey:fi] BECOME CANADA [prime:fi] LEADERb AFTER [govern:fi] [liberal:fi] PARTY ELECTION 59 YEAR OLD [carey:fi] REPLACE [prime:fi] LEADERb [justin:fi] [trudau:fi] WHO SAYstr [remission:fi] [january:fi] BUT CONTINUE [prime:fi] LEADERb BEFORE [carino:fi] [brown:fi] PROBLEM WHEN LEADERb BANK CANADA AND 2013 BECOME FIRST [noncizen:fi] MANAGEx BANK ENGLAND SINCE [find:fi] [trudau:fi] [potentiality:fi] DECREASEb EAT AND HOUSE PRICE INCREASE AND IMMIGRATION [short:fi]`
 
 ### astronauts-return
@@ -100,13 +100,13 @@ Legend for the gloss lines below: `[word:fi]` fingerspelled, `[word:na]` name sh
 - **rules**: `LAST YEAR TWO ASTRONAUT WHO LIVE WORLD STATION SINCE [june:fi] NEAR GET GO-BACK EARTH FRIDAY NIGHT [spacex:fi] ROCKET FOUR ASTRONAUT [kennedy:fi] SPACE [center:fi] FLORIDA STATION [butch:fi] [wilmore:fi] AND [suni:fi] [williams:fi] STATION SINCE [boeing:fi] [starliner:fi] CAPSULE SICK BROKEN AND GO-BACK EARTH WITHOUT NEXT WEEK [wilmore:na] AND [williams:na] EXPECT GO-BACK EARTH`
 - **t5**: `TWO LAST YEAR [approacher:fi] WHO LIVE WORLD SPACE STATION SINCE [june:fi] NEAR GET LETTER-Y [root:fi] GO-BACK EARTH [spacex:fi] FRIDAY NIGHT ROCKET FOUR [abstructor:fi] [keedy:fi] SPACE [center:fi] [flida:fi] SPACE STATION [butch:fi] [wilmore:fi] AND [sunus:fi] [william:fi] SPACE STATION SINCE LETTER-Y [bee:fi] [starliner:fi] [capture:fi] SICK [disfortability:no] AND GO-BACK EARTH WITHOUT LETTER-Y [wilmore:na] NEXT WEEK AND [william:na] EXPECT GO-BACK EARTH`
 
-### nws-forecast-sample
+### nws-forecast (recorded sample, tests/fixtures)
 
-> This Afternoon. Sunny, with a high near 97. Heat index values as high as 105. Tonight. Mostly clear, with a low around 75. Saturday. A slight chance of showers and thunderstorms between 2pm and 4pm. Partly cloudy, with a low around 72. Chance of precipitation is 30%.
+> This Afternoon. Sunny, with a high near 98. Heat index values as high as 107. South southeast wind around 5 mph. Tonight. Mostly clear, with a low around 75. Heat index values as high as 104. South southwest wind around 5 mph. Friday. Sunny, with a high near 98. Heat index values as high as 105. Southwest wind around 5 mph. Friday Night. Mostly clear, with a low around 76. Heat index values as high as 103. Southwest wind around 5 mph.
 
-- **rules**: `AFTERNOON SUNNY HIGH NEAR 97 HOT [values:fi] HIGH 105 TONIGHT CLEAR LOW NEAR 75 SATURDAY SLIGHT CHANCE RAIN AND THUNDERSTORM BETWEEN 2 [pm:fi] AND 4 [pm:fi] CLOUDY LOW NEAR 72 CHANCE PRECIPITATION 30 PERCENT`
-- **t5**: `AFTERNOON SUNDAY WITH HIGH NEAR 97 HOT SIGNAL [value:fi] HIGH 105 TONIGHT MOSTLY CLEAR WITH LOW NEAR 75 SATURDAY SMALL CHANCE [during:fi] AND [horror:fi] BETWEEN 2 [pm:fi] AND 4 [pm:fi] [partly:fi] [lowy:fi] WITH LOW NEAR 72 CHANCE [primelisation:no] 30 PERCENT`
+- **rules**: `AFTERNOON SUNNY HIGH NEAR 98 HOT [values:fi] HIGH 107 SOUTH SOUTH WIND NEAR 5 [mph:fi] TONIGHT CLEAR LOW NEAR 75 HOT [values:fi] HIGH 104 SOUTH SOUTH WIND NEAR 5 [mph:fi] FRIDAY SUNNY HIGH NEAR 98 HOT [values:fi] HIGH 105 SOUTH WIND NEAR 5 [mph:fi] FRIDAY NIGHT CLEAR LOW NEAR 76 HOT [values:fi] HIGH 103 SOUTH WIND NEAR 5 [mph:fi]`
+- **t5**: `AFTERNOON SUNDAY WITH HIGH NEAR 98 HOT SIGNAL [value:fi] HIGH 107 SOUTH [southstone:fi] WIND NEAR 5 [mph:fi] TONIGHT MOSTLY CLEAR WITH LOW NEAR 75 HOT SIGNAL [value:fi] HIGH 104 SOUTH [switch:fi] WARM NEAR 5 [mph:fi] FRIDAY SUNDAY WITH HIGH NEAR 98 HOT SIGNAL [value:fi] HIGH 105 [switchwide:fi] WIND NEAR 5 [mph:fi] FRIDAY NIGHT MOSTLY CLEAR WITH LOW NEAR 76 HOT SIGNAL [value:fi] HIGH 103 [switchwide:fi] WIND NEAR 5 [mph:fi]`
 
 ## D. Decision
 
-The default engine stays **rules** unless T5 wins on Part B (higher coverage with no loss of correctness in the manual review). Fill in after the review: _pending_.
+Recorded 2026-09-04 (ADR 0005): the default engine stays **rules**. On the news items T5 reaches lower coverage and, in the manual review, invents spellings for unseen names and swaps unknown news words for corpus words; every T5 output is still resolved through the lexicon, so the panel never shows a sign the model made up. Re-run this script after retraining; the decision changes only by amending ADR 0005.

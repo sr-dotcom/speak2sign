@@ -2,7 +2,7 @@
 # Independent code review with the OpenAI Codex CLI (work policy rule 5).
 #
 #   scripts/codex_review.sh                # review uncommitted changes (staged, unstaged, untracked)
-#   scripts/codex_review.sh <commit-sha>   # review one commit
+#   scripts/codex_review.sh <commit>       # review one commit (any revision that names exactly one commit)
 #
 # Feeds the diff, CLAUDE.md and AGENTS.md to Codex over stdin. The built-in `codex exec review` is
 # not used because on Windows its sandbox rejects the shell commands it needs to read the repo
@@ -10,13 +10,13 @@
 # Exit status: 0 = review produced; 2 = nothing to review; 3 = collection failed or Codex did not answer.
 set -uo pipefail
 cd "$(git rev-parse --show-toplevel)" || exit 3
+git() { command git -c core.safecrlf=false "$@"; }   # no line-ending warnings in the review output
 fail() { echo "codex_review: $*" >&2; exit 3; }
 [ -r AGENTS.md ] && [ -r CLAUDE.md ] || fail "AGENTS.md or CLAUDE.md missing: the reviewer brief is required"
 if [ $# -eq 0 ]; then
   staged=$(git diff --cached) || fail "git diff --cached failed"      # index vs HEAD: what a commit would take
   unstaged=$(git diff) || fail "git diff failed"                       # worktree vs index
-  diff="$staged"$'
-'"$unstaged"
+  diff="$staged"$'\n'"$unstaged"
   list=$(mktemp) || fail "mktemp failed"
   git ls-files --others --exclude-standard -z > "$list" || fail "git ls-files failed"
   # NUL-delimited names are read from a file: command substitution would drop the NULs.
@@ -28,8 +28,9 @@ if [ $# -eq 0 ]; then
   rm -f "$list"
   title="uncommitted changes"
 else
-  diff=$(git show "$1") || fail "git show $1 failed"
-  title="commit $1"
+  sha=$(git rev-parse --verify --quiet "$1^{commit}") || fail "'$1' does not name a commit"   # one commit, never a range or an option
+  diff=$(git show --format=medium --patch "$sha" --) || fail "git show $sha failed"
+  title="commit $sha"
 fi
 [ -n "${diff//[[:space:]]/}" ] || { echo "nothing to review"; exit 2; }
 out=$({
@@ -41,7 +42,8 @@ out=$({
   echo; echo "=== CLAUDE.md ==="; cat CLAUDE.md
 } | codex exec --sandbox read-only - 2>&1)
 rc=$?
-answer=$(sed -n '/^codex$/,$p' <<<"$out" | grep -v -E "^codex$|^mcp:|ERROR codex_core|^tokens used")
+# The CLI prints its answer once after a line reading "codex" and closes it with "tokens used"; take exactly that.
+answer=$(printf '%s\n' "$out" | tr -d '\r' | awk '/^codex$/ && !on {on=1; next} on && /^tokens used/ {exit} on')
 if [ "$rc" -ne 0 ] || [ -z "${answer//[[:space:]]/}" ]; then
   echo "Codex review unavailable (exit $rc). Full output:" >&2
   echo "$out" >&2

@@ -1,11 +1,15 @@
-"""Record each clip's duration and active motion span in concepts.json.
+"""Measure each clip's duration and active motion span and record them in concepts.json.
 
 `in_s`/`out_s` bound the span where frame-to-frame change exceeds 12% of the clip's own peak
 (dictionary clips start and end in a neutral pose). The panel plays only that span (ADR 0008).
+Re-running overwrites the spans: they are measurements, not reviewed edits. Exits 1 if any clip
+is unreadable, and writes nothing in that case.
 
-Dev tool: needs opencv-python-headless. Run after build_lexicon.py fetch.
+Build tool: needs opencv-python-headless (requirements-build.txt). Run after build_lexicon.py fetch.
+Usage: python scripts/measure_clip_spans.py
 """
 import json
+import sys
 from pathlib import Path
 
 import cv2
@@ -49,10 +53,14 @@ def main():
             missing.append(c["concept_id"])
             continue
         c["clip"].update(m)
+    if missing:
+        print(f"unreadable clips, nothing written: {missing}")
+        sys.exit(1)
     CONCEPTS.write_text(json.dumps(concepts, indent=1, ensure_ascii=False), encoding="utf-8")
-    full = sum(c["clip"].get("duration_s", 0) for c in concepts)
-    act = sum(c["clip"].get("out_s", 0) - c["clip"].get("in_s", 0) for c in concepts)
-    print(f"{len(concepts) - len(missing)} clips measured: {full:.0f}s total, {act:.0f}s active ({act / full:.0%}); missing: {missing}")
+    full = sum(c["clip"]["duration_s"] for c in concepts)
+    act = sum(c["clip"]["out_s"] - c["clip"]["in_s"] for c in concepts)
+    share = f" ({act / full:.0%})" if full else ""
+    print(f"{len(concepts)} clips measured: {full:.0f}s total, {act:.0f}s active{share}")
 
 
 if __name__ == "__main__":
