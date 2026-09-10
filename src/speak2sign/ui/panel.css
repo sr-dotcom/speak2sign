@@ -15,6 +15,7 @@
 @media (prefers-reduced-motion:reduce){.s2s *{transition:none !important;animation:none !important}}
 .s2s-captions span.said{opacity:.55}
 .s2s-captions span.dropped{text-decoration:line-through;opacity:.4}
+.s2s-captions span.partly s{opacity:.45;font-size:.85em}
 .s2s-wait{position:absolute;left:12px;right:12px;bottom:12px;padding:8px 12px;border-radius:4px;background:#C8471B;color:#fff;font-weight:600}
 .s2s-panel{border:1px solid rgba(127,127,127,.3);border-radius:6px;padding:12px;background:#0f1620;color:#e6ebf2}
 .s2s-videos{position:relative;aspect-ratio:16/9;background:#000;border-radius:4px;overflow:hidden}

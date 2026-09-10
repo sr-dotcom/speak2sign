@@ -132,7 +132,7 @@ old,OLD,"old, older, elderly",news,0.474,OLD,planned
 need,NEED,"need, require, must",news,0.653,NEED,planned
 few,FEW,"few, little",news,0.139,FEW,planned
 detail,DETAIL,"detail, details, information",news,,,planned
-common,COMMON,"common, uncommon, usual, unusual, rare",news,,,planned
+common,COMMON,"common, usual",news,,,planned
 right,RIGHT,"right, correct, proper",news,0.898,RIGHT,planned
 pope,POPE,"pope, vatican",news,-1.202,POPE,planned
 church,CHURCH,"church, religion",news,-0.662,CHURCH,planned
@@ -148,7 +148,7 @@ become,BECOME,"become, became, will become, becomes",news,0.145,BECOME,planned
 popular,POPULAR,"popular, popularity",news,0.604,POPULAR,planned
 decline,DECLINE,"decline, declined, drop, fell",news,-0.463,,planned
 immigration,IMMIGRATION,"immigration, immigrant, migrant",news,,,planned
-citizen,CITIZEN,"citizen, noncitizen",news,,,planned
+citizen,CITIZEN,"citizen",news,,,planned
 manage,MANAGE,"manage, run (organisation), lead, navigated, management, managed",news,-0.306,MANAGE,planned
 establish,ESTABLISH,"establish, found, founded",news,,,planned
 deal,DEAL,"deal, agreement, negotiate",news,-1.17,DEAL-CARDS,planned

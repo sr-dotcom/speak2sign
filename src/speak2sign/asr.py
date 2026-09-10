@@ -114,7 +114,9 @@ def align_reference(ref_tokens, hyp_words, t0=0.0):
 def upload_transcript(text, hyp_words, audio):
     """Build the upload lane's transcript from the (possibly edited) text and whisper's word timings."""
     tokens = text.split()
+    duration = round(len(audio) / SR, 3)
     onsets, ends, _ = align_reference(tokens, hyp_words)
-    words = tuple(Word(t, o, e) for t, o, e in zip(tokens, onsets, ends))
-    return TimedTranscript("upload", "upload", words, "audio", wav_data_url(audio), round(len(audio) / SR, 3),
+    # words the user typed beyond what was heard are extrapolated; keep every time inside the recording
+    words = tuple(Word(t, min(o, duration), min(e, duration) if e is not None else None) for t, o, e in zip(tokens, onsets, ends))
+    return TimedTranscript("upload", "upload", words, "audio", wav_data_url(audio), duration,
                            title="Uploaded clip", source="Your uploaded clip, transcribed on the server with faster-whisper base.en; not stored")

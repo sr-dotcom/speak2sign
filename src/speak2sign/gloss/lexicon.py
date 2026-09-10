@@ -2,6 +2,8 @@
 
 Loads data/lexicon/concepts.json (built by scripts/build_lexicon.py) and senses.json.
 Keyed on concept ids, never on English strings alone; English keywords are an index into it.
+Loading fails loudly on bad data (duplicate ids, unplayable spans, sense rules pointing at
+concepts with no attested clip) rather than letting the panel discover it.
 """
 import json
 from dataclasses import dataclass
@@ -45,6 +47,7 @@ class Lexicon:
                 else:
                     self.phrases.append((parts, c.concept_id))
         self.phrases.sort(key=lambda p: -len(p[0]))
+        self.phrase_ids = dict(self.phrases)
 
     def get(self, concept_id):
         return self.concepts.get(concept_id)
@@ -59,6 +62,22 @@ class Lexicon:
         return len(self.concepts)
 
 
+def _validate(concepts, senses):
+    ids = [c.concept_id for c in concepts]
+    dupes = sorted({i for i in ids if ids.count(i) > 1})
+    if dupes:
+        raise ValueError(f"duplicate concept ids in concepts.json: {dupes}")
+    for c in concepts:
+        if not (c.duration_s > 0 and 0 <= c.in_s < c.out_s <= c.duration_s + 1e-6):
+            raise ValueError(f"{c.concept_id}: unplayable span in_s={c.in_s} out_s={c.out_s} duration_s={c.duration_s}")
+    known = set(ids)
+    for word, rules in senses.items():
+        for rule in rules:
+            target = rule.get("concept") or rule.get("default")
+            if target != "fingerspell" and target not in known:
+                raise ValueError(f"senses.json: '{word}' points at '{target}', which has no attested clip")
+
+
 @lru_cache(maxsize=1)
 def load(lex_dir=LEX_DIR):
     raw = json.loads((Path(lex_dir) / "concepts.json").read_text(encoding="utf-8"))
@@ -70,4 +89,5 @@ def load(lex_dir=LEX_DIR):
     ]
     senses = json.loads((Path(lex_dir) / "senses.json").read_text(encoding="utf-8"))
     senses = {k: v for k, v in senses.items() if not k.startswith("_")}
+    _validate(concepts, senses)
     return Lexicon(concepts, senses)

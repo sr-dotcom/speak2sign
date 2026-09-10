@@ -1,15 +1,25 @@
-import pytest
+"""The committed curated items: the primary demo lane, so nothing here may skip."""
+import json
+import wave
+from pathlib import Path
 
 from speak2sign import timeline
-from speak2sign.gloss import lexicon as lex
 from speak2sign.ingest import demo_set
 
+ROOT = Path(__file__).resolve().parents[1]
+EXPECTED_IDS = {i["id"] for i in json.loads((ROOT / "data" / "demo" / "excerpts.json").read_text(encoding="utf-8"))["items"]}
 ITEMS = demo_set.items()
-needs_items = pytest.mark.skipif(not ITEMS, reason="curated items not built (scripts/build_demo_set.py)")
 
 
-@needs_items
-def test_items_have_audio_monotonic_timings_and_alignment_record():
+def test_every_excerpt_is_built_with_its_audio():
+    assert {i["id"] for i in ITEMS} == EXPECTED_IDS and len(EXPECTED_IDS) == 6
+    for it in ITEMS:
+        with wave.open(str(ROOT / "static" / it["media"]), "rb") as w:
+            assert w.getnchannels() == 1 and w.getframerate() == 16000
+            assert abs(w.getnframes() / w.getframerate() - it["duration_s"]) < 0.05, it["id"]
+
+
+def test_items_have_monotonic_timings_inside_the_audio_and_an_alignment_record():
     for it in ITEMS:
         onsets = [w["onset_s"] for w in it["words"]]
         assert onsets == sorted(onsets) and onsets[0] >= 0
@@ -17,11 +27,10 @@ def test_items_have_audio_monotonic_timings_and_alignment_record():
         assert it["alignment"]["matched_words"] / it["alignment"]["total_words"] >= 0.6, it["id"]
 
 
-@needs_items
-def test_curated_transcript_builds_a_valid_audio_timeline():
-    L = lex.load()
+def test_curated_transcripts_build_valid_audio_timelines(lexicon, check):
     for it in ITEMS:
-        tl = timeline.build(demo_set.transcript(it), L)
-        assert tl["media"]["kind"] == "audio" and tl["media"]["url"].startswith("app/static/news/")
+        tl = timeline.build(demo_set.transcript(it), lexicon)
+        check(tl)
+        assert tl["media"]["kind"] == "audio" and (ROOT / "static" / tl["media"]["url"].removeprefix("app/static/")).exists()
         assert tl["item"]["lane"] == "curated" and tl["item"]["broadcast_date"] == it["broadcast_date"]
-        assert tl["sentences"][-1]["t_end"] <= it["duration_s"] + 1e-6
+        assert [c["text"] for c in tl["captions"]] == [w["text"] for w in it["words"]]

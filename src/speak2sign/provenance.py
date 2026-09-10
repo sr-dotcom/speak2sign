@@ -1,9 +1,10 @@
 """The honesty layer. The only place that decides what a badge means and what the app must say about itself."""
 
 DISCLAIMER = (
-    "Research demonstration. This panel retrieves recorded ASL clips for words it has validated "
-    "signs for, fingerspells the rest, and says so on every sign. It does not represent ASL grammar "
-    "(directional verbs, classifiers, facial grammar) and is not a substitute for a human interpreter."
+    "Research demonstration. This panel retrieves recorded ASL clips for words it has validated signs for, "
+    "fingerspells what it can and says so on every sign; a word it cannot render honestly is marked not available, "
+    "and a name is fingerspelled once then shown as text. It does not represent ASL grammar (directional verbs, "
+    "classifiers, facial grammar) and is not a substitute for a human interpreter."
 )
 
 SOURCES = {
@@ -15,8 +16,13 @@ SOURCES = {
             "url": "https://archive.org/details/VOANewscasts"},
     "nws": {"licence": "US government work", "text": "Forecast text: US National Weather Service API", "url": "https://api.weather.gov"},
     "guardian": {"licence": "Non-commercial developer terms", "text": "Headline text: Powered by the Guardian Open Platform", "url": "https://open-platform.theguardian.com"},
+    "t5": {"licence": "Apache-2.0", "text": "Gloss engine: google-t5/t5-small fine-tuned on ASLG-PC12, served by CTranslate2 (no sign form comes from the model; every gloss resolves through the lexicon above)",
+           "url": "https://huggingface.co/google-t5/t5-small"},
+    "aslg_pc12": {"licence": "CC BY-NC 4.0", "text": "T5 training data: ASLG-PC12 (Othman & Jemni, 2012)",
+                  "url": "https://huggingface.co/datasets/achrafothman/aslg_pc12"},
 }
 LANE_SOURCE = {"curated": "voa", "weather": "nws", "headline": "guardian"}
+ENGINE_SOURCES = {"rules": (), "t5": ("t5", "aslg_pc12")}
 
 BADGE = {"sign": "validated", "number": "validated", "fingerspell": "fingerspelled", "name": "name", "none": "not_available"}
 
@@ -42,6 +48,11 @@ def note(entry, concept):
     return None
 
 
-def attributions(sources_used, lane):
-    keys = list(dict.fromkeys(list(sources_used) + ([LANE_SOURCE[lane]] if lane in LANE_SOURCE else [])))
-    return [{"source": k, **SOURCES[k]} for k in keys if k in SOURCES]
+def attributions(sources_used, lane, gloss_engine="rules"):
+    """Every source that contributed to this item, once each: clip sources, the lane's text source, the engine's model
+    and training data. An unknown key is an error, never silently dropped."""
+    keys = list(dict.fromkeys([*sources_used, *([LANE_SOURCE[lane]] if lane in LANE_SOURCE else []), *ENGINE_SOURCES[gloss_engine]]))
+    unknown = [k for k in keys if k not in SOURCES]
+    if unknown:
+        raise ValueError(f"no attribution record for {unknown}")
+    return [{"source": k, **SOURCES[k]} for k in keys]

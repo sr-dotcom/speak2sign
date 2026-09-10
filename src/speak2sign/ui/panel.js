@@ -11,18 +11,24 @@ export default function (component) {
   const glossEl = $(".s2s-gloss"), badgeEl = $(".s2s-badge"), noteEl = $(".s2s-note");
 
   const BADGE_TEXT = { validated: "validated", fingerspelled: "fingerspelled", name: "name, shown as text", not_available: "not available" };
-  const TEXT_SIGN_MS = 900;
+  const TEXT_SIGN_MS = tl.playback.text_hold_s * 1000;
   const sentences = tl.sentences || [{ index: 0, t_start: 0, t_end: tl.media.duration_s || 0 }];
   const entriesBySentence = sentences.map((s) => tl.entries.filter((e) => (e.sentence ?? 0) === s.index));
-  const captionsBySentence = sentences.map((s, i) => tl.captions.filter((c) => c.t >= s.t_start && (i === sentences.length - 1 || c.t < sentences[i + 1].t_start)));
+  const captionsBySentence = sentences.map((s) => tl.captions.filter((c) => c.sentence === s.index));
 
-  // captions: one span per word, in spoken order
+  // captions: one span per source word, in spoken order
   const capSpans = [];
   captionsBySentence.forEach((words, si) => {
     words.forEach((c, wi) => {
       const span = document.createElement("span");
       span.textContent = c.text;
       if (c.dropped) span.classList.add("dropped");
+      if (c.partly) {   // the unsigned parts of the word, struck through after it: 30% percent
+        span.classList.add("partly");
+        const s = document.createElement("s");
+        s.textContent = " " + c.missing.join(" ");
+        span.appendChild(s);
+      }
       caps.appendChild(span);
       caps.appendChild(document.createTextNode(" "));
       capSpans.push({ span, si, wi, c });

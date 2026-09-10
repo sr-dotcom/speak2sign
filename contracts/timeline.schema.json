@@ -2,13 +2,16 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://speak2sign.local/contracts/timeline.schema.json",
   "title": "Speak2Sign timeline",
-  "description": "The single interface between the Python pipeline and the browser interpreter panel. One document per news item or request. Times are seconds on the news media's own clock.",
+  "description": "The single interface between the Python pipeline and the browser interpreter panel. One document per news item or request. Times are seconds on the news media's own clock. Every field the panel reads is required here; tests/test_timeline_contract.py adds the cross-field checks JSON Schema cannot express (ordering, sentence membership, clip identity against the lexicon).",
   "type": "object",
   "additionalProperties": false,
   "required": [
     "version",
     "item",
     "media",
+    "playback",
+    "sentences",
+    "captions",
     "entries",
     "stats",
     "provenance"
@@ -64,30 +67,107 @@
         "kind": {
           "enum": [
             "audio",
-            "video",
             "tts",
             "none"
           ],
-          "description": "tts = the browser's speechSynthesis narrates the text; none = captions only"
+          "description": "audio = recorded narration at url; tts = the browser's speechSynthesis narrates the captions; none = captions only on a timer"
         },
         "url": {
           "type": "string",
-          "description": "Path under /app/static/ for audio or video"
+          "description": "Recorded narration: a path under app/static/ (curated items) or a data:audio/wav URL held in memory (upload lane)"
         },
         "duration_s": {
           "type": "number",
           "minimum": 0
         }
+      },
+      "if": {
+        "properties": {
+          "kind": {
+            "const": "audio"
+          }
+        }
+      },
+      "then": {
+        "required": [
+          "url",
+          "duration_s"
+        ],
+        "properties": {
+          "url": {
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "playback": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "sign_rate",
+        "letter_rate",
+        "text_hold_s"
+      ],
+      "properties": {
+        "mode": {
+          "const": "interpreter-paced",
+          "description": "The media pauses at each sentence end until the panel has finished that sentence (ADR 0008). The only mode the panel implements."
+        },
+        "sign_rate": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 2
+        },
+        "letter_rate": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 3
+        },
+        "text_hold_s": {
+          "type": "number",
+          "minimum": 0,
+          "description": "How long the panel shows a name or an unavailable word as text; counted in stats.signing_s"
+        }
+      }
+    },
+    "sentences": {
+      "type": "array",
+      "description": "Sentence spans on the media clock, in order and contiguous; the panel pauses the media at t_end until every entry of that sentence has played",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "index",
+          "t_start",
+          "t_end"
+        ],
+        "properties": {
+          "index": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "t_start": {
+            "type": "number",
+            "minimum": 0
+          },
+          "t_end": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
       }
     },
     "captions": {
       "type": "array",
+      "description": "One caption per source word, verbatim, in spoken order, owned by a sentence; the panel highlights them as the narration reaches them",
       "items": {
         "type": "object",
         "additionalProperties": false,
         "required": [
           "t",
-          "text"
+          "text",
+          "sentence"
         ],
         "properties": {
           "t": {
@@ -97,37 +177,83 @@
           "text": {
             "type": "string"
           },
+          "sentence": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Index into sentences; the panel groups captions by this, never by time"
+          },
           "dropped": {
             "type": "boolean",
-            "description": "A function word the rule pass dropped; shown struck through so the loss is visible"
+            "description": "Nothing signs this word: the rule pass dropped it (function word) or the T5 model produced no gloss for it; shown struck through so the loss is visible"
+          },
+          "partly": {
+            "type": "boolean",
+            "description": "Part of this word is signed and part is not (don't -> NOT signed, do dropped; 30% -> 30 signed, percent omitted); the unsigned parts are listed in missing"
+          },
+          "missing": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "With partly: the tokens of this word nothing signs, shown struck through after the word"
+          }
+        },
+        "if": {
+          "properties": {
+            "partly": {
+              "const": true
+            }
+          },
+          "required": [
+            "partly"
+          ]
+        },
+        "then": {
+          "required": [
+            "missing"
+          ],
+          "properties": {
+            "missing": {
+              "minItems": 1
+            },
+            "dropped": {
+              "const": false
+            }
           }
         }
       }
     },
     "entries": {
       "type": "array",
-      "description": "Ordered signing plan. Each entry is scheduled at onset_s on the media clock.",
+      "description": "The signing plan. Sorted by onset_s (when the word was spoken); within a sentence the panel plays entries in this order, back to back, and does not schedule them on the clock.",
       "items": {
         "type": "object",
         "additionalProperties": false,
         "required": [
           "onset_s",
+          "sentence",
           "word",
           "gloss",
-          "badge"
+          "badge",
+          "clips"
         ],
         "properties": {
           "onset_s": {
             "type": "number",
             "minimum": 0
           },
+          "sentence": {
+            "type": "integer",
+            "minimum": 0,
+            "description": "Index into sentences"
+          },
           "word": {
             "type": "string",
-            "description": "The English token(s) this entry covers, for the caption highlight"
+            "description": "The English token(s) this entry covers"
           },
           "gloss": {
             "type": "string",
-            "description": "ID-gloss or concept label, uppercase"
+            "description": "ID-gloss or concept label for a validated sign; the word itself, uppercased, otherwise"
           },
           "badge": {
             "enum": [
@@ -140,14 +266,19 @@
           },
           "clips": {
             "type": "array",
-            "description": "Zero clips for not_available and name; one for validated; one per letter or digit for fingerspelled and numbers",
+            "description": "One clip for a validated sign; one per digit for a validated number; one per character for a fingerspelled word; none for name and not_available",
             "items": {
               "type": "object",
               "additionalProperties": false,
               "required": [
                 "url",
                 "duration_s",
-                "source"
+                "in_s",
+                "out_s",
+                "rate",
+                "source",
+                "licence",
+                "attribution_url"
               ],
               "properties": {
                 "url": {
@@ -156,16 +287,6 @@
                 "duration_s": {
                   "type": "number",
                   "exclusiveMinimum": 0
-                },
-                "source": {
-                  "enum": [
-                    "cats",
-                    "signbank",
-                    "wikimedia"
-                  ]
-                },
-                "attribution_url": {
-                  "type": "string"
                 },
                 "in_s": {
                   "type": "number",
@@ -182,6 +303,18 @@
                   "minimum": 0.5,
                   "maximum": 3,
                   "description": "playbackRate for this clip"
+                },
+                "source": {
+                  "enum": [
+                    "cats",
+                    "signbank"
+                  ]
+                },
+                "licence": {
+                  "type": "string"
+                },
+                "attribution_url": {
+                  "type": "string"
                 }
               }
             }
@@ -189,12 +322,36 @@
           "note": {
             "type": "string",
             "description": "Shown on hover or focus: why this badge, e.g. 'no established sign in this system'"
-          },
-          "sentence": {
-            "type": "integer",
-            "minimum": 0
           }
-        }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "badge": {
+                  "enum": [
+                    "validated",
+                    "fingerspelled"
+                  ]
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "clips": {
+                  "minItems": 1
+                }
+              }
+            },
+            "else": {
+              "properties": {
+                "clips": {
+                  "maxItems": 0
+                }
+              }
+            }
+          }
+        ]
       }
     },
     "stats": {
@@ -204,22 +361,29 @@
         "tokens",
         "validated",
         "fingerspelled",
+        "names",
         "not_available",
         "coverage",
         "fingerspelling_rate",
         "signing_s",
-        "speech_s"
+        "speech_s",
+        "gloss_engine"
       ],
       "properties": {
         "tokens": {
           "type": "integer",
-          "minimum": 0
+          "minimum": 0,
+          "description": "Content entries (dropped function words excluded); a multi-word phrase counts once"
         },
         "validated": {
           "type": "integer",
           "minimum": 0
         },
         "fingerspelled": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "names": {
           "type": "integer",
           "minimum": 0
         },
@@ -231,7 +395,7 @@
           "type": "number",
           "minimum": 0,
           "maximum": 1,
-          "description": "validated / content tokens"
+          "description": "validated / tokens"
         },
         "fingerspelling_rate": {
           "type": "number",
@@ -241,7 +405,7 @@
         "signing_s": {
           "type": "number",
           "minimum": 0,
-          "description": "Projected signing time: active spans at the recorded rates"
+          "description": "Projected panel time: active spans at the recorded rates plus text_hold_s per entry shown as text"
         },
         "speech_s": {
           "type": "number",
@@ -252,10 +416,6 @@
             "rules",
             "t5"
           ]
-        },
-        "names": {
-          "type": "integer",
-          "minimum": 0
         }
       }
     },
@@ -279,14 +439,14 @@
             "required": [
               "source",
               "licence",
-              "text"
+              "text",
+              "url"
             ],
             "properties": {
               "source": {
                 "enum": [
                   "cats",
                   "signbank",
-                  "wikimedia",
                   "voa",
                   "nws",
                   "guardian",
@@ -304,61 +464,6 @@
                 "type": "string"
               }
             }
-          }
-        }
-      }
-    },
-    "playback": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": [
-        "mode",
-        "sign_rate",
-        "letter_rate"
-      ],
-      "properties": {
-        "mode": {
-          "enum": [
-            "interpreter-paced",
-            "free-running"
-          ],
-          "description": "interpreter-paced: the media pauses at each sentence end until the panel has finished that sentence (ADR 0008)"
-        },
-        "sign_rate": {
-          "type": "number",
-          "minimum": 0.5,
-          "maximum": 2
-        },
-        "letter_rate": {
-          "type": "number",
-          "minimum": 0.5,
-          "maximum": 3
-        }
-      }
-    },
-    "sentences": {
-      "type": "array",
-      "description": "Sentence spans on the media clock; the panel pauses the media at t_end until every entry of that sentence has played",
-      "items": {
-        "type": "object",
-        "additionalProperties": false,
-        "required": [
-          "index",
-          "t_start",
-          "t_end"
-        ],
-        "properties": {
-          "index": {
-            "type": "integer",
-            "minimum": 0
-          },
-          "t_start": {
-            "type": "number",
-            "minimum": 0
-          },
-          "t_end": {
-            "type": "number",
-            "minimum": 0
           }
         }
       }

@@ -3621,10 +3621,7 @@
   "source_block": "news",
   "keywords": [
    "common",
-   "uncommon",
-   "usual",
-   "unusual",
-   "rare"
+   "usual"
   ],
   "cats": {
    "source": "cats",
@@ -4071,8 +4068,7 @@
   "concept_id": "citizen",
   "source_block": "news",
   "keywords": [
-   "citizen",
-   "noncitizen"
+   "citizen"
   ],
   "cats": {
    "source": "cats",
