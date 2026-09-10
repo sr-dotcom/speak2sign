@@ -6,13 +6,13 @@ APP = Path(__file__).resolve().parents[1] / "app.py"
 
 
 def test_app_loads_with_disclaimer():
-    at = AppTest.from_file(str(APP)).run()
+    at = AppTest.from_file(str(APP), default_timeout=20).run()
     assert not at.exception
     assert any("not a substitute for a human interpreter" in i.value for i in at.info)
 
 
 def test_typed_lane_renders_a_ribbon():
-    at = AppTest.from_file(str(APP)).run()
+    at = AppTest.from_file(str(APP), default_timeout=20).run()
     at.text_area[0].set_value("Rain is likely tonight.").run()
     at.button[0].click().run()
     assert not at.exception

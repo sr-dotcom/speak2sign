@@ -13,6 +13,7 @@ Build steps, dev tools and report generators. Nothing here is imported by the de
 | `measure_rss.py` | Every CI run; locally before dependency changes | dev | `static/news/california-fire-warning.wav`, whisper model | exit 1 over budget |
 | `coverage_report.py` | After lexicon or rule changes | dev | curated items, lexicon | `docs/04-testing/coverage-rules.md` (generated) |
 | `evaluate_gloss.py` | After T5 training or rule changes | dev (+ T5 export for the T5 column) | curated items, `training/results/results.json` | `docs/04-testing/evaluation.md` (generated) |
+| `codex_review.sh [sha]` | Before every commit (work policy rule 5) | Codex CLI, logged in | the diff, `AGENTS.md` | review to stdout, recorded in the delivery block |
 | `spike_cats_sample.py` | Once (spike 1, 2026-09-03); kept so the spike is reproducible | dev | archive.org API | a sample folder outside the repo |
 
 Environments: dev = `requirements-dev.txt`; build = `requirements-build.txt` (adds opencv, faster-whisper, psutil). Training scripts live in `training/`.

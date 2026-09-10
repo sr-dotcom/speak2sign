@@ -49,7 +49,7 @@ static media in `static/`, lexicon data in `data/lexicon/`, tests in `tests/`.
 
 ## Work policy (set by the developer, 2026-09-03)
 
-Every implementation, however small, follows three rules:
+Every implementation, however small, follows five rules:
 
 1. **Ponytail review before "done".** After writing code, run the `ponytail:ponytail-review` pass on the change (reinvented stdlib, unneeded dependency, speculative abstraction, dead flexibility). Apply the findings or state why not. A change is not finished until this review has happened.
 2. **Say why.** Each change comes with a short rationale: the problem it solves and why this shape was chosen over the obvious alternatives. In a PR this goes in the description; in a session it goes in the message that delivers the change; durable decisions go in an ADR.
@@ -59,11 +59,11 @@ Every implementation, however small, follows three rules:
 5. **Codex review before "done" (added 2026-09-10).** After the ponytail review and before the commit, run an independent review with the OpenAI Codex CLI and address its findings or state why not:
 
    ```bash
-   codex exec review --uncommitted        # before committing
-   codex exec review --commit <sha>       # for a commit already made
+   scripts/codex_review.sh                # before committing: reviews uncommitted changes
+   scripts/codex_review.sh <sha>          # for a commit already made
    ```
 
-   Codex reads `AGENTS.md` at the repo root for what to check. Its findings go in the delivery block under "Codex review:" as applied / rejected-with-reason / none. If Codex is not logged in or unreachable, say so in the block rather than skipping silently.
+   The script pipes the diff plus `AGENTS.md` to `codex exec` over stdin (the built-in `codex exec review` cannot read the repo on Windows; its sandbox rejects the shell). `AGENTS.md` at the repo root is the reviewer's brief. Its findings go in the delivery block under "Codex review:" as applied / rejected-with-reason / none. If Codex is not logged in or unreachable, say so in the block rather than skipping silently.
 
 Format for delivering a change:
 
