@@ -6,9 +6,12 @@
 
 ## Ponytail review (findings applied, or rejected with reason)
 
+## Codex review (`codex exec review`; findings applied, or rejected with reason)
+
 ## Definition of done
 - [ ] Why and trade-off sections filled in
 - [ ] Ponytail review run on the diff
+- [ ] Codex review run on the diff
 - [ ] Tests added or updated, `pytest` green locally
 - [ ] Docs updated in the same PR (PRD / TRD / ADR / dev-log)
 - [ ] `ruff check .` clean

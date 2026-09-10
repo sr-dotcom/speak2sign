@@ -56,6 +56,15 @@ Every implementation, however small, follows three rules:
 3. **Name the trade-off.** Every rationale states what was given up and what would reverse the choice. "No trade-off" is not an acceptable answer; if none is visible, the alternative was not considered.
 4. **Involve the developer before structure changes.** Before adding a module, a data file, an interface, a dependency, or a new way of doing something, explain what it is, why it is needed, how it connects to the existing components, and the options considered. Wait for the developer's go-ahead. Small edits inside an agreed structure do not need this; new structure always does. The developer is learning the system through these explanations, so they are written for understanding, not just approval.
 
+5. **Codex review before "done" (added 2026-09-10).** After the ponytail review and before the commit, run an independent review with the OpenAI Codex CLI and address its findings or state why not:
+
+   ```bash
+   codex exec review --uncommitted        # before committing
+   codex exec review --commit <sha>       # for a commit already made
+   ```
+
+   Codex reads `AGENTS.md` at the repo root for what to check. Its findings go in the delivery block under "Codex review:" as applied / rejected-with-reason / none. If Codex is not logged in or unreachable, say so in the block rather than skipping silently.
+
 Format for delivering a change:
 
 ```
@@ -63,6 +72,7 @@ What: <one line>
 Why: <problem, and why this shape>
 Trade-off: <what is given up; what would reverse it>
 Ponytail review: <findings applied / findings rejected and why / none>
+Codex review: <findings applied / findings rejected and why / none / not available because …>
 ```
 
 ## Working conventions
