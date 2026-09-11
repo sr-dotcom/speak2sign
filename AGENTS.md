@@ -16,7 +16,7 @@ You receive everything over stdin: the diff, this brief, and `CLAUDE.md` (the ha
 4. **Privacy and licences.** Uploaded audio never touches disk or leaves the server. Every clip keeps its `source`, `licence`, `attribution_url`. No personal data in code, docs, or User-Agent strings.
 5. **Correctness bugs** in Python and JavaScript: off-by-one in onsets, sentence boundaries, alignment, playback state machines, error paths that could surface a traceback in the UI.
 6. **Over-engineering.** Prefer the standard library, one function over a class, no new dependency for what three lines do. Flag speculative flexibility.
-7. **Tests and docs.** A change without a test or without its document update (PRD, TRD, ADR, dev-log) is a finding; this project is assessed on process.
+7. **Tests and docs.** A change without a test or without its document update (PRD, TRD, ADR, dev-log) is a finding; this project is assessed on process. Panel behaviour is tested in `tests/browser/` (Playwright, headless Chromium); a change to `panel.js` without a browser test is a finding.
 
 ## Output format
 

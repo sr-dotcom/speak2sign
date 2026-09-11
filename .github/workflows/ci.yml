@@ -13,6 +13,7 @@ jobs:
           python-version: "3.12"
           cache: pip
       - run: pip install -r requirements-dev.txt
+      - run: python -m playwright install --with-deps chromium
       - run: ruff check .
       - uses: actions/cache@v4
         with:

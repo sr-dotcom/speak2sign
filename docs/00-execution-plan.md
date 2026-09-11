@@ -199,7 +199,7 @@ Existing ADRs: **0001** superseded (already), **0002 kept** (hosting) with its R
 | **Asset storage** | **Clips and demo media committed in the app repo** under `static/`, served by Streamlit static file serving (`server.enableStaticServing`) (ADR 0007) | Cloudflare R2; Git LFS; HF Dataset repo | ~0.4 GB fits the 1 GB guidance; zero moving parts; Community Cloud reads local files | R2 needs a payment method and a zoned domain; LFS is unreliable on Community Cloud (prior) and not served by Pages; HF storage policy has shifted | Repo passes ~800 MB → second public repo served by GitHub Pages, referenced by URL |
 | **Training compute** | Kaggle primary, Colab backup, CPU overnight last resort | Paid GPU rental | Free; sufficient for a 2-hour job | Not needed | — |
 | **CI/CD** | GitHub Actions: ruff, pytest, RSS budget; Community Cloud auto-deploys `main` | Self-hosted runners | Free on public repos | — | — |
-| **Testing** | pytest + pytest-cov; JSON-schema contract test on the timeline; `streamlit.testing.v1.AppTest` smoke | Selenium; manual only | Small and standard | — | — |
+| **Testing** | pytest + pytest-cov; JSON-schema contract test on the timeline; `streamlit.testing.v1.AppTest` smoke; Playwright (Python) for the panel in headless Chromium | Selenium; manual only | Small and standard | — | — |
 | **Monitoring** | UptimeRobot free + public status page | Sentry | Free; evidences operations | Community Cloud already shows logs | — |
 
 **Paid components:** none are critical. The only paid item ever considered is a ~$7 one-off GPU rental if Kaggle and Colab both fail during the training week; the free fallback is overnight CPU training.
@@ -254,7 +254,7 @@ speak2sign/
 ├── scripts/                      # build steps, dev tools, report generators (seed_vocab, build_lexicon, make_contact_sheets, measure_clip_spans,
 │                                 #   build_demo_set, example_timeline, measure_rss, coverage_report, evaluate_gloss, codex_review.sh); see scripts/README.md
 ├── training/                     # T5 fine-tune (train_t5_gloss.py), export (export_ct2.py), README, results/ (generated)
-├── tests/                        # pytest suite + fixtures/ (offline NWS forecast)
+├── tests/                        # pytest suite + fixtures/ (offline NWS forecast) + browser/ (Playwright, headless Chromium, against a live Streamlit)
 └── docs/                         # the SDLC record; see docs/README.md
     ├── 00-execution-plan.md      #   this file
     ├── 01-requirements/prd.md

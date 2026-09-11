@@ -27,18 +27,19 @@ The strategy weights effort in that order. The contract checker, the honesty tes
 | Build scripts | pytest, offline | 7 | local + CI | Excerpt location (both ends must match, short excerpts), whole-file downloads, the lexicon CLI refusing unknown commands, footage replacement keeping the published clip until the new one is complete and recovering from an interrupted run (`test_scripts.py`) | local + CI | `scripts/codex_review.sh` collects staged, unstaged and untracked changes, rejects anything that is not exactly one commit, takes the answer between the CLI's marker and its token count, and reports a CLI failure instead of hiding it |
 | Memory budget | `scripts/measure_rss.py` | 1 gate | CI, every push | OS high-water RSS with lexicon + whisper + one transcription + a rules timeline, and a T5 timeline where the export exists, ≤ 1800 MB (measured 334 MB on Windows and 386 MB on the CI runner, both with T5, 2026-09-10) |
 | Static analysis | ruff | gate | CI | Lint clean |
-| Browser checks | scripted DOM checks in the browser pane through the panel's shadow root | per panel change | local and at the live URL | Panel plays clips at the recorded rates, sign label follows the clip, captions highlight and strike, Pause stops everything and nothing resumes on its own, Replay sentence and Restart, waiting state between sentences, `partly` rendering; recorded in the dev log |
+| Browser | pytest + Playwright (headless Chromium) against a Streamlit server the fixture starts | 9 | local + CI (skips when Chromium is not installed) | The page mounts the first item ready; the sign label changes only with a decoded clip of that sign; Pause stops every media element and nothing resumes on its own; Replay sentence and Restart; a clip that fails to load shows the word as text and playback continues with the next sign; the typed lane renders `partly` captions with the unsigned part, and 2-P-M / PERCENT chips; no horizontal scroll at 375 px or 1440 px (`tests/browser/`) |
+| Browser checks by hand | the browser pane, through the panel's shadow root | per deploy | live URL | The same paths at the deployed URL after each deploy; recorded in the deploy log |
 | Evaluation | `scripts/evaluate_gloss.py`, `scripts/coverage_report.py` | reports | local | Rules vs T5 on the ASLG-PC12 test split and on the curated items plus one recorded forecast (the same fixture in both reports) |
 | Accessibility | axe-core in the browser + computed contrast | report | local | 0 WCAG 2.2 AA violations; all pairs ≥ 4.8:1 |
 
-Total automated: **117 tests** (2 skip without local models), **98 % line coverage** of `src/speak2sign` (`pytest --cov`, commit of 2026-09-10). Uncovered: the model-download branch in `asr.py`, the network error branch in `nws.py`, and three defensive lines in `rules.py` and `t5.py`.
+Total automated: **126 tests** (2 skip without local models, 9 without Chromium), **98 % line coverage** of `src/speak2sign` (`pytest --cov`, commit of 2026-09-10). Uncovered: the model-download branch in `asr.py`, the network error branch in `nws.py`, and three defensive lines in `rules.py` and `t5.py`.
 
 ## 3. Requirement traceability
 
 | Requirement | Evidence |
 |---|---|
-| FR-01 pick an item and play | `test_demo_set.py`, `test_smoke_app.py`, browser check (2026-09-10) |
-| FR-02 captions synchronised | browser check (audio-time highlight); timings validated in `test_demo_set.py`; captions owned by sentence in the contract checker |
+| FR-01 pick an item and play | `test_demo_set.py`, `test_smoke_app.py`, `tests/browser/test_panel.py` |
+| FR-02 captions synchronised | timings validated in `test_demo_set.py`; captions owned by sentence in the contract checker; highlight observed at the live URL |
 | FR-03 clip per entry | contract checker: clip count per badge, every clip the lexicon's own record, exact digit/letter sequence |
 | FR-04 badge on every entry | `test_provenance.py`, contract (badge enum, badge-dependent clip rule) |
 | FR-05 fingerspelled letters in order | `test_rules.py` (full letter sequence), contract checker (clip sequence = characters) |
@@ -47,7 +48,7 @@ Total automated: **117 tests** (2 skip without local models), **98 % line covera
 | FR-08 weather lane | `test_nws.py` (offline fixture, fallback, failure), smoke test for the failure message |
 | FR-09 typed text | `test_smoke_app.py`, contract tests |
 | FR-10 coverage and rate shown | `test_ribbon.py::test_stats_line_names_the_engine_and_counts` |
-| FR-11 dropped words struck through | contract tests (`dropped`, `partly` + `missing`), T5 omission tests, browser check |
+| FR-11 dropped words struck through | contract tests (`dropped`, `partly` + `missing`), T5 omission tests, `tests/browser/test_panel.py::test_typed_lane_marks_partly_and_dropped_words_visibly` |
 | FR-12 engine toggle | `test_t5.py`; engine failure message in `test_smoke_app.py`; toggle checked in the browser |
 | FR-13 upload ≤ 60 s with editable transcript | `test_asr.py` (cap at exactly 60 s, alignment, upload timeline without the model, edited text clamped to the recording, real transcription when the model is present); file upload itself not automated |
 | FR-14 headline lane | not built (optional) |
@@ -61,7 +62,8 @@ Total automated: **117 tests** (2 skip without local models), **98 % line covera
 ## 4. How to run
 
 ```bash
-.venv/Scripts/python -m pytest -q                       # 117 tests, ~40 s (2 skip without local models)
+.venv/Scripts/python -m pytest -q                       # 126 tests, ~3 min with the browser tests (they play a whole sentence to the end); tests/browser skips without Chromium
+.venv/Scripts/python -m playwright install chromium     # once, for tests/browser/
 .venv/Scripts/python -m pytest -q --cov=src/speak2sign  # coverage
 .venv/Scripts/ruff check .
 .venv/Scripts/python scripts/measure_rss.py 1800        # memory gate (downloads whisper on first run)
@@ -76,7 +78,7 @@ CI (`.github/workflows/ci.yml`) runs lint, tests and the memory gate on every pu
 
 | Gap | Why accepted | Mitigation |
 |---|---|---|
-| The panel's JavaScript has no automated tests | ~230 lines of DOM and media code; a browser test runner (Playwright) would add a toolchain and a CI stage for one file, a structure decision for the developer (work policy rule 4) | Scripted DOM checks through the shadow root after every panel change, recorded in the dev log; the timeline contract checker guards every field the panel reads and the schema requires them |
+| The panel's browser tests cover playback paths, not pixel layout | Screenshots drift with fonts and themes | Layout is checked with a scroll-width assertion at two viewports and by eye at the live URL |
 | File upload is not driven end to end by a test | Streamlit's uploader is not scriptable from AppTest | The whole path below the widget is tested without the model (`test_upload_timeline_is_valid_and_edits_cannot_run_past_the_audio`) and with it when present |
 | Intermediate commits are not individually green | The history was rebuilt in SDLC order; the pipeline commit's contract test needs the curated items from a later commit | `main` is green at every push; tags mark releasable states |
 | `AppTest` takes 5–10 s per test | Streamlit component registration on first run | Timeout set to 20 s |

@@ -17,4 +17,4 @@ Build steps, dev tools and report generators. Nothing here is imported by the de
 | `codex_review.sh [commit]` | Before every commit (work policy rule 5) | Codex CLI, logged in | the diff, `AGENTS.md`, `CLAUDE.md` | review to stdout, recorded in the delivery block |
 | `spike_cats_sample.py` | Once (spike 1, 2026-09-03); kept so the spike is reproducible | dev | archive.org API | `spike_out/` under the current directory (git-ignored) |
 
-Environments: dev = `requirements-dev.txt` (includes the runtime set: faster-whisper, psutil); build = `requirements-build.txt` (dev plus opencv). Training scripts live in `training/`.
+Environments: dev = `requirements-dev.txt` (includes the runtime set: faster-whisper, psutil; Playwright for `tests/browser/`, plus `python -m playwright install chromium` once); build = `requirements-build.txt` (dev plus opencv). Training scripts live in `training/`.
