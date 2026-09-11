@@ -40,7 +40,7 @@ def item_card(tl):
 def show_timeline(transcript, key):
     """Build and mount one item. A failure (a model that will not load, bad data) becomes a message, never a traceback."""
     try:
-        tl = timeline.build(transcript, get_lexicon(), gloss_engine=ENGINE)
+        tl = timeline.build(transcript, get_lexicon(), gloss_engine=ENGINE, sign_rate=SIGN_RATE)
     except Exception as e:
         hint = " Switch the engine to rules in the sidebar." if ENGINE != "rules" else ""
         st.error(f"Could not build the signing plan with the {ENGINE} engine ({e.__class__.__name__}).{hint}")
@@ -67,6 +67,10 @@ with st.sidebar:
         ENGINE = "rules"
         st.caption("rules (T5 export not present on this host)")
     st.caption("Either engine resolves through the same validated lexicon; neither can invent a sign.")
+    st.markdown("**Sign speed**")
+    SIGN_RATE = st.radio("Sign speed", timeline.SIGN_RATES, index=timeline.SIGN_RATES.index(timeline.SIGN_RATE), format_func=lambda r: f"{r}×",
+                         horizontal=True, label_visibility="collapsed", key="sign_rate",
+                         help="Playback rate of the sign clips. Letters and digits stay at 2.0×. Slower is easier to read and makes the narration wait longer at each sentence end; the signing time above the panel updates.")
 
 news, typed, weather, upload = st.tabs(["News items", "Type text", "Live weather (Charlotte)", "Upload a clip"])
 

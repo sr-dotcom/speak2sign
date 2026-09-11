@@ -22,6 +22,10 @@ With the real lexicon (258 clips) and the rule pass, signing time is 5.5–9.3×
 - The T5 comparison and coverage numbers are unaffected.
 - The report gains a genuine finding: retrieval from validated clips is honest but slow, which is a quantified reason human interpreters remain necessary.
 
+## Amendment (2026-09-11)
+
+The sign rate is a viewer choice among 1.0×, 1.25× (default) and 1.5× (sidebar control); letters and digits stay at 2.0×. The chosen rate is written into the timeline's `playback.sign_rate` and into every sign clip's `rate`, so the projected signing time on screen is computed at the rate that will play. The pacing policy is unchanged: slower signs make the narration wait longer at each sentence end, and that cost is shown, never hidden.
+
 ## Alternatives rejected
 
 - **Free-running media** (the previous policy): the panel finishes ~90 s after the audio; looks broken and hides the cost.

@@ -323,3 +323,20 @@ def test_keyboard_space_and_r_control_the_panel(page, lexicon):
     assert page.locator(".s2s-restart").get_attribute("aria-keyshortcuts") == "R"
     legend = page.get_by_text("Badges: validated")
     assert legend.count() >= 1
+
+
+def test_sign_speed_control_changes_the_rate_the_clips_play_at(page, lexicon):
+    page.get_by_text("1.5×", exact=True).click()   # Streamlit's radio input is hidden; its label takes the click
+    page.wait_for_timeout(1500)                       # the rerun replaces the panel
+    page.locator(".s2s-play").wait_for(timeout=30000)
+    record(page, "rate")
+    page.locator(".s2s-play").click()
+    s = wait_until(lambda: read(page) if read(page)["visiblePlaying"] else None)
+    rate = page.evaluate(f"() => [...({PANEL})(null).querySelectorAll('.s2s-video')].find(v => !v.hidden).playbackRate")
+    assert rate == 1.5 and "Sentence 1" in s["status"]
+    signing = [line for line in page.locator('[data-testid="stMetric"]').nth(2).inner_text().split("\n") if line.strip()][1]
+    tl = first_item_timeline(lexicon)
+    from speak2sign import timeline
+    from speak2sign.ingest import demo_set
+    fast = timeline.build(demo_set.transcript(demo_set.items()[0]), lexicon, sign_rate=1.5)
+    assert signing == f"~{fast['stats']['signing_s']:.0f} s" and fast["stats"]["signing_s"] < tl["stats"]["signing_s"]

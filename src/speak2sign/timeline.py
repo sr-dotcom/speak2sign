@@ -14,7 +14,8 @@ from speak2sign import provenance
 from speak2sign.gloss.rules import TIME_CONCEPTS, gloss_sentence, stats, tokenize
 
 STATIC_URL = "app/static/"   # Streamlit static serving root
-SIGN_RATE = 1.25             # playback rate for sign clips
+SIGN_RATE = 1.25             # default playback rate for sign clips; the viewer may pick another within SIGN_RATES
+SIGN_RATES = (1.0, 1.25, 1.5)   # legible at the slow end, still readable at the fast end (ADR 0008, amended 2026-09-11)
 LETTER_RATE = 2.0            # playback rate for letter and digit clips
 TEXT_HOLD_S = 0.9            # how long the panel shows a name or an unavailable word as text
 MODE = "interpreter-paced"
@@ -182,7 +183,9 @@ def _captions(transcript, triples, src, gloss_engine):
     return captions
 
 
-def build(transcript, lexicon, gloss_engine="rules"):
+def build(transcript, lexicon, gloss_engine="rules", sign_rate=SIGN_RATE):
+    if sign_rate not in SIGN_RATES:
+        raise ValueError(f"sign_rate {sign_rate} not in {SIGN_RATES}")
     triples, spans, src = gloss_transcript(transcript, lexicon, gloss_engine)
     onsets = src["onsets"]
     entries, sources, signing_s = [], set(), 0.0
@@ -190,7 +193,7 @@ def build(transcript, lexicon, gloss_engine="rules"):
         if e.kind == "dropped":
             continue
         concepts = _clips(e, lexicon)
-        rate = SIGN_RATE if e.kind == "sign" else LETTER_RATE
+        rate = sign_rate if e.kind == "sign" else LETTER_RATE
         clips = []
         for c in concepts:
             clips.append({"url": STATIC_URL + c.clip_file, "duration_s": c.duration_s, "in_s": c.in_s, "out_s": c.out_s or c.duration_s,
@@ -219,6 +222,6 @@ def build(transcript, lexicon, gloss_engine="rules"):
     if transcript.broadcast_date:
         item["broadcast_date"] = transcript.broadcast_date
     return {"version": 1, "item": item, "media": media,
-            "playback": {"mode": MODE, "sign_rate": SIGN_RATE, "letter_rate": LETTER_RATE, "text_hold_s": TEXT_HOLD_S},
+            "playback": {"mode": MODE, "sign_rate": sign_rate, "letter_rate": LETTER_RATE, "text_hold_s": TEXT_HOLD_S},
             "sentences": spans, "captions": captions, "entries": entries, "stats": s,
             "provenance": {"disclaimer": provenance.DISCLAIMER, "attributions": provenance.attributions(sorted(sources), transcript.lane, gloss_engine)}}

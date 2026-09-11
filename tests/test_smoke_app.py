@@ -27,6 +27,15 @@ def test_app_loads_with_disclaimer_and_a_curated_item():
                                                         "Signing time": f"~{s['signing_s']:.0f} s", "Sentences": str(len(tl["sentences"]))}
 
 
+def test_sign_speed_control_changes_the_signing_time():
+    at = run_app()
+    before = at.metric[2].value
+    at.radio(key="sign_rate").set_value(1.0).run()
+    assert not at.exception
+    after = at.metric[2].value
+    assert before != after and int(after[1:-2]) > int(before[1:-2])   # "~152 s" -> slower signs, longer signing time
+
+
 def test_typed_lane_renders_and_survives_a_rerun():
     at = run_app()
     at.text_area(key="typed_text").set_value("Rain is likely tonight. Don't panic.").run()

@@ -213,7 +213,7 @@ Measured signing time is 5.5–9.3× speech time with dictionary clips (`docs/re
 | **Clock** | The news media element's `currentTime` is the clock for onsets. `tts` lanes use the utterance's `boundary` events to advance the same logical clock. |
 | **Sentence pacing** | The timeline carries `sentences[]` with `t_start`/`t_end`. The media plays to `t_end`, then **pauses** with a visible "waiting for the interpreter" state until every entry of that sentence has played, then resumes. |
 | **Queue** | Entries play in onset order, one clip at a time. Nothing is skipped. |
-| **Active span and rate** | Each clip plays from `in_s` to `out_s` (measured motion span) at `rate`: 1.25× for signs, 2.0× for letters and digits. Rates are recorded in `playback` so displayed estimates match playback. |
+| **Active span and rate** | Each clip plays from `in_s` to `out_s` (measured motion span) at `rate`: 1.25× for signs by default (the viewer may choose 1.0× or 1.5× in the sidebar; ADR 0008 amendment), 2.0× for letters and digits. Rates are recorded in `playback` so displayed estimates match playback. |
 | **Names once** | A capitalised word with no sign is fingerspelled at first mention; later mentions carry badge `name` and are shown as text. |
 | **Estimates** | `stats.signing_s` (active spans at rate) is shown beside `stats.speech_s`. |
 | **Preload** | The next two clips are preloaded (`preload="auto"` on hidden `<video>` elements swapped on `ended`). |
@@ -343,9 +343,9 @@ No path produces a traceback in the UI.
 | 0002 | Streamlit Community Cloud hosting | Kept |
 | 0004 | Scope: news bulletin format, bounded lexicon, curated items + weather lane | Proposed |
 | 0005 | Gloss engine: rules default, T5-small via CTranslate2 toggle; Keras classifier and TensorFlow retired | Proposed |
-| 0006 | Rendering: recorded clip playback; MediaPipe skeleton view retired | Proposed |
-| 0007 | Clip source CATS primary, Signbank secondary; clips in the repo, not R2 | Proposed |
-| 0008 | Synchronisation: media clock, overrun shown, ≤ 1.25×, never drop | Proposed |
+| 0006 | Rendering: recorded clip playback; MediaPipe skeleton view retired | Accepted |
+| 0007 | Clip source CATS primary, Signbank secondary; clips in the repo, not R2 | Accepted |
+| 0008 | Synchronisation: interpreter-paced, active spans at 1.25× (viewer-adjustable 1.0–1.5×) / 2.0×, names once, never drop | Accepted, amended 2026-09-11 |
 
 ---
 

@@ -180,6 +180,19 @@ def test_sign_pointing_at_a_concept_without_a_clip_fails_closed(lexicon, check):
     assert tl["stats"]["validated"] == 1   # today
 
 
+def test_sign_rate_is_a_viewer_choice_within_bounds(lexicon, check):
+    slow = timeline.build(from_text("Rain in Samoa."), lexicon, sign_rate=1.0)
+    fast = timeline.build(from_text("Rain in Samoa."), lexicon, sign_rate=1.5)
+    check(slow)
+    check(fast)
+    assert slow["playback"]["sign_rate"] == 1.0 and fast["playback"]["sign_rate"] == 1.5
+    assert [c["rate"] for c in slow["entries"][0]["clips"]] == [1.0] and [c["rate"] for c in fast["entries"][0]["clips"]] == [1.5]
+    assert [c["rate"] for c in slow["entries"][1]["clips"]] == [2.0] * 5   # letters keep their own rate
+    assert slow["stats"]["signing_s"] > fast["stats"]["signing_s"]
+    with pytest.raises(ValueError, match="sign_rate"):
+        timeline.build(from_text("Rain."), lexicon, sign_rate=3.0)
+
+
 def test_unknown_engine_is_rejected(lexicon):
     with pytest.raises(ValueError, match="unknown gloss engine"):
         timeline.build(from_text("rain"), lexicon, gloss_engine="llm")
