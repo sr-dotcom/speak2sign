@@ -25,7 +25,7 @@ RECORD = f"""([startsWith, key]) => {{
   root.querySelectorAll('.s2s-video').forEach(v => {{
     v.addEventListener('play', () => {{
       v.__inst = {{gloss: root.querySelector('.s2s-gloss').textContent, src: v.src.split('/').pop(), start: v.currentTime, seeks: 0, end: null,
-                  shown: !v.hidden}};   // the element that plays must be the one on screen
+                  shown: !v.hidden, ready: v.readyState}};   // the element that plays must be on screen with a decoded frame
       window.__plays[key].push(v.__inst);
     }});
     v.addEventListener('seeking', () => {{ if (v.__inst) v.__inst.seeks += 1; }});
@@ -159,10 +159,8 @@ def test_the_panel_plays_the_whole_first_sentence_in_the_prescribed_order(page, 
             break
         if s["playing"] and (not s["visiblePlaying"] or s["gloss"] == "—"):
             bad.append(("a clip is playing but it is not the one on screen", s["gloss"], s["visible"]))   # signing is on screen, never hidden
-        if s["visible"] and s["gloss"] != "—":
-            # every sample: the visible clip is one of this label's own clips, and its frame is decoded
-            if s["visible"]["src"] not in allowed.get(s["gloss"], ()) or s["visible"]["ready"] < 2:
-                bad.append((s["gloss"], s["visible"]["src"], s["visible"]["ready"]))
+        if s["visible"] and s["gloss"] != "—" and s["visible"]["src"] not in allowed.get(s["gloss"], ()):
+            bad.append((s["gloss"], s["visible"]["src"]))   # every sample: the visible clip is one of this label's own clips
         time.sleep(0.04)
     else:
         raise AssertionError(f"sentence 1 never finished; last state {read(page)}")
@@ -171,14 +169,15 @@ def test_the_panel_plays_the_whole_first_sentence_in_the_prescribed_order(page, 
     # (the loop may catch the first start of sentence 2 before it sees the status change; nothing beyond that)
     played = starts(page, "item")
     assert played[: len(expected)] == expected and played[len(expected):] in ([], next_sentence[:1]), played
-    # and every clip played exactly its active span: started at in_s (the panel seeks there before play(), so 0.05 s),
-    # no seek while playing, stopped at or past out_s - 0.03 (the panel's stop test) and not more than one timeupdate
-    # interval beyond it (250 ms of wall clock at the 2.0x letter rate is 0.5 s of media; 0.6 s is the bound)
+    # and every clip played exactly its active span: shown with a decoded frame when play() was issued (readyState at
+    # that instant; a later buffering dip on a slow machine is not a labelling error), started at in_s (the panel seeks
+    # there before play(), so 0.05 s), no seek while playing, stopped at or past out_s - 0.03 (the panel's stop test)
+    # and not more than one timeupdate interval beyond it (250 ms of wall clock at 2.0x is 0.5 s of media; 0.6 s bound)
     spans = spans_of(tl)
     wrong = []
     for (g, c), rec in zip(expected, clip_plays(page, "item")):
         in_s, out_s = spans[(g, c)]
-        if rec["end"] is None or not rec["shown"] or abs(rec["start"] - in_s) > 0.05 or rec["seeks"] != 0 or not (out_s - 0.05 <= rec["end"] <= out_s + 0.6):
+        if rec["end"] is None or not rec["shown"] or rec["ready"] < 2 or abs(rec["start"] - in_s) > 0.05 or rec["seeks"] != 0 or not (out_s - 0.05 <= rec["end"] <= out_s + 0.6):
             wrong.append((g, c, rec, spans[(g, c)]))
     assert not wrong, wrong
     assert any(len(allowed[g]) > 1 for g in allowed)   # a fingerspelled word was played letter by letter
