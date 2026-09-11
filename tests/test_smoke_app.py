@@ -14,6 +14,8 @@ def test_app_loads_with_disclaimer_and_a_curated_item():
     at = run_app()
     assert not at.exception
     assert any("not a substitute for a human interpreter" in i.value for i in at.info)
+    assert at.title[0].value == "Speak2Sign" and any(c.value.startswith("News with an ASL interpreter panel") for c in at.caption)
+    assert any("How it works" in m.value for m in at.sidebar.markdown) and any("lexicon of validated clips" in c.value for c in at.sidebar.caption)
     assert any("s2s-chip" in m.value for m in at.markdown)   # the first curated item is mounted with its ribbon
     assert any(c.value.startswith("Badges:") for c in at.caption)   # and the legend under it
     # the item card above the panel: each metric carries exactly the timeline's own number for the first curated item

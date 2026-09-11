@@ -55,10 +55,15 @@ def show_timeline(transcript, key):
             st.markdown(f"- {a['text']} — {a['licence']} — {a['url']}")
 
 
-st.title("Speak2Sign — news with an ASL interpreter panel")
+st.title("Speak2Sign")
+st.caption("News with an ASL interpreter panel, signed from recorded clips of Deaf signers. Every sign carries a badge saying where it came from.")
 st.info(provenance.DISCLAIMER, icon="ℹ️")
 
 with st.sidebar:
+    st.markdown("**How it works**")
+    st.caption("The news text is turned into a sequence of sign concepts by a rule pass (or a small T5 model). Each concept is looked up in a "
+               "lexicon of validated clips (the count is in the footer); a word with no clip is fingerspelled, and one that cannot be spelled is marked not available. "
+               "The bulletin plays one sentence at a time and waits for the interpreter to finish it.")
     st.markdown("**Gloss engine**")
     if t5.available():
         ENGINE = st.radio("Engine", ["rules", "t5"], label_visibility="collapsed", horizontal=True, key="engine",
@@ -71,6 +76,8 @@ with st.sidebar:
     SIGN_RATE = st.radio("Sign speed", timeline.SIGN_RATES, index=timeline.SIGN_RATES.index(timeline.SIGN_RATE), format_func=lambda r: f"{r}×",
                          horizontal=True, label_visibility="collapsed", key="sign_rate",
                          help="Playback rate of the sign clips. Letters and digits stay at 2.0×. Slower is easier to read and makes the narration wait longer at each sentence end; the signing time above the panel updates.")
+    st.markdown("**Project**")
+    st.caption("[Source and documentation](https://github.com/sr-dotcom/speak2sign) · MIT code; clip and data licences in NOTICE.md · UNC Charlotte capstone, 2026.")
 
 news, typed, weather, upload = st.tabs(["News items", "Type text", "Live weather (Charlotte)", "Upload a clip"])
 
