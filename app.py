@@ -27,6 +27,16 @@ def forecast():
     return nws.fetch_forecast()
 
 
+def item_card(tl):
+    """What the viewer is about to watch, before Play: how much of it is validated signing and how long it will take."""
+    s, n = tl["stats"], len(tl["sentences"])
+    c1, c2, c3, c4 = st.columns(4)
+    c1.metric("Validated signs", f"{s['coverage']:.0%}", help="Share of content words shown with a validated clip. The rest are fingerspelled, shown as text, or marked not available.")
+    c2.metric("Fingerspelled", f"{s['fingerspelling_rate']:.0%}", help="Words spelled letter by letter with validated letter clips.")
+    c3.metric("Signing time", f"~{s['signing_s']:.0f} s", help=f"Projected at {tl['playback']['sign_rate']}× for signs and {tl['playback']['letter_rate']}× for letters; the narration ({s['speech_s']:.0f} s) waits for the interpreter at each sentence end.")
+    c4.metric("Sentences", str(n), help="The narration pauses after each sentence until the interpreter has signed it.")
+
+
 def show_timeline(transcript, key):
     """Build and mount one item. A failure (a model that will not load, bad data) becomes a message, never a traceback."""
     try:
@@ -35,6 +45,7 @@ def show_timeline(transcript, key):
         hint = " Switch the engine to rules in the sidebar." if ENGINE != "rules" else ""
         st.error(f"Could not build the signing plan with the {ENGINE} engine ({e.__class__.__name__}).{hint}")
         return
+    item_card(tl)
     panel.mount(tl, key=f"panel-{key}")
     st.markdown(ribbon.ribbon_html(tl), unsafe_allow_html=True)
     st.caption(ribbon.stats_line(tl))

@@ -15,6 +15,15 @@ def test_app_loads_with_disclaimer_and_a_curated_item():
     assert not at.exception
     assert any("not a substitute for a human interpreter" in i.value for i in at.info)
     assert any("s2s-chip" in m.value for m in at.markdown)   # the first curated item is mounted with its ribbon
+    # the item card above the panel: each metric carries exactly the timeline's own number for the first curated item
+    from speak2sign import timeline
+    from speak2sign.gloss import lexicon as lex
+    from speak2sign.ingest import demo_set
+
+    tl = timeline.build(demo_set.transcript(demo_set.items()[0]), lex.load())
+    s = tl["stats"]
+    assert {m.label: m.value for m in at.metric[:4]} == {"Validated signs": f"{s['coverage']:.0%}", "Fingerspelled": f"{s['fingerspelling_rate']:.0%}",
+                                                        "Signing time": f"~{s['signing_s']:.0f} s", "Sentences": str(len(tl["sentences"]))}
 
 
 def test_typed_lane_renders_and_survives_a_rerun():

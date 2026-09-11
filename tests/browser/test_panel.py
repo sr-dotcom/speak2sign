@@ -118,6 +118,17 @@ def gloss_typed(page, text):
 def test_page_mounts_the_first_item_ready_on_the_signers_first_frame(page, state, lexicon):
     assert "Ready" in state()["status"] and FIRST_ITEM_STATUS in state()["status"]
     assert page.locator(".s2s-chip").count() > 10   # the ribbon under the panel
+    # the item card sits above the panel: coverage, fingerspelling, signing time, sentences, all read from the timeline
+    tl = first_item_timeline(lexicon)
+    card = page.locator('[data-testid="stMetric"]')
+    assert card.count() >= 4 and card.first.bounding_box()["y"] < page.locator(".s2s-play").bounding_box()["y"]
+    shown = {}
+    for i in range(4):   # each metric: its label line, then its value line
+        label, value = [line.strip() for line in card.nth(i).inner_text().split("\n") if line.strip()][:2]
+        shown[label] = value
+    s = tl["stats"]
+    assert shown == {"Validated signs": f"{s['coverage']:.0%}", "Fingerspelled": f"{s['fingerspelling_rate']:.0%}",
+                     "Signing time": f"~{s['signing_s']:.0f} s", "Sentences": str(len(tl["sentences"]))}
     (first_gloss, first_clip), = sequence_of(first_item_timeline(lexicon))[:1]
     in_s = spans_of(first_item_timeline(lexicon))[(first_gloss, first_clip)][0]
     # before Play the panel shows the first clip's first active frame, paused, with a hint; never a black box
