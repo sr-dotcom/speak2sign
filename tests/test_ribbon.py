@@ -27,6 +27,11 @@ def test_ribbon_html_escapes_user_text_and_shows_the_badge_label():
     assert html.count('class="s2s-chip"') == 2 and "fingerspelled</small>" in html and "not available</small>" in html
 
 
+def test_legend_explains_every_badge_the_strike_through_and_the_keys():
+    for word in ("validated", "fingerspelled", "name", "not available", "struck-through", "Space", "R restarts", "focused button"):
+        assert word in ribbon.LEGEND
+
+
 def test_stats_line_names_the_engine_and_counts(lexicon):
     tl = timeline.build(from_text("Rain in Samoa."), lexicon)
     line = ribbon.stats_line(tl)

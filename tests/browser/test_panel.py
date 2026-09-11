@@ -281,3 +281,45 @@ def test_layout_fits_the_viewport_with_the_controls_reachable(page, width):
       return {{over, off}};
     }}""")
     assert overflow == {"over": [], "off": []}, overflow   # nothing inside the panel is clipped and the controls sit inside the viewport
+
+
+def test_keyboard_space_and_r_control_the_panel(page, lexicon):
+    first = sequence_of(first_item_timeline(lexicon))[0]
+    page.locator(".s2s").focus()   # the panel region itself, not a button
+    page.keyboard.press("Space")
+    s = wait_until(lambda: read(page) if read(page)["button"] == "Pause" and read(page)["visiblePlaying"] else None)
+    assert "Sentence 1" in s["status"]
+    page.keyboard.press("Space")
+    s = wait_until(lambda: read(page) if read(page)["allPaused"] else None)
+    assert s["button"] == "Replay sentence"
+    record(page, "key-restart")
+    page.keyboard.press("r")
+    s = wait_until(lambda: read(page) if starts(page, "key-restart")[:1] == [first] and read(page)["button"] == "Pause" else None)
+    assert "Sentence 1 of" in s["status"]
+    # a held key acts once (autorepeat keydowns are ignored) and modified keys are left to the browser
+    before, plays_before = read(page)["button"], len(plays(page, "key-restart"))
+    repeats_prevented = page.evaluate(f"() => {{ const r = ({PANEL})(null).querySelector('.s2s'); const out = []; for (let i = 0; i < 5; i++) {{ const e = new KeyboardEvent('keydown', {{key: ' ', repeat: true, bubbles: true, cancelable: true}}); r.dispatchEvent(e); out.push(e.defaultPrevented); }} return out; }}")
+    assert repeats_prevented == [True] * 5   # a held Space does not scroll the page ...
+    page.keyboard.press("Control+r")
+    page.keyboard.press("Alt+r")
+    time.sleep(0.3)
+    s = read(page)
+    assert s["button"] == before and "Sentence 1 of" in s["status"]                       # no toggle from the held key
+    assert [p["src"] for p in plays(page, "key-restart")[plays_before:]] in ([], ["narration"]) or all(
+        p["gloss"] != first[0] for p in plays(page, "key-restart")[plays_before:])            # no second restart from Ctrl+R / Alt+R
+    assert not page.evaluate(f"() => {{ const r = ({PANEL})(null).querySelector('.s2s'); const e = new KeyboardEvent('keydown', {{key: 'r', ctrlKey: true, bubbles: true, cancelable: true}}); r.dispatchEvent(e); return e.defaultPrevented; }}")
+    # a focused button keeps its native Space: once on Play toggles once, once on Restart restarts once
+    page.locator(".s2s-play").focus()
+    page.keyboard.press("Space")
+    s = wait_until(lambda: read(page) if read(page)["allPaused"] else None)
+    assert s["button"] == "Replay sentence"
+    record(page, "button-restart")
+    page.locator(".s2s-restart").focus()
+    page.keyboard.press("Space")
+    wait_until(lambda: starts(page, "button-restart")[:1] == [first])
+    time.sleep(1.0)
+    assert [g for g, _ in starts(page, "button-restart")].count(first[0]) == 1   # not restarted twice
+    assert page.locator(".s2s-play").get_attribute("aria-keyshortcuts") == "Space"
+    assert page.locator(".s2s-restart").get_attribute("aria-keyshortcuts") == "R"
+    legend = page.get_by_text("Badges: validated")
+    assert legend.count() >= 1

@@ -15,6 +15,7 @@ def test_app_loads_with_disclaimer_and_a_curated_item():
     assert not at.exception
     assert any("not a substitute for a human interpreter" in i.value for i in at.info)
     assert any("s2s-chip" in m.value for m in at.markdown)   # the first curated item is mounted with its ribbon
+    assert any(c.value.startswith("Badges:") for c in at.caption)   # and the legend under it
     # the item card above the panel: each metric carries exactly the timeline's own number for the first curated item
     from speak2sign import timeline
     from speak2sign.gloss import lexicon as lex

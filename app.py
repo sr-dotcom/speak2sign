@@ -49,6 +49,7 @@ def show_timeline(transcript, key):
     panel.mount(tl, key=f"panel-{key}")
     st.markdown(ribbon.ribbon_html(tl), unsafe_allow_html=True)
     st.caption(ribbon.stats_line(tl))
+    st.caption(ribbon.LEGEND)
     with st.expander("Sources for this item"):
         for a in tl["provenance"]["attributions"]:
             st.markdown(f"- {a['text']} — {a['licence']} — {a['url']}")

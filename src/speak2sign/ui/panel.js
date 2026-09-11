@@ -260,6 +260,16 @@ export default function (component) {
   }
   playBtn.addEventListener("click", () => { if (state.playing) stop(); else run(state.stopped ? 0 : state.sentence); });
   restartBtn.addEventListener("click", () => { stop(); state.stopped = true; run(0); });
+  // Keyboard: Space plays/pauses and R restarts while the focus is anywhere in the panel (the buttons carry aria-keyshortcuts).
+  // Space on a focused button is left to the button itself, so it is not handled twice.
+  root.addEventListener("keydown", (e) => {
+    if (e.ctrlKey || e.metaKey || e.altKey) return;   // Ctrl+R and friends stay the browser's
+    const space = e.key === " " && e.target.tagName !== "BUTTON";
+    if (space) e.preventDefault();   // a held Space must not scroll the page either, so this comes before the repeat check
+    if (e.repeat) return;            // a held key acts once
+    if (space) playBtn.click();
+    else if (e.key === "r" || e.key === "R") { e.preventDefault(); restartBtn.click(); }
+  });
   setStatus(`Ready · ${sentences.length} sentence${sentences.length === 1 ? "" : "s"}, ${tl.entries.length} signs`);
 
   return () => halt("Stopped", "Play");

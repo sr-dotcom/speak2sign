@@ -9,6 +9,9 @@ BADGE_STYLE = {
     "name": ("#3b4a5a", "#e8ecf1", "name, shown as text"),
     "not_available": ("#8a2a22", "#f9e3e0", "not available"),
 }
+LEGEND = ("Badges: validated = a recorded clip of that sign; fingerspelled = letter by letter with validated letter clips; "
+          "name = a proper noun fingerspelled once, then shown as text; not available = nothing honest to show. "
+          "In the captions, a struck-through word is one nothing signs. Keyboard: with the panel focused, Space plays or pauses and R restarts; a focused button keeps its own Space and Enter.")
 CSS = """
 <style>
 .s2s-ribbon{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}

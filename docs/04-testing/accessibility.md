@@ -40,6 +40,8 @@ Badges never rely on colour alone: each carries its text label, and the current 
 |---|---|---|
 | Play, Restart reachable by Tab, activate with Enter/Space | Yes (native buttons) | — |
 | Visible focus | `:focus-visible` outline, 2 px, 4.5:1 on the panel background | — |
+| Keyboard shortcuts (2026-09-11) | Space plays/pauses and R restarts while the panel region or a non-button element inside it has focus; a focused button keeps its native Space/Enter activation (Space on Restart restarts, once); the panel region is focusable (`tabindex="0"`) with the same visible outline; the buttons declare `aria-keyshortcuts` | added, browser-tested |
+| Badge legend (2026-09-11) | A caption under the ribbon spells out the four badges, the strike-through and the keys, so colour is never the only carrier | added |
 | Video elements as tab stops | Were two empty stops | `tabindex="-1"`; they have no controls |
 | Status changes announced ("Sentence 2 of 3", "waiting for the interpreter", "Done …") | Not before | `role="status" aria-live="polite"` on the status line and the waiting bar |
 | Current sign announced (gloss, badge, note) | Not before | `aria-live="polite" aria-atomic` on the sign line |

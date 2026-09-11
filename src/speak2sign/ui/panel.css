@@ -3,7 +3,7 @@
 .s2s-controls{display:flex;align-items:center;gap:10px;margin:0 0 10px}
 .s2s button{font:600 14px/1 system-ui,sans-serif;padding:8px 14px;border-radius:4px;border:1px solid rgba(127,127,127,.4);background:#1E5EB8;color:#fff;cursor:pointer}
 .s2s button.s2s-restart{background:transparent;color:inherit}
-.s2s button:focus-visible{outline:2px solid #7FB0F5;outline-offset:2px}
+.s2s button:focus-visible,.s2s:focus-visible{outline:2px solid #7FB0F5;outline-offset:2px}
 .s2s-status{opacity:.8;font-size:14px}
 .s2s-stage{display:grid;grid-template-columns:3fr 2fr;gap:16px;align-items:start}
 @media (max-width:800px){.s2s-stage{grid-template-columns:1fr}}
