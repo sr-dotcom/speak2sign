@@ -32,22 +32,38 @@ def _tokens_with_onsets(transcript):
     """Tokenise word by word so every token keeps the onset, the original text and the index of its word."""
     tokens, onsets, originals, word_of, starts = [], [], [], [], [0]
     words = transcript.words
-    sign = ""   # a lone "-" / "+" / "−" word before a number: carried into the number's own word so "- 5" is refused as "-5"
-    for wi, w in enumerate(words):
-        if w.text.strip("()") in ("-", "+", "−") and wi + 1 < len(words) and words[wi + 1].text[:1].isdigit():
-            sign = w.text.strip("()")
+    OPERATORS = {"-": "-", "−": "-", "–": "-", "—": "-", "+": "+"}   # a lone sign or range/sum operator written as its own word
+    is_sign = lambda k: 0 <= k < len(words) and words[k].text.strip("()") in OPERATORS   # noqa: E731
+    starts_digit = lambda k: k < len(words) and words[k].text[:1].isdigit()   # noqa: E731
+    sign, sign_onset, wi, merged = "", None, 0, {}   # merged: consumed word index -> the word that owns the joined token
+    while wi < len(words):
+        w = words[wi]
+        text = w.text
+        if is_sign(wi) and starts_digit(wi + 1):   # "- 5": the sign is carried into the number's own word, refused as "-5"
+            sign, sign_onset = OPERATORS[w.text.strip("()")], w.onset_s   # the expression starts where its sign is spoken
+            merged[wi] = wi + 1
+            wi += 1
             continue
-        for t in tokenize(sign + w.text):
+        # "20 - 30": one range, owned by the first word; never across a sentence end ("20. - 30 people." is two sentences)
+        if text.rstrip(",;:")[-1:].isdigit() and not _ends_sentence(text) and is_sign(wi + 1) and starts_digit(wi + 2):
+            text = text.rstrip(",;:") + OPERATORS[words[wi + 1].text.strip("()")] + words[wi + 2].text   # "20 + 30" stays 20+30, not 20-30
+            merged[wi + 1] = merged[wi + 2] = wi
+            skip = 2
+        else:
+            skip = 0
+        for t in tokenize(sign + text):
             tokens.append(t)
-            onsets.append(w.onset_s)
+            onsets.append(sign_onset if sign else w.onset_s)
             originals.append(w.text)
             word_of.append(wi)
-        sign = ""
-        if _ends_sentence(w.text) and len(tokens) > starts[-1]:
+        sign, sign_onset = "", None
+        last = words[wi + skip]   # the last word this step consumed decides the sentence end ("20 - 30." ends on "30.")
+        wi += 1 + skip
+        if _ends_sentence(last.text) and len(tokens) > starts[-1]:
             starts.append(len(tokens))
     if starts[-1] != len(tokens):
         starts.append(len(tokens))
-    return tokens, onsets, originals, word_of, starts
+    return tokens, onsets, originals, word_of, starts, merged
 
 
 def _capitalised(original):
@@ -95,7 +111,7 @@ def gloss_transcript(transcript, lexicon, gloss_engine="rules"):
     """Run the chosen gloss engine sentence by sentence.
     Returns (entries with onset and sentence index, sentence spans, source) where source carries the tokens, onsets,
     word index per token and, for T5, the token indices no entry accounts for."""
-    tokens, onsets, originals, word_of, starts = _tokens_with_onsets(transcript)
+    tokens, onsets, originals, word_of, starts, merged = _tokens_with_onsets(transcript)
     known_names = {tokens[i] for i in range(len(tokens)) if i not in starts and _capitalised(originals[i])}
     entries, spans, seen_names, uncovered = [], [], set(), set()
     engine = _engine(gloss_engine)
@@ -123,7 +139,7 @@ def gloss_transcript(transcript, lexicon, gloss_engine="rules"):
         spans.append({"index": 0, "t_start": t0, "t_end": transcript.duration_s if transcript.duration_s is not None else t0})
     if spans:   # leading words without tokens ("!!! Rain.") belong to the first sentence, so it starts where they do
         spans[0]["t_start"] = min(spans[0]["t_start"], transcript.words[0].onset_s)
-    return entries, spans, {"tokens": tokens, "onsets": onsets, "word_of": word_of, "starts": starts, "uncovered": uncovered}
+    return entries, spans, {"tokens": tokens, "onsets": onsets, "word_of": word_of, "starts": starts, "merged": merged, "uncovered": uncovered}
 
 
 def _clips(entry, lexicon):
@@ -146,11 +162,15 @@ def _captions(transcript, triples, src, gloss_engine):
     for ti, wi in enumerate(src["word_of"]):
         tokens_of.setdefault(wi, []).append(ti)
     n_sentences = max(1, len(src["starts"]) - 1)
+    owner = {wi: min(n_sentences - 1, bisect.bisect_right(src["starts"], toks[0]) - 1) for wi, toks in tokens_of.items()}
     captions, sentence = [], 0
     for wi, w in enumerate(transcript.words):
-        toks = tokens_of.get(wi, [])
-        if toks:   # a word with no tokens (punctuation only) stays with the sentence before it
-            sentence = min(n_sentences - 1, bisect.bisect_right(src["starts"], toks[0]) - 1)
+        # a word merged into a numeric expression ("- 5", "20 - 30") shares the tokens, sentence and status of the word that owns it
+        home = src["merged"].get(wi, wi)
+        toks = tokens_of.get(home, [])
+        if toks:
+            sentence = owner[home]
+        # any other word with no tokens (punctuation only) stays with the sentence before it
         c = {"t": w.onset_s, "text": w.text, "sentence": sentence}
         missing = [src["tokens"][t] for t in toks if t in dropped_tokens]
         if toks and len(missing) == len(toks):

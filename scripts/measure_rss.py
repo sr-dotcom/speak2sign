@@ -3,7 +3,8 @@ transcription and one translation done.
 
 Fails (exit 1) over BUDGET_MB. Run in CI and before any dependency change. Peak, not current: the process
 high-water mark from the OS (ru_maxrss on Linux/macOS, peak_wset on Windows), so a spike inside a step cannot hide.
-T5 is measured only where its export exists (locally, or on Cloud with T5_RELEASE_URL); CI prints that it was skipped.
+T5 is measured where its export exists or T5_RELEASE_URL is set; CI sets the URL (ci.yml) so the gate covers all models,
+and the script prints, not hides, a run where T5 was absent.
 Usage: python scripts/measure_rss.py [budget_mb]
 """
 import sys
@@ -29,7 +30,7 @@ def peak_mb(proc):
         return info.peak_wset / 1e6
     import resource
     maxrss = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss
-    return maxrss / 1e6 if sys.platform == "darwin" else maxrss / 1e3   # bytes on macOS, kilobytes on Linux
+    return maxrss / 1e6 if sys.platform == "darwin" else maxrss * 1024 / 1e6   # bytes on macOS, KiB on Linux
 
 
 def main():

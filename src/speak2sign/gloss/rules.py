@@ -9,6 +9,7 @@ lookup -> whole numbers to digit sequences -> function words dropped -> time exp
 front (the one ASL reordering that is safe without a signer).
 """
 import re
+import sys
 import unicodedata
 from dataclasses import dataclass, field
 
@@ -28,10 +29,24 @@ TIME_CONCEPTS = {"today", "tonight", "tomorrow", "morning", "afternoon", "night"
 STEM_SUFFIXES = ("ies", "ing", "ed", "es", "s", "ly", "er", "est")
 NO_STEM = {"news", "goods"}   # look inflected but are not: stripping -s would retrieve NEW and GOOD
 MAX_FINGERSPELL = 12
-LETTER = r"(?:[^\W\d_]|[\u0300-\u036f])"   # any letter or combining mark: José stays whole and is refused for lack of an é clip, never shortened to jos
+def _mark_class():
+    """Every combining mark Unicode defines (category M*), as regex ranges; 0.1 s once at import."""
+    ranges, prev = [], None
+    for c in range(sys.maxunicode + 1):
+        if unicodedata.category(chr(c)).startswith("M"):
+            if prev is not None and ranges[-1][1] == c - 1:
+                ranges[-1][1] = c
+            else:
+                ranges.append([c, c])
+            prev = c
+    return "".join(f"{chr(a)}-{chr(b)}" for a, b in ranges)   # literal characters: no escapes to get wrong
+
+
+MARKS = _mark_class()
+LETTER = rf"(?:[^\W\d_]|[{MARKS}])"   # any letter or combining mark: José stays whole and is refused for lack of an é clip, never shortened to jos
 # A numeric expression stays one token with its sign, decimal point, slash, colon or range dash ('-5', '12.5', '1/2', '10:30', '20-30'),
 # so number_entry can refuse it whole instead of signing the digits of something else.
-NUMBER = rf"(?:(?<!\w)[-+])?(?:\d+(?:[./:-]\d+)*|\.\d+)(?:{LETTER}+(?:[-+]?\w+)*)?"   # ... and 2pm, 1st, 1e3, 1.5e-3: whole, then sorted by number_entry
+NUMBER = rf"(?:(?<!\w)[-+])?(?:\d+(?:[./:+-]\d+)*|\.\d+)(?:{LETTER}+(?:[-+]?\w+)*)?"   # ... and 20+30, 2pm, 1st, 1e3, 1.5e-3: whole, then sorted by number_entry
 TOKEN_RE = re.compile(rf"{LETTER}+(?:\.{LETTER}+)+\.?|{LETTER}+(?:[-']{LETTER}+)*|{NUMBER}")
 NUMBER_RE = re.compile(NUMBER)
 

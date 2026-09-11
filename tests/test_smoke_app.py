@@ -41,6 +41,25 @@ def test_weather_failure_is_a_message_not_a_traceback(monkeypatch):
     assert any("Forecast unavailable" in e.value and "TimeoutError" in e.value for e in at.error)
 
 
+def test_lexicon_failure_is_a_message_everywhere_including_the_footer(monkeypatch):
+    import streamlit as st
+
+    from speak2sign.gloss import lexicon as lex
+
+    def broken(*a, **k):
+        raise ValueError("concepts.json corrupt")
+
+    monkeypatch.setattr(lex, "load", broken)
+    st.cache_resource.clear()   # the lexicon is cached across AppTest runs in this process
+    try:
+        at = run_app()
+        assert not at.exception
+        assert any("Could not build the signing plan" in e.value for e in at.error)
+        assert any("lexicon unavailable (ValueError)" in c.value for c in at.caption)
+    finally:
+        st.cache_resource.clear()
+
+
 def test_engine_failure_is_a_message_not_a_traceback(monkeypatch):
     from speak2sign import timeline
 

@@ -16,6 +16,7 @@ def test_tokenize_numbers_and_abbreviations():
     assert tokenize("(-5) or 1/2 or .5 at 10:30 on 2024-11-19") == ["-5", "or", "1/2", "or", ".5", "at", "10:30", "on", "2024-11-19"]
     assert tokenize("−5 and 20–30") == ["-5", "and", "20-30"]   # Unicode minus and en dash
     assert tokenize("a low of − 5 or - 7") == ["a", "low", "of", "-5", "or", "-7"]   # a separated sign still belongs to its number
+    assert tokenize("20+30 and 2+2") == ["20+30", "and", "2+2"]   # a sum is one expression, refused whole
     assert tokenize("between 2pm and 4pm, 1e3 and the 1st") == ["between", "2pm", "and", "4pm", "1e3", "and", "the", "1st"]
     assert tokenize("José") == tokenize("José") == ["josé"]   # precomposed and decomposed accent alike
 
@@ -31,9 +32,10 @@ def test_mixed_digit_letter_tokens_are_spelled_never_signed_as_numbers(lexicon):
     assert gloss("$1.5e-3", lexicon)[0].kind == "none"   # the amount is refused whole; no exponent digit plays
 
 
-def test_combining_mark_that_nfc_cannot_fold_still_refuses_the_word(lexicon):
-    e = gloss("q́x", lexicon)[0]
-    assert e.word == "q́x" and e.kind == "none" and "́" in e.why
+@pytest.mark.parametrize("mark", ["́", "᪰", "᷀", "⃐", "︠", "ְ", "ً", "ि"])   # combining blocks, Hebrew, Arabic and Devanagari marks
+def test_combining_mark_that_nfc_cannot_fold_still_refuses_the_word(mark, lexicon):
+    e = gloss(f"q{mark}x", lexicon)[0]
+    assert e.word == f"q{mark}x" and e.kind == "none" and mark in e.why
 
 
 def test_function_words_are_dropped_not_lost(lexicon):

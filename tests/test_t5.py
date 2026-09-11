@@ -40,12 +40,29 @@ def test_a_number_the_source_never_said_is_refused_and_bare_markers_are_ignored(
     tl = timeline.build(from_text("27 people."), lexicon, gloss_engine="t5")
     check(tl)
     by_word = {e["word"]: e for e in tl["entries"]}
-    assert by_word["72"]["badge"] == "not_available" and "changed a number" in by_word["72"]["note"]
-    assert by_word["27"]["badge"] == "validated" and [c["url"][-11:] for c in by_word["27"]["clips"]] == ["digit-2.mp4", "digit-7.mp4"]
+    assert by_word["72"]["badge"] == "not_available" and "changed a quantity" in by_word["72"]["note"]
+    assert by_word["27"]["badge"] == "not_available"   # once a quantity in the sentence is wrong, no quantity of it plays
     assert "" not in by_word and len(tl["entries"]) == 3
     monkeypatch.setattr(t5, "translate", lambda _: ["TWO", "HUNDRED", "PEOPLE"])   # a spelled-out quantity the source never said
     tl = timeline.build(from_text("27 people."), lexicon, gloss_engine="t5")
     assert {e["word"]: e["badge"] for e in tl["entries"]} == {"two": "not_available", "hundred": "not_available", "people": "validated"}
+
+
+def badges(text, glosses, lexicon, monkeypatch):
+    monkeypatch.setattr(t5, "translate", lambda _: glosses)
+    return [(e["word"], e["badge"]) for e in timeline.build(from_text(text), lexicon, gloss_engine="t5")["entries"]]
+
+
+def test_quantities_must_keep_their_order_and_count(lexicon, monkeypatch):
+    assert badges("One hundred people.", ["ONE", "HUNDRED", "PEOPLE"], lexicon, monkeypatch) == [("one", "validated"), ("hundred", "validated"), ("people", "validated")]
+    assert badges("One hundred people.", ["HUNDRED", "ONE", "PEOPLE"], lexicon, monkeypatch) == [("hundred", "not_available"), ("one", "not_available"), ("people", "validated")]
+    assert badges("One hundred people.", ["HUNDRED", "HUNDRED", "PEOPLE"], lexicon, monkeypatch) == [("hundred", "not_available"), ("hundred", "not_available"), ("people", "validated")]
+    assert badges("27 people.", ["27", "27", "PEOPLE"], lexicon, monkeypatch)[:2] == [("27", "not_available"), ("27", "not_available")]
+    # the same quantity words regrouped state different quantities: refused
+    out = badges("One hundred people and two cats.", ["ONE", "PEOPLE", "HUNDRED", "TWO", "CAT"], lexicon, monkeypatch)
+    assert [b for w, b in out if w in ("one", "hundred", "two")] == ["not_available"] * 3
+    out = badges("One hundred people and two cats.", ["ONE", "HUNDRED", "PEOPLE", "TWO", "CAT"], lexicon, monkeypatch)
+    assert [b for w, b in out if w in ("one", "hundred", "two")] == ["validated"] * 3
 
 
 def test_words_the_model_omits_stay_in_the_captions(lexicon, check, monkeypatch):

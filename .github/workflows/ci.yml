@@ -16,8 +16,12 @@ jobs:
       - run: ruff check .
       - uses: actions/cache@v4
         with:
-          path: models/faster-whisper-base.en
-          key: faster-whisper-base.en-v1
+          path: |
+            models/faster-whisper-base.en
+            models/t5_gloss_ct2
+          key: models-whisper-base.en-t5-v0.5.0
       - run: pytest -q
-      - name: Memory budget (lexicon + whisper + one transcription, 1800 MB)
+      - name: Memory budget (lexicon + whisper + T5 + one transcription, 1800 MB)
+        env:
+          T5_RELEASE_URL: https://github.com/sr-dotcom/speak2sign/releases/download/v0.5.0-t5/t5_gloss_ct2.zip
         run: python scripts/measure_rss.py 1800

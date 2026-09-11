@@ -146,6 +146,31 @@ def test_a_sign_written_as_its_own_word_still_belongs_to_the_number(lexicon, che
         assert [c["text"] for c in tl["captions"]] == text.split()
 
 
+def test_a_spaced_range_is_refused_whole_and_still_ends_its_sentence(lexicon, check, monkeypatch):
+    text = "Winds 20 - 30 mph. Rain."
+    tl = timeline.build(from_text(text), lexicon)
+    check(tl)
+    assert [e["word"] for e in tl["entries"] if e["badge"] == "not_available"] == ["20-30"]
+    assert not any(e["word"] in ("20", "30", "-30") for e in tl["entries"])
+    assert [c["text"] for c in tl["captions"]] == text.split() and len(tl["sentences"]) == 2
+    assert [c["sentence"] for c in tl["captions"]] == [0, 0, 0, 0, 0, 1]
+    assert not any(c.get("dropped") or c.get("partly") for c in tl["captions"][1:4])   # the refused range is shown as text, like any refusal
+    from speak2sign.gloss import t5   # the same three words, when nothing accounts for them, are struck together
+    monkeypatch.setattr(t5, "translate", lambda _: ["WIND"])
+    tl = timeline.build(from_text(text), lexicon, gloss_engine="t5")
+    assert [c["text"] for c in tl["captions"] if c.get("dropped")] == ["20", "-", "30", "mph.", "Rain."]
+    for spaced, joined in (("Winds 20 – 30 mph.", "20-30"), ("Winds 20 + 30 mph.", "20+30"), ("Winds 20 (-) 30 mph.", "20-30")):
+        tl = timeline.build(from_text(spaced), lexicon)   # en dash and plus, written as their own word, keep their meaning
+        check(tl)
+        assert [e["word"] for e in tl["entries"] if e["badge"] == "not_available"] == [joined], spaced
+        assert not any(e["badge"] == "validated" and e["word"] in ("20", "30") for e in tl["entries"]), spaced
+    # a sentence end between the numbers is not a range: two sentences, "20" signed, "-30" refused, ownership kept
+    tl = timeline.build(from_text("Wind 20. - 30 people."), lexicon)
+    check(tl)
+    assert len(tl["sentences"]) == 2 and [c["sentence"] for c in tl["captions"]] == [0, 0, 1, 1, 1]
+    assert {e["word"]: e["badge"] for e in tl["entries"] if e["word"] in ("20", "-30")} == {"20": "validated", "-30": "not_available"}
+
+
 def test_sign_pointing_at_a_concept_without_a_clip_fails_closed(lexicon, check):
     broken = lex.Lexicon(list(lexicon.concepts.values()), {"rain": [{"default": "ghost"}]})
     tl = timeline.build(from_text("Rain today."), broken)

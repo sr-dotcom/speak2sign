@@ -116,4 +116,8 @@ with upload:
             if st.session_state.get("upload_signed"):
                 show_timeline(asr.upload_transcript(st.session_state["upload_signed"], st.session_state["upload_words"], st.session_state["upload_audio"]), "upload")
 
-st.caption(f"Speak2Sign v{__version__} · lexicon {len(get_lexicon())} concepts · Python {sys.version.split()[0]} · streamlit {st.__version__}")
+try:
+    lexicon_note = f"lexicon {len(get_lexicon())} concepts"
+except Exception as e:   # the lanes above already reported it; the footer must not be the one place a traceback escapes
+    lexicon_note = f"lexicon unavailable ({e.__class__.__name__})"
+st.caption(f"Speak2Sign v{__version__} · {lexicon_note} · Python {sys.version.split()[0]} · streamlit {st.__version__}")

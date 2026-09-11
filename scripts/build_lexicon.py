@@ -245,6 +245,7 @@ def fetch():
     previous = {c["concept_id"]: c for c in json.loads(CONCEPTS.read_text(encoding="utf-8"))} if CONCEPTS.exists() else {}
     concepts, attributions = [], []
     failures = {}
+    staged = []   # (staged replacement file, destination): renamed into place only after the manifests are written
     for cid, rec in cands.items():
         src = rec["chosen"]
         if not src:
@@ -254,12 +255,16 @@ def fetch():
         dest.parent.mkdir(parents=True, exist_ok=True)
         prev = previous.get(cid, {})
         chosen_id = rec["cats"]["identifier"] if src == "cats" else rec["signbank"]["id"]
-        if dest.exists() and prev.get("clip", {}).get("source_id") not in (None, chosen_id):
-            dest.unlink()   # the reviewed override points at another clip now: the cached file is stale, not reusable
+        # fetch when the file is missing, or when the chosen source changed (a new override): the old file stays in place
+        # until the replacement has downloaded completely (write_complete), so a failed fetch leaves the published clip intact
+        part = dest.with_name(dest.name + ".part")
+        if part.exists():   # a run stopped between writing the manifests and moving the footage: the manifest may already name
+            part.unlink()   # the new source, so the footage must be fetched again rather than trusted
+        need = not dest.exists() or prev.get("clip", {}).get("source_id") not in (None, chosen_id) or part_was_pending(dest, prev, chosen_id)
         try:
             if src == "cats":
                 c = rec["cats"]
-                if not dest.exists():
+                if need:
                     md = json.loads(get(f"https://archive.org/metadata/{c['identifier']}"))
                     mp4s = [f["name"] for f in md.get("files", []) if f["name"].lower().endswith(".mp4")]
                     mp4s.sort(key=lambda n: 0 if n.lower().endswith(".ia.mp4") else 1)  # small derivative first
@@ -274,12 +279,12 @@ def fetch():
                             print(f"  {cid}: {name} failed ({e.__class__.__name__}), trying next")
                     if data is None:
                         raise RuntimeError("all mp4 derivatives failed")
-                    write_complete(dest, data)
+                    staged.append((write_complete(dest, data), dest))
                 clip = {"file": f"{sub}/{cid}.mp4", "source": "cats", "source_id": c["identifier"], "attribution_url": c["attribution_url"], "licence": c["licence"]}
             else:
                 s = rec["signbank"]
-                if not dest.exists():
-                    write_complete(dest, get(signbank_video_url(s), binary=True))
+                if need:
+                    staged.append((write_complete(dest, get(signbank_video_url(s), binary=True)), dest))
                 clip = {"file": f"{sub}/{cid}.mp4", "source": "signbank", "source_id": s["id"], "gloss": s["gloss"],
                         "attribution_url": s["attribution_url"], "licence": s["licence"], "citation": s["citation"]}
         except Exception as e:
@@ -303,17 +308,28 @@ def fetch():
         print(f"  {cid}: {src} -> {clip['file']}")
     CONCEPTS.write_text(json.dumps(concepts, indent=1, ensure_ascii=False), encoding="utf-8")
     ATTRIBUTION.write_text(json.dumps(attributions, indent=1, ensure_ascii=False), encoding="utf-8")
+    for part, dest in staged:   # manifests first (a replaced concept is 'review', so the app never loads it), then the footage
+        part.replace(dest)
+        dest.with_name(dest.name + ".pending").unlink()
     (ROOT / "data" / "lexicon" / "fetch_failures.json").write_text(json.dumps(failures, indent=1), encoding="utf-8")
     total = sum(p.stat().st_size for p in STATIC.rglob("*.mp4"))
     print(f"\nwrote {len(concepts)} concepts; {len(failures)} failures (fetch_failures.json); static/ holds {total/1e6:.1f} MB of clips")
     return 1 if failures else 0
 
 
+def part_was_pending(dest, prev, chosen_id):
+    """True when the published record already names chosen_id but the footage on disk was never confirmed for it
+    (marker written when a replacement is staged, removed once it is in place)."""
+    return dest.with_name(dest.name + ".pending").exists()
+
+
 def write_complete(dest, data):
-    """Write to a .part name and rename, so an interrupted run never leaves a half file that looks fetched."""
+    """Write the whole download to a .part name next to dest and return that path; the caller renames it into place
+    once the manifests are written. An interrupted run never leaves a half file, or new footage under an old record."""
     part = dest.with_name(dest.name + ".part")
     part.write_bytes(data)
-    part.replace(dest)
+    dest.with_name(dest.name + ".pending").write_text("replacement staged; removed when the footage is in place")
+    return part
 
 
 if __name__ == "__main__":

@@ -100,29 +100,47 @@ def _lookup(gloss, lexicon):
     return lexicon.words.get(g) or lexicon.words.get(g.replace(" ", "-")) or lexicon.phrase_ids.get(tuple(g.split()))
 
 
+def _quantity_groups(words, lexicon):
+    """The quantities of a sentence, in order, each as the run of consecutive quantity words that states it:
+    "one hundred people and two cats" -> [["one", "hundred"], ["two"]]. Digit strings and number words count."""
+    groups, run = [], []
+    for w in words:
+        cid = lexicon.words.get(w) if w else None
+        if w and (w[0].isdigit() or NUMBER_RE.fullmatch(w) or (cid and _numeric(cid))):
+            run.append(w)
+        elif run:
+            groups.append(run)
+            run = []
+    if run:
+        groups.append(run)
+    return groups
+
+
 def gloss_sentence(tokens, lexicon, offset=0, translate_fn=None):
     """Same contract as rules.gloss_sentence. Gloss order comes from the model."""
     text = " ".join(tokens)
     glosses = [g for g in (translate_fn or translate)(text) if re.search(r"[A-Za-z0-9]", g)]
+    words = [_strip(g).lower() for g in glosses]
+    # Quantities must come out exactly as they went in: the same groups of words, in the same order. "one hundred" glossed
+    # HUNDRED ONE or HUNDRED HUNDRED, or "one hundred people and two cats" regrouped as ONE ... HUNDRED TWO, states a
+    # different number; every quantity of that sentence is then refused.
+    quantities_ok = _quantity_groups(words, lexicon) == _quantity_groups(tokens, lexicon)
     entries = []
     n_src = max(1, len(tokens))
-    for i, g in enumerate(glosses):
+    for i, word in enumerate(words):
         ti = offset + min(n_src - 1, round(i * n_src / max(1, len(glosses))))
-        word = _strip(g).lower()
         if not word:   # a bare marker such as "X-"
             continue
-        cid = _lookup(g, lexicon)
-        if cid and _numeric(cid) and word not in tokens:   # TWO for a source that says 27: a changed quantity, refused
-            entries.append(Entry(word, ti, 1, "none", why=f"'{word}' is not in the source text; the model changed a number"))
+        cid = _lookup(glosses[i], lexicon)
+        is_number = word[0].isdigit() or bool(NUMBER_RE.fullmatch(word))
+        if (is_number or (cid and _numeric(cid))) and not quantities_ok:
+            entries.append(Entry(word, ti, 1, "none", why=f"'{word}': the model changed a quantity of the source text"))
         elif cid:
             entries.append(Entry(word, ti, 1, "sign", cid, why="t5"))
         elif word in FUNCTION_WORDS:
             entries.append(Entry(word, ti, 1, "dropped", why="function word (t5)"))
-        elif word[0].isdigit() or NUMBER_RE.fullmatch(word):
-            if word not in tokens:   # a number the source never said (27 -> 72) must not play as validated digits
-                entries.append(Entry(word, ti, 1, "none", why=f"'{word}' is not in the source text; the model changed a number"))
-            else:
-                entries.append(number_entry(word, lexicon, ti))
+        elif is_number:
+            entries.append(number_entry(word, lexicon, ti))
         else:
             entries.append(_fingerspell(word, lexicon, ti, why="t5 gloss with no validated sign"))
     return entries
