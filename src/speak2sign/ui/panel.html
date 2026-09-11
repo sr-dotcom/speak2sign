@@ -4,12 +4,12 @@
     <button class="s2s-restart" type="button" aria-keyshortcuts="R">Restart</button>
     <span class="s2s-status" role="status" aria-live="polite">Ready</span>
   </div>
+  <div class="s2s-progress" aria-hidden="true"><div class="s2s-progress-bar"></div></div>
   <div class="s2s-stage">
     <section class="s2s-news" aria-label="News">
       <div class="s2s-label" aria-hidden="true">News</div>
       <audio class="s2s-audio" preload="auto"></audio>
       <div class="s2s-captions" role="group" aria-label="Caption; struck-through words are function words not signed"></div>
-      <div class="s2s-wait" role="status" aria-live="polite" hidden>Waiting for the interpreter…</div>
     </section>
     <section class="s2s-panel" aria-label="ASL interpreter panel">
       <div class="s2s-label" aria-hidden="true">ASL interpreter panel</div>
@@ -19,9 +19,11 @@
         <div class="s2s-textsign" role="img" hidden></div>
         <div class="s2s-hint" aria-hidden="true">Press Play to start the interpreter</div>
       </div>
+      <div class="s2s-wait" role="status" aria-live="polite" hidden>Waiting for the interpreter…</div>
       <div class="s2s-sign" aria-live="polite" aria-atomic="true">
         <span class="s2s-gloss">—</span>
         <span class="s2s-badge"></span>
+        <span class="s2s-word"></span>
         <span class="s2s-note"></span>
       </div>
     </section>

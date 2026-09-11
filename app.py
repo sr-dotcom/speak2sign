@@ -64,13 +64,14 @@ with st.sidebar:
     st.caption("The news text is turned into a sequence of sign concepts by a rule pass (or a small T5 model). Each concept is looked up in a "
                "lexicon of validated clips (the count is in the footer); a word with no clip is fingerspelled, and one that cannot be spelled is marked not available. "
                "The bulletin plays one sentence at a time and waits for the interpreter to finish it.")
-    st.markdown("**Gloss engine**")
+    st.markdown("**Translation**")
+    ENGINE_LABEL = {"rules": "Rule-based", "t5": "T5 model"}
     if t5.available():
-        ENGINE = st.radio("Engine", ["rules", "t5"], label_visibility="collapsed", horizontal=True, key="engine",
-                          help="rules: inspectable stdlib pass (default). t5: T5-small fine-tuned on ASLG-PC12, served by CTranslate2; timing is approximate.")
+        ENGINE = st.radio("Translation", ["rules", "t5"], format_func=ENGINE_LABEL.get, label_visibility="collapsed", horizontal=True, key="engine",
+                          help="Rule-based: an inspectable pass over the words (default). T5 model: T5-small fine-tuned on ASLG-PC12, served by CTranslate2; timing is approximate.")
     else:
         ENGINE = "rules"
-        st.caption("rules (T5 export not present on this host)")
+        st.caption("Rule-based (the T5 export is not present on this host)")
     st.caption("Either engine resolves through the same validated lexicon; neither can invent a sign.")
     st.markdown("**Sign speed**")
     SIGN_RATE = st.radio("Sign speed", timeline.SIGN_RATES, index=timeline.SIGN_RATES.index(timeline.SIGN_RATE), format_func=lambda r: f"{r}×",

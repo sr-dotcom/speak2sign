@@ -10,7 +10,7 @@ export default function (component) {
   const playBtn = $(".s2s-play"), restartBtn = $(".s2s-restart"), status = $(".s2s-status");
   const audio = $(".s2s-audio"), caps = $(".s2s-captions"), wait = $(".s2s-wait");
   const vids = Array.from(root.querySelectorAll(".s2s-video")), textSign = $(".s2s-textsign");
-  const glossEl = $(".s2s-gloss"), badgeEl = $(".s2s-badge"), noteEl = $(".s2s-note");
+  const glossEl = $(".s2s-gloss"), badgeEl = $(".s2s-badge"), noteEl = $(".s2s-note"), wordEl = $(".s2s-word"), bar = $(".s2s-progress-bar");
 
   const BADGE_TEXT = { validated: "validated", fingerspelled: "fingerspelled", name: "name, shown as text", not_available: "not available" };
   const TEXT_SIGN_MS = tl.playback.text_hold_s * 1000;
@@ -51,11 +51,47 @@ export default function (component) {
     badgeEl.textContent = e ? BADGE_TEXT[e.badge] : "";
     badgeEl.className = "s2s-badge" + (e ? " " + e.badge : "");
     noteEl.textContent = e && e.note ? e.note : "";
+    // the source word under the gloss, so NIGHT for "late" reads as a lookup, not a mistake (word and gloss are required strings in the contract)
+    wordEl.textContent = e && e.word.toUpperCase() !== e.gloss.replace(/[a-z]+$/, "") ? `for \u201c${e.word}\u201d` : "";
   };
+  const progress = (done) => { bar.style.width = `${Math.round(100 * done / Math.max(1, tl.entries.length))}%`; };
+  // Pin the panel over the captions on narrow screens only while it leaves at least 35% of the viewport for caption lines;
+  // measured, not assumed, because the panel grows with a wrapped note; the waiting notice alone must not flip the pin.
+  const panelEl = $(".s2s-panel"), narrow = window.matchMedia("(max-width:800px)");
+  const updatePin = () => panelEl.classList.toggle("pinned", narrow.matches && panelEl.offsetHeight <= window.innerHeight * 0.65);
+  updatePin();
+  window.addEventListener("resize", updatePin);
+  const pinObserver = "ResizeObserver" in window ? new ResizeObserver(updatePin) : null;
+  if (pinObserver) pinObserver.observe(panelEl);
+  // While the panel is pinned, the spoken word is kept in the visible caption area (below the panel, above the fold).
+  // A viewer who scrolls by hand opts out until the next Play, Replay or Restart, so reaching the controls is never
+  // fought. Intent is read from the gestures themselves (wheel, touch, a mousedown on the scroller's own scrollbar, the
+  // scrolling keys outside the panel), never from scroll positions: Streamlit's own layout shifts move the page too.
+  const scroller = (root.getRootNode().host || root).closest("section.stMain") || document.documentElement;
+  const follow = { on: true };
+  const optOut = () => { follow.on = false; };
+  const optOutBar = (e) => { if (e.target === scroller) follow.on = false; };   // a mousedown on the scroller itself is its scrollbar
+  const optOutKeys = (e) => {
+    // a window listener sees events from inside the component retargeted to its host, so membership is read from the composed path
+    const inPanel = e.composedPath().includes(root), field = /^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName) || e.target.isContentEditable;
+    if (["ArrowUp", "ArrowDown", "PageUp", "PageDown", "Home", "End"].includes(e.key) || (e.key === " " && !inPanel && !field)) follow.on = false;
+  };
+  window.addEventListener("wheel", optOut, { passive: true });
+  window.addEventListener("touchmove", optOut, { passive: true });
+  scroller.addEventListener("mousedown", optOutBar);
+  window.addEventListener("keydown", optOutKeys);
   const highlight = (si, wi) => {
     capSpans.forEach((x) => {
       x.span.classList.toggle("now", x.si === si && x.wi === wi);
       x.span.classList.toggle("said", x.si < si || (x.si === si && x.wi < wi));
+      if (follow.on && panelEl.classList.contains("pinned") && x.si === si && x.wi === wi) {
+        const w = x.span.getBoundingClientRect(), p = panelEl.getBoundingClientRect();
+        if (w.top < p.bottom || w.bottom > window.innerHeight) {
+          x.span.style.scrollMarginTop = `${panelEl.offsetHeight + 8}px`;
+          x.span.style.scrollMarginBottom = "24px";
+          x.span.scrollIntoView({ block: "nearest" });
+        }
+      }
     });
   };
   const sleep = (ms, token) => new Promise((r) => setTimeout(() => r(live(token)), ms));
@@ -198,7 +234,9 @@ export default function (component) {
   async function run(fromSentence) {
     const token = ++state.token;
     state.stopped = false; state.playing = true; playBtn.textContent = "Pause";
+    follow.on = true;   // Play, Replay and Restart opt back in to caption following
     hint.hidden = true;
+    progress(sentences.slice(0, fromSentence).reduce((n, s2) => n + entriesBySentence[s2.index].length, 0));   // the bar shows what this run has done: nothing yet of the sentence being (re)played
     for (let si = fromSentence; si < sentences.length; si++) {
       if (!live(token)) return;
       state.sentence = si;
@@ -206,7 +244,8 @@ export default function (component) {
       wait.hidden = true;
       const narration = narrate(si, token);
       let signed = true;
-      const signing = (async () => { for (const e of entriesBySentence[si]) { if (!(await playEntry(e, token))) { signed = false; break; } } })();
+      const before = sentences.slice(0, si).reduce((n, s2) => n + entriesBySentence[s2.index].length, 0);
+      const signing = (async () => { let k = 0; for (const e of entriesBySentence[si]) { if (!(await playEntry(e, token))) { signed = false; break; } if (live(token)) progress(before + ++k); } })();
       const narrated = await narration;
       if (!live(token)) return;
       if (!narrated) { halt("Playback was blocked by the browser. Press Play to try again.", "Play"); return; }
@@ -220,6 +259,7 @@ export default function (component) {
       wait.hidden = true;
       if (!signed) return;
     }
+    progress(tl.entries.length);
     highlight(-1, -1); capSpans.forEach((x) => x.span.classList.add("said"));
     showSign(null); state.playing = false; state.stopped = true; playBtn.textContent = "Play again";
     setStatus(`Done · speech ${Math.round(tl.stats.speech_s)} s, signing about ${Math.round(tl.stats.signing_s)} s`);
@@ -270,7 +310,19 @@ export default function (component) {
     if (space) playBtn.click();
     else if (e.key === "r" || e.key === "R") { e.preventDefault(); restartBtn.click(); }
   });
-  setStatus(`Ready · ${sentences.length} sentence${sentences.length === 1 ? "" : "s"}, ${tl.entries.length} signs`);
+  // Projected playback: per sentence the narration and the signing overlap and the longer one sets the pace (the media
+  // waits for the signer, and the signer waits for the next sentence), so the total is the sum of the per-sentence maxima.
+  const clipTime = (e) => (e.clips.length ? e.clips.reduce((t, c) => t + (c.out_s - c.in_s) / c.rate, 0) : tl.playback.text_hold_s);
+  const total = sentences.reduce((t, s2) => t + Math.max(s2.t_end - s2.t_start, entriesBySentence[s2.index].reduce((u, e) => u + clipTime(e), 0)), 0);
+  // seconds under a minute, half minutes above; never "0" for something that plays
+  const about = total < 60 ? `${Math.max(1, Math.round(total))} s` : `${Math.round(total / 30) / 2} min`;
+  setStatus(`Ready · ${sentences.length} sentence${sentences.length === 1 ? "" : "s"}, ${tl.entries.length} signs · about ${about} to play: the narration waits for the signer`);
 
-  return () => halt("Stopped", "Play");
+  return () => {   // teardown on rerun or unmount: stop playback and release the resize hooks so nothing outlives the panel
+    halt("Stopped", "Play");
+    window.removeEventListener("resize", updatePin);
+    window.removeEventListener("wheel", optOut); window.removeEventListener("touchmove", optOut);
+    scroller.removeEventListener("mousedown", optOutBar); window.removeEventListener("keydown", optOutKeys);
+    if (pinObserver) pinObserver.disconnect();
+  };
 }

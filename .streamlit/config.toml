@@ -5,3 +5,6 @@ maxUploadSize = 12   # MB; 60 s of 16-bit stereo 44.1 kHz WAV is 10.6 MB, so thi
 
 [browser]
 gatherUsageStats = false
+
+[client]
+toolbarMode = "minimal"   # no Deploy button or menu on the viewer page
