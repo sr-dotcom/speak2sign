@@ -198,6 +198,7 @@ export default function (component) {
   async function run(fromSentence) {
     const token = ++state.token;
     state.stopped = false; state.playing = true; playBtn.textContent = "Pause";
+    hint.hidden = true;
     for (let si = fromSentence; si < sentences.length; si++) {
       if (!live(token)) return;
       state.sentence = si;
@@ -242,8 +243,20 @@ export default function (component) {
   }
 
   if (tl.media.kind === "audio" && tl.media.url) audio.src = new URL(tl.media.url, document.baseURI).href;
+  const hint = $(".s2s-hint");
   if (tl.entries.length && tl.entries[0].clips.length) {
-    vids[1].src = new URL(tl.entries[0].clips[0].url, document.baseURI).href; // preload the first clip
+    // Preload the first clip and show its first active frame, paused, as the poster: the panel opens on the signer,
+    // not on a black box. The first playClip finds this element already loaded and seeks from here.
+    const first = tl.entries[0].clips[0], v = vids[1];
+    v.src = new URL(first.url, document.baseURI).href;
+    v.addEventListener("loadedmetadata", () => {
+      v.addEventListener("seeked", () => {
+        if (state.stopped && !state.playing) { vids[0].hidden = true; v.hidden = false; showSign(tl.entries[0]); }   // a shown signer always carries its label and badge
+      }, { once: true });
+      v.currentTime = first.in_s || 0;
+    }, { once: true });
+  } else {
+    hint.hidden = true;   // nothing to preview when the first entry is text
   }
   playBtn.addEventListener("click", () => { if (state.playing) stop(); else run(state.stopped ? 0 : state.sentence); });
   restartBtn.addEventListener("click", () => { stop(); state.stopped = true; run(0); });

@@ -115,9 +115,21 @@ def gloss_typed(page, text):
     page.get_by_role("button", name="Gloss it").click()
 
 
-def test_page_mounts_the_first_item_ready(page, state):
+def test_page_mounts_the_first_item_ready_on_the_signers_first_frame(page, state, lexicon):
     assert "Ready" in state()["status"] and FIRST_ITEM_STATUS in state()["status"]
     assert page.locator(".s2s-chip").count() > 10   # the ribbon under the panel
+    (first_gloss, first_clip), = sequence_of(first_item_timeline(lexicon))[:1]
+    in_s = spans_of(first_item_timeline(lexicon))[(first_gloss, first_clip)][0]
+    # before Play the panel shows the first clip's first active frame, paused, with a hint; never a black box
+    s = wait_until(lambda: state() if state()["visible"] and state()["visible"]["ready"] >= 2 else None)
+    assert s["visible"]["src"] == first_clip and s["visible"]["paused"] and abs(s["visible"]["t"] - in_s) < 0.05
+    first_entry = first_item_timeline(lexicon)["entries"][0]
+    assert s["gloss"] == first_entry["gloss"] == first_gloss   # a shown signer carries its label ...
+    assert page.locator(".s2s-badge").text_content() == {"validated": "validated", "fingerspelled": "fingerspelled"}[first_entry["badge"]]   # ... and its badge (text_content: the CSS uppercases it on screen)
+    hint = page.locator(".s2s-hint")
+    assert hint.is_visible() and "Play" in hint.inner_text()
+    page.locator(".s2s-play").click()
+    wait_until(lambda: not hint.is_visible())
 
 
 def test_the_panel_plays_the_whole_first_sentence_in_the_prescribed_order(page, lexicon):
